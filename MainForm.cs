@@ -572,13 +572,7 @@ namespace ImageEnhancingUtility.Winforms
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(@"https://github.com/ptrsuder/" + ViewModel.GitHubRepoName);
-        }
-        
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            ViewModel.CreateInterpolatedModel(@"S:\ESRGAN-master\models\4x_RRDB_PSNR.pth", @"S:\ESRGAN-master\models\4x_RRDB_ESRGAN.pth", 0.5);
-        }
+        }       
 
         private void changePath_button_Click(object sender, EventArgs e)
         {
