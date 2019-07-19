@@ -493,7 +493,7 @@ namespace ImageEnhancingUtility.Winforms
         {
             checkedModels = treeView1.Nodes.Find("", true).Where(x => x.Checked).ToList()
                 .ConvertAll(x => x.Tag as ModelInfo)
-                .Where(x => x?.GetType().ToString() == "ImageEnhancingUtility.ModelInfo").ToList();
+                .Where(x => x?.GetType().ToString() == "ImageEnhancingUtility.Core.ModelInfo").ToList();
             ViewModel.SelectedModelsItems = checkedModels; //hack           
             
             useDifferentModelForAlpha_checkBox.Enabled = checkedModels.Count <= 1;
