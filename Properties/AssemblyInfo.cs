@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов, чтобы изменить сведения,
 // связанные со сборкой.
-[assembly: AssemblyTitle("crop-upscale-merge")]
+[assembly: AssemblyTitle("Image Enhancing Utility")]
 [assembly: AssemblyDescription("GUI tool for ESRGAN")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("crop-upscale-merge")]
+[assembly: AssemblyProduct("Image Enhancing Utility")]
 [assembly: AssemblyCopyright("Copyright © ptrsuder 2019")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // Можно задать все значения или принять номер сборки и номер редакции по умолчанию.
 // используя "*", как показано ниже:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("0.9.55.0")]
-[assembly: AssemblyFileVersion("0.9.55.0")]
+[assembly: AssemblyVersion("0.9.02.0")]
+[assembly: AssemblyFileVersion("0.9.02.0")]
