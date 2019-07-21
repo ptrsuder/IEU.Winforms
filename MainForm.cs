@@ -681,7 +681,7 @@ namespace ImageEnhancingUtility.Winforms
             double alphaValue = 0.0;
             try
             {
-                alphaValue = double.Parse(interpolationAlphaValue_textBox.Text.Replace('.', ','));
+                alphaValue = double.Parse(interpolationAlphaValue_textBox.Text.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture);
             }
             catch
             {
