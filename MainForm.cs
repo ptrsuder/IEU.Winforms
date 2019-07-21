@@ -218,6 +218,7 @@ namespace ImageEnhancingUtility.Winforms
 
             this.Bind(ViewModel, vm => vm.UseDifferentModelForAlpha, v => v.useDifferentModelForAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.ModelForAlpha, v => (ModelInfo)v.modelForAlpha_comboBox.SelectedItem);
+            this.Bind(ViewModel, vm => vm.SeamlessTexture, v => v.seamlessTextures_checkBox.Checked);
 
             interpolationModelOne_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
             interpolationModelOne_comboBox.DisplayMember = "Name";

@@ -65,6 +65,7 @@
             this.maxTileHeight_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.maxTileWidth_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.createMemoryImage_checkBox = new System.Windows.Forms.CheckBox();
+            this.seamlessTextures_checkBox = new System.Windows.Forms.CheckBox();
             this.preserveFormat_checkBox = new System.Windows.Forms.CheckBox();
             this.changeInputImgPath_button = new System.Windows.Forms.Button();
             this.changeMergedResultsPath_button = new System.Windows.Forms.Button();
@@ -470,6 +471,7 @@
             this.settings_tabPage.Controls.Add(this.maxTileHeight_numericUpDown);
             this.settings_tabPage.Controls.Add(this.maxTileWidth_numericUpDown);
             this.settings_tabPage.Controls.Add(this.createMemoryImage_checkBox);
+            this.settings_tabPage.Controls.Add(this.seamlessTextures_checkBox);
             this.settings_tabPage.Controls.Add(this.preserveFormat_checkBox);
             this.settings_tabPage.Controls.Add(this.changeInputImgPath_button);
             this.settings_tabPage.Controls.Add(this.changeMergedResultsPath_button);
@@ -644,6 +646,18 @@
             this.createMemoryImage_checkBox.TabIndex = 31;
             this.createMemoryImage_checkBox.Text = "Create max resolution tile in LR (helps with memory allocation)";
             this.createMemoryImage_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // seamlessTextures_checkBox
+            // 
+            this.seamlessTextures_checkBox.AutoSize = true;
+            this.seamlessTextures_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.seamlessTextures_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(84, 327);
+            this.seamlessTextures_checkBox.Name = "seamlessTextures_checkBox";
+            this.seamlessTextures_checkBox.Size = new System.Drawing.Size(137, 17);
+            this.seamlessTextures_checkBox.TabIndex = 30;
+            this.seamlessTextures_checkBox.Text = "Seamless (tiled) textures";
+            this.seamlessTextures_checkBox.UseVisualStyleBackColor = true;
             // 
             // preserveFormat_checkBox
             // 
@@ -1826,6 +1840,7 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.ContextMenuStrip treeView_contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem openModelFolder;
+        private System.Windows.Forms.CheckBox seamlessTextures_checkBox;
     }
 }
 
