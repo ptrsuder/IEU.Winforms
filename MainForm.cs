@@ -121,16 +121,16 @@ namespace ImageEnhancingUtility.Winforms
             #region #MAIN_TAB
 
             outputDestinationModes = new Dictionary<string, int>();
-            outputDestinationModes.Add("Default", 0);
-            outputDestinationModes.Add("Preserve folder structure", 3);
             outputDestinationModes.Add("Folder for each image", 1);
             outputDestinationModes.Add("Folder for each model", 2);
 
             outputDestinationModesSingleModel = new Dictionary<string, int>();
             outputDestinationModesSingleModel.Add("Default", 0);
             outputDestinationModesSingleModel.Add("Preserve folder structure", 3);
+            outputDestinationModesSingleModel.Add("Folder for each image", 1);
+            outputDestinationModesSingleModel.Add("Folder for each model", 2);
 
-            outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModes, null);
+            outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModesSingleModel, null);
             outputDestinationMode_comboBox.DisplayMember = "Key";
             outputDestinationMode_comboBox.ValueMember = "Value";
             outputDestinationMode_comboBox.SelectedIndex = 0;
@@ -504,12 +504,12 @@ namespace ImageEnhancingUtility.Winforms
                 if(checkedModels.Count == 2 && lastCheckedModelsCount <= 1)
                     lastUseDifferentModelAlpha = useDifferentModelForAlpha_checkBox.Checked;
                 useDifferentModelForAlpha_checkBox.Checked = false;
-                outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModesSingleModel, null);
+                outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModes, null);
             }
             else
             {
                 useDifferentModelForAlpha_checkBox.Checked = lastUseDifferentModelAlpha;
-                outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModes, null);
+                outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModesSingleModel, null);
             }
             lastCheckedModelsCount = checkedModels.Count;
         }
