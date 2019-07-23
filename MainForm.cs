@@ -1,6 +1,4 @@
-﻿using DynamicData;
-using ReactiveUI;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Diagnostics;
@@ -10,6 +8,8 @@ using System.Reactive.Linq;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DynamicData;
+using ReactiveUI;
 using ImageEnhancingUtility.Core;
 using GitHubUpdate;
 
@@ -17,19 +17,20 @@ using GitHubUpdate;
 //ask to change all paths when changing ESRGAN path
 //change VerifyPaths?
 //settings for output formats
+//transfet AllInOneStep method to Core
 
 namespace ImageEnhancingUtility.Winforms
 {
-    public partial class MainForm : Form, IViewFor<ImEnAsT>
+    public partial class MainForm : Form, IViewFor<IEU>
     {
-        public readonly string AppVersion = "0.9.0";
-        public readonly string GitHubRepoName = "ImageEnhancingUtility.Winforms";
+        public readonly string AppVersion = "0.9.02";
+        public readonly string GitHubRepoName = "IEU.Winforms";
 
-        public ImEnAsT ViewModel { get; set; }
+        public IEU ViewModel { get; set; }
         object IViewFor.ViewModel
         {
             get => ViewModel;
-            set => ViewModel = (ImEnAsT) value;
+            set => ViewModel = (IEU) value;
         }
 
         List<ModelInfo> checkedModels = new List<ModelInfo>();       
@@ -38,6 +39,13 @@ namespace ImageEnhancingUtility.Winforms
         Dictionary<string, int> outputDestinationModesSingleModel;
         Dictionary<string, int> overwriteModes;
         List<TextBox> pathsTextBoxes;
+
+        private ImageFormatInfo _selectedOutputFormat;
+        public ImageFormatInfo SelectedOutputFormat
+        {
+            get => _selectedOutputFormat;
+            set => _selectedOutputFormat = value;
+        }
 
         int lastCheckedModelsCount = 0;        
         bool lastUseDifferentModelAlpha = false;
@@ -151,8 +159,8 @@ namespace ImageEnhancingUtility.Winforms
 
             this.OneWayBind(ViewModel, vm => vm.ModelsItems, v => v.ModelsItems);
             //this.OneWayBind(ViewModel, vm => vm.SelectedModelsItems, v => v.checkedModels, vmToViewConverterOverride: new ReactiveListConverter());
-
-            ViewModel = new ImEnAsT();
+            
+            ViewModel = new IEU();
 
             #region #SETTINGS_TAB
             this.Bind(ViewModel, vm => vm.esrganPath, v => v.esrganPath_textBox.Text);
@@ -169,11 +177,14 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.ignoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.deleteResults, v => v.deleteResults_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.createMemoryImage, v => v.createMemoryImage_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.preserveImageFormat, v => v.preserveFormat_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.UseOriginalImageFormat, v => v.preserveFormat_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.SplitRGB, v => v.splitRGB_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.UseCPU, v => v.useCPU_checkBox.Checked);
+
 
             this.Bind(ViewModel, vm => vm.pngCompression, v => v.pngCompression_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             
-            this.Bind(ViewModel, vm => vm.splitRGB, v => v.splitRGB_checkBox.Checked);
+          
 
             //var selectionChanged = Observable.FromEvent<EventHandler, EventArgs>(
             //  h => (_, e) => h(e),
@@ -200,9 +211,10 @@ namespace ImageEnhancingUtility.Winforms
 
             #endregion
 
-            this.BindCommand(ViewModel, vm => vm.CropCommand, v => v.crop_button);
+            this.BindCommand(ViewModel, vm => vm.SplitCommand, v => v.crop_button);
             this.BindCommand(ViewModel, vm => vm.UpscaleCommand, v => v.upscale_button);
             this.BindCommand(ViewModel, vm => vm.MergeCommand, v => v.merge_button);
+            this.BindCommand(ViewModel, vm => vm.SplitUpscaleMergeCommand, v => v.runAll_button);
 
             pathsTextBoxes = new List<TextBox> { esrganPath_textBox, imgPath_textBox, modelsPath_textBox };
             progress_label.Text = "0/0";
@@ -214,11 +226,12 @@ namespace ImageEnhancingUtility.Winforms
             changeModelsPath_button.Tag = modelsPath_textBox;
 
             appVersion_label.Text = "GUI v" + Application.ProductVersion;
-            appCoreVersion_linkLabel.Text = "ImEnAsT.Core v" + ViewModel.AppVersion;
+            appCoreVersion_linkLabel.Text = "IEU.Core v" + ViewModel.AppVersion;
 
             this.Bind(ViewModel, vm => vm.UseDifferentModelForAlpha, v => v.useDifferentModelForAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.ModelForAlpha, v => (ModelInfo)v.modelForAlpha_comboBox.SelectedItem);
             this.Bind(ViewModel, vm => vm.SeamlessTexture, v => v.seamlessTextures_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.overlapSize, v => v.overlapSize_numericUpDown.Value, x => x, x => (int) x);           
 
             interpolationModelOne_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
             interpolationModelOne_comboBox.DisplayMember = "Name";
@@ -241,10 +254,12 @@ namespace ImageEnhancingUtility.Winforms
 
             lastUseDifferentModelAlpha = useDifferentModelForAlpha_checkBox.Checked;
 
+
             outputFormat_comboBox.DataSource = new BindingSource(ViewModel.formatInfos, null);
             outputFormat_comboBox.DisplayMember = "DisplayName";
             outputFormat_comboBox.ValueMember = "Extension";
-            outputFormat_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.SelectedOutputFormatIndex, v => v.outputFormat_comboBox.SelectedIndex);
+
 
             //CreateModelTree();   
 
@@ -267,7 +282,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.modelsPath, v => v.modelsPath_textBox.Text);
             this.Bind(ViewModel, vm => vm.lrPath, v => v.inputPath_textBox.Text);
 
-            this.Bind(ViewModel, vm => vm.advanceUseResultSuffix, v => v.advancedUseSuffix_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.advancedUseResultSuffix, v => v.advancedUseSuffix_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.advancedResultSuffix, v => v.advancedSuffix_textBox.Text);
 
             this.Bind(ViewModel, vm => vm.filterFilenameCaseSensitive, v => v.filterFilenameCaseSensitive_checkBox.Checked);
@@ -287,7 +302,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.filterImageResolutionMaxWidth, v => v.filterSizeWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.filterImageResolutionMaxHeight, v => v.filterSizeHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
-            foreach (var item in ViewModel.filterExtensionsList)
+            foreach (var item in IEU.filterExtensionsList)
                 filterExtensions_checkedListBox.Items.Add(item);
                         
             noiseReductionType_comboBox.DataSource = ViewModel.postprocessNoiseFilter;         
@@ -299,21 +314,21 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.thresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             #region #RESIZE
-            resizeImageBeforeScaleFactor_comboBox.DataSource = ImEnAsT.ResizeImageScaleFactors;
+            resizeImageBeforeScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
             resizeImageBeforeScaleFactor_comboBox.SelectedIndex = 3;
             this.Bind(ViewModel, vm => vm.resizeImageBeforeScaleFactor, v => v.resizeImageBeforeScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
 
-            resizeImageBeforeFilterType_comboBox.DataSource = new BindingSource(ImEnAsT.MagickFilterTypes, null);
+            resizeImageBeforeFilterType_comboBox.DataSource = new BindingSource(IEU.MagickFilterTypes, null);
             resizeImageBeforeFilterType_comboBox.DisplayMember = "Value";
             resizeImageBeforeFilterType_comboBox.ValueMember = "Key";
             resizeImageBeforeFilterType_comboBox.SelectedIndex = 0;
             this.Bind(ViewModel, vm => vm.resizeImageBeforeFilterType, v => v.resizeImageBeforeFilterType_comboBox.SelectedValue, x => x, x => (int)x);
 
-            resizeImageAfterScaleFactor_comboBox.DataSource = ImEnAsT.ResizeImageScaleFactors;
+            resizeImageAfterScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
             resizeImageAfterScaleFactor_comboBox.SelectedIndex = 3;
             this.Bind(ViewModel, vm => vm.resizeImageAfterScaleFactor, v => v.resizeImageAfterScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
 
-            resizeImageAfterFilterType_comboBox.DataSource = new BindingSource(ImEnAsT.MagickFilterTypes, null);
+            resizeImageAfterFilterType_comboBox.DataSource = new BindingSource(IEU.MagickFilterTypes, null);
             resizeImageAfterFilterType_comboBox.DisplayMember = "Value";
             resizeImageAfterFilterType_comboBox.ValueMember = "Key";
             resizeImageAfterFilterType_comboBox.SelectedIndex = 0;
@@ -483,8 +498,7 @@ namespace ImageEnhancingUtility.Winforms
                     break;
             }
         }
-
-        
+                
         private void advancedUseSuffix_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             advancedSuffix_textBox.ReadOnly = !advancedUseSuffix_checkBox.Checked;
@@ -573,7 +587,12 @@ namespace ImageEnhancingUtility.Winforms
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             Process.Start(@"https://github.com/ptrsuder/" + ViewModel.GitHubRepoName);
-        }       
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://github.com/ptrsuder/" + GitHubRepoName);
+        }
 
         private void changePath_button_Click(object sender, EventArgs e)
         {
@@ -588,37 +607,7 @@ namespace ImageEnhancingUtility.Winforms
 
         private async void runAll_button_ClickAsync(object sender, EventArgs e)
         {
-            //richTextBox1.Text = "";
-            //UpdateSettingsFromGUI();
-
-            //List<object> checkedModels = treeView1.Nodes[0].Nodes.Find("", true).Where(x => x.Checked).ToList().ConvertAll(x => x.Tag).Where(x => x.GetType().ToString() == "System.IO.FileInfo").ToList();
-
-            //if (checkedModels.Count == 0)
-            //{
-            //    MessageBox.Show("No models selected!");
-            //    return;
-            //}
-            //await Crop();
-            //Process esrganProcess = await RunPythonScript();
-            //int processExitCode = await RunProcessAsync(esrganProcess);
-            //if (processExitCode == -666)
-            //    return;
-            //if (processExitCode != 0)
-            //{
-            //    WriteToLogsThreadSafe("Error ocured during ESRGAN work!", System.Drawing.Color.Red);
-            //    return;
-            //}
-            //await Merge();
-        }
-
-        private void crop_button_Click(object sender, EventArgs e)
-        {
-            //ViewModel.Crop();
-        }
-
-        private void merge_button_Click(object sender, EventArgs e)
-        {
-            //ViewModel.Merge();
+            ViewModel.SplitUpscaleMerge();
         }
        
         private void upscale_button_Click(object sender, EventArgs e)

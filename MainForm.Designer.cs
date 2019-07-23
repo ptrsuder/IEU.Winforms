@@ -493,7 +493,6 @@
             this.outputFormat_comboBox.Name = "outputFormat_comboBox";
             this.outputFormat_comboBox.Size = new System.Drawing.Size(120, 21);
             this.outputFormat_comboBox.TabIndex = 48;
-            this.outputFormat_comboBox.SelectedIndexChanged += new System.EventHandler(this.outputFormat_comboBox_SelectedIndexChanged);
             // 
             // modelForAlpha_comboBox
             // 
