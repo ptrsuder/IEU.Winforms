@@ -125,7 +125,6 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IntDecimalConverter.cs" />
     <Compile Include="MyTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
