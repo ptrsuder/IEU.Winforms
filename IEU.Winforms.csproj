@@ -208,4 +208,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy "$(SolutionDir)IEU.Core\pthReader.py" "$(TargetDir)" /Y /I</PostBuildEvent>
+  </PropertyGroup>
 </Project>
