@@ -48,7 +48,6 @@
             this.outputMode_groupBox = new System.Windows.Forms.GroupBox();
             this.outputDestinationMode_comboBox = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView1 = new ImageEnhancingUtility.Winforms.MyTreeView();
             this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
@@ -65,6 +64,7 @@
             this.maxTileHeight_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.maxTileWidth_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.createMemoryImage_checkBox = new System.Windows.Forms.CheckBox();
+            this.useCPU_checkBox = new System.Windows.Forms.CheckBox();
             this.seamlessTextures_checkBox = new System.Windows.Forms.CheckBox();
             this.preserveFormat_checkBox = new System.Windows.Forms.CheckBox();
             this.changeInputImgPath_button = new System.Windows.Forms.Button();
@@ -153,6 +153,7 @@
             this.interpolationModelTwo_comboBox = new System.Windows.Forms.ComboBox();
             this.interpolationModelOne_comboBox = new System.Windows.Forms.ComboBox();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.treeView1 = new ImageEnhancingUtility.Winforms.MyTreeView();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -227,7 +228,7 @@
             this.crop_button.Name = "crop_button";
             this.crop_button.Size = new System.Drawing.Size(149, 83);
             this.crop_button.TabIndex = 17;
-            this.crop_button.Text = "CROP IMAGES";
+            this.crop_button.Text = "SPLIT";
             this.toolTip1.SetToolTip(this.crop_button, "Create tiles from original images and save them as png in ESRGAN input folder");
             this.crop_button.UseVisualStyleBackColor = true;
             // 
@@ -238,7 +239,7 @@
             this.merge_button.Name = "merge_button";
             this.merge_button.Size = new System.Drawing.Size(149, 83);
             this.merge_button.TabIndex = 18;
-            this.merge_button.Text = "MERGE IMAGES";
+            this.merge_button.Text = "MERGE";
             this.toolTip1.SetToolTip(this.merge_button, "Find all image tiles in results folder/subfolders, merge them in single image and" +
         " save it in merged-results folder/subfolder depending on output mode.");
             this.merge_button.UseVisualStyleBackColor = true;
@@ -256,7 +257,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1156, 747);
+            this.tabControl1.Size = new System.Drawing.Size(728, 642);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
             // 
@@ -266,7 +267,7 @@
             this.main_tabPage.Location = new System.Drawing.Point(4, 25);
             this.main_tabPage.Name = "main_tabPage";
             this.main_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.main_tabPage.Size = new System.Drawing.Size(1148, 718);
+            this.main_tabPage.Size = new System.Drawing.Size(720, 613);
             this.main_tabPage.TabIndex = 0;
             this.main_tabPage.Text = "Basic";
             this.main_tabPage.UseVisualStyleBackColor = true;
@@ -288,7 +289,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1142, 712);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(714, 607);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // panel2
@@ -296,7 +297,7 @@
             this.panel2.Controls.Add(this.progressFiltered_label);
             this.panel2.Controls.Add(this.progress_label);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 685);
+            this.panel2.Location = new System.Drawing.Point(3, 580);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 24);
             this.panel2.TabIndex = 37;
@@ -339,7 +340,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 676);
+            this.panel1.Size = new System.Drawing.Size(149, 571);
             this.panel1.TabIndex = 20;
             // 
             // groupBox1
@@ -369,9 +370,8 @@
             this.runAll_button.Name = "runAll_button";
             this.runAll_button.Size = new System.Drawing.Size(149, 32);
             this.runAll_button.TabIndex = 32;
-            this.runAll_button.Text = "RUN ALL STEPS";
+            this.runAll_button.Text = "SPLIT-ESRGAN-MERGE";
             this.runAll_button.UseVisualStyleBackColor = true;
-            this.runAll_button.Click += new System.EventHandler(this.runAll_button_ClickAsync);
             // 
             // outputMode_groupBox
             // 
@@ -408,23 +408,9 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(981, 676);
-            this.splitContainer1.SplitterDistance = 709;
+            this.splitContainer1.Size = new System.Drawing.Size(553, 571);
+            this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 21;
-            // 
-            // treeView1
-            // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.treeView1.ContextMenuStrip = this.treeView_contextMenuStrip;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("Lucida Console", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.HideSelection = false;
-            this.treeView1.ItemHeight = 20;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(709, 676);
-            this.treeView1.TabIndex = 9;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
             // 
             // treeView_contextMenuStrip
             // 
@@ -448,7 +434,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(268, 676);
+            this.richTextBox1.Size = new System.Drawing.Size(149, 571);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -456,9 +442,9 @@
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(158, 685);
+            this.progressBar1.Location = new System.Drawing.Point(158, 580);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(981, 24);
+            this.progressBar1.Size = new System.Drawing.Size(553, 24);
             this.progressBar1.TabIndex = 22;
             // 
             // settings_tabPage
@@ -471,6 +457,7 @@
             this.settings_tabPage.Controls.Add(this.maxTileHeight_numericUpDown);
             this.settings_tabPage.Controls.Add(this.maxTileWidth_numericUpDown);
             this.settings_tabPage.Controls.Add(this.createMemoryImage_checkBox);
+            this.settings_tabPage.Controls.Add(this.useCPU_checkBox);
             this.settings_tabPage.Controls.Add(this.seamlessTextures_checkBox);
             this.settings_tabPage.Controls.Add(this.preserveFormat_checkBox);
             this.settings_tabPage.Controls.Add(this.changeInputImgPath_button);
@@ -494,7 +481,7 @@
             this.settings_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settings_tabPage.Name = "settings_tabPage";
             this.settings_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settings_tabPage.Size = new System.Drawing.Size(1148, 718);
+            this.settings_tabPage.Size = new System.Drawing.Size(720, 613);
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
@@ -506,6 +493,7 @@
             this.outputFormat_comboBox.Name = "outputFormat_comboBox";
             this.outputFormat_comboBox.Size = new System.Drawing.Size(120, 21);
             this.outputFormat_comboBox.TabIndex = 48;
+            this.outputFormat_comboBox.SelectedIndexChanged += new System.EventHandler(this.outputFormat_comboBox_SelectedIndexChanged);
             // 
             // modelForAlpha_comboBox
             // 
@@ -513,7 +501,7 @@
             this.modelForAlpha_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.modelForAlpha_comboBox.Enabled = false;
             this.modelForAlpha_comboBox.FormattingEnabled = true;
-            this.modelForAlpha_comboBox.Location = new System.Drawing.Point(249, 210);
+            this.modelForAlpha_comboBox.Location = new System.Drawing.Point(249, 216);
             this.modelForAlpha_comboBox.Name = "modelForAlpha_comboBox";
             this.modelForAlpha_comboBox.Size = new System.Drawing.Size(381, 21);
             this.modelForAlpha_comboBox.TabIndex = 47;
@@ -528,7 +516,7 @@
             this.tableLayoutPanel2.Controls.Add(this.appCoreVersion_linkLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.appVersion_label, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkForUpdates_checkBox, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(906, 661);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(478, 556);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -564,7 +552,7 @@
             this.appVersion_label.TabStop = true;
             this.appVersion_label.Text = "GUI v0.0.00.00";
             this.appVersion_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.appVersion_label.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.appVersion_label.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // checkForUpdates_checkBox
             // 
@@ -585,7 +573,7 @@
             this.deleteResults_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.deleteResults_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.deleteResults_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteResults_checkBox.Location = new System.Drawing.Point(84, 280);
+            this.deleteResults_checkBox.Location = new System.Drawing.Point(84, 312);
             this.deleteResults_checkBox.Name = "deleteResults_checkBox";
             this.deleteResults_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.deleteResults_checkBox.Size = new System.Drawing.Size(144, 17);
@@ -596,7 +584,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(291, 111);
+            this.label9.Location = new System.Drawing.Point(279, 111);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(14, 13);
             this.label9.TabIndex = 33;
@@ -604,9 +592,14 @@
             // 
             // maxTileHeight_numericUpDown
             // 
-            this.maxTileHeight_numericUpDown.Location = new System.Drawing.Point(308, 107);
+            this.maxTileHeight_numericUpDown.Location = new System.Drawing.Point(294, 107);
             this.maxTileHeight_numericUpDown.Maximum = new decimal(new int[] {
             4096,
+            0,
+            0,
+            0});
+            this.maxTileHeight_numericUpDown.Minimum = new decimal(new int[] {
+            16,
             0,
             0,
             0});
@@ -621,9 +614,14 @@
             // 
             // maxTileWidth_numericUpDown
             // 
-            this.maxTileWidth_numericUpDown.Location = new System.Drawing.Point(222, 107);
+            this.maxTileWidth_numericUpDown.Location = new System.Drawing.Point(210, 107);
             this.maxTileWidth_numericUpDown.Maximum = new decimal(new int[] {
             4096,
+            0,
+            0,
+            0});
+            this.maxTileWidth_numericUpDown.Minimum = new decimal(new int[] {
+            16,
             0,
             0,
             0});
@@ -640,19 +638,34 @@
             // 
             this.createMemoryImage_checkBox.AutoSize = true;
             this.createMemoryImage_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.createMemoryImage_checkBox.Location = new System.Drawing.Point(84, 257);
+            this.createMemoryImage_checkBox.Location = new System.Drawing.Point(84, 289);
             this.createMemoryImage_checkBox.Name = "createMemoryImage_checkBox";
-            this.createMemoryImage_checkBox.Size = new System.Drawing.Size(312, 17);
+            this.createMemoryImage_checkBox.Size = new System.Drawing.Size(169, 17);
             this.createMemoryImage_checkBox.TabIndex = 31;
-            this.createMemoryImage_checkBox.Text = "Create max resolution tile in LR (helps with memory allocation)";
+            this.createMemoryImage_checkBox.Text = "Create max resolution tile in LR";
+            this.toolTip1.SetToolTip(this.createMemoryImage_checkBox, " Helps with ESRGAN memory allocation, when you have images with different dimensi" +
+        "ons in LR");
             this.createMemoryImage_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // useCPU_checkBox
+            // 
+            this.useCPU_checkBox.AutoSize = true;
+            this.useCPU_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useCPU_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.useCPU_checkBox.Location = new System.Drawing.Point(84, 335);
+            this.useCPU_checkBox.Name = "useCPU_checkBox";
+            this.useCPU_checkBox.Size = new System.Drawing.Size(68, 17);
+            this.useCPU_checkBox.TabIndex = 30;
+            this.useCPU_checkBox.Text = "Use CPU";
+            this.toolTip1.SetToolTip(this.useCPU_checkBox, "Use CPU instead of GPU (very slow, especially on Windows)");
+            this.useCPU_checkBox.UseVisualStyleBackColor = true;
             // 
             // seamlessTextures_checkBox
             // 
             this.seamlessTextures_checkBox.AutoSize = true;
             this.seamlessTextures_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.seamlessTextures_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(84, 327);
+            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(84, 260);
             this.seamlessTextures_checkBox.Name = "seamlessTextures_checkBox";
             this.seamlessTextures_checkBox.Size = new System.Drawing.Size(137, 17);
             this.seamlessTextures_checkBox.TabIndex = 30;
@@ -664,7 +677,7 @@
             this.preserveFormat_checkBox.AutoSize = true;
             this.preserveFormat_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.preserveFormat_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.preserveFormat_checkBox.Location = new System.Drawing.Point(84, 304);
+            this.preserveFormat_checkBox.Location = new System.Drawing.Point(210, 162);
             this.preserveFormat_checkBox.Name = "preserveFormat_checkBox";
             this.preserveFormat_checkBox.Size = new System.Drawing.Size(142, 17);
             this.preserveFormat_checkBox.TabIndex = 30;
@@ -722,7 +735,7 @@
             // 
             this.useDifferentModelForAlpha_checkBox.AutoSize = true;
             this.useDifferentModelForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useDifferentModelForAlpha_checkBox.Location = new System.Drawing.Point(84, 211);
+            this.useDifferentModelForAlpha_checkBox.Location = new System.Drawing.Point(84, 217);
             this.useDifferentModelForAlpha_checkBox.Name = "useDifferentModelForAlpha_checkBox";
             this.useDifferentModelForAlpha_checkBox.Size = new System.Drawing.Size(159, 17);
             this.useDifferentModelForAlpha_checkBox.TabIndex = 25;
@@ -734,7 +747,7 @@
             // 
             this.splitRGB_checkBox.AutoSize = true;
             this.splitRGB_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.splitRGB_checkBox.Location = new System.Drawing.Point(84, 234);
+            this.splitRGB_checkBox.Location = new System.Drawing.Point(84, 240);
             this.splitRGB_checkBox.Name = "splitRGB_checkBox";
             this.splitRGB_checkBox.Size = new System.Drawing.Size(116, 17);
             this.splitRGB_checkBox.TabIndex = 25;
@@ -745,7 +758,7 @@
             // 
             this.ignoreAlpha_checkBox.AutoSize = true;
             this.ignoreAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ignoreAlpha_checkBox.Location = new System.Drawing.Point(84, 188);
+            this.ignoreAlpha_checkBox.Location = new System.Drawing.Point(84, 194);
             this.ignoreAlpha_checkBox.Name = "ignoreAlpha_checkBox";
             this.ignoreAlpha_checkBox.Size = new System.Drawing.Size(124, 17);
             this.ignoreAlpha_checkBox.TabIndex = 25;
@@ -780,11 +793,6 @@
             this.overlapSize_numericUpDown.Location = new System.Drawing.Point(84, 133);
             this.overlapSize_numericUpDown.Maximum = new decimal(new int[] {
             128,
-            0,
-            0,
-            0});
-            this.overlapSize_numericUpDown.Minimum = new decimal(new int[] {
-            16,
             0,
             0,
             0});
@@ -867,7 +875,7 @@
             this.settingsOutputFormat_tabPage.Controls.Add(this.pngCompression_numericUpDown);
             this.settingsOutputFormat_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settingsOutputFormat_tabPage.Name = "settingsOutputFormat_tabPage";
-            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1148, 718);
+            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(720, 613);
             this.settingsOutputFormat_tabPage.TabIndex = 4;
             this.settingsOutputFormat_tabPage.Text = "Output format";
             this.settingsOutputFormat_tabPage.UseVisualStyleBackColor = true;
@@ -996,7 +1004,7 @@
             this.advanced_tabPage.Controls.Add(this.label2);
             this.advanced_tabPage.Location = new System.Drawing.Point(4, 25);
             this.advanced_tabPage.Name = "advanced_tabPage";
-            this.advanced_tabPage.Size = new System.Drawing.Size(1148, 718);
+            this.advanced_tabPage.Size = new System.Drawing.Size(720, 613);
             this.advanced_tabPage.TabIndex = 2;
             this.advanced_tabPage.Text = "Advanced";
             this.advanced_tabPage.UseVisualStyleBackColor = true;
@@ -1590,7 +1598,7 @@
             this.interpolation_tabPage.Controls.Add(this.interpolationModelOne_comboBox);
             this.interpolation_tabPage.Location = new System.Drawing.Point(4, 25);
             this.interpolation_tabPage.Name = "interpolation_tabPage";
-            this.interpolation_tabPage.Size = new System.Drawing.Size(1148, 718);
+            this.interpolation_tabPage.Size = new System.Drawing.Size(720, 613);
             this.interpolation_tabPage.TabIndex = 3;
             this.interpolation_tabPage.Text = "Models interpolation";
             this.interpolation_tabPage.UseVisualStyleBackColor = true;
@@ -1650,17 +1658,31 @@
             this.interpolationModelOne_comboBox.TabIndex = 0;
             this.interpolationModelOne_comboBox.SelectedIndexChanged += new System.EventHandler(this.InterpolationSettingsChanged);
             // 
+            // treeView1
+            // 
+            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.treeView1.ContextMenuStrip = this.treeView_contextMenuStrip;
+            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeView1.Font = new System.Drawing.Font("Lucida Console", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.HideSelection = false;
+            this.treeView1.ItemHeight = 20;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(400, 571);
+            this.treeView1.TabIndex = 9;
+            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1156, 747);
+            this.ClientSize = new System.Drawing.Size(728, 642);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(740, 676);
             this.Name = "MainForm";
-            this.Text = "crop-upscale-merge";
+            this.Text = "Image Enhancing Utility";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
             this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
@@ -1841,6 +1863,7 @@
         private System.Windows.Forms.ContextMenuStrip treeView_contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem openModelFolder;
         private System.Windows.Forms.CheckBox seamlessTextures_checkBox;
+        private System.Windows.Forms.CheckBox useCPU_checkBox;
     }
 }
 
