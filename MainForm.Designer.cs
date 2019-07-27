@@ -71,6 +71,8 @@
             this.debugUpscale_checkBox = new System.Windows.Forms.CheckBox();
             this.useDifferentModelForAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.splitRGB_checkBox = new System.Windows.Forms.CheckBox();
+            this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
+            this.ignoreSingleColorAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.ignoreAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -82,6 +84,20 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.settingsOutputFormat_tabPage = new System.Windows.Forms.TabPage();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.webpLossless_checkBox = new System.Windows.Forms.CheckBox();
+            this.webpQuality_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.webpPreset_comboBox = new System.Windows.Forms.ComboBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.pngCompression_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label18 = new System.Windows.Forms.Label();
+            this.tiffSetting_groupBox = new System.Windows.Forms.GroupBox();
+            this.tiffJpegQuality_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.tiffSettings_comboBox = new System.Windows.Forms.ComboBox();
             this.ddsOutputSettings_groupBox = new System.Windows.Forms.GroupBox();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
@@ -90,8 +106,6 @@
             this.ddsCompresion_comboBox = new System.Windows.Forms.ComboBox();
             this.ddsFileFormat_comboBox = new System.Windows.Forms.ComboBox();
             this.ddsTextureType_comboBox = new System.Windows.Forms.ComboBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.pngCompression_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.advanced_tabPage = new System.Windows.Forms.TabPage();
             this.imagePostprocess_groupBox = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -153,20 +167,6 @@
             this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.ignoreSingleColorAlpha_checkBox = new System.Windows.Forms.CheckBox();
-            this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
-            this.tiffSettings_comboBox = new System.Windows.Forms.ComboBox();
-            this.tiffSetting_groupBox = new System.Windows.Forms.GroupBox();
-            this.tiffJpegQuality_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.webpQuality_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.webpPreset_comboBox = new System.Windows.Forms.ComboBox();
-            this.webpLossless_checkBox = new System.Windows.Forms.CheckBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -184,8 +184,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.overlapSize_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileResolution_numericUpDown)).BeginInit();
             this.settingsOutputFormat_tabPage.SuspendLayout();
-            this.ddsOutputSettings_groupBox.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).BeginInit();
+            this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pngCompression_numericUpDown)).BeginInit();
+            this.tiffSetting_groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).BeginInit();
+            this.ddsOutputSettings_groupBox.SuspendLayout();
             this.advanced_tabPage.SuspendLayout();
             this.imagePostprocess_groupBox.SuspendLayout();
             this.threshold_groupBox.SuspendLayout();
@@ -201,11 +206,6 @@
             this.filtersAlpha_groupBox.SuspendLayout();
             this.interpolation_tabPage.SuspendLayout();
             this.treeView_contextMenuStrip.SuspendLayout();
-            this.tiffSetting_groupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).BeginInit();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).BeginInit();
-            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // upscale_button
@@ -228,6 +228,7 @@
             this.esrganPath_textBox.ReadOnly = true;
             this.esrganPath_textBox.Size = new System.Drawing.Size(502, 20);
             this.esrganPath_textBox.TabIndex = 13;
+            this.toolTip1.SetToolTip(this.esrganPath_textBox, "ESRGAN root folder");
             // 
             // resultsMergedPath_textBox
             // 
@@ -237,6 +238,7 @@
             this.resultsMergedPath_textBox.ReadOnly = true;
             this.resultsMergedPath_textBox.Size = new System.Drawing.Size(502, 20);
             this.resultsMergedPath_textBox.TabIndex = 15;
+            this.toolTip1.SetToolTip(this.resultsMergedPath_textBox, "IEU output folder");
             // 
             // crop_button
             // 
@@ -758,6 +760,30 @@
             this.splitRGB_checkBox.Text = "Split RGB channels";
             this.splitRGB_checkBox.UseVisualStyleBackColor = true;
             // 
+            // balanceAlphas_checkBox
+            // 
+            this.balanceAlphas_checkBox.AutoSize = true;
+            this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(355, 194);
+            this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
+            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(161, 17);
+            this.balanceAlphas_checkBox.TabIndex = 25;
+            this.balanceAlphas_checkBox.Text = "Use globalbalance on alphas";
+            this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "Disable if all image alphas that represents transparency mask");
+            this.balanceAlphas_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // ignoreSingleColorAlpha_checkBox
+            // 
+            this.ignoreSingleColorAlpha_checkBox.AutoSize = true;
+            this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(210, 194);
+            this.ignoreSingleColorAlpha_checkBox.Name = "ignoreSingleColorAlpha_checkBox";
+            this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(144, 17);
+            this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
+            this.ignoreSingleColorAlpha_checkBox.Text = "Ignore single color alphas";
+            this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid alphas (pure white or black) will be always ignored on split");
+            this.ignoreSingleColorAlpha_checkBox.UseVisualStyleBackColor = true;
+            // 
             // ignoreAlpha_checkBox
             // 
             this.ignoreAlpha_checkBox.AutoSize = true;
@@ -855,6 +881,7 @@
             this.imgPath_textBox.ReadOnly = true;
             this.imgPath_textBox.Size = new System.Drawing.Size(502, 20);
             this.imgPath_textBox.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.imgPath_textBox, "IEU input folder");
             // 
             // label3
             // 
@@ -886,6 +913,154 @@
             this.settingsOutputFormat_tabPage.TabIndex = 4;
             this.settingsOutputFormat_tabPage.Text = "Output format";
             this.settingsOutputFormat_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.webpLossless_checkBox);
+            this.groupBox2.Controls.Add(this.webpQuality_numericUpDown);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Controls.Add(this.webpPreset_comboBox);
+            this.groupBox2.Location = new System.Drawing.Point(8, 96);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(225, 107);
+            this.groupBox2.TabIndex = 46;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "WEBP";
+            // 
+            // webpLossless_checkBox
+            // 
+            this.webpLossless_checkBox.AutoSize = true;
+            this.webpLossless_checkBox.Location = new System.Drawing.Point(9, 24);
+            this.webpLossless_checkBox.Name = "webpLossless_checkBox";
+            this.webpLossless_checkBox.Size = new System.Drawing.Size(66, 17);
+            this.webpLossless_checkBox.TabIndex = 47;
+            this.webpLossless_checkBox.Text = "Lossless";
+            this.webpLossless_checkBox.UseVisualStyleBackColor = true;
+            this.webpLossless_checkBox.CheckedChanged += new System.EventHandler(this.webpLossless_checkBox_CheckedChanged);
+            // 
+            // webpQuality_numericUpDown
+            // 
+            this.webpQuality_numericUpDown.Location = new System.Drawing.Point(111, 73);
+            this.webpQuality_numericUpDown.Name = "webpQuality_numericUpDown";
+            this.webpQuality_numericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.webpQuality_numericUpDown.TabIndex = 46;
+            this.webpQuality_numericUpDown.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(64, 75);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(39, 13);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Quality";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(4, 47);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(99, 13);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "Compression preset";
+            // 
+            // webpPreset_comboBox
+            // 
+            this.webpPreset_comboBox.FormattingEnabled = true;
+            this.webpPreset_comboBox.Location = new System.Drawing.Point(111, 44);
+            this.webpPreset_comboBox.Name = "webpPreset_comboBox";
+            this.webpPreset_comboBox.Size = new System.Drawing.Size(96, 21);
+            this.webpPreset_comboBox.TabIndex = 45;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.pngCompression_numericUpDown);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Location = new System.Drawing.Point(8, 209);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(225, 52);
+            this.groupBox3.TabIndex = 46;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "PNG";
+            // 
+            // pngCompression_numericUpDown
+            // 
+            this.pngCompression_numericUpDown.Location = new System.Drawing.Point(111, 19);
+            this.pngCompression_numericUpDown.Maximum = new decimal(new int[] {
+            9,
+            0,
+            0,
+            0});
+            this.pngCompression_numericUpDown.Name = "pngCompression_numericUpDown";
+            this.pngCompression_numericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.pngCompression_numericUpDown.TabIndex = 44;
+            this.toolTip1.SetToolTip(this.pngCompression_numericUpDown, "0 - no compression, 9 - max compression");
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(6, 21);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(97, 13);
+            this.label18.TabIndex = 43;
+            this.label18.Text = "Compression factor";
+            this.toolTip1.SetToolTip(this.label18, "0 - no compression, 9 - max compression");
+            // 
+            // tiffSetting_groupBox
+            // 
+            this.tiffSetting_groupBox.Controls.Add(this.tiffJpegQuality_numericUpDown);
+            this.tiffSetting_groupBox.Controls.Add(this.label25);
+            this.tiffSetting_groupBox.Controls.Add(this.label24);
+            this.tiffSetting_groupBox.Controls.Add(this.tiffSettings_comboBox);
+            this.tiffSetting_groupBox.Location = new System.Drawing.Point(8, 17);
+            this.tiffSetting_groupBox.Name = "tiffSetting_groupBox";
+            this.tiffSetting_groupBox.Size = new System.Drawing.Size(225, 73);
+            this.tiffSetting_groupBox.TabIndex = 46;
+            this.tiffSetting_groupBox.TabStop = false;
+            this.tiffSetting_groupBox.Text = "TIFF";
+            // 
+            // tiffJpegQuality_numericUpDown
+            // 
+            this.tiffJpegQuality_numericUpDown.Location = new System.Drawing.Point(112, 44);
+            this.tiffJpegQuality_numericUpDown.Name = "tiffJpegQuality_numericUpDown";
+            this.tiffJpegQuality_numericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.tiffJpegQuality_numericUpDown.TabIndex = 46;
+            this.tiffJpegQuality_numericUpDown.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(40, 46);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(63, 13);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Jpeg quality";
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 20);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(100, 13);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Compresion method";
+            // 
+            // tiffSettings_comboBox
+            // 
+            this.tiffSettings_comboBox.FormattingEnabled = true;
+            this.tiffSettings_comboBox.Location = new System.Drawing.Point(112, 15);
+            this.tiffSettings_comboBox.Name = "tiffSettings_comboBox";
+            this.tiffSettings_comboBox.Size = new System.Drawing.Size(96, 21);
+            this.tiffSettings_comboBox.TabIndex = 45;
             // 
             // ddsOutputSettings_groupBox
             // 
@@ -969,29 +1144,6 @@
             this.ddsTextureType_comboBox.Size = new System.Drawing.Size(222, 21);
             this.ddsTextureType_comboBox.TabIndex = 0;
             // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(6, 21);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(97, 13);
-            this.label18.TabIndex = 43;
-            this.label18.Text = "Compression factor";
-            this.toolTip1.SetToolTip(this.label18, "0 - no compression, 9 - max compression");
-            // 
-            // pngCompression_numericUpDown
-            // 
-            this.pngCompression_numericUpDown.Location = new System.Drawing.Point(111, 19);
-            this.pngCompression_numericUpDown.Maximum = new decimal(new int[] {
-            9,
-            0,
-            0,
-            0});
-            this.pngCompression_numericUpDown.Name = "pngCompression_numericUpDown";
-            this.pngCompression_numericUpDown.Size = new System.Drawing.Size(48, 20);
-            this.pngCompression_numericUpDown.TabIndex = 44;
-            this.toolTip1.SetToolTip(this.pngCompression_numericUpDown, "0 - no compression, 9 - max compression");
-            // 
             // advanced_tabPage
             // 
             this.advanced_tabPage.Controls.Add(this.imagePostprocess_groupBox);
@@ -1023,7 +1175,7 @@
             this.imagePostprocess_groupBox.Controls.Add(this.label21);
             this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterFilterType_comboBox);
             this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterScaleFactor_comboBox);
-            this.imagePostprocess_groupBox.Location = new System.Drawing.Point(443, 407);
+            this.imagePostprocess_groupBox.Location = new System.Drawing.Point(442, 407);
             this.imagePostprocess_groupBox.Name = "imagePostprocess_groupBox";
             this.imagePostprocess_groupBox.Size = new System.Drawing.Size(269, 198);
             this.imagePostprocess_groupBox.TabIndex = 42;
@@ -1033,7 +1185,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(163, 126);
+            this.label22.Location = new System.Drawing.Point(177, 127);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(16, 13);
             this.label22.TabIndex = 2;
@@ -1117,18 +1269,18 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(9, 126);
+            this.label21.Location = new System.Drawing.Point(6, 126);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(39, 13);
+            this.label21.Size = new System.Drawing.Size(61, 13);
             this.label21.TabIndex = 2;
-            this.label21.Text = "Resize";
+            this.label21.Text = "Resize with";
             // 
             // resizeImageAfterFilterType_comboBox
             // 
             this.resizeImageAfterFilterType_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageAfterFilterType_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageAfterFilterType_comboBox.FormattingEnabled = true;
-            this.resizeImageAfterFilterType_comboBox.Location = new System.Drawing.Point(54, 122);
+            this.resizeImageAfterFilterType_comboBox.Location = new System.Drawing.Point(68, 123);
             this.resizeImageAfterFilterType_comboBox.Name = "resizeImageAfterFilterType_comboBox";
             this.resizeImageAfterFilterType_comboBox.Size = new System.Drawing.Size(102, 21);
             this.resizeImageAfterFilterType_comboBox.TabIndex = 0;
@@ -1138,7 +1290,7 @@
             this.resizeImageAfterScaleFactor_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageAfterScaleFactor_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageAfterScaleFactor_comboBox.FormattingEnabled = true;
-            this.resizeImageAfterScaleFactor_comboBox.Location = new System.Drawing.Point(186, 122);
+            this.resizeImageAfterScaleFactor_comboBox.Location = new System.Drawing.Point(200, 123);
             this.resizeImageAfterScaleFactor_comboBox.Name = "resizeImageAfterScaleFactor_comboBox";
             this.resizeImageAfterScaleFactor_comboBox.Size = new System.Drawing.Size(60, 21);
             this.resizeImageAfterScaleFactor_comboBox.TabIndex = 0;
@@ -1151,7 +1303,7 @@
             this.imagePreprocess_groupBox.Controls.Add(this.resizeImageBeforeScaleFactor_comboBox);
             this.imagePreprocess_groupBox.Controls.Add(this.resizeImageBeforeFilterType_comboBox);
             this.imagePreprocess_groupBox.Controls.Add(this.noiseReductionType_comboBox);
-            this.imagePreprocess_groupBox.Location = new System.Drawing.Point(8, 407);
+            this.imagePreprocess_groupBox.Location = new System.Drawing.Point(7, 407);
             this.imagePreprocess_groupBox.Name = "imagePreprocess_groupBox";
             this.imagePreprocess_groupBox.Size = new System.Drawing.Size(429, 198);
             this.imagePreprocess_groupBox.TabIndex = 41;
@@ -1296,7 +1448,7 @@
             this.filters_groupBox.Controls.Add(this.filtersFilename_groupBox);
             this.filters_groupBox.Controls.Add(this.checkBox3);
             this.filters_groupBox.Controls.Add(this.filtersAlpha_groupBox);
-            this.filters_groupBox.Location = new System.Drawing.Point(8, 131);
+            this.filters_groupBox.Location = new System.Drawing.Point(7, 131);
             this.filters_groupBox.Name = "filters_groupBox";
             this.filters_groupBox.Size = new System.Drawing.Size(704, 270);
             this.filters_groupBox.TabIndex = 32;
@@ -1559,6 +1711,7 @@
             this.inputPath_textBox.ReadOnly = true;
             this.inputPath_textBox.Size = new System.Drawing.Size(502, 20);
             this.inputPath_textBox.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.inputPath_textBox, "ESRGAN input folder");
             // 
             // outputPath_textBox
             // 
@@ -1568,6 +1721,7 @@
             this.outputPath_textBox.ReadOnly = true;
             this.outputPath_textBox.Size = new System.Drawing.Size(502, 20);
             this.outputPath_textBox.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.outputPath_textBox, "ESRGAN output folder");
             // 
             // modelsPath_textBox
             // 
@@ -1577,6 +1731,7 @@
             this.modelsPath_textBox.ReadOnly = true;
             this.modelsPath_textBox.Size = new System.Drawing.Size(502, 20);
             this.modelsPath_textBox.TabIndex = 19;
+            this.toolTip1.SetToolTip(this.modelsPath_textBox, "Folder with .pth files");
             // 
             // label7
             // 
@@ -1682,155 +1837,6 @@
             // 
             this.toolTip1.AutomaticDelay = 300;
             // 
-            // ignoreSingleColorAlpha_checkBox
-            // 
-            this.ignoreSingleColorAlpha_checkBox.AutoSize = true;
-            this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(210, 194);
-            this.ignoreSingleColorAlpha_checkBox.Name = "ignoreSingleColorAlpha_checkBox";
-            this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(144, 17);
-            this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
-            this.ignoreSingleColorAlpha_checkBox.Text = "Ignore single color alphas";
-            this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid alphas (pure white or black) will be always ignored on split");
-            this.ignoreSingleColorAlpha_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // balanceAlphas_checkBox
-            // 
-            this.balanceAlphas_checkBox.AutoSize = true;
-            this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(355, 194);
-            this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
-            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(161, 17);
-            this.balanceAlphas_checkBox.TabIndex = 25;
-            this.balanceAlphas_checkBox.Text = "Use globalbalance on alphas";
-            this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "Disable if all image alphas that represents transparency mask");
-            this.balanceAlphas_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // tiffSettings_comboBox
-            // 
-            this.tiffSettings_comboBox.FormattingEnabled = true;
-            this.tiffSettings_comboBox.Location = new System.Drawing.Point(112, 15);
-            this.tiffSettings_comboBox.Name = "tiffSettings_comboBox";
-            this.tiffSettings_comboBox.Size = new System.Drawing.Size(96, 21);
-            this.tiffSettings_comboBox.TabIndex = 45;
-            // 
-            // tiffSetting_groupBox
-            // 
-            this.tiffSetting_groupBox.Controls.Add(this.tiffJpegQuality_numericUpDown);
-            this.tiffSetting_groupBox.Controls.Add(this.label25);
-            this.tiffSetting_groupBox.Controls.Add(this.label24);
-            this.tiffSetting_groupBox.Controls.Add(this.tiffSettings_comboBox);
-            this.tiffSetting_groupBox.Location = new System.Drawing.Point(8, 17);
-            this.tiffSetting_groupBox.Name = "tiffSetting_groupBox";
-            this.tiffSetting_groupBox.Size = new System.Drawing.Size(225, 73);
-            this.tiffSetting_groupBox.TabIndex = 46;
-            this.tiffSetting_groupBox.TabStop = false;
-            this.tiffSetting_groupBox.Text = "TIFF";
-            // 
-            // tiffJpegQuality_numericUpDown
-            // 
-            this.tiffJpegQuality_numericUpDown.Location = new System.Drawing.Point(112, 44);
-            this.tiffJpegQuality_numericUpDown.Name = "tiffJpegQuality_numericUpDown";
-            this.tiffJpegQuality_numericUpDown.Size = new System.Drawing.Size(48, 20);
-            this.tiffJpegQuality_numericUpDown.TabIndex = 46;
-            this.tiffJpegQuality_numericUpDown.Value = new decimal(new int[] {
-            75,
-            0,
-            0,
-            0});
-            // 
-            // label24
-            // 
-            this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(6, 20);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(100, 13);
-            this.label24.TabIndex = 2;
-            this.label24.Text = "Compresion method";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(40, 46);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(63, 13);
-            this.label25.TabIndex = 2;
-            this.label25.Text = "Jpeg quality";
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.webpLossless_checkBox);
-            this.groupBox2.Controls.Add(this.webpQuality_numericUpDown);
-            this.groupBox2.Controls.Add(this.label26);
-            this.groupBox2.Controls.Add(this.label27);
-            this.groupBox2.Controls.Add(this.webpPreset_comboBox);
-            this.groupBox2.Location = new System.Drawing.Point(8, 96);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(225, 107);
-            this.groupBox2.TabIndex = 46;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "WEBP";
-            // 
-            // webpQuality_numericUpDown
-            // 
-            this.webpQuality_numericUpDown.Location = new System.Drawing.Point(111, 73);
-            this.webpQuality_numericUpDown.Name = "webpQuality_numericUpDown";
-            this.webpQuality_numericUpDown.Size = new System.Drawing.Size(48, 20);
-            this.webpQuality_numericUpDown.TabIndex = 46;
-            this.webpQuality_numericUpDown.Value = new decimal(new int[] {
-            75,
-            0,
-            0,
-            0});
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(64, 75);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(39, 13);
-            this.label26.TabIndex = 2;
-            this.label26.Text = "Quality";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(4, 47);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(99, 13);
-            this.label27.TabIndex = 2;
-            this.label27.Text = "Compression preset";
-            // 
-            // webpPreset_comboBox
-            // 
-            this.webpPreset_comboBox.FormattingEnabled = true;
-            this.webpPreset_comboBox.Location = new System.Drawing.Point(111, 44);
-            this.webpPreset_comboBox.Name = "webpPreset_comboBox";
-            this.webpPreset_comboBox.Size = new System.Drawing.Size(96, 21);
-            this.webpPreset_comboBox.TabIndex = 45;
-            // 
-            // webpLossless_checkBox
-            // 
-            this.webpLossless_checkBox.AutoSize = true;
-            this.webpLossless_checkBox.Location = new System.Drawing.Point(9, 24);
-            this.webpLossless_checkBox.Name = "webpLossless_checkBox";
-            this.webpLossless_checkBox.Size = new System.Drawing.Size(66, 17);
-            this.webpLossless_checkBox.TabIndex = 47;
-            this.webpLossless_checkBox.Text = "Lossless";
-            this.webpLossless_checkBox.UseVisualStyleBackColor = true;
-            this.webpLossless_checkBox.CheckedChanged += new System.EventHandler(this.webpLossless_checkBox_CheckedChanged);
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.pngCompression_numericUpDown);
-            this.groupBox3.Controls.Add(this.label18);
-            this.groupBox3.Location = new System.Drawing.Point(8, 209);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(225, 52);
-            this.groupBox3.TabIndex = 46;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "PNG";
-            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -1865,9 +1871,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.overlapSize_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileResolution_numericUpDown)).EndInit();
             this.settingsOutputFormat_tabPage.ResumeLayout(false);
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pngCompression_numericUpDown)).EndInit();
+            this.tiffSetting_groupBox.ResumeLayout(false);
+            this.tiffSetting_groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).EndInit();
             this.ddsOutputSettings_groupBox.ResumeLayout(false);
             this.ddsOutputSettings_groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pngCompression_numericUpDown)).EndInit();
             this.advanced_tabPage.ResumeLayout(false);
             this.advanced_tabPage.PerformLayout();
             this.imagePostprocess_groupBox.ResumeLayout(false);
@@ -1892,14 +1906,6 @@
             this.interpolation_tabPage.ResumeLayout(false);
             this.interpolation_tabPage.PerformLayout();
             this.treeView_contextMenuStrip.ResumeLayout(false);
-            this.tiffSetting_groupBox.ResumeLayout(false);
-            this.tiffSetting_groupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).EndInit();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
