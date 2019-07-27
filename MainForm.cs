@@ -23,7 +23,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<IEU>
     {
-        public readonly string AppVersion = "0.9.02";
+        public readonly string AppVersion = "0.9.04";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public IEU ViewModel { get; set; }
@@ -32,6 +32,8 @@ namespace ImageEnhancingUtility.Winforms
             get => ViewModel;
             set => ViewModel = (IEU) value;
         }
+
+        private MyTreeView treeView1;
 
         List<ModelInfo> checkedModels = new List<ModelInfo>();       
 
@@ -115,13 +117,14 @@ namespace ImageEnhancingUtility.Winforms
             get => null;
             set => CreateModelTree(value);
         }
-        
+
         [DllImport("user32.dll")] //textbox hint
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
         public MainForm()
         {
             InitializeComponent();
+            CreateMyTreeView();
             treeView_contextMenuStrip.Items[0].Click += OpenModelFolder;
 
             FormClosing += MainForm_FormClosing;
@@ -167,46 +170,43 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.imgPath, v => v.imgPath_textBox.Text);
             this.Bind(ViewModel, vm => vm.resultsMergedPath, v => v.resultsMergedPath_textBox.Text);
 
-            this.Bind(ViewModel, vm => vm.outputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedIndex);
-            this.Bind(ViewModel, vm => vm.overwriteMode, v => v.overwriteMode_comboBox.SelectedIndex);
+            this.Bind(ViewModel, vm => vm.OutputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedIndex);
+            this.Bind(ViewModel, vm => vm.OverwriteMode, v => v.overwriteMode_comboBox.SelectedIndex);
 
             this.Bind(ViewModel, vm => vm.maxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.maxTileResolutionWidth, v => v.maxTileWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.maxTileResolutionHeight, v => v.maxTileHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
-            this.Bind(ViewModel, vm => vm.ignoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.deleteResults, v => v.deleteResults_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.createMemoryImage, v => v.createMemoryImage_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.IgnoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.IgnoreSingleColorAlphas, v => v.ignoreSingleColorAlpha_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.BalanceAlphas, v => v.balanceAlphas_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.DeleteResults, v => v.deleteResults_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CreateMemoryImage, v => v.createMemoryImage_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.UseOriginalImageFormat, v => v.preserveFormat_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.SplitRGB, v => v.splitRGB_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.UseCPU, v => v.useCPU_checkBox.Checked);
-
-
-            this.Bind(ViewModel, vm => vm.pngCompression, v => v.pngCompression_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             
-          
-
-            //var selectionChanged = Observable.FromEvent<EventHandler, EventArgs>(
-            //  h => (_, e) => h(e),
-            //  ev => ddsTextureType_comboBox.SelectedIndexChanged += ev,
-            //  ev => ddsTextureType_comboBox.SelectedIndexChanged += ev);
-
             #region #DDS
-            ddsTextureType_comboBox.DataSource = new BindingSource(ViewModel.ddsTextureType, null);
+
+            ddsTextureType_comboBox.DataSource = new BindingSource(IEU.ddsTextureType, null);
             ddsTextureType_comboBox.DisplayMember = "Key";
             ddsTextureType_comboBox.ValueMember = "Value";
             ddsTextureType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.ddsTextureTypeSelected, v => v.ddsTextureType_comboBox.SelectedIndex);
+            this.Bind(ViewModel, vm => vm.ddsTextureTypeSelectedIndex, v => v.ddsTextureType_comboBox.SelectedIndex);
 
-            ddsFileFormat_comboBox.DataSource = new BindingSource(ViewModel.ddsFileFormatCurrent, null);
             ddsFileFormat_comboBox.DisplayMember = "Name";
             ddsFileFormat_comboBox.ValueMember = "DdsFileFormat";
-            ddsFileFormat_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.ddsFileFormatSelected, v => v.ddsFileFormat_comboBox.SelectedIndex);
+            
+            this.Bind(ViewModel, vm => vm.ddsFileFormatsCurrent, v => v.ddsFileFormat_comboBox.DataSource);
+            this.Bind(ViewModel, vm => vm.ddsFileFormatSelectedIndex, v => v.ddsFileFormat_comboBox.SelectedIndex);
+            
+            this.Bind(ViewModel, vm => vm.ddsGenerateMipmaps, v => v.ddsGenerateMipmaps_checkBox.Checked);
 
-            ddsCompresion_comboBox.DataSource = new List<string>() {"Fast","Normal","Slow (best)"};
+            ddsCompresion_comboBox.DataSource = new List<string>() { "Fast", "Normal", "Slow (best)" };
             ddsCompresion_comboBox.SelectedIndex = 0;
             this.Bind(ViewModel, vm => vm.ddsBC7CompressionSelected, v => v.ddsCompresion_comboBox.SelectedIndex);
+
             #endregion
 
             #endregion
@@ -229,40 +229,45 @@ namespace ImageEnhancingUtility.Winforms
             appCoreVersion_linkLabel.Text = "IEU.Core v" + ViewModel.AppVersion;
 
             this.Bind(ViewModel, vm => vm.UseDifferentModelForAlpha, v => v.useDifferentModelForAlpha_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.ModelForAlpha, v => (ModelInfo)v.modelForAlpha_comboBox.SelectedItem);
+           
             this.Bind(ViewModel, vm => vm.SeamlessTexture, v => v.seamlessTextures_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.overlapSize, v => v.overlapSize_numericUpDown.Value, x => x, x => (int) x);           
-
-            interpolationModelOne_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
+            this.Bind(ViewModel, vm => vm.OverlapSize, v => v.overlapSize_numericUpDown.Value, x => x, x => (int) x);           
+            
             interpolationModelOne_comboBox.DisplayMember = "Name";
-            interpolationModelOne_comboBox.ValueMember = "FullName";         
+            interpolationModelOne_comboBox.ValueMember = "FullName";
+            interpolationModelOne_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
 
-            interpolationModelTwo_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null); 
             interpolationModelTwo_comboBox.DisplayMember = "Name";
             interpolationModelTwo_comboBox.ValueMember = "FullName";
+            interpolationModelTwo_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
 
-            modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
             modelForAlpha_comboBox.DisplayMember = "Name";
             modelForAlpha_comboBox.ValueMember = "FullName";
+            modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
 
             if (ViewModel.ModelsItems.Count > 0)
             {
                 interpolationModelOne_comboBox.SelectedIndex = 0;
                 interpolationModelTwo_comboBox.SelectedIndex = 0;
                 modelForAlpha_comboBox.SelectedIndex = 0;
+
+                this.Bind(ViewModel,
+                   vm => vm.LastModelForAlphaPath,
+                   v => v.modelForAlpha_comboBox.SelectedIndex,
+                   x => ViewModel.ModelsItems.FindIndex(y => y.FullName == x),
+                   x => ViewModel.ModelsItems[x].FullName);
             }
+
+
 
             lastUseDifferentModelAlpha = useDifferentModelForAlpha_checkBox.Checked;
 
-
             outputFormat_comboBox.DataSource = new BindingSource(ViewModel.formatInfos, null);
             outputFormat_comboBox.DisplayMember = "DisplayName";
-            outputFormat_comboBox.ValueMember = "Extension";
+            outputFormat_comboBox.ValueMember = "Extension";            
             this.Bind(ViewModel, vm => vm.SelectedOutputFormatIndex, v => v.outputFormat_comboBox.SelectedIndex);
 
-
-            //CreateModelTree();   
-
+            #region references
             //Observable.FromEvent<ItemCheckEventHandler, ItemCheckEventArgs>(ev => filterExtensions_checkedListBox.ItemCheck += ev, ev => filterExtensions_checkedListBox.ItemCheck -= ev)
             //    .Select((x,y) => filterExtensions_checkedListBox.CheckedItems)
             //    .BindTo(ViewModel, vm => vm.filterSelectedExtensionsList, vmToViewConverterOverride: new ListboxToListConverter());
@@ -276,6 +281,12 @@ namespace ImageEnhancingUtility.Winforms
             //    d(this.Bind(ViewModel, vm => vm.esrganPath, v => v.esrganPath_textBox.Text));                
             //});
 
+            //var selectionChanged = Observable.FromEvent<EventHandler, EventArgs>(
+            //  h => (_, e) => h(e),
+            //  ev => ddsTextureType_comboBox.SelectedIndexChanged += ev,
+            //  ev => ddsTextureType_comboBox.SelectedIndexChanged += ev);
+            #endregion
+            
             #region #ADVANCED_TAB
 
             this.Bind(ViewModel, vm => vm.resultsPath, v => v.outputPath_textBox.Text);
@@ -312,6 +323,22 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.thresholdEnabled, v => v.thresholdEnabled_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.thresholdBlackValue, v => v.thresholdBlack_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.thresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+
+            tiffSettings_comboBox.DataSource = new BindingSource(IEU.TiffCompressionModes, null);
+            tiffSettings_comboBox.DisplayMember = "Key";
+            tiffSettings_comboBox.ValueMember = "Value";
+            tiffSettings_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.tiffFormat.CompressionMethod, v => v.tiffSettings_comboBox.SelectedValue, x => x, x => (string) x);
+            this.Bind(ViewModel, vm => vm.tiffFormat.QualityFactor, v => v.tiffJpegQuality_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            
+            webpPreset_comboBox.DataSource = new BindingSource(IEU.WebpPresets, null);
+            webpPreset_comboBox.DisplayMember = "Key";
+            webpPreset_comboBox.ValueMember = "Value";
+            webpPreset_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.webpFormat.CompressionMethod, v => v.webpPreset_comboBox.SelectedValue, x => x, x => (string)x);
+            this.Bind(ViewModel, vm => vm.webpFormat.QualityFactor, v => v.webpQuality_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+
+            this.Bind(ViewModel, vm => vm.pngFormat.CompressionFactor, v => v.pngCompression_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             #region #RESIZE
             resizeImageBeforeScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
@@ -514,15 +541,18 @@ namespace ImageEnhancingUtility.Winforms
             useDifferentModelForAlpha_checkBox.Enabled = checkedModels.Count <= 1;
 
             if (checkedModels.Count > 1)
-            {
-                if(checkedModels.Count == 2 && lastCheckedModelsCount <= 1)
-                    lastUseDifferentModelAlpha = useDifferentModelForAlpha_checkBox.Checked;
-                useDifferentModelForAlpha_checkBox.Checked = false;
+            {               
+                if (useDifferentModelForAlpha_checkBox.Checked)
+                {
+                    lastUseDifferentModelAlpha = true;
+                    useDifferentModelForAlpha_checkBox.Checked = false;
+                }
                 outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModes, null);
             }
             else
             {
-                useDifferentModelForAlpha_checkBox.Checked = lastUseDifferentModelAlpha;
+                if(lastUseDifferentModelAlpha)
+                    useDifferentModelForAlpha_checkBox.Checked = lastUseDifferentModelAlpha;
                 outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModesSingleModel, null);
             }
             lastCheckedModelsCount = checkedModels.Count;
@@ -604,12 +634,7 @@ namespace ImageEnhancingUtility.Winforms
 
             main_tabPage.Enabled = VerifyPaths();
         }
-
-        private async void runAll_button_ClickAsync(object sender, EventArgs e)
-        {
-            ViewModel.SplitUpscaleMerge();
-        }
-       
+             
         private void upscale_button_Click(object sender, EventArgs e)
         {
             //ViewModel.Upscale();
@@ -690,9 +715,11 @@ namespace ImageEnhancingUtility.Winforms
                 $"interp_{interpolationAlphaValue_textBox.Text.Replace(",", "").Replace(".","")}.pth";
         }
 
-        private void differentModelForAlpha_checkBox_CheckedChanged(object sender, EventArgs e)
+        private void useDifferentModelForAlpha_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             modelForAlpha_comboBox.Enabled = useDifferentModelForAlpha_checkBox.Checked;
+            if (checkedModels.Count <= 1 && useDifferentModelForAlpha_checkBox.Checked == false)
+                lastUseDifferentModelAlpha = false;
         }
 
         private void preserveFormat_checkBox_CheckedChanged(object sender, EventArgs e)
@@ -709,6 +736,43 @@ namespace ImageEnhancingUtility.Winforms
                 ViewModel.filterSelectedExtensionsList.Remove(checkedListBox.SelectedItem.ToString());
             else
                 ViewModel.filterSelectedExtensionsList.Add(checkedListBox.SelectedItem.ToString());        
+        }       
+
+        void CreateMyTreeView()
+        {
+            this.treeView1 = new MyTreeView();
+            // 
+            // treeView1
+            // 
+            this.treeView1.BorderStyle = BorderStyle.FixedSingle;
+            this.treeView1.ContextMenuStrip = this.treeView_contextMenuStrip;
+            this.treeView1.Dock = DockStyle.Fill;
+            this.treeView1.Font = new System.Drawing.Font("Lucida Console", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.HideSelection = false;
+            this.treeView1.ItemHeight = 20;
+            this.treeView1.Location = new System.Drawing.Point(0, 0);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(400, 571);
+            this.treeView1.TabIndex = 9;
+            this.treeView1.AfterCheck += new TreeViewEventHandler(this.treeView1_AfterCheck);
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
+
+
+        }
+
+        private void modelForAlpha_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ViewModel.ModelForAlpha = modelForAlpha_comboBox.SelectedItem as ModelInfo; //hack, breaks MVVM
+        }
+
+        private void webpLossless_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            webpPreset_comboBox.Enabled = !webpLossless_checkBox.Checked;
+            webpQuality_numericUpDown.Enabled = !webpLossless_checkBox.Checked;         
+            if(webpLossless_checkBox.Checked)            
+                webpQuality_numericUpDown.Value = 100;
+            
         }
     }    
 }

@@ -48,8 +48,6 @@
             this.outputMode_groupBox = new System.Windows.Forms.GroupBox();
             this.outputDestinationMode_comboBox = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
@@ -152,8 +150,23 @@
             this.interpolationAlphaValue_textBox = new System.Windows.Forms.TextBox();
             this.interpolationModelTwo_comboBox = new System.Windows.Forms.ComboBox();
             this.interpolationModelOne_comboBox = new System.Windows.Forms.ComboBox();
+            this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.treeView1 = new ImageEnhancingUtility.Winforms.MyTreeView();
+            this.ignoreSingleColorAlpha_checkBox = new System.Windows.Forms.CheckBox();
+            this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
+            this.tiffSettings_comboBox = new System.Windows.Forms.ComboBox();
+            this.tiffSetting_groupBox = new System.Windows.Forms.GroupBox();
+            this.tiffJpegQuality_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.webpQuality_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
+            this.webpPreset_comboBox = new System.Windows.Forms.ComboBox();
+            this.webpLossless_checkBox = new System.Windows.Forms.CheckBox();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -162,10 +175,8 @@
             this.groupBox1.SuspendLayout();
             this.outputMode_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
-            this.treeView_contextMenuStrip.SuspendLayout();
             this.settings_tabPage.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).BeginInit();
@@ -189,6 +200,12 @@
             this.filtersFilename_groupBox.SuspendLayout();
             this.filtersAlpha_groupBox.SuspendLayout();
             this.interpolation_tabPage.SuspendLayout();
+            this.treeView_contextMenuStrip.SuspendLayout();
+            this.tiffSetting_groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).BeginInit();
+            this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // upscale_button
@@ -398,10 +415,6 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(158, 3);
             this.splitContainer1.Name = "splitContainer1";
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.treeView1);
             this.splitContainer1.Panel1MinSize = 400;
             // 
             // splitContainer1.Panel2
@@ -411,19 +424,6 @@
             this.splitContainer1.Size = new System.Drawing.Size(553, 571);
             this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 21;
-            // 
-            // treeView_contextMenuStrip
-            // 
-            this.treeView_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openModelFolder});
-            this.treeView_contextMenuStrip.Name = "treeView_contextMenuStrip";
-            this.treeView_contextMenuStrip.Size = new System.Drawing.Size(175, 26);
-            // 
-            // openModelFolder
-            // 
-            this.openModelFolder.Name = "openModelFolder";
-            this.openModelFolder.Size = new System.Drawing.Size(174, 22);
-            this.openModelFolder.Text = "Open model folder";
             // 
             // richTextBox1
             // 
@@ -466,6 +466,8 @@
             this.settings_tabPage.Controls.Add(this.debugUpscale_checkBox);
             this.settings_tabPage.Controls.Add(this.useDifferentModelForAlpha_checkBox);
             this.settings_tabPage.Controls.Add(this.splitRGB_checkBox);
+            this.settings_tabPage.Controls.Add(this.balanceAlphas_checkBox);
+            this.settings_tabPage.Controls.Add(this.ignoreSingleColorAlpha_checkBox);
             this.settings_tabPage.Controls.Add(this.ignoreAlpha_checkBox);
             this.settings_tabPage.Controls.Add(this.label23);
             this.settings_tabPage.Controls.Add(this.label6);
@@ -504,6 +506,7 @@
             this.modelForAlpha_comboBox.Name = "modelForAlpha_comboBox";
             this.modelForAlpha_comboBox.Size = new System.Drawing.Size(381, 21);
             this.modelForAlpha_comboBox.TabIndex = 47;
+            this.modelForAlpha_comboBox.SelectedIndexChanged += new System.EventHandler(this.modelForAlpha_comboBox_SelectedIndexChanged);
             // 
             // tableLayoutPanel2
             // 
@@ -572,7 +575,7 @@
             this.deleteResults_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.deleteResults_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.deleteResults_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteResults_checkBox.Location = new System.Drawing.Point(84, 312);
+            this.deleteResults_checkBox.Location = new System.Drawing.Point(84, 310);
             this.deleteResults_checkBox.Name = "deleteResults_checkBox";
             this.deleteResults_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.deleteResults_checkBox.Size = new System.Drawing.Size(144, 17);
@@ -651,7 +654,7 @@
             this.useCPU_checkBox.AutoSize = true;
             this.useCPU_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.useCPU_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.useCPU_checkBox.Location = new System.Drawing.Point(84, 335);
+            this.useCPU_checkBox.Location = new System.Drawing.Point(84, 333);
             this.useCPU_checkBox.Name = "useCPU_checkBox";
             this.useCPU_checkBox.Size = new System.Drawing.Size(68, 17);
             this.useCPU_checkBox.TabIndex = 30;
@@ -669,6 +672,7 @@
             this.seamlessTextures_checkBox.Size = new System.Drawing.Size(137, 17);
             this.seamlessTextures_checkBox.TabIndex = 30;
             this.seamlessTextures_checkBox.Text = "Seamless (tiled) textures";
+            this.toolTip1.SetToolTip(this.seamlessTextures_checkBox, "Use if original image is seamless texture");
             this.seamlessTextures_checkBox.UseVisualStyleBackColor = true;
             // 
             // preserveFormat_checkBox
@@ -681,6 +685,7 @@
             this.preserveFormat_checkBox.Size = new System.Drawing.Size(142, 17);
             this.preserveFormat_checkBox.TabIndex = 30;
             this.preserveFormat_checkBox.Text = "Use original image format";
+            this.toolTip1.SetToolTip(this.preserveFormat_checkBox, "Use original image extension with settings from Output fortmat tab");
             this.preserveFormat_checkBox.UseVisualStyleBackColor = true;
             this.preserveFormat_checkBox.CheckedChanged += new System.EventHandler(this.preserveFormat_checkBox_CheckedChanged);
             // 
@@ -740,7 +745,7 @@
             this.useDifferentModelForAlpha_checkBox.TabIndex = 25;
             this.useDifferentModelForAlpha_checkBox.Text = "Use different model for alpha";
             this.useDifferentModelForAlpha_checkBox.UseVisualStyleBackColor = true;
-            this.useDifferentModelForAlpha_checkBox.CheckedChanged += new System.EventHandler(this.differentModelForAlpha_checkBox_CheckedChanged);
+            this.useDifferentModelForAlpha_checkBox.CheckedChanged += new System.EventHandler(this.useDifferentModelForAlpha_checkBox_CheckedChanged);
             // 
             // splitRGB_checkBox
             // 
@@ -762,6 +767,7 @@
             this.ignoreAlpha_checkBox.Size = new System.Drawing.Size(124, 17);
             this.ignoreAlpha_checkBox.TabIndex = 25;
             this.ignoreAlpha_checkBox.Text = "Ignore alpha channel";
+            this.toolTip1.SetToolTip(this.ignoreAlpha_checkBox, "Don\'t create alpha tiles in LR, don\'t read alpha tiles from results");
             this.ignoreAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
             // label23
@@ -815,6 +821,7 @@
             // 
             // maxTileResolution_numericUpDown
             // 
+            this.maxTileResolution_numericUpDown.Enabled = false;
             this.maxTileResolution_numericUpDown.Location = new System.Drawing.Point(84, 107);
             this.maxTileResolution_numericUpDown.Maximum = new decimal(new int[] {
             16777216,
@@ -869,9 +876,10 @@
             // 
             // settingsOutputFormat_tabPage
             // 
+            this.settingsOutputFormat_tabPage.Controls.Add(this.groupBox2);
+            this.settingsOutputFormat_tabPage.Controls.Add(this.groupBox3);
+            this.settingsOutputFormat_tabPage.Controls.Add(this.tiffSetting_groupBox);
             this.settingsOutputFormat_tabPage.Controls.Add(this.ddsOutputSettings_groupBox);
-            this.settingsOutputFormat_tabPage.Controls.Add(this.label18);
-            this.settingsOutputFormat_tabPage.Controls.Add(this.pngCompression_numericUpDown);
             this.settingsOutputFormat_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settingsOutputFormat_tabPage.Name = "settingsOutputFormat_tabPage";
             this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(720, 613);
@@ -888,9 +896,9 @@
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsCompresion_comboBox);
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsFileFormat_comboBox);
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsTextureType_comboBox);
-            this.ddsOutputSettings_groupBox.Location = new System.Drawing.Point(8, 22);
+            this.ddsOutputSettings_groupBox.Location = new System.Drawing.Point(368, 17);
             this.ddsOutputSettings_groupBox.Name = "ddsOutputSettings_groupBox";
-            this.ddsOutputSettings_groupBox.Size = new System.Drawing.Size(344, 144);
+            this.ddsOutputSettings_groupBox.Size = new System.Drawing.Size(344, 139);
             this.ddsOutputSettings_groupBox.TabIndex = 42;
             this.ddsOutputSettings_groupBox.TabStop = false;
             this.ddsOutputSettings_groupBox.Text = "DDS output settings";
@@ -964,16 +972,16 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(373, 25);
+            this.label18.Location = new System.Drawing.Point(6, 21);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(88, 13);
+            this.label18.Size = new System.Drawing.Size(97, 13);
             this.label18.TabIndex = 43;
-            this.label18.Text = "Png compression";
+            this.label18.Text = "Compression factor";
             this.toolTip1.SetToolTip(this.label18, "0 - no compression, 9 - max compression");
             // 
             // pngCompression_numericUpDown
             // 
-            this.pngCompression_numericUpDown.Location = new System.Drawing.Point(469, 22);
+            this.pngCompression_numericUpDown.Location = new System.Drawing.Point(111, 19);
             this.pngCompression_numericUpDown.Maximum = new decimal(new int[] {
             9,
             0,
@@ -1657,19 +1665,171 @@
             this.interpolationModelOne_comboBox.TabIndex = 0;
             this.interpolationModelOne_comboBox.SelectedIndexChanged += new System.EventHandler(this.InterpolationSettingsChanged);
             // 
-            // treeView1
+            // treeView_contextMenuStrip
             // 
-            this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.treeView1.ContextMenuStrip = this.treeView_contextMenuStrip;
-            this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeView1.Font = new System.Drawing.Font("Lucida Console", 10.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.HideSelection = false;
-            this.treeView1.ItemHeight = 20;
-            this.treeView1.Location = new System.Drawing.Point(0, 0);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(400, 571);
-            this.treeView1.TabIndex = 9;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+            this.treeView_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openModelFolder});
+            this.treeView_contextMenuStrip.Name = "treeView_contextMenuStrip";
+            this.treeView_contextMenuStrip.Size = new System.Drawing.Size(175, 26);
+            // 
+            // openModelFolder
+            // 
+            this.openModelFolder.Name = "openModelFolder";
+            this.openModelFolder.Size = new System.Drawing.Size(174, 22);
+            this.openModelFolder.Text = "Open model folder";
+            // 
+            // toolTip1
+            // 
+            this.toolTip1.AutomaticDelay = 300;
+            // 
+            // ignoreSingleColorAlpha_checkBox
+            // 
+            this.ignoreSingleColorAlpha_checkBox.AutoSize = true;
+            this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(210, 194);
+            this.ignoreSingleColorAlpha_checkBox.Name = "ignoreSingleColorAlpha_checkBox";
+            this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(144, 17);
+            this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
+            this.ignoreSingleColorAlpha_checkBox.Text = "Ignore single color alphas";
+            this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid alphas (pure white or black) will be always ignored on split");
+            this.ignoreSingleColorAlpha_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // balanceAlphas_checkBox
+            // 
+            this.balanceAlphas_checkBox.AutoSize = true;
+            this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(355, 194);
+            this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
+            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(161, 17);
+            this.balanceAlphas_checkBox.TabIndex = 25;
+            this.balanceAlphas_checkBox.Text = "Use globalbalance on alphas";
+            this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "Disable if all image alphas that represents transparency mask");
+            this.balanceAlphas_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // tiffSettings_comboBox
+            // 
+            this.tiffSettings_comboBox.FormattingEnabled = true;
+            this.tiffSettings_comboBox.Location = new System.Drawing.Point(112, 15);
+            this.tiffSettings_comboBox.Name = "tiffSettings_comboBox";
+            this.tiffSettings_comboBox.Size = new System.Drawing.Size(96, 21);
+            this.tiffSettings_comboBox.TabIndex = 45;
+            // 
+            // tiffSetting_groupBox
+            // 
+            this.tiffSetting_groupBox.Controls.Add(this.tiffJpegQuality_numericUpDown);
+            this.tiffSetting_groupBox.Controls.Add(this.label25);
+            this.tiffSetting_groupBox.Controls.Add(this.label24);
+            this.tiffSetting_groupBox.Controls.Add(this.tiffSettings_comboBox);
+            this.tiffSetting_groupBox.Location = new System.Drawing.Point(8, 17);
+            this.tiffSetting_groupBox.Name = "tiffSetting_groupBox";
+            this.tiffSetting_groupBox.Size = new System.Drawing.Size(225, 73);
+            this.tiffSetting_groupBox.TabIndex = 46;
+            this.tiffSetting_groupBox.TabStop = false;
+            this.tiffSetting_groupBox.Text = "TIFF";
+            // 
+            // tiffJpegQuality_numericUpDown
+            // 
+            this.tiffJpegQuality_numericUpDown.Location = new System.Drawing.Point(112, 44);
+            this.tiffJpegQuality_numericUpDown.Name = "tiffJpegQuality_numericUpDown";
+            this.tiffJpegQuality_numericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.tiffJpegQuality_numericUpDown.TabIndex = 46;
+            this.tiffJpegQuality_numericUpDown.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(6, 20);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(100, 13);
+            this.label24.TabIndex = 2;
+            this.label24.Text = "Compresion method";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Location = new System.Drawing.Point(40, 46);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(63, 13);
+            this.label25.TabIndex = 2;
+            this.label25.Text = "Jpeg quality";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.webpLossless_checkBox);
+            this.groupBox2.Controls.Add(this.webpQuality_numericUpDown);
+            this.groupBox2.Controls.Add(this.label26);
+            this.groupBox2.Controls.Add(this.label27);
+            this.groupBox2.Controls.Add(this.webpPreset_comboBox);
+            this.groupBox2.Location = new System.Drawing.Point(8, 96);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(225, 107);
+            this.groupBox2.TabIndex = 46;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "WEBP";
+            // 
+            // webpQuality_numericUpDown
+            // 
+            this.webpQuality_numericUpDown.Location = new System.Drawing.Point(111, 73);
+            this.webpQuality_numericUpDown.Name = "webpQuality_numericUpDown";
+            this.webpQuality_numericUpDown.Size = new System.Drawing.Size(48, 20);
+            this.webpQuality_numericUpDown.TabIndex = 46;
+            this.webpQuality_numericUpDown.Value = new decimal(new int[] {
+            75,
+            0,
+            0,
+            0});
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(64, 75);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(39, 13);
+            this.label26.TabIndex = 2;
+            this.label26.Text = "Quality";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(4, 47);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(99, 13);
+            this.label27.TabIndex = 2;
+            this.label27.Text = "Compression preset";
+            // 
+            // webpPreset_comboBox
+            // 
+            this.webpPreset_comboBox.FormattingEnabled = true;
+            this.webpPreset_comboBox.Location = new System.Drawing.Point(111, 44);
+            this.webpPreset_comboBox.Name = "webpPreset_comboBox";
+            this.webpPreset_comboBox.Size = new System.Drawing.Size(96, 21);
+            this.webpPreset_comboBox.TabIndex = 45;
+            // 
+            // webpLossless_checkBox
+            // 
+            this.webpLossless_checkBox.AutoSize = true;
+            this.webpLossless_checkBox.Location = new System.Drawing.Point(9, 24);
+            this.webpLossless_checkBox.Name = "webpLossless_checkBox";
+            this.webpLossless_checkBox.Size = new System.Drawing.Size(66, 17);
+            this.webpLossless_checkBox.TabIndex = 47;
+            this.webpLossless_checkBox.Text = "Lossless";
+            this.webpLossless_checkBox.UseVisualStyleBackColor = true;
+            this.webpLossless_checkBox.CheckedChanged += new System.EventHandler(this.webpLossless_checkBox_CheckedChanged);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.pngCompression_numericUpDown);
+            this.groupBox3.Controls.Add(this.label18);
+            this.groupBox3.Location = new System.Drawing.Point(8, 209);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(225, 52);
+            this.groupBox3.TabIndex = 46;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "PNG";
             // 
             // MainForm
             // 
@@ -1693,11 +1853,9 @@
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.outputMode_groupBox.ResumeLayout(false);
-            this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
-            this.treeView_contextMenuStrip.ResumeLayout(false);
             this.settings_tabPage.ResumeLayout(false);
             this.settings_tabPage.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -1707,7 +1865,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.overlapSize_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileResolution_numericUpDown)).EndInit();
             this.settingsOutputFormat_tabPage.ResumeLayout(false);
-            this.settingsOutputFormat_tabPage.PerformLayout();
             this.ddsOutputSettings_groupBox.ResumeLayout(false);
             this.ddsOutputSettings_groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pngCompression_numericUpDown)).EndInit();
@@ -1734,13 +1891,21 @@
             this.filtersAlpha_groupBox.ResumeLayout(false);
             this.interpolation_tabPage.ResumeLayout(false);
             this.interpolation_tabPage.PerformLayout();
+            this.treeView_contextMenuStrip.ResumeLayout(false);
+            this.tiffSetting_groupBox.ResumeLayout(false);
+            this.tiffSetting_groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
         private System.Windows.Forms.Button upscale_button;
-        private MyTreeView treeView1;
         private System.Windows.Forms.TextBox esrganPath_textBox;
         private System.Windows.Forms.TextBox resultsMergedPath_textBox;
         private System.Windows.Forms.Button crop_button;
@@ -1863,6 +2028,20 @@
         private System.Windows.Forms.ToolStripMenuItem openModelFolder;
         private System.Windows.Forms.CheckBox seamlessTextures_checkBox;
         private System.Windows.Forms.CheckBox useCPU_checkBox;
+        private System.Windows.Forms.CheckBox ignoreSingleColorAlpha_checkBox;
+        private System.Windows.Forms.CheckBox balanceAlphas_checkBox;
+        private System.Windows.Forms.GroupBox tiffSetting_groupBox;
+        private System.Windows.Forms.ComboBox tiffSettings_comboBox;
+        private System.Windows.Forms.NumericUpDown tiffJpegQuality_numericUpDown;
+        private System.Windows.Forms.Label label25;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.CheckBox webpLossless_checkBox;
+        private System.Windows.Forms.NumericUpDown webpQuality_numericUpDown;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label27;
+        private System.Windows.Forms.ComboBox webpPreset_comboBox;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
 
