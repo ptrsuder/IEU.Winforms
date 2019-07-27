@@ -32,15 +32,24 @@ To merge resulted tiles back click [MERGE] button.
 
 ## Settings
 
+
  ### Maximum tile resolution
  MaxTileResolution = TileWidth x TileHeight
  Currently, to find out how big MaxTileResolution you VGRAM can handle you need to experiment. Default value is for 2Gb VGRAM.
  ### Tiles overlap
  When creating tiles, they will be overlapping between themselves by size in pixels specified by this value. The bigger value - more time to process tiles with ESRGAN. Improvement from setting this bigger than 16 is questionable.
- ### Ignore alpha
+ ### Output format
+ Image format in which images will be written to disk on merge. If you check "Use original image format", output format will be the same as original image, but some setting (like compression factor, method) will be taken from Output format tab.
+ 
+  ### Ignore alpha channel
  If checked, all alpha channels will be ignored during tiles creation and merge.
- ### Use original image format
- When merging writes image in original format. If unchecked all merged images will be saved with selected output format.
+ ### Use different model for alpha
+ If checked, selected model will be applied to all alphas when running ESRGAN.
+ ### Split RGB channels
+ If checked, images will be split into red, green and blue channels, so that ESRGAN will process each channel as separate image. Channels will be combined back in single image on merge, if this setting is enabled.
+ ### Split RGB channels
+ If checked, will treat all images as tiles textures and extend them over edges on Split and crop them back on Merge. This way textures will remain seamless after upscale.
+
  ### Create max resolution tile in input folder
  Creates blank black image with max TileWith and TileHeight. It's might be needed because if ESRGAN starts with small image and then tries to process bigger image it can run in out of memory error. 
  ### Delete results after merging
