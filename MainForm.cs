@@ -340,6 +340,8 @@ namespace ImageEnhancingUtility.Winforms
 
             this.Bind(ViewModel, vm => vm.pngFormat.CompressionFactor, v => v.pngCompression_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
+            this.Bind(ViewModel, vm => vm.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
+
             #region #RESIZE
             resizeImageBeforeScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
             resizeImageBeforeScaleFactor_comboBox.SelectedIndex = 3;
@@ -366,8 +368,8 @@ namespace ImageEnhancingUtility.Winforms
 
             VerifyPaths();           
 
-            //if (ViewModel.checkForUpdates)
-            //    CheckNewReleases();
+            if (ViewModel.CheckForUpdates)
+                CheckNewReleases();
         }
 
         private void OpenModelFolder(object sender, EventArgs e)
@@ -497,31 +499,35 @@ namespace ImageEnhancingUtility.Winforms
             UpdateType updateCore = await checkerCore.CheckUpdate();
             UpdateType updateWinforms = await checkerWinforms.CheckUpdate();
 
-            switch (updateCore)
-            {
-                case UpdateType.None:
-                    break;
-                case UpdateType.Fail:
-                    MessageBox.Show(checkerCore.ErrorMessage);
-                    break;
-                default:
-                    UpdateNotifyDialog updateNotifyDialog = new UpdateNotifyDialog(checkerCore);
-                    updateNotifyDialog.Show();
-                    //if (await Application.Current.MainWindow.ShowDialog<bool>(Application.Current.MainWindow))
-                    //    Helper.OpenBrowser(@"https://github.com/ptrsuder/crop-upscale-merge/releases");
-                    break;
-            }
+            string updateMessage = "";
+
+            //switch (updateCore)
+            //{
+            //    case UpdateType.None:
+            //        break;
+            //    case UpdateType.Fail:
+            //        MessageBox.Show(checkerCore.ErrorMessage);
+            //        break;
+            //    default:
+            //        updateMessage += "New version of IEU.Core is available!";                   
+            //        //UpdateNotifyDialog updateNotifyDialog = new UpdateNotifyDialog(checkerCore);
+            //        //updateNotifyDialog.Show();
+            //        //if (await Application.Current.MainWindow.ShowDialog<bool>(Application.Current.MainWindow))
+            //        //    Helper.OpenBrowser(@"https://github.com/ptrsuder/crop-upscale-merge/releases");
+            //        break;
+            //}
 
             switch (updateWinforms)
             {
                 case UpdateType.None:
                     break;
                 case UpdateType.Fail:
-                    MessageBox.Show(checkerCore.ErrorMessage);
+                    MessageBox.Show(checkerWinforms.ErrorMessage);
                     break;
                 default:
-                    UpdateNotifyDialog updateNotifyDialog = new UpdateNotifyDialog(checkerWinforms);
-                    updateNotifyDialog.Show();
+                    updateMessage += "New version of IEU.Winforms is available!";
+                    UpdateNotifyDialog updateNotifyDialog = new UpdateNotifyDialog(checkerWinforms, updateMessage);
+                    updateNotifyDialog.ShowDialog(this);
                     break;
             }
         }

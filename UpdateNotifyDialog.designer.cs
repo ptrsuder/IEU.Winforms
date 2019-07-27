@@ -50,6 +50,7 @@
             this.buttonNo.TabIndex = 2;
             this.buttonNo.Text = "No";
             this.buttonNo.UseVisualStyleBackColor = true;
+            this.buttonNo.Click += new System.EventHandler(this.buttonNo_Click);
             // 
             // buttonYes
             // 
@@ -61,6 +62,7 @@
             this.buttonYes.TabIndex = 1;
             this.buttonYes.Text = "Yes";
             this.buttonYes.UseVisualStyleBackColor = true;
+            this.buttonYes.Click += new System.EventHandler(this.buttonYes_Click);
             // 
             // label1
             // 
@@ -122,7 +124,6 @@
             // ReleaseNotes
             // 
             this.ReleaseNotes.AllowNavigation = false;
-            this.ReleaseNotes.AllowWebBrowserDrop = true;
             this.ReleaseNotes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ReleaseNotes.IsWebBrowserContextMenuEnabled = false;
             this.ReleaseNotes.Location = new System.Drawing.Point(0, 0);

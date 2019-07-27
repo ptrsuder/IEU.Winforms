@@ -11,13 +11,13 @@ namespace ImageEnhancingUtility.Winforms
         private bool _loadednotes;
         string releaseNotes;
 
-        public UpdateNotifyDialog(UpdateChecker checker)
+        public UpdateNotifyDialog(UpdateChecker checker, string message)
         {
             _checker = checker;
 
             InitializeComponent();
 
-            label1.Text = string.Format(label1.Text, _checker.RepositoryName);
+            label1.Text = message;//string.Format(label1.Text, _checker.RepositoryName);
         }
 
         void panel1_Resize(object sender, EventArgs e)
@@ -32,8 +32,18 @@ namespace ImageEnhancingUtility.Winforms
 
             if (_loadednotes) return;
 
-            ReleaseNotes.DocumentText = releaseNotes;
+            ReleaseNotes.DocumentText = await _checker.RenderReleaseNotes();
             _loadednotes = true;
+        }
+
+        private void buttonYes_Click(object sender, EventArgs e)
+        {
+            System.Diagnostics.Process.Start($"https://github.com/ptrsuder/{_checker.RepositoryName}/releases");
+        }
+
+        private void buttonNo_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
