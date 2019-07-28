@@ -170,7 +170,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.imgPath, v => v.imgPath_textBox.Text);
             this.Bind(ViewModel, vm => vm.resultsMergedPath, v => v.resultsMergedPath_textBox.Text);
 
-            this.Bind(ViewModel, vm => vm.OutputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedIndex);
+            this.Bind(ViewModel, vm => vm.OutputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedValue, x => x, x => (int)x);
             this.Bind(ViewModel, vm => vm.OverwriteMode, v => v.overwriteMode_comboBox.SelectedIndex);
 
             this.Bind(ViewModel, vm => vm.maxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
