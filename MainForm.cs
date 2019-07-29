@@ -708,7 +708,11 @@ namespace ImageEnhancingUtility.Winforms
                 MessageBox.Show("Alpha value is not valid value");
             }
             tabControl1.SelectedTab = main_tabPage;
-            bool success = await ViewModel.CreateInterpolatedModel(interpolationModelOne_comboBox.SelectedValue.ToString(), interpolationModelTwo_comboBox.SelectedValue.ToString(), alphaValue);          
+            bool success = await ViewModel.CreateInterpolatedModel(
+                interpolationModelOne_comboBox.SelectedValue.ToString(),
+                interpolationModelTwo_comboBox.SelectedValue.ToString(),
+                alphaValue,
+                interpolationOutputModelName_textBox.Text);          
             //if (!success)
                 //MessageBox.Show("Alpha should be between 0.0 and 1.0");
         }
