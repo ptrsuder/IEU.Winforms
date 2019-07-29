@@ -167,8 +167,8 @@ namespace ImageEnhancingUtility.Winforms
 
             #region #SETTINGS_TAB
             this.Bind(ViewModel, vm => vm.esrganPath, v => v.esrganPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.imgPath, v => v.imgPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.resultsMergedPath, v => v.resultsMergedPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.inputDirectoryPath, v => v.imgPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.outputDirectoryPath, v => v.resultsMergedPath_textBox.Text);
 
             this.Bind(ViewModel, vm => vm.OutputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedValue, x => x, x => (int)x);
             this.Bind(ViewModel, vm => vm.OverwriteMode, v => v.overwriteMode_comboBox.SelectedIndex);
