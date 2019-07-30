@@ -16,14 +16,12 @@ using GitHubUpdate;
 //TODO:
 //ask to change all paths when changing ESRGAN path
 //change VerifyPaths?
-//settings for output formats
-//transfet AllInOneStep method to Core
 
 namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<IEU>
     {
-        public readonly string AppVersion = "0.9.04";
+        public readonly string AppVersion = "0.9.07";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public IEU ViewModel { get; set; }
@@ -107,8 +105,8 @@ namespace ImageEnhancingUtility.Winforms
             else
             {                
                 progressBar1.Value = value;
-                progress_label.Text = $@"{ViewModel.filesDone}/{ViewModel.filesNumber}"; //hack
-                progressFiltered_label.Text = ViewModel.filesDoneSuccesfully.ToString();
+                progress_label.Text = $@"{ViewModel.FilesDone}/{ViewModel.FilesNumber}"; //hack
+                progressFiltered_label.Text = ViewModel.FilesDoneSuccesfully.ToString();
             }
         }
 
@@ -139,7 +137,7 @@ namespace ImageEnhancingUtility.Winforms
             outputDestinationModesSingleModel.Add("Default", 0);
             outputDestinationModesSingleModel.Add("Preserve folder structure", 3);
             outputDestinationModesSingleModel.Add("Folder for each image", 1);
-            outputDestinationModesSingleModel.Add("Folder for each model", 2);
+            outputDestinationModesSingleModel.Add("Folder for each model", 2);            
 
             outputDestinationMode_comboBox.DataSource = new BindingSource(outputDestinationModesSingleModel, null);
             outputDestinationMode_comboBox.DisplayMember = "Key";
@@ -158,7 +156,7 @@ namespace ImageEnhancingUtility.Winforms
             #endregion
             
             this.OneWayBind(ViewModel, vm => vm.Logs, v => v.RichBoxText);
-            this.OneWayBind(ViewModel, vm => vm.progressBarValue, v => v.ProgressBarValue);
+            this.OneWayBind(ViewModel, vm => vm.ProgressBarValue, v => v.ProgressBarValue);
 
             this.OneWayBind(ViewModel, vm => vm.ModelsItems, v => v.ModelsItems);
             //this.OneWayBind(ViewModel, vm => vm.SelectedModelsItems, v => v.checkedModels, vmToViewConverterOverride: new ReactiveListConverter());
@@ -166,16 +164,16 @@ namespace ImageEnhancingUtility.Winforms
             ViewModel = new IEU();
 
             #region #SETTINGS_TAB
-            this.Bind(ViewModel, vm => vm.esrganPath, v => v.esrganPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.inputDirectoryPath, v => v.imgPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.outputDirectoryPath, v => v.resultsMergedPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.EsrganPath, v => v.esrganPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.InputDirectoryPath, v => v.imgPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.OutputDirectoryPath, v => v.resultsMergedPath_textBox.Text);
 
             this.Bind(ViewModel, vm => vm.OutputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedValue, x => x, x => (int)x);
             this.Bind(ViewModel, vm => vm.OverwriteMode, v => v.overwriteMode_comboBox.SelectedIndex);
 
-            this.Bind(ViewModel, vm => vm.maxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.maxTileResolutionWidth, v => v.maxTileWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.maxTileResolutionHeight, v => v.maxTileHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.MaxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.MaxTileResolutionWidth, v => v.maxTileWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.MaxTileResolutionHeight, v => v.maxTileHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             this.Bind(ViewModel, vm => vm.IgnoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.IgnoreSingleColorAlphas, v => v.ignoreSingleColorAlpha_checkBox.Checked);
@@ -262,7 +260,7 @@ namespace ImageEnhancingUtility.Winforms
 
             lastUseDifferentModelAlpha = useDifferentModelForAlpha_checkBox.Checked;
 
-            outputFormat_comboBox.DataSource = new BindingSource(ViewModel.formatInfos, null);
+            outputFormat_comboBox.DataSource = new BindingSource(ViewModel.FormatInfos, null);
             outputFormat_comboBox.DisplayMember = "DisplayName";
             outputFormat_comboBox.ValueMember = "Extension";            
             this.Bind(ViewModel, vm => vm.SelectedOutputFormatIndex, v => v.outputFormat_comboBox.SelectedIndex);
@@ -289,40 +287,40 @@ namespace ImageEnhancingUtility.Winforms
             
             #region #ADVANCED_TAB
 
-            this.Bind(ViewModel, vm => vm.resultsPath, v => v.outputPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.modelsPath, v => v.modelsPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.lrPath, v => v.inputPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.ResultsPath, v => v.outputPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.ModelsPath, v => v.modelsPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.LrPath, v => v.inputPath_textBox.Text);
 
-            this.Bind(ViewModel, vm => vm.advancedUseResultSuffix, v => v.advancedUseSuffix_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.advancedResultSuffix, v => v.advancedSuffix_textBox.Text);
+            this.Bind(ViewModel, vm => vm.AdvancedUseResultSuffix, v => v.advancedUseSuffix_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.AdvancedResultSuffix, v => v.advancedSuffix_textBox.Text);
 
-            this.Bind(ViewModel, vm => vm.filterFilenameCaseSensitive, v => v.filterFilenameCaseSensitive_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.FilterFilenameCaseSensitive, v => v.filterFilenameCaseSensitive_checkBox.Checked);
 
-            this.Bind(ViewModel, vm => vm.filterFilenameContainsEnabled, v => v.filterFilenameContains_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.filterFilenameContainsPattern, v => v.filterFilenameContains_textBox.Text);
+            this.Bind(ViewModel, vm => vm.FilterFilenameContainsEnabled, v => v.filterFilenameContains_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.FilterFilenameContainsPattern, v => v.filterFilenameContains_textBox.Text);
 
-            this.Bind(ViewModel, vm => vm.filterFilenameNotContainsEnabled, v => v.filterFilenameNotContains_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.filterFilenameNotContainsPattern, v => v.filterFilenameNotContains_textBox.Text);
+            this.Bind(ViewModel, vm => vm.FilterFilenameNotContainsEnabled, v => v.filterFilenameNotContains_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.FilterFilenameNotContainsPattern, v => v.filterFilenameNotContains_textBox.Text);
 
             filterAlpha_comboBox.DataSource = new List<string>() { "None", "Contains alpha", "Doesn't contain alpha" };
             filterAlpha_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.filterAlpha, v => v.filterAlpha_comboBox.SelectedIndex);
+            this.Bind(ViewModel, vm => vm.FilterAlpha, v => v.filterAlpha_comboBox.SelectedIndex);
 
-            this.Bind(ViewModel, vm => vm.filterImageResolutionEnabled, v => v.filtersSizeOn_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.filterImageResolutionOr, v => v.filterSizeOr_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.filterImageResolutionMaxWidth, v => v.filterSizeWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.filterImageResolutionMaxHeight, v => v.filterSizeHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.FilterImageResolutionEnabled, v => v.filtersSizeOn_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.FilterImageResolutionOr, v => v.filterSizeOr_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.FilterImageResolutionMaxWidth, v => v.filterSizeWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.FilterImageResolutionMaxHeight, v => v.filterSizeHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             foreach (var item in IEU.filterExtensionsList)
                 filterExtensions_checkedListBox.Items.Add(item);
                         
             noiseReductionType_comboBox.DataSource = ViewModel.postprocessNoiseFilter;         
             noiseReductionType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.noiseReductionType, v => v.noiseReductionType_comboBox.SelectedIndex);
+            this.Bind(ViewModel, vm => vm.NoiseReductionType, v => v.noiseReductionType_comboBox.SelectedIndex);
 
-            this.Bind(ViewModel, vm => vm.thresholdEnabled, v => v.thresholdEnabled_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.thresholdBlackValue, v => v.thresholdBlack_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.thresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.ThresholdEnabled, v => v.thresholdEnabled_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.ThresholdBlackValue, v => v.thresholdBlack_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.ThresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             tiffSettings_comboBox.DataSource = new BindingSource(IEU.TiffCompressionModes, null);
             tiffSettings_comboBox.DisplayMember = "Key";
@@ -345,23 +343,23 @@ namespace ImageEnhancingUtility.Winforms
             #region #RESIZE
             resizeImageBeforeScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
             resizeImageBeforeScaleFactor_comboBox.SelectedIndex = 3;
-            this.Bind(ViewModel, vm => vm.resizeImageBeforeScaleFactor, v => v.resizeImageBeforeScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
+            this.Bind(ViewModel, vm => vm.ResizeImageBeforeScaleFactor, v => v.resizeImageBeforeScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
 
             resizeImageBeforeFilterType_comboBox.DataSource = new BindingSource(IEU.MagickFilterTypes, null);
             resizeImageBeforeFilterType_comboBox.DisplayMember = "Value";
             resizeImageBeforeFilterType_comboBox.ValueMember = "Key";
             resizeImageBeforeFilterType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.resizeImageBeforeFilterType, v => v.resizeImageBeforeFilterType_comboBox.SelectedValue, x => x, x => (int)x);
+            this.Bind(ViewModel, vm => vm.ResizeImageBeforeFilterType, v => v.resizeImageBeforeFilterType_comboBox.SelectedValue, x => x, x => (int)x);
 
             resizeImageAfterScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
             resizeImageAfterScaleFactor_comboBox.SelectedIndex = 3;
-            this.Bind(ViewModel, vm => vm.resizeImageAfterScaleFactor, v => v.resizeImageAfterScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
+            this.Bind(ViewModel, vm => vm.ResizeImageAfterScaleFactor, v => v.resizeImageAfterScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
 
             resizeImageAfterFilterType_comboBox.DataSource = new BindingSource(IEU.MagickFilterTypes, null);
             resizeImageAfterFilterType_comboBox.DisplayMember = "Value";
             resizeImageAfterFilterType_comboBox.ValueMember = "Key";
             resizeImageAfterFilterType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.resizeImageAfterFilterType, v => v.resizeImageAfterFilterType_comboBox.SelectedValue, x => x, x => (int)x);
+            this.Bind(ViewModel, vm => vm.ResizeImageAfterFilterType, v => v.resizeImageAfterFilterType_comboBox.SelectedValue, x => x, x => (int)x);
             #endregion
 
             #endregion
@@ -460,7 +458,7 @@ namespace ImageEnhancingUtility.Winforms
             treeView1.Nodes.Clear();
             treeView1.CheckBoxes = true;
 
-            DirectoryInfo di = new DirectoryInfo(ViewModel.modelsPath);
+            DirectoryInfo di = new DirectoryInfo(ViewModel.ModelsPath);
             if (!di.Exists)
             {
                 MessageBox.Show($"{di.FullName} doesn't exist!");
@@ -741,11 +739,11 @@ namespace ImageEnhancingUtility.Winforms
         {
             CheckedListBox checkedListBox = sender as CheckedListBox;
             var selectedITem = checkedListBox.SelectedItem;
-            ViewModel.filterSelectedExtensionsList = checkedListBox.CheckedItems.Cast<string>().ToList(); //hack
+            ViewModel.FilterSelectedExtensionsList = checkedListBox.CheckedItems.Cast<string>().ToList(); //hack
             if (checkedListBox.CheckedItems.Contains(selectedITem))
-                ViewModel.filterSelectedExtensionsList.Remove(checkedListBox.SelectedItem.ToString());
+                ViewModel.FilterSelectedExtensionsList.Remove(checkedListBox.SelectedItem.ToString());
             else
-                ViewModel.filterSelectedExtensionsList.Add(checkedListBox.SelectedItem.ToString());        
+                ViewModel.FilterSelectedExtensionsList.Add(checkedListBox.SelectedItem.ToString());        
         }       
 
         void CreateMyTreeView()

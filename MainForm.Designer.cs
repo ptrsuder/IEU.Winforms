@@ -746,6 +746,7 @@
             this.useDifferentModelForAlpha_checkBox.Size = new System.Drawing.Size(159, 17);
             this.useDifferentModelForAlpha_checkBox.TabIndex = 25;
             this.useDifferentModelForAlpha_checkBox.Text = "Use different model for alpha";
+            this.toolTip1.SetToolTip(this.useDifferentModelForAlpha_checkBox, "Need to split images when changing this setting");
             this.useDifferentModelForAlpha_checkBox.UseVisualStyleBackColor = true;
             this.useDifferentModelForAlpha_checkBox.CheckedChanged += new System.EventHandler(this.useDifferentModelForAlpha_checkBox_CheckedChanged);
             // 
