@@ -1,6 +1,9 @@
 # IEU - Image Enhancing Utility
 Windows only GUI for [IEU.Core](https://github.com/ptrsuder/IEU.Core) - wrapper around ESRGAN with additional features
 
+![downloads_latest](https://img.shields.io/github/downloads/ptrsuder/IEU.Winforms/latest/total.svg?color=magenta)
+![downloads_total](https://img.shields.io/github/downloads/ptrsuder/IEU.Winforms/total.svg?label=downloads%40total)
+
 Uses [net-vips](https://github.com/kleisauke/net-vips) library to split input images into tiles and then merge them after processing tiles with ESRGAN. Also supports **alpha channels** and **various image formats (.dds, .tga etc).**
 
 Although app can detect model upscale size by running python script, it takes some time, so it is recommended to **rename all your models so that filenames contain upscale size as in screenshot below**.
