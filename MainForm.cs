@@ -21,7 +21,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<IEU>
     {
-        public readonly string AppVersion = "0.9.07";
+        public readonly string AppVersion = "0.9.8";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public IEU ViewModel { get; set; }
@@ -223,7 +223,7 @@ namespace ImageEnhancingUtility.Winforms
             changeOutputPath_button.Tag = outputPath_textBox;
             changeModelsPath_button.Tag = modelsPath_textBox;
 
-            appVersion_label.Text = "GUI v" + Application.ProductVersion;
+            appVersion_label.Text = "GUI v" + this.AppVersion;
             appCoreVersion_linkLabel.Text = "IEU.Core v" + ViewModel.AppVersion;
 
             this.Bind(ViewModel, vm => vm.UseDifferentModelForAlpha, v => v.useDifferentModelForAlpha_checkBox.Checked);
@@ -491,10 +491,10 @@ namespace ImageEnhancingUtility.Winforms
 
         async Task CheckNewReleases()
         {
-            var checkerCore = new UpdateChecker("ptrsuder", ViewModel.GitHubRepoName, ViewModel.AppVersion);
+            //var checkerCore = new UpdateChecker("ptrsuder", ViewModel.GitHubRepoName, ViewModel.AppVersion);
             var checkerWinforms = new UpdateChecker("ptrsuder", this.GitHubRepoName, this.AppVersion);
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            UpdateType updateCore = await checkerCore.CheckUpdate();
+            //UpdateType updateCore = await checkerCore.CheckUpdate();
             UpdateType updateWinforms = await checkerWinforms.CheckUpdate();
 
             string updateMessage = "";
