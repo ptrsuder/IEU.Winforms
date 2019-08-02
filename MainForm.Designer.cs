@@ -71,6 +71,7 @@
             this.debugUpscale_checkBox = new System.Windows.Forms.CheckBox();
             this.useDifferentModelForAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.splitRGB_checkBox = new System.Windows.Forms.CheckBox();
+            this.preciseTile_checkBox = new System.Windows.Forms.CheckBox();
             this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
             this.ignoreSingleColorAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.ignoreAlpha_checkBox = new System.Windows.Forms.CheckBox();
@@ -468,6 +469,7 @@
             this.settings_tabPage.Controls.Add(this.debugUpscale_checkBox);
             this.settings_tabPage.Controls.Add(this.useDifferentModelForAlpha_checkBox);
             this.settings_tabPage.Controls.Add(this.splitRGB_checkBox);
+            this.settings_tabPage.Controls.Add(this.preciseTile_checkBox);
             this.settings_tabPage.Controls.Add(this.balanceAlphas_checkBox);
             this.settings_tabPage.Controls.Add(this.ignoreSingleColorAlpha_checkBox);
             this.settings_tabPage.Controls.Add(this.ignoreAlpha_checkBox);
@@ -760,6 +762,19 @@
             this.splitRGB_checkBox.TabIndex = 25;
             this.splitRGB_checkBox.Text = "Split RGB channels";
             this.splitRGB_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // preciseTile_checkBox
+            // 
+            this.preciseTile_checkBox.AutoSize = true;
+            this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(369, 109);
+            this.preciseTile_checkBox.Name = "preciseTile_checkBox";
+            this.preciseTile_checkBox.Size = new System.Drawing.Size(130, 17);
+            this.preciseTile_checkBox.TabIndex = 25;
+            this.preciseTile_checkBox.Text = "Precise tile dimensions";
+            this.toolTip1.SetToolTip(this.preciseTile_checkBox, "Usefull when you need to create tiles for training");
+            this.preciseTile_checkBox.UseVisualStyleBackColor = true;
+            this.preciseTile_checkBox.CheckedChanged += new System.EventHandler(this.preciseTile_checkBox_CheckedChanged);
             // 
             // balanceAlphas_checkBox
             // 
@@ -2049,6 +2064,7 @@
         private System.Windows.Forms.Label label27;
         private System.Windows.Forms.ComboBox webpPreset_comboBox;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.CheckBox preciseTile_checkBox;
     }
 }
 

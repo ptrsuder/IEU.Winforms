@@ -174,6 +174,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.MaxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.MaxTileResolutionWidth, v => v.maxTileWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.MaxTileResolutionHeight, v => v.maxTileHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.PreciseTileResolution, v => v.preciseTile_checkBox.Checked);
 
             this.Bind(ViewModel, vm => vm.IgnoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.IgnoreSingleColorAlphas, v => v.ignoreSingleColorAlpha_checkBox.Checked);
@@ -781,6 +782,11 @@ namespace ImageEnhancingUtility.Winforms
             if(webpLossless_checkBox.Checked)            
                 webpQuality_numericUpDown.Value = 100;
             
+        }
+
+        private void preciseTile_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            overlapSize_numericUpDown.Enabled = !preciseTile_checkBox.Checked;
         }
     }    
 }
