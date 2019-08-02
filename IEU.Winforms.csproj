@@ -69,15 +69,11 @@
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
-    <Prefer32Bit>true</Prefer32Bit>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="DynamicData, Version=6.9.1.2588, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\DynamicData.6.9.1.2588\lib\net46\DynamicData.dll</HintPath>
-    </Reference>
-    <Reference Include="GitHubUpdate, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\IEU.Core\bin\Debug\net461\GitHubUpdate.dll</HintPath>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -204,10 +200,17 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GitHubUpdateStandard\GitHubUpdateStandard.csproj">
+      <Project>{91455969-13e4-419b-948a-6c8fa1198c07}</Project>
+      <Name>GitHubUpdateStandard</Name>
+    </ProjectReference>
     <ProjectReference Include="..\IEU.Core\IEU.Core.csproj">
       <Project>{0dd50efa-abd4-4826-abc1-6bf219c4d0ba}</Project>
       <Name>IEU.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
