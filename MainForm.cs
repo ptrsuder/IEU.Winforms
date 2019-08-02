@@ -215,6 +215,11 @@ namespace ImageEnhancingUtility.Winforms
             this.BindCommand(ViewModel, vm => vm.MergeCommand, v => v.merge_button);
             this.BindCommand(ViewModel, vm => vm.SplitUpscaleMergeCommand, v => v.runAll_button);
 
+            ViewModel.SplitCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
+            ViewModel.UpscaleCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
+            ViewModel.MergeCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
+            ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
+
             pathsTextBoxes = new List<TextBox> { esrganPath_textBox, imgPath_textBox, modelsPath_textBox };
             progress_label.Text = "0/0";
             changeEsrganPath_button.Tag = esrganPath_textBox;
