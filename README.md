@@ -13,7 +13,7 @@ Please, before using this tool ensure that you installed all python dependencies
 ## Requirements
 
 * .NET Framework 4.6.1
-* [ESRGAN](https://github.com/xinntao/ESRGAN/tree/aceb85730832001ec1fa3a77bd6856b75e1d0e87) (old version only)
+* [ESRGAN](https://github.com/xinntao/ESRGAN/tree/aceb85730832001ec1fa3a77bd6856b75e1d0e87) (<-- yes, from this link only)
 
 ## Usage
 
