@@ -73,6 +73,18 @@ namespace ImageEnhancingUtility.Winforms
                 richTextBox1.Text = text;
                 //richTextBox1.AppendText($"\n[{DateTime.Now}] {text}", System.Drawing.Color.White);
         }
+
+        private void AppendToLogsThreadSafe(string text)
+        {
+            if (richTextBox1.InvokeRequired)
+            {
+                var d = new SafeCallDelegate(AppendToLogsThreadSafe);
+                Invoke(d, new object[] { text });
+            }
+            else
+                richTextBox1.AppendText($"\n[{DateTime.Now}] {text}", System.Drawing.Color.White);
+        }
+
         private void WriteToLogsThreadSafe(string text, System.Drawing.Color color)
         {
             if (richTextBox1.InvokeRequired)
@@ -215,10 +227,10 @@ namespace ImageEnhancingUtility.Winforms
             this.BindCommand(ViewModel, vm => vm.MergeCommand, v => v.merge_button);
             this.BindCommand(ViewModel, vm => vm.SplitUpscaleMergeCommand, v => v.runAll_button);
 
-            ViewModel.SplitCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
-            ViewModel.UpscaleCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
-            ViewModel.MergeCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
-            ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(error.Message); });
+            ViewModel.SplitCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
+            ViewModel.UpscaleCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
+            ViewModel.MergeCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
+            ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
 
             pathsTextBoxes = new List<TextBox> { esrganPath_textBox, imgPath_textBox, modelsPath_textBox };
             progress_label.Text = "0/0";
@@ -261,8 +273,6 @@ namespace ImageEnhancingUtility.Winforms
                    x => ViewModel.ModelsItems.FindIndex(y => y.FullName == x),
                    x => ViewModel.ModelsItems[x].FullName);
             }
-
-
 
             lastUseDifferentModelAlpha = useDifferentModelForAlpha_checkBox.Checked;
 
