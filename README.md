@@ -38,7 +38,7 @@ To merge resulted tiles back click [MERGE] button.
 
  ### Maximum tile resolution
  MaxTileResolution = TileWidth x TileHeight
- Currently, to find out how big MaxTileResolution you VGRAM can handle you need to experiment. Default value is for 2Gb VGRAM.
+ Currently, to find out how big MaxTileResolution you VRAM can handle you need to experiment. Default value is for 2Gb VGRAM.
  ### Tiles overlap
  When creating tiles, they will be overlapping between themselves by size in pixels specified by this value. The bigger value - more time to process tiles with ESRGAN. Improvement from setting this bigger than 16 is questionable.
  ### Output format
