@@ -18,9 +18,9 @@ Please, before using this tool ensure that you installed all python dependencies
 ## Usage
 
 On first launch specify ESRGAN main directory path in Settings tab.
-You can also specify folders for input and output images. By default it will be *"esrgan-path/img"* and *"esrgan-path/merged_results
+You can also specify folders for input and output images. By default it will be *"esrgan-path/IEU_input"* and *"esrgan-path/IEU_output
 
-**Take your images and put them in *"esrgan-path/img"*.** You can do this manually or by drag'n'droping files/folders to application form.
+**Take your images and put them in *"esrgan-path/IEU_input"*.** You can do this manually or by drag'n'droping files/folders to application form.
 When ready click [SPLIT] button. Tiles will be created from input images in *"esrgan-path/LR"* directory. Tile resolution will be calculated from *MaxTileResolution* value (biggest possible). Each time old tiles will be deleted from folder.
  **You always need to run [SPLIT] before ESRGAN, because it will convert images to png, put them in LR folder, separate alpha channels etc.**
  
@@ -68,15 +68,15 @@ To merge resulted tiles back click [MERGE] button.
   
 ## Output modes
   ### Default  
-  * **Results**: *esrgan-path/results*
+  * **Results**: *esrgan-path/results/*
   * **Merged results**: *merged-results-path/*
   
   ### Folder for each image  
   * **Results**: *results-path/images/image-name/*
-  * **Merged results**: *merged-results-path/images/image-name/merged*
+  * **Merged results**: *IEU_output-path/images/image-name/*
   
   ### Folder for each model  
   * **Results**: *results-path/models/model-name/*
-  * **Merged results**: *merged-results-path/models/model-name/merged*
+  * **Merged results**: *IEU_output-path/models/model-name/*
   
   
