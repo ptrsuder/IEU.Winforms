@@ -71,43 +71,18 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DynamicData, Version=6.9.1.2588, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\DynamicData.6.9.1.2588\lib\net46\DynamicData.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="ReactiveUI, Version=9.16.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ReactiveUI.9.16.9\lib\net461\ReactiveUI.dll</HintPath>
-    </Reference>
-    <Reference Include="ReactiveUI.Winforms, Version=9.16.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\ReactiveUI.WinForms.9.16.9\lib\net461\ReactiveUI.Winforms.dll</HintPath>
-    </Reference>
-    <Reference Include="Splat, Version=7.2.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Splat.7.2.1\lib\net461\Splat.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing.Primitives, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Drawing.Primitives.4.3.0\lib\net45\System.Drawing.Primitives.dll</HintPath>
-    </Reference>
-    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Numerics" />
-    <Reference Include="System.Reactive, Version=4.1.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Reactive.4.1.5\lib\net46\System.Reactive.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard1.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
@@ -121,7 +96,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyTreeView.cs">
+    <Compile Include="WinformsControls\MyTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\Settings1.Designer.cs">
@@ -129,7 +104,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="RichTextBoxExtensions.cs" />
+    <Compile Include="WinformsControls\RichTextBoxExtensions.cs" />
     <Compile Include="StepFinishedForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,7 +128,7 @@
     <Compile Include="UpdateNotifyDialog.designer.cs">
       <DependentUpon>UpdateNotifyDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="MyTreeView.resx">
+    <EmbeddedResource Include="WinformsControls\MyTreeView.resx">
       <DependentUpon>MyTreeView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="StepFinishedForm.resx">
@@ -173,9 +148,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="packages.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
@@ -191,6 +163,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon_nDR_4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="CyotekImageBox">
+      <Version>1.3.0-Alpha1</Version>
+    </PackageReference>
+    <PackageReference Include="DynamicData" version="6.9.1.2588" />
+    <PackageReference Include="Microsoft.CSharp" version="4.5.0" />
+    <PackageReference Include="ReactiveUI" version="9.16.9" />
+    <PackageReference Include="ReactiveUI.WinForms" version="9.16.9" />
+    <PackageReference Include="Splat" version="7.2.1" />
+    <PackageReference Include="System.Drawing.Primitives" version="4.3.0" />
+    <PackageReference Include="System.Reactive" version="4.1.5" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" version="4.5.2" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" version="4.5.2" />
+    <PackageReference Include="System.ValueTuple" version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
@@ -209,11 +196,8 @@
       <Name>IEU.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy "$(SolutionDir)IEU.Core\pthReader.py" "$(TargetDir)" /Y /I</PostBuildEvent>
+    <PostBuildEvent>xcopy "$(SolutionDir)IEU.Core\Scripts\pthReader.py" "$(TargetDir)" /Y /I</PostBuildEvent>
   </PropertyGroup>
 </Project>

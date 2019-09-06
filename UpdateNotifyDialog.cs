@@ -8,8 +8,7 @@ namespace ImageEnhancingUtility.Winforms
     public partial class UpdateNotifyDialog : Form
     {
         private readonly UpdateChecker _checker;
-        private bool _loadednotes;
-        string releaseNotes;
+        private bool _loadednotes;       
 
         public UpdateNotifyDialog(UpdateChecker checker, string message)
         {

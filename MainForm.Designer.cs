@@ -50,6 +50,26 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.previewResult_tabPage = new System.Windows.Forms.TabPage();
+            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
+            this.zoomImageBox = new Cyotek.Windows.Forms.ImageBox();
+            this.previewImageBox = new Cyotek.Windows.Forms.ImageBox();
+            this.previewModels_comboBox = new System.Windows.Forms.ComboBox();
+            this.splitContainer2 = new System.Windows.Forms.SplitContainer();
+            this.previewUpdate_button = new System.Windows.Forms.Button();
+            this.previewSave_button = new System.Windows.Forms.Button();
+            this.preview_progressBar = new System.Windows.Forms.ProgressBar();
+            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
+            this.miniMapImageBox = new Cyotek.Windows.Forms.ImageBox();
+            this.imageSizeToolStripStatusLabel = new System.Windows.Forms.Label();
+            this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.openFromFileToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.actualSizeToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.zoomInToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.zoomOutToolStripButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
             this.outputFormat_comboBox = new System.Windows.Forms.ComboBox();
             this.modelForAlpha_comboBox = new System.Windows.Forms.ComboBox();
@@ -168,6 +188,7 @@
             this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.useBasicSR_checkBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -178,6 +199,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.previewResult_tabPage.SuspendLayout();
+            this.tableLayoutPanel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
+            this.splitContainer2.Panel1.SuspendLayout();
+            this.splitContainer2.Panel2.SuspendLayout();
+            this.splitContainer2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
+            this.splitContainer3.Panel1.SuspendLayout();
+            this.splitContainer3.Panel2.SuspendLayout();
+            this.splitContainer3.SuspendLayout();
+            this.toolStrip.SuspendLayout();
             this.settings_tabPage.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).BeginInit();
@@ -266,8 +298,10 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.AllowDrop = true;
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.main_tabPage);
+            this.tabControl1.Controls.Add(this.previewResult_tabPage);
             this.tabControl1.Controls.Add(this.settings_tabPage);
             this.tabControl1.Controls.Add(this.settingsOutputFormat_tabPage);
             this.tabControl1.Controls.Add(this.advanced_tabPage);
@@ -280,6 +314,9 @@
             this.tabControl1.Size = new System.Drawing.Size(728, 642);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
+            this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
+            this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.mainTab_DragDrop);
+            this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
             // 
             // main_tabPage
             // 
@@ -386,7 +423,7 @@
             // runAll_button
             // 
             this.runAll_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.runAll_button.Location = new System.Drawing.Point(0, 539);
+            this.runAll_button.Location = new System.Drawing.Point(0, 524);
             this.runAll_button.Name = "runAll_button";
             this.runAll_button.Size = new System.Drawing.Size(149, 32);
             this.runAll_button.TabIndex = 32;
@@ -450,8 +487,262 @@
             this.progressBar1.Size = new System.Drawing.Size(553, 24);
             this.progressBar1.TabIndex = 22;
             // 
+            // previewResult_tabPage
+            // 
+            this.previewResult_tabPage.Controls.Add(this.tableLayoutPanel3);
+            this.previewResult_tabPage.Controls.Add(this.toolStrip);
+            this.previewResult_tabPage.Location = new System.Drawing.Point(4, 25);
+            this.previewResult_tabPage.Name = "previewResult_tabPage";
+            this.previewResult_tabPage.Size = new System.Drawing.Size(720, 613);
+            this.previewResult_tabPage.TabIndex = 5;
+            this.previewResult_tabPage.Text = "Preview result";
+            this.previewResult_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // tableLayoutPanel3
+            // 
+            this.tableLayoutPanel3.ColumnCount = 2;
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.Controls.Add(this.zoomImageBox, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.previewImageBox, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.previewModels_comboBox, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.splitContainer2, 1, 2);
+            this.tableLayoutPanel3.Controls.Add(this.preview_progressBar, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.splitContainer3, 0, 1);
+            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 25);
+            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
+            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(720, 588);
+            this.tableLayoutPanel3.TabIndex = 5;
+            // 
+            // zoomImageBox
+            // 
+            this.zoomImageBox.AllowDrop = true;
+            this.zoomImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.zoomImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.zoomImageBox.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.zoomImageBox.GridColorAlternate = System.Drawing.SystemColors.ControlDark;
+            this.zoomImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            this.zoomImageBox.Location = new System.Drawing.Point(3, 3);
+            this.zoomImageBox.Name = "zoomImageBox";
+            this.zoomImageBox.Size = new System.Drawing.Size(354, 397);
+            this.zoomImageBox.TabIndex = 0;
+            this.zoomImageBox.TabStop = false;
+            this.zoomImageBox.ImageChanged += new System.EventHandler(this.zoomImageBox_ImageChanged);
+            this.zoomImageBox.PanEnd += new System.EventHandler(this.zoomImageBox_PanEnd);
+            this.zoomImageBox.Zoomed += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxZoomEventArgs>(this.zoomImageBox_Zoomed);
+            this.zoomImageBox.Scroll += new System.Windows.Forms.ScrollEventHandler(this.zoomImageBox_Scroll);
+            this.zoomImageBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.zoomImageBox_DragDrop);
+            this.zoomImageBox.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
+            this.zoomImageBox.Resize += new System.EventHandler(this.zoomImageBox_ImageChanged);
+            // 
+            // previewImageBox
+            // 
+            this.previewImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.previewImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.previewImageBox.GridColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            this.previewImageBox.Location = new System.Drawing.Point(363, 3);
+            this.previewImageBox.Name = "previewImageBox";
+            this.previewImageBox.Size = new System.Drawing.Size(354, 397);
+            this.previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+            this.previewImageBox.TabIndex = 4;
+            this.previewImageBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.previewImageBox_MouseDown);
+            this.previewImageBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.previewImageBox_MouseUp);
+            // 
+            // previewModels_comboBox
+            // 
+            this.previewModels_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.previewModels_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.previewModels_comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewModels_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.previewModels_comboBox.FormattingEnabled = true;
+            this.previewModels_comboBox.Location = new System.Drawing.Point(363, 406);
+            this.previewModels_comboBox.Name = "previewModels_comboBox";
+            this.previewModels_comboBox.Size = new System.Drawing.Size(354, 21);
+            this.previewModels_comboBox.TabIndex = 6;
+            // 
+            // splitContainer2
+            // 
+            this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer2.Location = new System.Drawing.Point(363, 437);
+            this.splitContainer2.Name = "splitContainer2";
+            // 
+            // splitContainer2.Panel1
+            // 
+            this.splitContainer2.Panel1.Controls.Add(this.previewUpdate_button);
+            // 
+            // splitContainer2.Panel2
+            // 
+            this.splitContainer2.Panel2.Controls.Add(this.previewSave_button);
+            this.splitContainer2.Size = new System.Drawing.Size(354, 118);
+            this.splitContainer2.SplitterDistance = 186;
+            this.splitContainer2.TabIndex = 7;
+            // 
+            // previewUpdate_button
+            // 
+            this.previewUpdate_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewUpdate_button.Location = new System.Drawing.Point(0, 0);
+            this.previewUpdate_button.Name = "previewUpdate_button";
+            this.previewUpdate_button.Size = new System.Drawing.Size(186, 118);
+            this.previewUpdate_button.TabIndex = 6;
+            this.previewUpdate_button.Text = "Update preview";
+            this.previewUpdate_button.UseVisualStyleBackColor = true;
+            this.previewUpdate_button.Click += new System.EventHandler(this.previewUpdate_button_Click);
+            // 
+            // previewSave_button
+            // 
+            this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewSave_button.Location = new System.Drawing.Point(0, 0);
+            this.previewSave_button.Name = "previewSave_button";
+            this.previewSave_button.Size = new System.Drawing.Size(164, 118);
+            this.previewSave_button.TabIndex = 6;
+            this.previewSave_button.Text = "Enhance and save as png";
+            this.previewSave_button.UseVisualStyleBackColor = true;
+            this.previewSave_button.Click += new System.EventHandler(this.previewSave_button_Click);
+            // 
+            // preview_progressBar
+            // 
+            this.tableLayoutPanel3.SetColumnSpan(this.preview_progressBar, 2);
+            this.preview_progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.preview_progressBar.Location = new System.Drawing.Point(3, 561);
+            this.preview_progressBar.Name = "preview_progressBar";
+            this.preview_progressBar.Size = new System.Drawing.Size(714, 24);
+            this.preview_progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
+            this.preview_progressBar.TabIndex = 8;
+            // 
+            // splitContainer3
+            // 
+            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer3.Location = new System.Drawing.Point(3, 406);
+            this.splitContainer3.Name = "splitContainer3";
+            // 
+            // splitContainer3.Panel1
+            // 
+            this.splitContainer3.Panel1.Controls.Add(this.miniMapImageBox);
+            // 
+            // splitContainer3.Panel2
+            // 
+            this.splitContainer3.Panel2.Controls.Add(this.imageSizeToolStripStatusLabel);
+            this.tableLayoutPanel3.SetRowSpan(this.splitContainer3, 2);
+            this.splitContainer3.Size = new System.Drawing.Size(354, 149);
+            this.splitContainer3.SplitterDistance = 137;
+            this.splitContainer3.TabIndex = 9;
+            // 
+            // miniMapImageBox
+            // 
+            this.miniMapImageBox.AllowZoom = false;
+            this.miniMapImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.miniMapImageBox.AutoPan = false;
+            this.miniMapImageBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.miniMapImageBox.GridColor = System.Drawing.SystemColors.Control;
+            this.miniMapImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            this.miniMapImageBox.Location = new System.Drawing.Point(5, 19);
+            this.miniMapImageBox.Name = "miniMapImageBox";
+            this.miniMapImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Middle;
+            this.miniMapImageBox.PixelGridColor = System.Drawing.Color.Transparent;
+            this.miniMapImageBox.Size = new System.Drawing.Size(129, 127);
+            this.miniMapImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+            this.miniMapImageBox.TabIndex = 1;
+            this.miniMapImageBox.TabStop = false;
+            this.miniMapImageBox.VirtualMode = true;
+            this.miniMapImageBox.Paint += new System.Windows.Forms.PaintEventHandler(this.miniMapImageBox_Paint);
+            // 
+            // imageSizeToolStripStatusLabel
+            // 
+            this.imageSizeToolStripStatusLabel.AutoSize = true;
+            this.imageSizeToolStripStatusLabel.Dock = System.Windows.Forms.DockStyle.Right;
+            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(172, 0);
+            this.imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
+            this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(41, 13);
+            this.imageSizeToolStripStatusLabel.TabIndex = 0;
+            this.imageSizeToolStripStatusLabel.Text = "label28";
+            this.imageSizeToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // toolStrip
+            // 
+            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.openFromFileToolStripButton,
+            this.toolStripSeparator8,
+            this.actualSizeToolStripButton,
+            this.zoomInToolStripButton,
+            this.zoomOutToolStripButton,
+            this.toolStripSeparator2,
+            this.zoomLevelsToolStripComboBox});
+            this.toolStrip.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip.Name = "toolStrip";
+            this.toolStrip.Size = new System.Drawing.Size(720, 25);
+            this.toolStrip.TabIndex = 3;
+            // 
+            // openFromFileToolStripButton
+            // 
+            this.openFromFileToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.openFromFileToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openFromFileToolStripButton.Image")));
+            this.openFromFileToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.openFromFileToolStripButton.Name = "openFromFileToolStripButton";
+            this.openFromFileToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.openFromFileToolStripButton.Text = "&Open";
+            this.openFromFileToolStripButton.Click += new System.EventHandler(this.openFromFileToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator8
+            // 
+            this.toolStripSeparator8.Name = "toolStripSeparator8";
+            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            // 
+            // actualSizeToolStripButton
+            // 
+            this.actualSizeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.actualSizeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("actualSizeToolStripButton.Image")));
+            this.actualSizeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.actualSizeToolStripButton.Name = "actualSizeToolStripButton";
+            this.actualSizeToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.actualSizeToolStripButton.Text = "Actual Size";
+            this.actualSizeToolStripButton.Click += new System.EventHandler(this.actualSizeToolStripButton_Click);
+            // 
+            // zoomInToolStripButton
+            // 
+            this.zoomInToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.zoomInToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("zoomInToolStripButton.Image")));
+            this.zoomInToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.zoomInToolStripButton.Name = "zoomInToolStripButton";
+            this.zoomInToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.zoomInToolStripButton.Text = "Zoom In";
+            this.zoomInToolStripButton.Click += new System.EventHandler(this.zoomInToolStripButton_Click);
+            // 
+            // zoomOutToolStripButton
+            // 
+            this.zoomOutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.zoomOutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("zoomOutToolStripButton.Image")));
+            this.zoomOutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.zoomOutToolStripButton.Name = "zoomOutToolStripButton";
+            this.zoomOutToolStripButton.Size = new System.Drawing.Size(23, 22);
+            this.zoomOutToolStripButton.Text = "Zoom Out";
+            this.zoomOutToolStripButton.Click += new System.EventHandler(this.zoomOutToolStripButton_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // zoomLevelsToolStripComboBox
+            // 
+            this.zoomLevelsToolStripComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.zoomLevelsToolStripComboBox.Name = "zoomLevelsToolStripComboBox";
+            this.zoomLevelsToolStripComboBox.Size = new System.Drawing.Size(121, 25);
+            this.zoomLevelsToolStripComboBox.SelectedIndexChanged += new System.EventHandler(this.zoomLevelsToolStripComboBox_SelectedIndexChanged);
+            // 
             // settings_tabPage
             // 
+            this.settings_tabPage.Controls.Add(this.useBasicSR_checkBox);
             this.settings_tabPage.Controls.Add(this.outputFormat_comboBox);
             this.settings_tabPage.Controls.Add(this.modelForAlpha_comboBox);
             this.settings_tabPage.Controls.Add(this.tableLayoutPanel2);
@@ -1853,6 +2144,17 @@
             // 
             this.toolTip1.AutomaticDelay = 300;
             // 
+            // useBasicSR_checkBox
+            // 
+            this.useBasicSR_checkBox.AutoSize = true;
+            this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useBasicSR_checkBox.Location = new System.Drawing.Point(294, 289);
+            this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
+            this.useBasicSR_checkBox.Size = new System.Drawing.Size(146, 17);
+            this.useBasicSR_checkBox.TabIndex = 51;
+            this.useBasicSR_checkBox.Text = "Use BasicSR architecture";
+            this.useBasicSR_checkBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -1863,10 +2165,11 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(740, 676);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image Enhancing Utility";
             this.Load += new System.EventHandler(this.MainForm_Load);
-            this.DragDrop += new System.Windows.Forms.DragEventHandler(this.MainForm_DragDrop);
-            this.DragEnter += new System.Windows.Forms.DragEventHandler(this.MainForm_DragEnter);
+            this.ResizeBegin += new System.EventHandler(this.MainForm_ResizeBegin);
+            this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.tabControl1.ResumeLayout(false);
             this.main_tabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -1878,6 +2181,20 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.previewResult_tabPage.ResumeLayout(false);
+            this.previewResult_tabPage.PerformLayout();
+            this.tableLayoutPanel3.ResumeLayout(false);
+            this.splitContainer2.Panel1.ResumeLayout(false);
+            this.splitContainer2.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
+            this.splitContainer2.ResumeLayout(false);
+            this.splitContainer3.Panel1.ResumeLayout(false);
+            this.splitContainer3.Panel2.ResumeLayout(false);
+            this.splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
+            this.splitContainer3.ResumeLayout(false);
+            this.toolStrip.ResumeLayout(false);
+            this.toolStrip.PerformLayout();
             this.settings_tabPage.ResumeLayout(false);
             this.settings_tabPage.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -2065,6 +2382,27 @@
         private System.Windows.Forms.ComboBox webpPreset_comboBox;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.CheckBox preciseTile_checkBox;
+        private System.Windows.Forms.TabPage previewResult_tabPage;
+        private Cyotek.Windows.Forms.ImageBox zoomImageBox;
+        private System.Windows.Forms.ToolStrip toolStrip;
+        private System.Windows.Forms.ToolStripButton openFromFileToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ToolStripButton actualSizeToolStripButton;
+        private System.Windows.Forms.ToolStripButton zoomInToolStripButton;
+        private System.Windows.Forms.ToolStripButton zoomOutToolStripButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripComboBox zoomLevelsToolStripComboBox;
+        private Cyotek.Windows.Forms.ImageBox previewImageBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.ComboBox previewModels_comboBox;
+        private System.Windows.Forms.SplitContainer splitContainer2;
+        private System.Windows.Forms.Button previewUpdate_button;
+        private System.Windows.Forms.Button previewSave_button;
+        private System.Windows.Forms.ProgressBar preview_progressBar;
+        private System.Windows.Forms.SplitContainer splitContainer3;
+        private Cyotek.Windows.Forms.ImageBox miniMapImageBox;
+        private System.Windows.Forms.Label imageSizeToolStripStatusLabel;
+        private System.Windows.Forms.CheckBox useBasicSR_checkBox;
     }
 }
 
