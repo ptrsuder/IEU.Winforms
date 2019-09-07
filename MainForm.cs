@@ -124,7 +124,14 @@ namespace ImageEnhancingUtility.Winforms
         public List<ModelInfo> ModelsItems
         {
             get => null;
-            set => CreateModelTree(value);
+            set
+            {
+                CreateModelTree(value);
+                modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
+                previewModels_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
+                interpolationModelOne_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
+                interpolationModelTwo_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
+            }
         }
 
         [DllImport("user32.dll")] //textbox hint
@@ -347,7 +354,7 @@ namespace ImageEnhancingUtility.Winforms
 
             modelForAlpha_comboBox.DisplayMember = "Name";
             modelForAlpha_comboBox.ValueMember = "FullName";
-            modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
+            modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);           
 
             previewModels_comboBox.DisplayMember = "Name";
             previewModels_comboBox.ValueMember = "FullName";
