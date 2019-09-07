@@ -71,6 +71,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
+            this.useBasicSR_checkBox = new System.Windows.Forms.CheckBox();
             this.outputFormat_comboBox = new System.Windows.Forms.ComboBox();
             this.modelForAlpha_comboBox = new System.Windows.Forms.ComboBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
@@ -188,7 +189,6 @@
             this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.useBasicSR_checkBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -661,11 +661,11 @@
             // 
             this.imageSizeToolStripStatusLabel.AutoSize = true;
             this.imageSizeToolStripStatusLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(172, 0);
+            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(171, 0);
             this.imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
-            this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(41, 13);
+            this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(42, 13);
             this.imageSizeToolStripStatusLabel.TabIndex = 0;
-            this.imageSizeToolStripStatusLabel.Text = "label28";
+            this.imageSizeToolStripStatusLabel.Text = "X:0 Y:0";
             this.imageSizeToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // toolStrip
@@ -782,6 +782,17 @@
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // useBasicSR_checkBox
+            // 
+            this.useBasicSR_checkBox.AutoSize = true;
+            this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useBasicSR_checkBox.Location = new System.Drawing.Point(294, 289);
+            this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
+            this.useBasicSR_checkBox.Size = new System.Drawing.Size(146, 17);
+            this.useBasicSR_checkBox.TabIndex = 51;
+            this.useBasicSR_checkBox.Text = "Use BasicSR architecture";
+            this.useBasicSR_checkBox.UseVisualStyleBackColor = true;
             // 
             // outputFormat_comboBox
             // 
@@ -2143,17 +2154,6 @@
             // toolTip1
             // 
             this.toolTip1.AutomaticDelay = 300;
-            // 
-            // useBasicSR_checkBox
-            // 
-            this.useBasicSR_checkBox.AutoSize = true;
-            this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useBasicSR_checkBox.Location = new System.Drawing.Point(294, 289);
-            this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
-            this.useBasicSR_checkBox.Size = new System.Drawing.Size(146, 17);
-            this.useBasicSR_checkBox.TabIndex = 51;
-            this.useBasicSR_checkBox.Text = "Use BasicSR architecture";
-            this.useBasicSR_checkBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

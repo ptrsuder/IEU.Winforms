@@ -58,22 +58,7 @@ namespace ImageEnhancingUtility.Winforms
             else
                 richTextBox1.Text = text;
             //richTextBox1.AppendText($"\n[{DateTime.Now}] {text}", System.Drawing.Color.White);
-        }
-
-        private void WriteToLogsThreadSafe(ReadOnlyObservableCollection<LogMessage> messages)
-        {
-            if (richTextBox1.InvokeRequired)
-            {
-                var d = new SafeCallDelegate(WriteToLogsThreadSafe);
-                Invoke(d, new object[] { messages });
-            }
-            else
-            {
-                richTextBox1.ResetText();
-                foreach (var mes in messages)
-                    richTextBox1.AppendText(mes.Text, mes.Color);
-            }           
-        }
+        }        
 
         private void WriteToLogsThreadSafe(LogMessage message)
         {
@@ -130,7 +115,7 @@ namespace ImageEnhancingUtility.Winforms
             }
             else
             {
-                progressBar1.Value = (int)value;
+                progressBar1.Value = (int) value;
                 progress_label.Text = $@"{ViewModel.FilesDone}/{ViewModel.FilesTotal}"; //hack
                 progressFiltered_label.Text = ViewModel.FilesDoneSuccesfully.ToString();
             }
@@ -333,7 +318,8 @@ namespace ImageEnhancingUtility.Winforms
             ViewModel.Log.Connect()
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Bind(out bindingData)
-                .Subscribe(_ => WriteToLogsThreadSafe(bindingData));
+                .OnItemAdded(x => WriteToLogsThreadSafe(x))
+                .Subscribe();
 
             BindSettingsTab();
             
