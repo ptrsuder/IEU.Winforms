@@ -550,6 +550,9 @@ namespace ImageEnhancingUtility.Winforms
 
         private void OpenImage(string fullname)
         {
+            originalPreview = null;
+            resultPreview = null;
+
             Image image = Helper.LoadImageToBitmap(fullname);
             previewFullname = fullname;
             //zoomImageBox.BeginUpdate();
@@ -575,9 +578,7 @@ namespace ImageEnhancingUtility.Winforms
             FillZoomLevels();
             UpdateStatusBar();
             zoomImageBox.ZoomToFit();
-
-            originalPreview = null;
-            resultPreview = null;
+            
         }
 
         private void UpdatePreview()
@@ -599,9 +600,9 @@ namespace ImageEnhancingUtility.Winforms
 
             Size viewSize = zoomImageBox.GetInsideViewPort().Size;
 
-            if (scaledWidth < viewSize.Width)
+            if (scaledWidth <= viewSize.Width)
                 wOffset = 0;
-            if (scaledHeight < viewSize.Height)
+            if (scaledHeight <= viewSize.Height)
                 hOffset = 0;
 
             w += wOffset;
@@ -823,7 +824,7 @@ namespace ImageEnhancingUtility.Winforms
         {
             using (FileDialog dialog = new OpenFileDialog())
             {
-                dialog.Filter = "All Supported Images (*.bmp;*.dib;*.rle;*.gif;*.jpg;*.jpeg;*.png)|*.bmp;*.dib;*.rle;*.gif;*.jpg;*.jpeg;*.png|Bitmaps (*.bmp;*.dib;*.rle)|*.bmp;*.dib;*.rle|Graphics Interchange Format (*.gif)|*.gif|Joint Photographic Experts (*.jpg)|*.jpg|Portable Network Graphics (*.png)|*.png|All Files (*.*)|*.*";
+                dialog.Filter = "All Supported Images (*.bmp;*.dib;*.rle;*.gif;*.jpg;*.jpeg;*.png;*.dds;*.tga;*.tiff;*.webp)|*.bmp;*.dib;*.rle;*.gif;*.jpg;*.jpeg;*.png;*.dds;*.tga;*.tiff;*.webp|All Files (*.*)|*.*";
                 dialog.DefaultExt = "png";
 
                 if (dialog.ShowDialog(this) == DialogResult.OK)
@@ -884,7 +885,7 @@ namespace ImageEnhancingUtility.Winforms
             }
             else
             {
-                MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.previeIEU.EsrganPath}>");
+                MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
             }
         }
 
