@@ -25,7 +25,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<IEU>
     {
-        public readonly string AppVersion = "0.10.01";
+        public readonly string AppVersion = "0.10.04";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public IEU ViewModel { get; set; }
@@ -341,6 +341,11 @@ namespace ImageEnhancingUtility.Winforms
             changeOutputPath_button.Tag = outputPath_textBox;
             changeModelsPath_button.Tag = modelsPath_textBox;
 
+            changeOriginalImagesPath_button.Tag = originalImagesPath_textBox;
+            changeResultsAPath_button.Tag = resultsAPath_textBox;
+            changeResultsBPath_button.Tag = resultsBPath_textBox;
+            changeResultsDestinationPath_button.Tag = resultsDestinationPath_textBox;
+
             appVersion_label.Text = "GUI v" + this.AppVersion;
             appCoreVersion_linkLabel.Text = "IEU.Core v" + ViewModel.AppVersion;       
 
@@ -405,6 +410,11 @@ namespace ImageEnhancingUtility.Winforms
                 CheckNewReleases();
 
             zoomImageBox.VerticalScroll.Enabled = false;
+
+            imageA_panel.Tag = imageA_pictureBox;
+            imageB_panel.Tag = imageB_pictureBox;
+            imageA_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            imageB_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
 
             //OpenImage(@"E:\Documents\GitHub\ImageEnhancingUtility\IEU.Winforms\sample.jpg");
         }
@@ -1019,20 +1029,18 @@ namespace ImageEnhancingUtility.Winforms
 
         private async void interpolationStart_button_Click(object sender, EventArgs e)
         {
-            double alphaValue = 0.0;
-            try
-            {
-                alphaValue = double.Parse(interpolationAlphaValue_textBox.Text.Replace(',', '.'), System.Globalization.CultureInfo.InvariantCulture);
-            }
-            catch
+            KeyValue<bool, double> alpha = Helper.CheckAlphaValue(modelInterpolationAlphaValue_textBox.Text);
+           
+            if (!alpha.Key)          
             {
                 MessageBox.Show("Alpha value is not valid value");
+                return;
             }
             tabControl1.SelectedTab = main_tabPage;
             bool success = await ViewModel.CreateInterpolatedModel(
                 interpolationModelOne_comboBox.SelectedValue.ToString(),
                 interpolationModelTwo_comboBox.SelectedValue.ToString(),
-                alphaValue,
+                alpha.Value,
                 interpolationOutputModelName_textBox.Text);      
         }
 
@@ -1184,13 +1192,28 @@ namespace ImageEnhancingUtility.Winforms
             MessageBox.Show($"Succesfully copied {imagesCopied} files" + (modelsCopied > 0 ? $" and { modelsCopied} models" : ""));
         }
 
+        string alphaPrev = "05";
         private void InterpolationSettingsChanged(object sender, EventArgs e)
+        {
+            string alphaNow = modelInterpolationAlphaValue_textBox.Text.Replace(",", "");
+            interpolationOutputModelName_textBox.Text = interpolationOutputModelName_textBox.Text
+                .Replace($"_interp_{alphaPrev}", $"_interp_{alphaNow}");
+            alphaPrev = alphaNow;
+        }
+
+        private void InterpolationModelsChanged(object sender, EventArgs e)
         {
             interpolationOutputModelName_textBox.Text =
                 $"{((ModelInfo)interpolationModelOne_comboBox.SelectedItem)?.Name.Replace(".pth", "")}_" +
                 $"{((ModelInfo)interpolationModelTwo_comboBox.SelectedItem)?.Name.Replace(".pth", "")}_" +
-                $"interp_{interpolationAlphaValue_textBox.Text.Replace(",", "").Replace(".", "")}.pth";
+                $"interp_{modelInterpolationAlphaValue_textBox.Text.Replace(",", "").Replace(".", "")}.pth";
         }
+
+        private void ModelInterpolationAlpha_trackBar_Scroll(object sender, EventArgs e)
+        {
+            modelInterpolationAlphaValue_textBox.Text = (modelInterpolationAlpha_trackBar.Value * 0.01).ToString();
+        }
+
 
         private void useDifferentModelForAlpha_checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -1214,6 +1237,78 @@ namespace ImageEnhancingUtility.Winforms
             else
                 ViewModel.FilterSelectedExtensionsList.Add(checkedListBox.SelectedItem.ToString());
         }
+
+        #region IMAGE INTERPOLATION
+
+        private void imagePanel_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] filePaths = e.Data.GetData(DataFormats.FileDrop) as string[];
+            if (filePaths.Length == 1)
+            {
+                try
+                {
+                    Image image = Helper.LoadImageToBitmap(filePaths[0]);
+                    PictureBox pictureBox = ((sender as Panel).Tag as PictureBox);
+                    pictureBox.Image = image;
+                    pictureBox.Tag = filePaths[0];
+                    if(overlayResultName_textBox.Text != Path.GetFileName(imageA_pictureBox.Tag as string))
+                        overlayResultName_textBox.Text = Path.GetFileName(filePaths[0]);
+                }
+                catch
+                {
+                    MessageBox.Show("Failed to open image");
+                }
+            }
+        }
+
+        private void OverlayImages_button_Click(object sender, EventArgs e)
+        {
+            string pathA = imageA_pictureBox.Tag as string, pathB = imageB_pictureBox.Tag as string;
+            if (string.IsNullOrEmpty(pathA) || string.IsNullOrEmpty(pathB) || imageA_pictureBox.Image == null || imageB_pictureBox.Image == null)
+            {
+                MessageBox.Show("Images is missing");
+                return;
+            }
+            KeyValue<bool, double> alpha = Helper.CheckAlphaValue(imageInterpolationAlphaValue_textBox.Text);
+            if(!alpha.Key)
+            {
+                MessageBox.Show("Alpha value is not valid");
+                return;
+            }
+            
+            if (string.IsNullOrEmpty(overlayResultName_textBox.Text))
+                overlayResultName_textBox.Text = Path.GetFileName(pathA);
+
+            ViewModel.InterpolateImages(imageA_pictureBox.Image, imageB_pictureBox.Image, ViewModel.OutputDirectoryPath + "\\" + overlayResultName_textBox.Text, alpha.Value);
+
+            StepFinishedForm finishedForm = new StepFinishedForm(ViewModel.OutputDirectoryPath, $"Result is saved in { ViewModel.OutputDirectoryPath }");
+            finishedForm.ShowDialog();
+            //MessageBox.Show($"Result is saved in {ViewModel.OutputDirectoryPath}");
+        }
+
+        private async void OverlayFolders_button_Click(object sender, EventArgs e)
+        {
+            string originalPath = originalImagesPath_textBox.Text, destinationPath = resultsDestinationPath_textBox.Text;
+            string pathA = resultsAPath_textBox.Text, pathB = resultsBPath_textBox.Text;
+            KeyValue<bool, double> alpha = Helper.CheckAlphaValue(imageInterpolationAlphaValue_textBox.Text);
+            if (!alpha.Key)
+            {
+                MessageBox.Show("Alpha value is not valid");
+                return;
+            }
+            tabControl1.SelectedIndex = 0;
+            ViewModel.InterpolateFolders(originalPath, pathA, pathB, destinationPath, alpha.Value);
+
+            StepFinishedForm finishedForm = new StepFinishedForm(destinationPath, $"Result is saved in { destinationPath }");
+            finishedForm.ShowDialog();
+        }
+
+        private void ImageInterpolation_trackBar_Scroll(object sender, EventArgs e)
+        {
+            imageInterpolationAlphaValue_textBox.Text = (imageInterpolation_trackBar.Value * 0.01).ToString();
+        }
+
+        #endregion
 
         private void modelForAlpha_comboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
