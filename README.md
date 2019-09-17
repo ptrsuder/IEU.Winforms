@@ -27,7 +27,7 @@ Please, before using this tool ensure that you installed all python dependencies
 ## Requirements
 
 * .NET Framework 4.6.1
-* [ESRGAN](https://github.com/xinntao/ESRGAN/tree/aceb85730832001ec1fa3a77bd6856b75e1d0e87) (<-- yes, from this link only)
+* [ESRGAN](https://github.com/xinntao/ESRGAN/archive/old-arch.zip) (<-- yes, from this link)
 * [BasicSR](https://github.com/victorca25/BasicSR) if you wish to use it instead of ESRGAN
 
 ## How to use
