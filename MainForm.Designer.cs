@@ -937,7 +937,6 @@
             this.ignoreAlpha_checkBox.Size = new System.Drawing.Size(124, 17);
             this.ignoreAlpha_checkBox.TabIndex = 25;
             this.ignoreAlpha_checkBox.Text = "Ignore alpha channel";
-            this.ignoreAlpha_checkBox.ThreeState = true;
             this.toolTip1.SetToolTip(this.ignoreAlpha_checkBox, "Don\'t create alpha tiles in LR, don\'t read alpha tiles from results");
             this.ignoreAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
@@ -1183,7 +1182,6 @@
             this.splitRGB_checkBox.Size = new System.Drawing.Size(116, 17);
             this.splitRGB_checkBox.TabIndex = 25;
             this.splitRGB_checkBox.Text = "Split RGB channels";
-            this.splitRGB_checkBox.ThreeState = true;
             this.splitRGB_checkBox.UseVisualStyleBackColor = true;
             // 
             // profileModel_comboBox
@@ -1207,7 +1205,6 @@
             this.useProfileModel_checkBox.Size = new System.Drawing.Size(113, 17);
             this.useProfileModel_checkBox.TabIndex = 25;
             this.useProfileModel_checkBox.Text = "Use specific model";
-            this.useProfileModel_checkBox.ThreeState = true;
             this.useProfileModel_checkBox.UseVisualStyleBackColor = true;
             this.useProfileModel_checkBox.CheckedChanged += new System.EventHandler(this.UseProfileModel_checkBox_CheckedChanged);
             // 
@@ -1232,7 +1229,6 @@
             this.useDifferentModelForAlpha_checkBox.Size = new System.Drawing.Size(159, 17);
             this.useDifferentModelForAlpha_checkBox.TabIndex = 25;
             this.useDifferentModelForAlpha_checkBox.Text = "Use different model for alpha";
-            this.useDifferentModelForAlpha_checkBox.ThreeState = true;
             this.toolTip1.SetToolTip(this.useDifferentModelForAlpha_checkBox, "Need to split images when changing this setting");
             this.useDifferentModelForAlpha_checkBox.UseVisualStyleBackColor = true;
             this.useDifferentModelForAlpha_checkBox.CheckedChanged += new System.EventHandler(this.useDifferentModelForAlpha_checkBox_CheckedChanged);
@@ -1247,7 +1243,6 @@
             this.seamlessTextures_checkBox.Size = new System.Drawing.Size(137, 17);
             this.seamlessTextures_checkBox.TabIndex = 30;
             this.seamlessTextures_checkBox.Text = "Seamless (tiled) textures";
-            this.seamlessTextures_checkBox.ThreeState = true;
             this.toolTip1.SetToolTip(this.seamlessTextures_checkBox, "Use if original image is seamless texture");
             this.seamlessTextures_checkBox.UseVisualStyleBackColor = true;
             // 
