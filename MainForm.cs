@@ -261,8 +261,9 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.CurrentProfile.OverwriteMode, v => v.overwriteMode_comboBox.SelectedValue);
 
             this.OneWayBind(ViewModel, vm => vm.ProgressBarValue, v => v.ProgressBarValue);
-            this.Bind(ViewModel, vm => vm.WindowOnTop, v => v.TopMost);
 
+            this.Bind(ViewModel, vm => vm.WindowOnTop, v => v.topMost_checkBox.Checked);
+            this.OneWayBind(ViewModel, vm => vm.WindowOnTop, v => v.TopMost);
         }
 
         void BindSettingsTab()
@@ -1560,12 +1561,7 @@ namespace ImageEnhancingUtility.Winforms
                 ViewModel.LoadFilter(selectedRule.Filter);
             }
         }
-
-        private void TopMost_checkBox_CheckedChanged(object sender, EventArgs e)
-        {
-            TopMost = topMost_checkBox.Checked;
-        }
-
+           
         private void RulePriority_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             int newValue = (int)rulePriority_numericUpDown.Value;

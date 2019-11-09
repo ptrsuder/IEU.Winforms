@@ -1429,7 +1429,6 @@
             this.topMost_checkBox.TabIndex = 38;
             this.topMost_checkBox.Text = "Stay on top";
             this.topMost_checkBox.UseVisualStyleBackColor = true;
-            this.topMost_checkBox.CheckedChanged += new System.EventHandler(this.TopMost_checkBox_CheckedChanged);
             // 
             // deleteResults_checkBox
             // 
