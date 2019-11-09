@@ -349,15 +349,21 @@ namespace ImageEnhancingUtility.Winforms
             this.BindCommand(ViewModel, vm => vm.MergeCommand, v => v.merge_button);
             this.BindCommand(ViewModel, vm => vm.SplitUpscaleMergeCommand, v => v.runAll_button);
            
-            ViewModel.SplitCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red)); });
-            ViewModel.UpscaleCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red)); });
+            ViewModel.SplitCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
+            ViewModel.UpscaleCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
             ViewModel.MergeCommand.ThrownExceptions.Subscribe(error => 
             {
-                WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red));
-                if(error.InnerException != null)
-                    WriteToLogsThreadSafe(new LogMessage(error.InnerException.Message, Color.Red));
+                WriteErrors(error);
             });
-            ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => { WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red)); });
+            ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
+        }
+
+        void WriteErrors(Exception error)
+        {           
+            if (error.InnerException != null)
+                WriteToLogsThreadSafe(new LogMessage(error.InnerException.Message, Color.Red));
+            else
+                WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red));
         }
 
         void BindAdvanced()
