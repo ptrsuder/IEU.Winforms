@@ -748,15 +748,10 @@ namespace ImageEnhancingUtility.Winforms
             using (Graphics g = Graphics.FromImage(result))
             {
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.InterpolationMode = InterpolationMode.NearestNeighbor;
                 g.DrawImage(zoomImageBox.Image, new Rectangle(0, 0, w, h), visibleImageRegion, GraphicsUnit.Pixel);
-            }
-            //if( previewImageBox.Image != null)            
-            //    previewImageBox.Image.Dispose();
-            previewImageBox.Image = result;
-
-            //if (originalPreview != null)
-            //    originalPreview.Dispose();                  
+            }            
+            previewImageBox.Image = result;                        
             originalPreview = result;
             resultPreview = null;
         }
