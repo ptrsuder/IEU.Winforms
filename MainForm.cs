@@ -1053,7 +1053,24 @@ namespace ImageEnhancingUtility.Winforms
             }
         }
 
-        private void zoomLevelsToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private async void previewSaveComparison_button_Click(object sender, EventArgs e)
+        {
+            if (resultPreview == null)
+                return;
+            Bitmap outputImage = new Bitmap(2*resultPreview.Width, resultPreview.Height);
+            using (Graphics graphics = Graphics.FromImage(outputImage))
+            {
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                graphics.DrawImage(originalPreview, new Rectangle(0,0, resultPreview.Width, resultPreview.Height),
+                    new Rectangle(new Point(), originalPreview.Size), GraphicsUnit.Pixel);
+                graphics.DrawImage(resultPreview, new Rectangle(resultPreview.Width, 0, resultPreview.Width, resultPreview.Height),
+                    new Rectangle(0, 0, resultPreview.Width, resultPreview.Height), GraphicsUnit.Pixel);
+            }
+            Clipboard.SetDataObject(outputImage);
+        }
+
+            private void zoomLevelsToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int zoom;
 

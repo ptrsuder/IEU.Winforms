@@ -64,6 +64,7 @@
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.previewUpdate_button = new System.Windows.Forms.Button();
             this.previewSave_button = new System.Windows.Forms.Button();
+            this.button_previewSaveComparison = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.openFromFileToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -735,15 +736,17 @@
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
+            this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(634, 636);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(626, 118);
             this.tableLayoutPanel6.TabIndex = 10;
             // 
@@ -753,7 +756,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(307, 112);
+            this.previewUpdate_button.Size = new System.Drawing.Size(306, 70);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -763,13 +766,26 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(316, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(315, 3);
             this.previewSave_button.Name = "previewSave_button";
-            this.previewSave_button.Size = new System.Drawing.Size(307, 112);
+            this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
+            this.previewSave_button.Size = new System.Drawing.Size(308, 112);
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
             this.previewSave_button.Click += new System.EventHandler(this.previewSave_button_Click);
+            // 
+            // button_previewSaveComparison
+            // 
+            this.button_previewSaveComparison.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 79);
+            this.button_previewSaveComparison.Name = "button_previewSaveComparison";
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(306, 36);
+            this.button_previewSaveComparison.TabIndex = 7;
+            this.button_previewSaveComparison.Text = "Save comparison to clipboard";
+            this.button_previewSaveComparison.UseVisualStyleBackColor = true;
+            this.button_previewSaveComparison.Click += new System.EventHandler(this.previewSaveComparison_button_Click);
             // 
             // toolStrip
             // 
@@ -3338,6 +3354,7 @@
         private System.Windows.Forms.Label imageBName_label;
         private System.Windows.Forms.Label imageAName_label;
         private System.Windows.Forms.CheckBox topMost_checkBox;
+        private System.Windows.Forms.Button button_previewSaveComparison;
     }
 }
 
