@@ -256,6 +256,8 @@
             this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.useCondaEnv_checkBox = new System.Windows.Forms.CheckBox();
+            this.condaEnvName_textBox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -864,6 +866,7 @@
             this.settings_tabPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.settings_tabPage.Controls.Add(this.deleteProfile_button);
             this.settings_tabPage.Controls.Add(this.groupBox9);
+            this.settings_tabPage.Controls.Add(this.condaEnvName_textBox);
             this.settings_tabPage.Controls.Add(this.saveProfileName_textBox);
             this.settings_tabPage.Controls.Add(this.useBasicSR_checkBox);
             this.settings_tabPage.Controls.Add(this.modelsPath_textBox);
@@ -873,6 +876,7 @@
             this.settings_tabPage.Controls.Add(this.profiles_listBox);
             this.settings_tabPage.Controls.Add(this.label7);
             this.settings_tabPage.Controls.Add(this.loadProfile_button);
+            this.settings_tabPage.Controls.Add(this.useCondaEnv_checkBox);
             this.settings_tabPage.Controls.Add(this.topMost_checkBox);
             this.settings_tabPage.Controls.Add(this.deleteResults_checkBox);
             this.settings_tabPage.Controls.Add(this.outputPath_textBox);
@@ -3017,6 +3021,30 @@
             // 
             this.toolTip1.AutomaticDelay = 300;
             // 
+            // useCondaEnv_checkBox
+            // 
+            this.useCondaEnv_checkBox.AutoSize = true;
+            this.useCondaEnv_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(319, 284);
+            this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
+            this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.useCondaEnv_checkBox.Size = new System.Drawing.Size(131, 17);
+            this.useCondaEnv_checkBox.TabIndex = 38;
+            this.useCondaEnv_checkBox.Text = "Use conda enviroment";
+            this.useCondaEnv_checkBox.UseVisualStyleBackColor = true;
+            this.useCondaEnv_checkBox.CheckedChanged += new System.EventHandler(this.useCondaEnv_checkBox_CheckedChanged);
+            // 
+            // condaEnvName_textBox
+            // 
+            this.condaEnvName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.condaEnvName_textBox.Enabled = false;
+            this.condaEnvName_textBox.Location = new System.Drawing.Point(456, 281);
+            this.condaEnvName_textBox.Name = "condaEnvName_textBox";
+            this.condaEnvName_textBox.Size = new System.Drawing.Size(149, 20);
+            this.condaEnvName_textBox.TabIndex = 52;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -3355,6 +3383,8 @@
         private System.Windows.Forms.Label imageAName_label;
         private System.Windows.Forms.CheckBox topMost_checkBox;
         private System.Windows.Forms.Button button_previewSaveComparison;
+        private System.Windows.Forms.TextBox condaEnvName_textBox;
+        private System.Windows.Forms.CheckBox useCondaEnv_checkBox;
     }
 }
 

@@ -296,6 +296,9 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.CurrentProfile.SeamlessTexture, v => v.seamlessTextures_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.OverlapSize, v => v.overlapSize_numericUpDown.Value, x => x, x => (int)x);
 
+            this.Bind(ViewModel, vm => vm.UseCondaEnv, v => v.useCondaEnv_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CondaEnv, v => v.condaEnvName_textBox.Text);
+
             this.Bind(ViewModel, vm => vm.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
         }
         
@@ -1573,7 +1576,12 @@ namespace ImageEnhancingUtility.Winforms
                 ViewModel.LoadFilter(selectedRule.Filter);
             }
         }
-           
+
+        private void useCondaEnv_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            condaEnvName_textBox.Enabled = useCondaEnv_checkBox.Checked;
+        }
+
         private void RulePriority_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             int newValue = (int)rulePriority_numericUpDown.Value;
