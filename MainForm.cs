@@ -283,6 +283,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.CurrentProfile.IgnoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.CurrentProfile.IgnoreSingleColorAlphas, v => v.ignoreSingleColorAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.CurrentProfile.BalanceAlphas, v => v.balanceAlphas_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.BalanceRgb, v => v.balanceRgb_checkBox.Checked);
 
             this.Bind(ViewModel, vm => vm.CurrentProfile.DeleteResults, v => v.deleteResults_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.CreateMemoryImage, v => v.createMemoryImage_checkBox.Checked);

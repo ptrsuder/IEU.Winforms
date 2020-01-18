@@ -97,6 +97,7 @@
             this.noiseReductionType_comboBox = new System.Windows.Forms.ComboBox();
             this.outputFormat_comboBox = new System.Windows.Forms.ComboBox();
             this.ignoreSingleColorAlpha_checkBox = new System.Windows.Forms.CheckBox();
+            this.balanceRgb_checkBox = new System.Windows.Forms.CheckBox();
             this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
             this.splitRGB_checkBox = new System.Windows.Forms.CheckBox();
             this.profileModel_comboBox = new System.Windows.Forms.ComboBox();
@@ -932,6 +933,7 @@
             this.groupBox9.Controls.Add(this.imagePreprocess_groupBox);
             this.groupBox9.Controls.Add(this.outputFormat_comboBox);
             this.groupBox9.Controls.Add(this.ignoreSingleColorAlpha_checkBox);
+            this.groupBox9.Controls.Add(this.balanceRgb_checkBox);
             this.groupBox9.Controls.Add(this.balanceAlphas_checkBox);
             this.groupBox9.Controls.Add(this.splitRGB_checkBox);
             this.groupBox9.Controls.Add(this.profileModel_comboBox);
@@ -1181,11 +1183,22 @@
             this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid alphas (pure white or black) will be always ignored on split");
             this.ignoreSingleColorAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
+            // balanceRgb_checkBox
+            // 
+            this.balanceRgb_checkBox.AutoSize = true;
+            this.balanceRgb_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.balanceRgb_checkBox.Location = new System.Drawing.Point(403, 20);
+            this.balanceRgb_checkBox.Name = "balanceRgb_checkBox";
+            this.balanceRgb_checkBox.Size = new System.Drawing.Size(153, 17);
+            this.balanceRgb_checkBox.TabIndex = 25;
+            this.balanceRgb_checkBox.Text = "Use globalbalance on RGB";
+            this.balanceRgb_checkBox.UseVisualStyleBackColor = true;
+            // 
             // balanceAlphas_checkBox
             // 
             this.balanceAlphas_checkBox.AutoSize = true;
             this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(300, 39);
+            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(403, 39);
             this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
             this.balanceAlphas_checkBox.Size = new System.Drawing.Size(161, 17);
             this.balanceAlphas_checkBox.TabIndex = 25;
@@ -3383,6 +3396,7 @@
         private System.Windows.Forms.Label imageAName_label;
         private System.Windows.Forms.CheckBox topMost_checkBox;
         private System.Windows.Forms.Button button_previewSaveComparison;
+        private System.Windows.Forms.CheckBox balanceRgb_checkBox;
         private System.Windows.Forms.TextBox condaEnvName_textBox;
         private System.Windows.Forms.CheckBox useCondaEnv_checkBox;
     }
