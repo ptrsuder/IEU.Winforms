@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
@@ -296,6 +297,15 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.UseBasicSR, v => v.useBasicSR_checkBox.Checked);
 
             this.Bind(ViewModel, vm => vm.CurrentProfile.UseDifferentModelForAlpha, v => v.useDifferentModelForAlpha_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.UseFilterForAlpha, v => v.useFilterForAlpha_checkBox.Checked);         
+
+            filterForAlpha_comboBox.DataSource = new BindingSource(Dictionaries.MagickFilterTypes, null);
+            filterForAlpha_comboBox.DisplayMember = "Value";
+            filterForAlpha_comboBox.ValueMember = "Key";
+            filterForAlpha_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.AlphaFilterType, v => v.filterForAlpha_comboBox.SelectedValue, x => x, x => (int)x);
+
             this.Bind(ViewModel, vm => vm.CurrentProfile.UseModel, v => v.useProfileModel_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.CurrentProfile.SeamlessTexture, v => v.seamlessTextures_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.OverlapSize, v => v.overlapSize_numericUpDown.Value, x => x, x => (int)x);
@@ -370,6 +380,7 @@ namespace ImageEnhancingUtility.Winforms
             ViewModel.MergeCommand.Subscribe(_ => ShowNotification("\nFinished merging images"));
             ViewModel.SplitUpscaleMergeCommand.Subscribe(_ => ShowNotification("\nFinished processing images"));
         }
+
         bool notificationActive = false;
         PopupNotifier popup;
         void ShowNotification(string message)
@@ -463,7 +474,7 @@ namespace ImageEnhancingUtility.Winforms
             resizeImageAfterFilterType_comboBox.SelectedIndex = 0;
             this.Bind(ViewModel, vm => vm.CurrentProfile.ResizeImageAfterFilterType, v => v.resizeImageAfterFilterType_comboBox.SelectedValue, x => x, x => (int)x);
             #endregion
-
+            
             #endregion
         }
 
@@ -1037,6 +1048,8 @@ namespace ImageEnhancingUtility.Winforms
             previewUpdate_button.Enabled = enabled;
             previewSave_button.Enabled = enabled;
             zoomImageBox.Enabled = enabled;
+            previewModels_comboBox.Enabled = enabled;
+            button_previewSaveComparison.Enabled = enabled;
         }
 
         private async void previewUpdate_button_Click(object sender, EventArgs e)
@@ -1084,20 +1097,61 @@ namespace ImageEnhancingUtility.Winforms
         {
             if (resultPreview == null)
                 return;
-            Bitmap outputImage = new Bitmap(2*resultPreview.Width, resultPreview.Height);
+            Bitmap outputImage = new Bitmap(2*resultPreview.Width, resultPreview.Height + 30);
             using (Graphics graphics = Graphics.FromImage(outputImage))
             {
                 graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
                 graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
                 graphics.DrawImage(originalPreview, new Rectangle(0,0, resultPreview.Width, resultPreview.Height),
                     new Rectangle(new Point(), originalPreview.Size), GraphicsUnit.Pixel);
                 graphics.DrawImage(resultPreview, new Rectangle(resultPreview.Width, 0, resultPreview.Width, resultPreview.Height),
                     new Rectangle(0, 0, resultPreview.Width, resultPreview.Height), GraphicsUnit.Pixel);
+                int footerHeight = 35;
+                Bitmap Bmp = new Bitmap(2 * resultPreview.Width, footerHeight);
+                using (Graphics gfx = Graphics.FromImage(Bmp))
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(226, 00, 122)))
+                {
+                    gfx.FillRectangle(brush, 0, 0, 2 * resultPreview.Width, footerHeight);
+                }
+                graphics.DrawImage(Bmp, 0, resultPreview.Height);
+                
+                GraphicsPath p = new GraphicsPath();
+                int fontSize = 21;
+                SizeF s = new Size(999999999, 99999999);
+
+                Font font = new Font("Times New Roman", graphics.DpiY * fontSize / 72);                  
+                int cf = 0, lf = 0;
+                while (s.Width >= 2 * resultPreview.Width)
+                {
+                    fontSize--;
+                    font = new Font(FontFamily.GenericSansSerif, graphics.DpiY * fontSize / 72, FontStyle.Regular);   
+                    s = graphics.MeasureString(previewModels_comboBox.Text, font, new SizeF(), new StringFormat(), out cf, out lf);           
+                }              
+                StringFormat stringFormat = new StringFormat();
+                stringFormat.Alignment = StringAlignment.Center;
+                
+                double a = graphics.DpiY * fontSize / 72;
+                stringFormat.LineAlignment = StringAlignment.Center;                    
+         
+                graphics.DrawString(
+                    $"{previewModels_comboBox.Text}",
+                    font,
+                    Brushes.White,
+                    new Rectangle(0, resultPreview.Height, 2 * resultPreview.Width, footerHeight - 5),
+                    stringFormat );
             }
-            Clipboard.SetDataObject(outputImage);
+            try
+            {
+                Clipboard.SetDataObject(outputImage);
+            }
+            catch
+            { }
         }
 
-            private void zoomLevelsToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void zoomLevelsToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             int zoom;
 
@@ -1384,6 +1438,11 @@ namespace ImageEnhancingUtility.Winforms
                 lastUseDifferentModelAlpha = false;
         }
 
+        private void useFilterForAlpha_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            filterForAlpha_comboBox.Enabled = useFilterForAlpha_checkBox.Checked;            
+        }
+
         private void UseProfileModel_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             profileModel_comboBox.Enabled = useProfileModel_checkBox.Checked;
@@ -1610,7 +1669,7 @@ namespace ImageEnhancingUtility.Winforms
         {
             condaEnvName_textBox.Enabled = useCondaEnv_checkBox.Checked;
         }
-
+        
         private void MainForm_Enter(object sender, EventArgs e)
         {
             if (notificationActive)

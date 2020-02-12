@@ -102,11 +102,14 @@
             this.splitRGB_checkBox = new System.Windows.Forms.CheckBox();
             this.profileModel_comboBox = new System.Windows.Forms.ComboBox();
             this.useProfileModel_checkBox = new System.Windows.Forms.CheckBox();
+            this.filterForAlpha_comboBox = new System.Windows.Forms.ComboBox();
+            this.useFilterForAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.modelForAlpha_comboBox = new System.Windows.Forms.ComboBox();
             this.useDifferentModelForAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.seamlessTextures_checkBox = new System.Windows.Forms.CheckBox();
             this.preserveFormat_checkBox = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
+            this.condaEnvName_textBox = new System.Windows.Forms.TextBox();
             this.saveProfileName_textBox = new System.Windows.Forms.TextBox();
             this.useBasicSR_checkBox = new System.Windows.Forms.CheckBox();
             this.modelsPath_textBox = new System.Windows.Forms.TextBox();
@@ -119,6 +122,8 @@
             this.profiles_listBox = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.loadProfile_button = new System.Windows.Forms.Button();
+            this.useCondaEnv_checkBox = new System.Windows.Forms.CheckBox();
+            this.showPopups_checkBox = new System.Windows.Forms.CheckBox();
             this.topMost_checkBox = new System.Windows.Forms.CheckBox();
             this.deleteResults_checkBox = new System.Windows.Forms.CheckBox();
             this.outputPath_textBox = new System.Windows.Forms.TextBox();
@@ -257,8 +262,6 @@
             this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.useCondaEnv_checkBox = new System.Windows.Forms.CheckBox();
-            this.condaEnvName_textBox = new System.Windows.Forms.TextBox();
             this.popupNotifier1 = new Tulpep.NotificationWindow.PopupNotifier();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
@@ -879,6 +882,7 @@
             this.settings_tabPage.Controls.Add(this.label7);
             this.settings_tabPage.Controls.Add(this.loadProfile_button);
             this.settings_tabPage.Controls.Add(this.useCondaEnv_checkBox);
+            this.settings_tabPage.Controls.Add(this.showPopups_checkBox);
             this.settings_tabPage.Controls.Add(this.topMost_checkBox);
             this.settings_tabPage.Controls.Add(this.deleteResults_checkBox);
             this.settings_tabPage.Controls.Add(this.outputPath_textBox);
@@ -919,7 +923,7 @@
             // deleteProfile_button
             // 
             this.deleteProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteProfile_button.Location = new System.Drawing.Point(825, 590);
+            this.deleteProfile_button.Location = new System.Drawing.Point(825, 616);
             this.deleteProfile_button.Name = "deleteProfile_button";
             this.deleteProfile_button.Size = new System.Drawing.Size(149, 31);
             this.deleteProfile_button.TabIndex = 53;
@@ -939,6 +943,8 @@
             this.groupBox9.Controls.Add(this.splitRGB_checkBox);
             this.groupBox9.Controls.Add(this.profileModel_comboBox);
             this.groupBox9.Controls.Add(this.useProfileModel_checkBox);
+            this.groupBox9.Controls.Add(this.filterForAlpha_comboBox);
+            this.groupBox9.Controls.Add(this.useFilterForAlpha_checkBox);
             this.groupBox9.Controls.Add(this.modelForAlpha_comboBox);
             this.groupBox9.Controls.Add(this.useDifferentModelForAlpha_checkBox);
             this.groupBox9.Controls.Add(this.seamlessTextures_checkBox);
@@ -946,7 +952,7 @@
             this.groupBox9.Controls.Add(this.label23);
             this.groupBox9.Location = new System.Drawing.Point(94, 353);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(570, 268);
+            this.groupBox9.Size = new System.Drawing.Size(570, 294);
             this.groupBox9.TabIndex = 52;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Profile:Settings";
@@ -970,7 +976,7 @@
             this.imagePostprocess_groupBox.Controls.Add(this.label21);
             this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterFilterType_comboBox);
             this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterScaleFactor_comboBox);
-            this.imagePostprocess_groupBox.Location = new System.Drawing.Point(303, 122);
+            this.imagePostprocess_groupBox.Location = new System.Drawing.Point(303, 149);
             this.imagePostprocess_groupBox.Name = "imagePostprocess_groupBox";
             this.imagePostprocess_groupBox.Size = new System.Drawing.Size(261, 126);
             this.imagePostprocess_groupBox.TabIndex = 42;
@@ -1098,7 +1104,7 @@
             this.imagePreprocess_groupBox.Controls.Add(this.resizeImageBeforeScaleFactor_comboBox);
             this.imagePreprocess_groupBox.Controls.Add(this.resizeImageBeforeFilterType_comboBox);
             this.imagePreprocess_groupBox.Controls.Add(this.noiseReductionType_comboBox);
-            this.imagePreprocess_groupBox.Location = new System.Drawing.Point(18, 157);
+            this.imagePreprocess_groupBox.Location = new System.Drawing.Point(18, 184);
             this.imagePreprocess_groupBox.Name = "imagePreprocess_groupBox";
             this.imagePreprocess_groupBox.Size = new System.Drawing.Size(279, 91);
             this.imagePreprocess_groupBox.TabIndex = 41;
@@ -1167,7 +1173,7 @@
             // 
             this.outputFormat_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.outputFormat_comboBox.FormattingEnabled = true;
-            this.outputFormat_comboBox.Location = new System.Drawing.Point(174, 14);
+            this.outputFormat_comboBox.Location = new System.Drawing.Point(109, 16);
             this.outputFormat_comboBox.Name = "outputFormat_comboBox";
             this.outputFormat_comboBox.Size = new System.Drawing.Size(120, 21);
             this.outputFormat_comboBox.TabIndex = 48;
@@ -1178,10 +1184,10 @@
             this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(147, 39);
             this.ignoreSingleColorAlpha_checkBox.Name = "ignoreSingleColorAlpha_checkBox";
-            this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(144, 17);
+            this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(135, 17);
             this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
-            this.ignoreSingleColorAlpha_checkBox.Text = "Ignore single color alphas";
-            this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid alphas (pure white or black) will be always ignored on split");
+            this.ignoreSingleColorAlpha_checkBox.Text = "Ignore solid white alpha";
+            this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid white alpha will be always ignored on split");
             this.ignoreSingleColorAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
             // balanceRgb_checkBox
@@ -1193,6 +1199,7 @@
             this.balanceRgb_checkBox.Size = new System.Drawing.Size(153, 17);
             this.balanceRgb_checkBox.TabIndex = 25;
             this.balanceRgb_checkBox.Text = "Use globalbalance on RGB";
+            this.toolTip1.SetToolTip(this.balanceRgb_checkBox, "No need to enable this for most cases");
             this.balanceRgb_checkBox.UseVisualStyleBackColor = true;
             // 
             // balanceAlphas_checkBox
@@ -1201,17 +1208,17 @@
             this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.balanceAlphas_checkBox.Location = new System.Drawing.Point(403, 39);
             this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
-            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(161, 17);
+            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(156, 17);
             this.balanceAlphas_checkBox.TabIndex = 25;
-            this.balanceAlphas_checkBox.Text = "Use globalbalance on alphas";
-            this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "Disable if all image alphas that represents transparency mask");
+            this.balanceAlphas_checkBox.Text = "Use globalbalance on alpha";
+            this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "No need to enable this for most cases");
             this.balanceAlphas_checkBox.UseVisualStyleBackColor = true;
             // 
             // splitRGB_checkBox
             // 
             this.splitRGB_checkBox.AutoSize = true;
             this.splitRGB_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.splitRGB_checkBox.Location = new System.Drawing.Point(17, 111);
+            this.splitRGB_checkBox.Location = new System.Drawing.Point(17, 138);
             this.splitRGB_checkBox.Name = "splitRGB_checkBox";
             this.splitRGB_checkBox.Size = new System.Drawing.Size(116, 17);
             this.splitRGB_checkBox.TabIndex = 25;
@@ -1225,7 +1232,7 @@
             this.profileModel_comboBox.Enabled = false;
             this.profileModel_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.profileModel_comboBox.FormattingEnabled = true;
-            this.profileModel_comboBox.Location = new System.Drawing.Point(182, 87);
+            this.profileModel_comboBox.Location = new System.Drawing.Point(182, 114);
             this.profileModel_comboBox.Name = "profileModel_comboBox";
             this.profileModel_comboBox.Size = new System.Drawing.Size(382, 21);
             this.profileModel_comboBox.TabIndex = 47;
@@ -1234,13 +1241,37 @@
             // 
             this.useProfileModel_checkBox.AutoSize = true;
             this.useProfileModel_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useProfileModel_checkBox.Location = new System.Drawing.Point(17, 88);
+            this.useProfileModel_checkBox.Location = new System.Drawing.Point(17, 115);
             this.useProfileModel_checkBox.Name = "useProfileModel_checkBox";
             this.useProfileModel_checkBox.Size = new System.Drawing.Size(113, 17);
             this.useProfileModel_checkBox.TabIndex = 25;
             this.useProfileModel_checkBox.Text = "Use specific model";
             this.useProfileModel_checkBox.UseVisualStyleBackColor = true;
             this.useProfileModel_checkBox.CheckedChanged += new System.EventHandler(this.UseProfileModel_checkBox_CheckedChanged);
+            // 
+            // filterForAlpha_comboBox
+            // 
+            this.filterForAlpha_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.filterForAlpha_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.filterForAlpha_comboBox.Enabled = false;
+            this.filterForAlpha_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.filterForAlpha_comboBox.FormattingEnabled = true;
+            this.filterForAlpha_comboBox.Location = new System.Drawing.Point(182, 87);
+            this.filterForAlpha_comboBox.Name = "filterForAlpha_comboBox";
+            this.filterForAlpha_comboBox.Size = new System.Drawing.Size(121, 21);
+            this.filterForAlpha_comboBox.TabIndex = 47;
+            // 
+            // useFilterForAlpha_checkBox
+            // 
+            this.useFilterForAlpha_checkBox.AutoSize = true;
+            this.useFilterForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useFilterForAlpha_checkBox.Location = new System.Drawing.Point(17, 89);
+            this.useFilterForAlpha_checkBox.Name = "useFilterForAlpha_checkBox";
+            this.useFilterForAlpha_checkBox.Size = new System.Drawing.Size(109, 17);
+            this.useFilterForAlpha_checkBox.TabIndex = 25;
+            this.useFilterForAlpha_checkBox.Text = "Use filter for alpha";
+            this.useFilterForAlpha_checkBox.UseVisualStyleBackColor = true;
+            this.useFilterForAlpha_checkBox.CheckedChanged += new System.EventHandler(this.useFilterForAlpha_checkBox_CheckedChanged);
             // 
             // modelForAlpha_comboBox
             // 
@@ -1272,7 +1303,7 @@
             this.seamlessTextures_checkBox.AutoSize = true;
             this.seamlessTextures_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.seamlessTextures_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(17, 133);
+            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(17, 160);
             this.seamlessTextures_checkBox.Name = "seamlessTextures_checkBox";
             this.seamlessTextures_checkBox.Size = new System.Drawing.Size(137, 17);
             this.seamlessTextures_checkBox.TabIndex = 30;
@@ -1285,28 +1316,37 @@
             this.preserveFormat_checkBox.AutoSize = true;
             this.preserveFormat_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.preserveFormat_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.preserveFormat_checkBox.Location = new System.Drawing.Point(300, 17);
+            this.preserveFormat_checkBox.Location = new System.Drawing.Point(235, 19);
             this.preserveFormat_checkBox.Name = "preserveFormat_checkBox";
             this.preserveFormat_checkBox.Size = new System.Drawing.Size(142, 17);
             this.preserveFormat_checkBox.TabIndex = 30;
             this.preserveFormat_checkBox.Text = "Use original image format";
-            this.toolTip1.SetToolTip(this.preserveFormat_checkBox, "Use original image extension with settings from Output fortmat tab");
+            this.toolTip1.SetToolTip(this.preserveFormat_checkBox, "Use original image extension with settings from [Output formats] tab");
             this.preserveFormat_checkBox.UseVisualStyleBackColor = true;
             this.preserveFormat_checkBox.CheckedChanged += new System.EventHandler(this.preserveFormat_checkBox_CheckedChanged);
             // 
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(98, 17);
+            this.label23.Location = new System.Drawing.Point(33, 19);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(71, 13);
             this.label23.TabIndex = 24;
             this.label23.Text = "Output format";
             // 
+            // condaEnvName_textBox
+            // 
+            this.condaEnvName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.condaEnvName_textBox.Enabled = false;
+            this.condaEnvName_textBox.Location = new System.Drawing.Point(456, 283);
+            this.condaEnvName_textBox.Name = "condaEnvName_textBox";
+            this.condaEnvName_textBox.Size = new System.Drawing.Size(157, 20);
+            this.condaEnvName_textBox.TabIndex = 52;
+            // 
             // saveProfileName_textBox
             // 
             this.saveProfileName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.saveProfileName_textBox.Location = new System.Drawing.Point(825, 495);
+            this.saveProfileName_textBox.Location = new System.Drawing.Point(825, 521);
             this.saveProfileName_textBox.Name = "saveProfileName_textBox";
             this.saveProfileName_textBox.Size = new System.Drawing.Size(149, 20);
             this.saveProfileName_textBox.TabIndex = 52;
@@ -1344,7 +1384,7 @@
             // saveProfile_button
             // 
             this.saveProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveProfile_button.Location = new System.Drawing.Point(825, 521);
+            this.saveProfile_button.Location = new System.Drawing.Point(825, 547);
             this.saveProfile_button.Name = "saveProfile_button";
             this.saveProfile_button.Size = new System.Drawing.Size(149, 31);
             this.saveProfile_button.TabIndex = 50;
@@ -1419,7 +1459,7 @@
             this.profiles_listBox.FormattingEnabled = true;
             this.profiles_listBox.Location = new System.Drawing.Point(670, 359);
             this.profiles_listBox.Name = "profiles_listBox";
-            this.profiles_listBox.Size = new System.Drawing.Size(149, 262);
+            this.profiles_listBox.Size = new System.Drawing.Size(149, 288);
             this.profiles_listBox.TabIndex = 47;
             this.profiles_listBox.SelectedIndexChanged += new System.EventHandler(this.configs_listBox_SelectedIndexChanged);
             // 
@@ -1435,7 +1475,7 @@
             // loadProfile_button
             // 
             this.loadProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.loadProfile_button.Location = new System.Drawing.Point(825, 555);
+            this.loadProfile_button.Location = new System.Drawing.Point(825, 581);
             this.loadProfile_button.Name = "loadProfile_button";
             this.loadProfile_button.Size = new System.Drawing.Size(149, 31);
             this.loadProfile_button.TabIndex = 51;
@@ -1443,6 +1483,20 @@
             this.loadProfile_button.UseVisualStyleBackColor = true;
             this.loadProfile_button.Click += new System.EventHandler(this.LoadProfile_button_Click);
             // 
+            // useCondaEnv_checkBox
+            // 
+            this.useCondaEnv_checkBox.AutoSize = true;
+            this.useCondaEnv_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(319, 284);
+            this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
+            this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.useCondaEnv_checkBox.Size = new System.Drawing.Size(131, 17);
+            this.useCondaEnv_checkBox.TabIndex = 38;
+            this.useCondaEnv_checkBox.Text = "Use conda enviroment";
+            this.useCondaEnv_checkBox.UseVisualStyleBackColor = true;
+            this.useCondaEnv_checkBox.CheckedChanged += new System.EventHandler(this.useCondaEnv_checkBox_CheckedChanged);
             // 
             // showPopups_checkBox
             // 
@@ -1461,12 +1515,10 @@
             // topMost_checkBox
             // 
             this.topMost_checkBox.AutoSize = true;
-            this.topMost_checkBox.Checked = true;
-            this.topMost_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.topMost_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.topMost_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.topMost_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.topMost_checkBox.Location = new System.Drawing.Point(319, 261);
+            this.topMost_checkBox.Location = new System.Drawing.Point(670, 261);
             this.topMost_checkBox.Name = "topMost_checkBox";
             this.topMost_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.topMost_checkBox.Size = new System.Drawing.Size(78, 17);
@@ -1620,7 +1672,7 @@
             this.useCPU_checkBox.Size = new System.Drawing.Size(68, 17);
             this.useCPU_checkBox.TabIndex = 30;
             this.useCPU_checkBox.Text = "Use CPU";
-            this.toolTip1.SetToolTip(this.useCPU_checkBox, "Use CPU instead of GPU (very slow, especially on Windows)");
+            this.toolTip1.SetToolTip(this.useCPU_checkBox, "Use CPU instead of GPU (very slow)");
             this.useCPU_checkBox.UseVisualStyleBackColor = true;
             // 
             // changeOutputPath_button
@@ -3403,6 +3455,8 @@
         private System.Windows.Forms.CheckBox balanceRgb_checkBox;
         private System.Windows.Forms.TextBox condaEnvName_textBox;
         private System.Windows.Forms.CheckBox useCondaEnv_checkBox;
+        private System.Windows.Forms.ComboBox filterForAlpha_comboBox;
+        private System.Windows.Forms.CheckBox useFilterForAlpha_checkBox;
         private Tulpep.NotificationWindow.PopupNotifier popupNotifier1;
         private System.Windows.Forms.CheckBox showPopups_checkBox;
     }
