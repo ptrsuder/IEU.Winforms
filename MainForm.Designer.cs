@@ -259,6 +259,7 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.useCondaEnv_checkBox = new System.Windows.Forms.CheckBox();
             this.condaEnvName_textBox = new System.Windows.Forms.TextBox();
+            this.popupNotifier1 = new Tulpep.NotificationWindow.PopupNotifier();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -1441,6 +1442,21 @@
             this.loadProfile_button.Text = "Load profile";
             this.loadProfile_button.UseVisualStyleBackColor = true;
             this.loadProfile_button.Click += new System.EventHandler(this.LoadProfile_button_Click);
+            // 
+            // 
+            // showPopups_checkBox
+            // 
+            this.showPopups_checkBox.AutoSize = true;
+            this.showPopups_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.showPopups_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.showPopups_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showPopups_checkBox.Location = new System.Drawing.Point(670, 283);
+            this.showPopups_checkBox.Name = "showPopups_checkBox";
+            this.showPopups_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.showPopups_checkBox.Size = new System.Drawing.Size(143, 17);
+            this.showPopups_checkBox.TabIndex = 38;
+            this.showPopups_checkBox.Text = "Show popup notifications";
+            this.showPopups_checkBox.UseVisualStyleBackColor = true;
             // 
             // topMost_checkBox
             // 
@@ -3034,29 +3050,16 @@
             // 
             this.toolTip1.AutomaticDelay = 300;
             // 
-            // useCondaEnv_checkBox
+            // popupNotifier1
             // 
-            this.useCondaEnv_checkBox.AutoSize = true;
-            this.useCondaEnv_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(319, 284);
-            this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
-            this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.useCondaEnv_checkBox.Size = new System.Drawing.Size(131, 17);
-            this.useCondaEnv_checkBox.TabIndex = 38;
-            this.useCondaEnv_checkBox.Text = "Use conda enviroment";
-            this.useCondaEnv_checkBox.UseVisualStyleBackColor = true;
-            this.useCondaEnv_checkBox.CheckedChanged += new System.EventHandler(this.useCondaEnv_checkBox_CheckedChanged);
-            // 
-            // condaEnvName_textBox
-            // 
-            this.condaEnvName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.condaEnvName_textBox.Enabled = false;
-            this.condaEnvName_textBox.Location = new System.Drawing.Point(456, 281);
-            this.condaEnvName_textBox.Name = "condaEnvName_textBox";
-            this.condaEnvName_textBox.Size = new System.Drawing.Size(149, 20);
-            this.condaEnvName_textBox.TabIndex = 52;
+            this.popupNotifier1.ContentFont = new System.Drawing.Font("Tahoma", 8F);
+            this.popupNotifier1.ContentText = null;
+            this.popupNotifier1.Image = null;
+            this.popupNotifier1.IsRightToLeft = false;
+            this.popupNotifier1.OptionsMenu = null;
+            this.popupNotifier1.Size = new System.Drawing.Size(400, 100);
+            this.popupNotifier1.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
+            this.popupNotifier1.TitleText = null;
             // 
             // MainForm
             // 
@@ -3070,6 +3073,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image Enhancing Utility";
+            this.Activated += new System.EventHandler(this.MainForm_Enter);
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResizeBegin += new System.EventHandler(this.MainForm_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
@@ -3399,6 +3403,8 @@
         private System.Windows.Forms.CheckBox balanceRgb_checkBox;
         private System.Windows.Forms.TextBox condaEnvName_textBox;
         private System.Windows.Forms.CheckBox useCondaEnv_checkBox;
+        private Tulpep.NotificationWindow.PopupNotifier popupNotifier1;
+        private System.Windows.Forms.CheckBox showPopups_checkBox;
     }
 }
 

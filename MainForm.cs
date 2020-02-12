@@ -17,6 +17,7 @@ using GitHubUpdate;
 using ImageEnhancingUtility.Core;
 using ImageEnhancingUtility.Core.Utility;
 using ReactiveUI;
+using Tulpep.NotificationWindow;
 using Rule = ImageEnhancingUtility.Core.Rule;
 
 //TODO:
@@ -264,6 +265,8 @@ namespace ImageEnhancingUtility.Winforms
 
             this.Bind(ViewModel, vm => vm.WindowOnTop, v => v.topMost_checkBox.Checked);
             this.OneWayBind(ViewModel, vm => vm.WindowOnTop, v => v.TopMost);
+
+            this.Bind(ViewModel, vm => vm.ShowPopups, v => v.showPopups_checkBox.Checked);
         }
 
         void BindSettingsTab()
@@ -361,6 +364,31 @@ namespace ImageEnhancingUtility.Winforms
                 WriteErrors(error);
             });
             ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
+
+            ViewModel.SplitCommand.Subscribe(_ => ShowNotification("\nFinished splitting images"));
+            ViewModel.UpscaleCommand.Subscribe(_ => ShowNotification("\nFinished upscaling images"));
+            ViewModel.MergeCommand.Subscribe(_ => ShowNotification("\nFinished merging images"));
+            ViewModel.SplitUpscaleMergeCommand.Subscribe(_ => ShowNotification("\nFinished processing images"));
+        }
+        bool notificationActive = false;
+        PopupNotifier popup;
+        void ShowNotification(string message)
+        {
+            if (ViewModel.ShowPopups)
+            {
+                popup = new PopupNotifier();
+                popup.Delay = 300000;
+                popup.TitleText = "Operation completed!";
+                popup.ContentText = message;
+                popup.Click += Popup_Click;
+                popup.Popup();
+                notificationActive = true;
+            }            
+        }
+
+        private void Popup_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;           
         }
 
         void WriteErrors(Exception error)
@@ -1581,6 +1609,12 @@ namespace ImageEnhancingUtility.Winforms
         private void useCondaEnv_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             condaEnvName_textBox.Enabled = useCondaEnv_checkBox.Checked;
+        }
+
+        private void MainForm_Enter(object sender, EventArgs e)
+        {
+            if (notificationActive)
+                popup.Hide();
         }
 
         private void RulePriority_numericUpDown_ValueChanged(object sender, EventArgs e)
