@@ -120,7 +120,7 @@ namespace ImageEnhancingUtility.Winforms
             this.OneWayBind(ViewModel, vm => bindingDataFilters, v => v.ruleFilters_comboBox.DataSource);
             ruleFilters_comboBox.DisplayMember = "Name";
 
-            ViewModel = new IEU();
+            ViewModel = new IEU(false);
 
             BindMainTab();
             
@@ -943,6 +943,20 @@ namespace ImageEnhancingUtility.Winforms
                 }
             }
         }
+        
+        private void PreviewInProgress(bool inProgress)
+        {
+            int progress = inProgress ? 30 : 0;
+            bool enabled = inProgress ? false : true;
+            preview_progressBar.Style = inProgress ? ProgressBarStyle.Marquee : preview_progressBar.Style = ProgressBarStyle.Continuous;
+            preview_progressBar.MarqueeAnimationSpeed = progress;
+            previewUpdate_button.Enabled = enabled;
+            zoomImageBox.Enabled = enabled;
+            previewModels_comboBox.Enabled = enabled;
+            button_previewSaveComparison.Enabled = enabled;
+            previewSave_button.Enabled = enabled;
+            previewSaveOutputFormat_button.Enabled = enabled;
+        }
 
         #endregion
 
@@ -1012,8 +1026,7 @@ namespace ImageEnhancingUtility.Winforms
                 }
             }
         }
-
-
+        
         private void previewImageBox_MouseDown(object sender, MouseEventArgs e)
         {
             if (originalPreview == null || resultPreview == null)
@@ -1038,20 +1051,7 @@ namespace ImageEnhancingUtility.Winforms
                 UpdatePreview();
             }
         }
-
-        private void PreviewInProgress(bool inProgress)
-        {
-            int progress = inProgress ? 30 : 0;
-            bool enabled = inProgress ? false : true;
-            preview_progressBar.Style = inProgress? ProgressBarStyle.Marquee : preview_progressBar.Style = ProgressBarStyle.Continuous; 
-            preview_progressBar.MarqueeAnimationSpeed = progress;
-            previewUpdate_button.Enabled = enabled;
-            previewSave_button.Enabled = enabled;
-            zoomImageBox.Enabled = enabled;
-            previewModels_comboBox.Enabled = enabled;
-            button_previewSaveComparison.Enabled = enabled;
-        }
-
+        
         private async void previewUpdate_button_Click(object sender, EventArgs e)
         {
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
@@ -1071,9 +1071,41 @@ namespace ImageEnhancingUtility.Winforms
             }
         }
 
-        private async void previewSave_button_Click(object sender, EventArgs e)
+        private async void savePreview(bool saveAsPng = true)
         {
+            string modelPath = previewModels_comboBox.SelectedValue.ToString();
+            if (zoomImageBox.Image == null)
+                return;
+            PreviewInProgress(true);
+            try
+            {
+                bool success = await ViewModel.SavePreview(previewFullname, modelPath, saveAsPng);               
+                if (!success)
+                    MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
+            }
+            catch
+            {
+                MessageBox.Show("Unknown error ocured!");
+            }
+            finally
+            {
+                PreviewInProgress(false);
+            }
+           
+        }
 
+        private async void previewSavePng_button_Click(object sender, EventArgs e)
+        {
+           savePreview();
+        }
+
+        private async void previewSaveOutputFormat_button_Click(object sender, EventArgs e)
+        {
+            savePreview(false);
+        }
+
+        private async void previewSave_button_Click_(object sender, EventArgs e)
+        {
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
             if (zoomImageBox.Image == null)
                 return;
@@ -1091,13 +1123,14 @@ namespace ImageEnhancingUtility.Winforms
             {
                 MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
             }
-        }
+        }        
 
         private async void previewSaveComparison_button_Click(object sender, EventArgs e)
         {
             if (resultPreview == null)
                 return;
-            Bitmap outputImage = new Bitmap(2*resultPreview.Width, resultPreview.Height + 30);
+            int footerHeight = 45;
+            Bitmap outputImage = new Bitmap(2*resultPreview.Width, resultPreview.Height + footerHeight);
             using (Graphics graphics = Graphics.FromImage(outputImage))
             {
                 graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
@@ -1109,7 +1142,7 @@ namespace ImageEnhancingUtility.Winforms
                     new Rectangle(new Point(), originalPreview.Size), GraphicsUnit.Pixel);
                 graphics.DrawImage(resultPreview, new Rectangle(resultPreview.Width, 0, resultPreview.Width, resultPreview.Height),
                     new Rectangle(0, 0, resultPreview.Width, resultPreview.Height), GraphicsUnit.Pixel);
-                int footerHeight = 35;
+               
                 Bitmap Bmp = new Bitmap(2 * resultPreview.Width, footerHeight);
                 using (Graphics gfx = Graphics.FromImage(Bmp))
                 using (SolidBrush brush = new SolidBrush(Color.FromArgb(226, 00, 122)))
@@ -1119,7 +1152,7 @@ namespace ImageEnhancingUtility.Winforms
                 graphics.DrawImage(Bmp, 0, resultPreview.Height);
                 
                 GraphicsPath p = new GraphicsPath();
-                int fontSize = 21;
+                int fontSize = 19;
                 SizeF s = new Size(999999999, 99999999);
 
                 Font font = new Font("Times New Roman", graphics.DpiY * fontSize / 72);                  
@@ -1140,7 +1173,7 @@ namespace ImageEnhancingUtility.Winforms
                     $"{previewModels_comboBox.Text}",
                     font,
                     Brushes.White,
-                    new Rectangle(0, resultPreview.Height, 2 * resultPreview.Width, footerHeight - 5),
+                    new Rectangle(0, resultPreview.Height, 2 * resultPreview.Width, footerHeight - 0),
                     stringFormat );
             }
             try
@@ -1485,7 +1518,7 @@ namespace ImageEnhancingUtility.Winforms
                     pictureBox.Image = image;
                     pictureBox.Tag = filePaths[0];
                     if(overlayResultName_textBox.Text != Path.GetFileName(imageA_pictureBox.Tag as string))
-                        overlayResultName_textBox.Text = Path.GetFileName(filePaths[0]);
+                        overlayResultName_textBox.Text = Path.GetFileNameWithoutExtension(filePaths[0]) + "_interpolated.png";
                     Label label = pictureBox.Name == "imageA_pictureBox" ? imageAName_label : imageBName_label;
                     label.Text = Path.GetFileName(filePaths[0]);
                 }
@@ -1514,11 +1547,17 @@ namespace ImageEnhancingUtility.Winforms
             if (string.IsNullOrEmpty(overlayResultName_textBox.Text))
                 overlayResultName_textBox.Text = Path.GetFileName(pathA);
 
-            ViewModel.InterpolateImages(imageA_pictureBox.Image, imageB_pictureBox.Image, ViewModel.OutputDirectoryPath + "\\" + overlayResultName_textBox.Text, alpha.Value);
+            string destPath = pathA.Replace(Path.GetFileName(pathA), "");
 
-            StepFinishedForm finishedForm = new StepFinishedForm(ViewModel.OutputDirectoryPath, $"Result is saved in { ViewModel.OutputDirectoryPath }");
-            finishedForm.ShowDialog();
-            //MessageBox.Show($"Result is saved in {ViewModel.OutputDirectoryPath}");
+            bool success = ViewModel.InterpolateImages(imageA_pictureBox.Image, imageB_pictureBox.Image, destPath + overlayResultName_textBox.Text, alpha.Value);
+            if (!success)
+                tabControl1.SelectedIndex = 0;
+            else
+            {
+                StepFinishedForm finishedForm = new StepFinishedForm(ViewModel.OutputDirectoryPath, $"Result is saved in { destPath }");
+                finishedForm.ShowDialog();
+                //MessageBox.Show($"Result is saved in {ViewModel.OutputDirectoryPath}");
+            }
         }
 
         private async void OverlayFolders_button_Click(object sender, EventArgs e)

@@ -65,6 +65,7 @@
             this.previewUpdate_button = new System.Windows.Forms.Button();
             this.previewSave_button = new System.Windows.Forms.Button();
             this.button_previewSaveComparison = new System.Windows.Forms.Button();
+            this.previewSaveOutputFormat_button = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.openFromFileToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -74,17 +75,25 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
+            this.groupBox8 = new System.Windows.Forms.GroupBox();
+            this.topMost_checkBox = new System.Windows.Forms.CheckBox();
+            this.showPopups_checkBox = new System.Windows.Forms.CheckBox();
             this.deleteProfile_button = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.ignoreAlpha_checkBox = new System.Windows.Forms.CheckBox();
-            this.imagePostprocess_groupBox = new System.Windows.Forms.GroupBox();
-            this.label22 = new System.Windows.Forms.Label();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.label34 = new System.Windows.Forms.Label();
             this.threshold_groupBox = new System.Windows.Forms.GroupBox();
             this.thresholdBlack_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
             this.thresholdEnabled_checkBox = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.thresholdWhite_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.label35 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.imagePostprocess_groupBox = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.resizeImageAfterFilterType_comboBox = new System.Windows.Forms.ComboBox();
             this.resizeImageAfterScaleFactor_comboBox = new System.Windows.Forms.ComboBox();
@@ -123,8 +132,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.loadProfile_button = new System.Windows.Forms.Button();
             this.useCondaEnv_checkBox = new System.Windows.Forms.CheckBox();
-            this.showPopups_checkBox = new System.Windows.Forms.CheckBox();
-            this.topMost_checkBox = new System.Windows.Forms.CheckBox();
             this.deleteResults_checkBox = new System.Windows.Forms.CheckBox();
             this.outputPath_textBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -282,11 +289,13 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.settings_tabPage.SuspendLayout();
+            this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.imagePostprocess_groupBox.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.threshold_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdBlack_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdWhite_numericUpDown)).BeginInit();
+            this.imagePostprocess_groupBox.SuspendLayout();
             this.imagePreprocess_groupBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).BeginInit();
@@ -400,7 +409,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1271, 841);
+            this.tabControl1.Size = new System.Drawing.Size(1271, 743);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -413,7 +422,7 @@
             this.main_tabPage.Location = new System.Drawing.Point(4, 25);
             this.main_tabPage.Name = "main_tabPage";
             this.main_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.main_tabPage.Size = new System.Drawing.Size(1263, 812);
+            this.main_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.main_tabPage.TabIndex = 0;
             this.main_tabPage.Text = "Basic";
             this.main_tabPage.UseVisualStyleBackColor = true;
@@ -435,7 +444,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1257, 806);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1257, 708);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // panel2
@@ -443,7 +452,7 @@
             this.panel2.Controls.Add(this.progressFiltered_label);
             this.panel2.Controls.Add(this.progress_label);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 779);
+            this.panel2.Location = new System.Drawing.Point(3, 681);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 24);
             this.panel2.TabIndex = 37;
@@ -488,7 +497,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 770);
+            this.panel1.Size = new System.Drawing.Size(149, 672);
             this.panel1.TabIndex = 20;
             // 
             // button1
@@ -572,7 +581,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(1096, 770);
+            this.splitContainer1.Size = new System.Drawing.Size(1096, 672);
             this.splitContainer1.SplitterDistance = 581;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -585,7 +594,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(511, 770);
+            this.richTextBox1.Size = new System.Drawing.Size(511, 672);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -593,7 +602,7 @@
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(158, 779);
+            this.progressBar1.Location = new System.Drawing.Point(158, 681);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1096, 24);
             this.progressBar1.TabIndex = 22;
@@ -604,7 +613,7 @@
             this.previewResult_tabPage.Controls.Add(this.toolStrip);
             this.previewResult_tabPage.Location = new System.Drawing.Point(4, 25);
             this.previewResult_tabPage.Name = "previewResult_tabPage";
-            this.previewResult_tabPage.Size = new System.Drawing.Size(1263, 812);
+            this.previewResult_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.previewResult_tabPage.TabIndex = 5;
             this.previewResult_tabPage.Text = "Preview result";
             this.previewResult_tabPage.UseVisualStyleBackColor = true;
@@ -614,6 +623,7 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel3.Controls.Add(this.zoomImageBox, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.previewImageBox, 1, 0);
             this.tableLayoutPanel3.Controls.Add(this.previewModels_comboBox, 1, 1);
@@ -628,7 +638,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1263, 787);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1263, 689);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // zoomImageBox
@@ -643,7 +653,7 @@
             this.zoomImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
             this.zoomImageBox.Location = new System.Drawing.Point(3, 3);
             this.zoomImageBox.Name = "zoomImageBox";
-            this.zoomImageBox.Size = new System.Drawing.Size(625, 596);
+            this.zoomImageBox.Size = new System.Drawing.Size(625, 498);
             this.zoomImageBox.TabIndex = 0;
             this.zoomImageBox.TabStop = false;
             this.zoomImageBox.ImageChanged += new System.EventHandler(this.zoomImageBox_ImageChanged);
@@ -664,7 +674,7 @@
             this.previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
             this.previewImageBox.Location = new System.Drawing.Point(634, 3);
             this.previewImageBox.Name = "previewImageBox";
-            this.previewImageBox.Size = new System.Drawing.Size(626, 596);
+            this.previewImageBox.Size = new System.Drawing.Size(626, 498);
             this.previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.previewImageBox.TabIndex = 4;
             this.previewImageBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.previewImageBox_MouseDown);
@@ -677,7 +687,7 @@
             this.previewModels_comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewModels_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewModels_comboBox.FormattingEnabled = true;
-            this.previewModels_comboBox.Location = new System.Drawing.Point(634, 605);
+            this.previewModels_comboBox.Location = new System.Drawing.Point(634, 507);
             this.previewModels_comboBox.Name = "previewModels_comboBox";
             this.previewModels_comboBox.Size = new System.Drawing.Size(626, 21);
             this.previewModels_comboBox.TabIndex = 6;
@@ -686,7 +696,7 @@
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.preview_progressBar, 2);
             this.preview_progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.preview_progressBar.Location = new System.Drawing.Point(3, 760);
+            this.preview_progressBar.Location = new System.Drawing.Point(3, 662);
             this.preview_progressBar.Name = "preview_progressBar";
             this.preview_progressBar.Size = new System.Drawing.Size(1257, 24);
             this.preview_progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -695,7 +705,7 @@
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 605);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 507);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -742,18 +752,21 @@
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
+            this.tableLayoutPanel6.Controls.Add(this.previewSaveOutputFormat_button, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(634, 636);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(634, 538);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 2;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 42F));
+            this.tableLayoutPanel6.RowCount = 1;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(626, 118);
             this.tableLayoutPanel6.TabIndex = 10;
             // 
@@ -763,7 +776,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(306, 70);
+            this.previewUpdate_button.Size = new System.Drawing.Size(211, 75);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -773,26 +786,39 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(315, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(220, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(308, 112);
+            this.previewSave_button.Size = new System.Drawing.Size(212, 112);
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
-            this.previewSave_button.Click += new System.EventHandler(this.previewSave_button_Click);
+            this.previewSave_button.Click += new System.EventHandler(this.previewSavePng_button_Click);
             // 
             // button_previewSaveComparison
             // 
             this.button_previewSaveComparison.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 79);
+            this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 84);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(306, 36);
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(211, 31);
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
             this.button_previewSaveComparison.Click += new System.EventHandler(this.previewSaveComparison_button_Click);
+            // 
+            // previewSaveOutputFormat_button
+            // 
+            this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(438, 3);
+            this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
+            this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(185, 112);
+            this.previewSaveOutputFormat_button.TabIndex = 9;
+            this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
+            this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
+            this.previewSaveOutputFormat_button.Click += new System.EventHandler(this.previewSaveOutputFormat_button_Click);
             // 
             // toolStrip
             // 
@@ -869,6 +895,7 @@
             // settings_tabPage
             // 
             this.settings_tabPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settings_tabPage.Controls.Add(this.groupBox8);
             this.settings_tabPage.Controls.Add(this.deleteProfile_button);
             this.settings_tabPage.Controls.Add(this.groupBox9);
             this.settings_tabPage.Controls.Add(this.condaEnvName_textBox);
@@ -882,8 +909,6 @@
             this.settings_tabPage.Controls.Add(this.label7);
             this.settings_tabPage.Controls.Add(this.loadProfile_button);
             this.settings_tabPage.Controls.Add(this.useCondaEnv_checkBox);
-            this.settings_tabPage.Controls.Add(this.showPopups_checkBox);
-            this.settings_tabPage.Controls.Add(this.topMost_checkBox);
             this.settings_tabPage.Controls.Add(this.deleteResults_checkBox);
             this.settings_tabPage.Controls.Add(this.outputPath_textBox);
             this.settings_tabPage.Controls.Add(this.label9);
@@ -915,15 +940,54 @@
             this.settings_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settings_tabPage.Name = "settings_tabPage";
             this.settings_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settings_tabPage.Size = new System.Drawing.Size(1263, 812);
+            this.settings_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
             // 
+            // groupBox8
+            // 
+            this.groupBox8.Controls.Add(this.topMost_checkBox);
+            this.groupBox8.Controls.Add(this.showPopups_checkBox);
+            this.groupBox8.Location = new System.Drawing.Point(670, 283);
+            this.groupBox8.Name = "groupBox8";
+            this.groupBox8.Size = new System.Drawing.Size(158, 70);
+            this.groupBox8.TabIndex = 54;
+            this.groupBox8.TabStop = false;
+            this.groupBox8.Text = "UI";
+            // 
+            // topMost_checkBox
+            // 
+            this.topMost_checkBox.AutoSize = true;
+            this.topMost_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.topMost_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.topMost_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.topMost_checkBox.Location = new System.Drawing.Point(6, 24);
+            this.topMost_checkBox.Name = "topMost_checkBox";
+            this.topMost_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.topMost_checkBox.Size = new System.Drawing.Size(78, 17);
+            this.topMost_checkBox.TabIndex = 38;
+            this.topMost_checkBox.Text = "Stay on top";
+            this.topMost_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // showPopups_checkBox
+            // 
+            this.showPopups_checkBox.AutoSize = true;
+            this.showPopups_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
+            this.showPopups_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.showPopups_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.showPopups_checkBox.Location = new System.Drawing.Point(6, 47);
+            this.showPopups_checkBox.Name = "showPopups_checkBox";
+            this.showPopups_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.showPopups_checkBox.Size = new System.Drawing.Size(143, 17);
+            this.showPopups_checkBox.TabIndex = 38;
+            this.showPopups_checkBox.Text = "Show popup notifications";
+            this.showPopups_checkBox.UseVisualStyleBackColor = true;
+            // 
             // deleteProfile_button
             // 
             this.deleteProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteProfile_button.Location = new System.Drawing.Point(825, 616);
+            this.deleteProfile_button.Location = new System.Drawing.Point(834, 655);
             this.deleteProfile_button.Name = "deleteProfile_button";
             this.deleteProfile_button.Size = new System.Drawing.Size(149, 31);
             this.deleteProfile_button.TabIndex = 53;
@@ -934,6 +998,7 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.ignoreAlpha_checkBox);
+            this.groupBox9.Controls.Add(this.groupBox11);
             this.groupBox9.Controls.Add(this.imagePostprocess_groupBox);
             this.groupBox9.Controls.Add(this.imagePreprocess_groupBox);
             this.groupBox9.Controls.Add(this.outputFormat_comboBox);
@@ -952,7 +1017,7 @@
             this.groupBox9.Controls.Add(this.label23);
             this.groupBox9.Location = new System.Drawing.Point(94, 353);
             this.groupBox9.Name = "groupBox9";
-            this.groupBox9.Size = new System.Drawing.Size(570, 294);
+            this.groupBox9.Size = new System.Drawing.Size(570, 333);
             this.groupBox9.TabIndex = 52;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Profile:Settings";
@@ -961,7 +1026,7 @@
             // 
             this.ignoreAlpha_checkBox.AutoSize = true;
             this.ignoreAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ignoreAlpha_checkBox.Location = new System.Drawing.Point(17, 39);
+            this.ignoreAlpha_checkBox.Location = new System.Drawing.Point(319, 119);
             this.ignoreAlpha_checkBox.Name = "ignoreAlpha_checkBox";
             this.ignoreAlpha_checkBox.Size = new System.Drawing.Size(124, 17);
             this.ignoreAlpha_checkBox.TabIndex = 25;
@@ -969,28 +1034,28 @@
             this.toolTip1.SetToolTip(this.ignoreAlpha_checkBox, "Don\'t create alpha tiles in LR, don\'t read alpha tiles from results");
             this.ignoreAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
-            // imagePostprocess_groupBox
+            // groupBox11
             // 
-            this.imagePostprocess_groupBox.Controls.Add(this.label22);
-            this.imagePostprocess_groupBox.Controls.Add(this.threshold_groupBox);
-            this.imagePostprocess_groupBox.Controls.Add(this.label21);
-            this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterFilterType_comboBox);
-            this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterScaleFactor_comboBox);
-            this.imagePostprocess_groupBox.Location = new System.Drawing.Point(303, 149);
-            this.imagePostprocess_groupBox.Name = "imagePostprocess_groupBox";
-            this.imagePostprocess_groupBox.Size = new System.Drawing.Size(261, 126);
-            this.imagePostprocess_groupBox.TabIndex = 42;
-            this.imagePostprocess_groupBox.TabStop = false;
-            this.imagePostprocess_groupBox.Text = "Image postprocess";
+            this.groupBox11.Controls.Add(this.label34);
+            this.groupBox11.Controls.Add(this.threshold_groupBox);
+            this.groupBox11.Controls.Add(this.label35);
+            this.groupBox11.Controls.Add(this.comboBox1);
+            this.groupBox11.Controls.Add(this.comboBox2);
+            this.groupBox11.Location = new System.Drawing.Point(298, 194);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(266, 126);
+            this.groupBox11.TabIndex = 42;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Image postprocess";
             // 
-            // label22
+            // label34
             // 
-            this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(173, 101);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(16, 13);
-            this.label22.TabIndex = 2;
-            this.label22.Text = "to";
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(173, 28);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(16, 13);
+            this.label34.TabIndex = 2;
+            this.label34.Text = "to";
             // 
             // threshold_groupBox
             // 
@@ -999,9 +1064,9 @@
             this.threshold_groupBox.Controls.Add(this.thresholdEnabled_checkBox);
             this.threshold_groupBox.Controls.Add(this.label12);
             this.threshold_groupBox.Controls.Add(this.thresholdWhite_numericUpDown);
-            this.threshold_groupBox.Location = new System.Drawing.Point(10, 22);
+            this.threshold_groupBox.Location = new System.Drawing.Point(9, 51);
             this.threshold_groupBox.Name = "threshold_groupBox";
-            this.threshold_groupBox.Size = new System.Drawing.Size(246, 70);
+            this.threshold_groupBox.Size = new System.Drawing.Size(247, 70);
             this.threshold_groupBox.TabIndex = 3;
             this.threshold_groupBox.TabStop = false;
             this.threshold_groupBox.Text = "Threshold";
@@ -1067,10 +1132,61 @@
             0,
             0});
             // 
+            // label35
+            // 
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(9, 27);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(61, 13);
+            this.label35.TabIndex = 2;
+            this.label35.Text = "Resize with";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(75, 24);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(95, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(196, 24);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(60, 21);
+            this.comboBox2.TabIndex = 0;
+            // 
+            // imagePostprocess_groupBox
+            // 
+            this.imagePostprocess_groupBox.Controls.Add(this.label22);
+            this.imagePostprocess_groupBox.Controls.Add(this.label21);
+            this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterFilterType_comboBox);
+            this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterScaleFactor_comboBox);
+            this.imagePostprocess_groupBox.Location = new System.Drawing.Point(298, 194);
+            this.imagePostprocess_groupBox.Name = "imagePostprocess_groupBox";
+            this.imagePostprocess_groupBox.Size = new System.Drawing.Size(261, 126);
+            this.imagePostprocess_groupBox.TabIndex = 42;
+            this.imagePostprocess_groupBox.TabStop = false;
+            this.imagePostprocess_groupBox.Text = "Image postprocess";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(173, 24);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(16, 13);
+            this.label22.TabIndex = 2;
+            this.label22.Text = "to";
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(9, 101);
+            this.label21.Location = new System.Drawing.Point(9, 24);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(61, 13);
             this.label21.TabIndex = 2;
@@ -1081,7 +1197,7 @@
             this.resizeImageAfterFilterType_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageAfterFilterType_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageAfterFilterType_comboBox.FormattingEnabled = true;
-            this.resizeImageAfterFilterType_comboBox.Location = new System.Drawing.Point(75, 98);
+            this.resizeImageAfterFilterType_comboBox.Location = new System.Drawing.Point(75, 21);
             this.resizeImageAfterFilterType_comboBox.Name = "resizeImageAfterFilterType_comboBox";
             this.resizeImageAfterFilterType_comboBox.Size = new System.Drawing.Size(95, 21);
             this.resizeImageAfterFilterType_comboBox.TabIndex = 0;
@@ -1091,7 +1207,7 @@
             this.resizeImageAfterScaleFactor_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageAfterScaleFactor_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageAfterScaleFactor_comboBox.FormattingEnabled = true;
-            this.resizeImageAfterScaleFactor_comboBox.Location = new System.Drawing.Point(196, 98);
+            this.resizeImageAfterScaleFactor_comboBox.Location = new System.Drawing.Point(196, 21);
             this.resizeImageAfterScaleFactor_comboBox.Name = "resizeImageAfterScaleFactor_comboBox";
             this.resizeImageAfterScaleFactor_comboBox.Size = new System.Drawing.Size(60, 21);
             this.resizeImageAfterScaleFactor_comboBox.TabIndex = 0;
@@ -1104,9 +1220,9 @@
             this.imagePreprocess_groupBox.Controls.Add(this.resizeImageBeforeScaleFactor_comboBox);
             this.imagePreprocess_groupBox.Controls.Add(this.resizeImageBeforeFilterType_comboBox);
             this.imagePreprocess_groupBox.Controls.Add(this.noiseReductionType_comboBox);
-            this.imagePreprocess_groupBox.Location = new System.Drawing.Point(18, 184);
+            this.imagePreprocess_groupBox.Location = new System.Drawing.Point(18, 194);
             this.imagePreprocess_groupBox.Name = "imagePreprocess_groupBox";
-            this.imagePreprocess_groupBox.Size = new System.Drawing.Size(279, 91);
+            this.imagePreprocess_groupBox.Size = new System.Drawing.Size(274, 126);
             this.imagePreprocess_groupBox.TabIndex = 41;
             this.imagePreprocess_groupBox.TabStop = false;
             this.imagePreprocess_groupBox.Text = "Image preprocess";
@@ -1114,7 +1230,7 @@
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(186, 62);
+            this.label20.Location = new System.Drawing.Point(188, 27);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(16, 13);
             this.label20.TabIndex = 2;
@@ -1123,7 +1239,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(20, 61);
+            this.label19.Location = new System.Drawing.Point(19, 27);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(61, 13);
             this.label19.TabIndex = 2;
@@ -1132,7 +1248,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(8, 31);
+            this.label14.Location = new System.Drawing.Point(8, 57);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(73, 13);
             this.label14.TabIndex = 1;
@@ -1143,7 +1259,7 @@
             this.resizeImageBeforeScaleFactor_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageBeforeScaleFactor_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageBeforeScaleFactor_comboBox.FormattingEnabled = true;
-            this.resizeImageBeforeScaleFactor_comboBox.Location = new System.Drawing.Point(208, 58);
+            this.resizeImageBeforeScaleFactor_comboBox.Location = new System.Drawing.Point(207, 24);
             this.resizeImageBeforeScaleFactor_comboBox.Name = "resizeImageBeforeScaleFactor_comboBox";
             this.resizeImageBeforeScaleFactor_comboBox.Size = new System.Drawing.Size(60, 21);
             this.resizeImageBeforeScaleFactor_comboBox.TabIndex = 0;
@@ -1153,7 +1269,7 @@
             this.resizeImageBeforeFilterType_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageBeforeFilterType_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageBeforeFilterType_comboBox.FormattingEnabled = true;
-            this.resizeImageBeforeFilterType_comboBox.Location = new System.Drawing.Point(87, 58);
+            this.resizeImageBeforeFilterType_comboBox.Location = new System.Drawing.Point(87, 24);
             this.resizeImageBeforeFilterType_comboBox.Name = "resizeImageBeforeFilterType_comboBox";
             this.resizeImageBeforeFilterType_comboBox.Size = new System.Drawing.Size(95, 21);
             this.resizeImageBeforeFilterType_comboBox.TabIndex = 0;
@@ -1163,7 +1279,7 @@
             this.noiseReductionType_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.noiseReductionType_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.noiseReductionType_comboBox.FormattingEnabled = true;
-            this.noiseReductionType_comboBox.Location = new System.Drawing.Point(87, 28);
+            this.noiseReductionType_comboBox.Location = new System.Drawing.Point(87, 54);
             this.noiseReductionType_comboBox.Name = "noiseReductionType_comboBox";
             this.noiseReductionType_comboBox.Size = new System.Drawing.Size(95, 21);
             this.noiseReductionType_comboBox.TabIndex = 0;
@@ -1173,7 +1289,7 @@
             // 
             this.outputFormat_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.outputFormat_comboBox.FormattingEnabled = true;
-            this.outputFormat_comboBox.Location = new System.Drawing.Point(109, 16);
+            this.outputFormat_comboBox.Location = new System.Drawing.Point(101, 26);
             this.outputFormat_comboBox.Name = "outputFormat_comboBox";
             this.outputFormat_comboBox.Size = new System.Drawing.Size(120, 21);
             this.outputFormat_comboBox.TabIndex = 48;
@@ -1182,7 +1298,7 @@
             // 
             this.ignoreSingleColorAlpha_checkBox.AutoSize = true;
             this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(147, 39);
+            this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(319, 140);
             this.ignoreSingleColorAlpha_checkBox.Name = "ignoreSingleColorAlpha_checkBox";
             this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(135, 17);
             this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
@@ -1218,7 +1334,7 @@
             // 
             this.splitRGB_checkBox.AutoSize = true;
             this.splitRGB_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.splitRGB_checkBox.Location = new System.Drawing.Point(17, 138);
+            this.splitRGB_checkBox.Location = new System.Drawing.Point(17, 140);
             this.splitRGB_checkBox.Name = "splitRGB_checkBox";
             this.splitRGB_checkBox.Size = new System.Drawing.Size(116, 17);
             this.splitRGB_checkBox.TabIndex = 25;
@@ -1232,7 +1348,7 @@
             this.profileModel_comboBox.Enabled = false;
             this.profileModel_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.profileModel_comboBox.FormattingEnabled = true;
-            this.profileModel_comboBox.Location = new System.Drawing.Point(182, 114);
+            this.profileModel_comboBox.Location = new System.Drawing.Point(182, 61);
             this.profileModel_comboBox.Name = "profileModel_comboBox";
             this.profileModel_comboBox.Size = new System.Drawing.Size(382, 21);
             this.profileModel_comboBox.TabIndex = 47;
@@ -1241,7 +1357,7 @@
             // 
             this.useProfileModel_checkBox.AutoSize = true;
             this.useProfileModel_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useProfileModel_checkBox.Location = new System.Drawing.Point(17, 115);
+            this.useProfileModel_checkBox.Location = new System.Drawing.Point(17, 62);
             this.useProfileModel_checkBox.Name = "useProfileModel_checkBox";
             this.useProfileModel_checkBox.Size = new System.Drawing.Size(113, 17);
             this.useProfileModel_checkBox.TabIndex = 25;
@@ -1256,7 +1372,7 @@
             this.filterForAlpha_comboBox.Enabled = false;
             this.filterForAlpha_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.filterForAlpha_comboBox.FormattingEnabled = true;
-            this.filterForAlpha_comboBox.Location = new System.Drawing.Point(182, 87);
+            this.filterForAlpha_comboBox.Location = new System.Drawing.Point(182, 115);
             this.filterForAlpha_comboBox.Name = "filterForAlpha_comboBox";
             this.filterForAlpha_comboBox.Size = new System.Drawing.Size(121, 21);
             this.filterForAlpha_comboBox.TabIndex = 47;
@@ -1265,7 +1381,7 @@
             // 
             this.useFilterForAlpha_checkBox.AutoSize = true;
             this.useFilterForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useFilterForAlpha_checkBox.Location = new System.Drawing.Point(17, 89);
+            this.useFilterForAlpha_checkBox.Location = new System.Drawing.Point(17, 117);
             this.useFilterForAlpha_checkBox.Name = "useFilterForAlpha_checkBox";
             this.useFilterForAlpha_checkBox.Size = new System.Drawing.Size(109, 17);
             this.useFilterForAlpha_checkBox.TabIndex = 25;
@@ -1280,7 +1396,7 @@
             this.modelForAlpha_comboBox.Enabled = false;
             this.modelForAlpha_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.modelForAlpha_comboBox.FormattingEnabled = true;
-            this.modelForAlpha_comboBox.Location = new System.Drawing.Point(182, 60);
+            this.modelForAlpha_comboBox.Location = new System.Drawing.Point(182, 88);
             this.modelForAlpha_comboBox.Name = "modelForAlpha_comboBox";
             this.modelForAlpha_comboBox.Size = new System.Drawing.Size(382, 21);
             this.modelForAlpha_comboBox.TabIndex = 47;
@@ -1289,7 +1405,7 @@
             // 
             this.useDifferentModelForAlpha_checkBox.AutoSize = true;
             this.useDifferentModelForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useDifferentModelForAlpha_checkBox.Location = new System.Drawing.Point(17, 62);
+            this.useDifferentModelForAlpha_checkBox.Location = new System.Drawing.Point(17, 90);
             this.useDifferentModelForAlpha_checkBox.Name = "useDifferentModelForAlpha_checkBox";
             this.useDifferentModelForAlpha_checkBox.Size = new System.Drawing.Size(159, 17);
             this.useDifferentModelForAlpha_checkBox.TabIndex = 25;
@@ -1303,7 +1419,7 @@
             this.seamlessTextures_checkBox.AutoSize = true;
             this.seamlessTextures_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.seamlessTextures_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(17, 160);
+            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(17, 163);
             this.seamlessTextures_checkBox.Name = "seamlessTextures_checkBox";
             this.seamlessTextures_checkBox.Size = new System.Drawing.Size(137, 17);
             this.seamlessTextures_checkBox.TabIndex = 30;
@@ -1316,7 +1432,7 @@
             this.preserveFormat_checkBox.AutoSize = true;
             this.preserveFormat_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.preserveFormat_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.preserveFormat_checkBox.Location = new System.Drawing.Point(235, 19);
+            this.preserveFormat_checkBox.Location = new System.Drawing.Point(227, 29);
             this.preserveFormat_checkBox.Name = "preserveFormat_checkBox";
             this.preserveFormat_checkBox.Size = new System.Drawing.Size(142, 17);
             this.preserveFormat_checkBox.TabIndex = 30;
@@ -1328,7 +1444,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(33, 19);
+            this.label23.Location = new System.Drawing.Point(25, 29);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(71, 13);
             this.label23.TabIndex = 24;
@@ -1338,7 +1454,7 @@
             // 
             this.condaEnvName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.condaEnvName_textBox.Enabled = false;
-            this.condaEnvName_textBox.Location = new System.Drawing.Point(456, 283);
+            this.condaEnvName_textBox.Location = new System.Drawing.Point(507, 332);
             this.condaEnvName_textBox.Name = "condaEnvName_textBox";
             this.condaEnvName_textBox.Size = new System.Drawing.Size(157, 20);
             this.condaEnvName_textBox.TabIndex = 52;
@@ -1346,7 +1462,7 @@
             // saveProfileName_textBox
             // 
             this.saveProfileName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.saveProfileName_textBox.Location = new System.Drawing.Point(825, 521);
+            this.saveProfileName_textBox.Location = new System.Drawing.Point(834, 560);
             this.saveProfileName_textBox.Name = "saveProfileName_textBox";
             this.saveProfileName_textBox.Size = new System.Drawing.Size(149, 20);
             this.saveProfileName_textBox.TabIndex = 52;
@@ -1384,7 +1500,7 @@
             // saveProfile_button
             // 
             this.saveProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveProfile_button.Location = new System.Drawing.Point(825, 547);
+            this.saveProfile_button.Location = new System.Drawing.Point(834, 586);
             this.saveProfile_button.Name = "saveProfile_button";
             this.saveProfile_button.Size = new System.Drawing.Size(149, 31);
             this.saveProfile_button.TabIndex = 50;
@@ -1402,7 +1518,7 @@
             this.tableLayoutPanel2.Controls.Add(this.appCoreVersion_linkLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.appVersion_label, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkForUpdates_checkBox, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1019, 753);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(1019, 655);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -1459,7 +1575,7 @@
             this.profiles_listBox.FormattingEnabled = true;
             this.profiles_listBox.Location = new System.Drawing.Point(670, 359);
             this.profiles_listBox.Name = "profiles_listBox";
-            this.profiles_listBox.Size = new System.Drawing.Size(149, 288);
+            this.profiles_listBox.Size = new System.Drawing.Size(158, 327);
             this.profiles_listBox.TabIndex = 47;
             this.profiles_listBox.SelectedIndexChanged += new System.EventHandler(this.configs_listBox_SelectedIndexChanged);
             // 
@@ -1475,7 +1591,7 @@
             // loadProfile_button
             // 
             this.loadProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.loadProfile_button.Location = new System.Drawing.Point(825, 581);
+            this.loadProfile_button.Location = new System.Drawing.Point(834, 620);
             this.loadProfile_button.Name = "loadProfile_button";
             this.loadProfile_button.Size = new System.Drawing.Size(149, 31);
             this.loadProfile_button.TabIndex = 51;
@@ -1489,7 +1605,7 @@
             this.useCondaEnv_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
             this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(319, 284);
+            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(370, 333);
             this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
             this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.useCondaEnv_checkBox.Size = new System.Drawing.Size(131, 17);
@@ -1497,34 +1613,6 @@
             this.useCondaEnv_checkBox.Text = "Use conda enviroment";
             this.useCondaEnv_checkBox.UseVisualStyleBackColor = true;
             this.useCondaEnv_checkBox.CheckedChanged += new System.EventHandler(this.useCondaEnv_checkBox_CheckedChanged);
-            // 
-            // showPopups_checkBox
-            // 
-            this.showPopups_checkBox.AutoSize = true;
-            this.showPopups_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.showPopups_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.showPopups_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.showPopups_checkBox.Location = new System.Drawing.Point(670, 283);
-            this.showPopups_checkBox.Name = "showPopups_checkBox";
-            this.showPopups_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.showPopups_checkBox.Size = new System.Drawing.Size(143, 17);
-            this.showPopups_checkBox.TabIndex = 38;
-            this.showPopups_checkBox.Text = "Show popup notifications";
-            this.showPopups_checkBox.UseVisualStyleBackColor = true;
-            // 
-            // topMost_checkBox
-            // 
-            this.topMost_checkBox.AutoSize = true;
-            this.topMost_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.topMost_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.topMost_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.topMost_checkBox.Location = new System.Drawing.Point(670, 261);
-            this.topMost_checkBox.Name = "topMost_checkBox";
-            this.topMost_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.topMost_checkBox.Size = new System.Drawing.Size(78, 17);
-            this.topMost_checkBox.TabIndex = 38;
-            this.topMost_checkBox.Text = "Stay on top";
-            this.topMost_checkBox.UseVisualStyleBackColor = true;
             // 
             // deleteResults_checkBox
             // 
@@ -1630,7 +1718,7 @@
             // 
             this.advancedUseSuffix_checkBox.AutoSize = true;
             this.advancedUseSuffix_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.advancedUseSuffix_checkBox.Location = new System.Drawing.Point(319, 177);
+            this.advancedUseSuffix_checkBox.Location = new System.Drawing.Point(323, 179);
             this.advancedUseSuffix_checkBox.Name = "advancedUseSuffix_checkBox";
             this.advancedUseSuffix_checkBox.Size = new System.Drawing.Size(117, 17);
             this.advancedUseSuffix_checkBox.TabIndex = 0;
@@ -1741,7 +1829,7 @@
             // 
             this.preciseTile_checkBox.AutoSize = true;
             this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(396, 208);
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(396, 209);
             this.preciseTile_checkBox.Name = "preciseTile_checkBox";
             this.preciseTile_checkBox.Size = new System.Drawing.Size(130, 17);
             this.preciseTile_checkBox.TabIndex = 25;
@@ -1862,7 +1950,7 @@
             this.settingsOutputFormat_tabPage.Controls.Add(this.ddsOutputSettings_groupBox);
             this.settingsOutputFormat_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settingsOutputFormat_tabPage.Name = "settingsOutputFormat_tabPage";
-            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1263, 812);
+            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.settingsOutputFormat_tabPage.TabIndex = 4;
             this.settingsOutputFormat_tabPage.Text = "Output formats";
             this.settingsOutputFormat_tabPage.UseVisualStyleBackColor = true;
@@ -1876,6 +1964,7 @@
             this.textBox1.Size = new System.Drawing.Size(553, 20);
             this.textBox1.TabIndex = 47;
             this.toolTip1.SetToolTip(this.textBox1, "ESRGAN root folder");
+            this.textBox1.Visible = false;
             // 
             // textBox2
             // 
@@ -1886,6 +1975,7 @@
             this.textBox2.Size = new System.Drawing.Size(553, 20);
             this.textBox2.TabIndex = 48;
             this.toolTip1.SetToolTip(this.textBox2, "IEU output folder");
+            this.textBox2.Visible = false;
             // 
             // button2
             // 
@@ -1896,6 +1986,7 @@
             this.button2.TabIndex = 51;
             this.button2.Text = "...";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // label32
             // 
@@ -1905,6 +1996,7 @@
             this.label32.Size = new System.Drawing.Size(42, 13);
             this.label32.TabIndex = 49;
             this.label32.Text = "Original";
+            this.label32.Visible = false;
             // 
             // label33
             // 
@@ -1914,6 +2006,7 @@
             this.label33.Size = new System.Drawing.Size(37, 13);
             this.label33.TabIndex = 50;
             this.label33.Text = "Result";
+            this.label33.Visible = false;
             // 
             // button3
             // 
@@ -1924,6 +2017,7 @@
             this.button3.TabIndex = 52;
             this.button3.Text = "...";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Visible = false;
             // 
             // groupBox2
             // 
@@ -2172,7 +2266,7 @@
             this.advanced_tabPage.Controls.Add(this.filters_groupBox);
             this.advanced_tabPage.Location = new System.Drawing.Point(4, 25);
             this.advanced_tabPage.Name = "advanced_tabPage";
-            this.advanced_tabPage.Size = new System.Drawing.Size(1263, 812);
+            this.advanced_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.advanced_tabPage.TabIndex = 2;
             this.advanced_tabPage.Text = "Filters/Rules";
             this.advanced_tabPage.UseVisualStyleBackColor = true;
@@ -2658,7 +2752,7 @@
             this.interpolation_tabPage.Controls.Add(this.interpolationModelOne_comboBox);
             this.interpolation_tabPage.Location = new System.Drawing.Point(4, 25);
             this.interpolation_tabPage.Name = "interpolation_tabPage";
-            this.interpolation_tabPage.Size = new System.Drawing.Size(1263, 812);
+            this.interpolation_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.interpolation_tabPage.TabIndex = 3;
             this.interpolation_tabPage.Text = "Models interpolation";
             this.interpolation_tabPage.UseVisualStyleBackColor = true;
@@ -2736,7 +2830,7 @@
             this.overlayResults_tabPage.Controls.Add(this.tableLayoutPanel4);
             this.overlayResults_tabPage.Location = new System.Drawing.Point(4, 25);
             this.overlayResults_tabPage.Name = "overlayResults_tabPage";
-            this.overlayResults_tabPage.Size = new System.Drawing.Size(1263, 812);
+            this.overlayResults_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.overlayResults_tabPage.TabIndex = 6;
             this.overlayResults_tabPage.Text = "Image interpolation";
             this.overlayResults_tabPage.UseVisualStyleBackColor = true;
@@ -2759,7 +2853,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1263, 812);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1263, 714);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // overlayImages_button
@@ -2768,7 +2862,7 @@
             this.overlayImages_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.overlayImages_button.Location = new System.Drawing.Point(1166, 3);
             this.overlayImages_button.Name = "overlayImages_button";
-            this.overlayImages_button.Size = new System.Drawing.Size(94, 581);
+            this.overlayImages_button.Size = new System.Drawing.Size(94, 483);
             this.overlayImages_button.TabIndex = 1;
             this.overlayImages_button.Text = "Interpolate";
             this.overlayImages_button.UseVisualStyleBackColor = true;
@@ -2780,7 +2874,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1157, 581);
+            this.groupBox4.Size = new System.Drawing.Size(1157, 483);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Interpolate two images";
@@ -2800,7 +2894,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1151, 562);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1151, 464);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // groupBox7
@@ -2810,7 +2904,7 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(578, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(570, 528);
+            this.groupBox7.Size = new System.Drawing.Size(570, 430);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Image B";
@@ -2831,7 +2925,7 @@
             this.imageB_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_panel.Location = new System.Drawing.Point(3, 16);
             this.imageB_panel.Name = "imageB_panel";
-            this.imageB_panel.Size = new System.Drawing.Size(564, 509);
+            this.imageB_panel.Size = new System.Drawing.Size(564, 411);
             this.imageB_panel.TabIndex = 5;
             this.imageB_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageB_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -2841,7 +2935,7 @@
             this.imageB_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageB_pictureBox.Name = "imageB_pictureBox";
-            this.imageB_pictureBox.Size = new System.Drawing.Size(564, 509);
+            this.imageB_pictureBox.Size = new System.Drawing.Size(564, 411);
             this.imageB_pictureBox.TabIndex = 0;
             this.imageB_pictureBox.TabStop = false;
             // 
@@ -2852,7 +2946,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(569, 528);
+            this.groupBox6.Size = new System.Drawing.Size(569, 430);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Image A";
@@ -2873,7 +2967,7 @@
             this.imageA_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_panel.Location = new System.Drawing.Point(3, 16);
             this.imageA_panel.Name = "imageA_panel";
-            this.imageA_panel.Size = new System.Drawing.Size(563, 509);
+            this.imageA_panel.Size = new System.Drawing.Size(563, 411);
             this.imageA_panel.TabIndex = 4;
             this.imageA_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageA_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -2883,7 +2977,7 @@
             this.imageA_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageA_pictureBox.Name = "imageA_pictureBox";
-            this.imageA_pictureBox.Size = new System.Drawing.Size(563, 509);
+            this.imageA_pictureBox.Size = new System.Drawing.Size(563, 411);
             this.imageA_pictureBox.TabIndex = 0;
             this.imageA_pictureBox.TabStop = false;
             // 
@@ -2892,7 +2986,7 @@
             this.overlayResultName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel5.SetColumnSpan(this.overlayResultName_textBox, 2);
             this.overlayResultName_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 537);
+            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 439);
             this.overlayResultName_textBox.Name = "overlayResultName_textBox";
             this.overlayResultName_textBox.Size = new System.Drawing.Size(1145, 20);
             this.overlayResultName_textBox.TabIndex = 2;
@@ -2901,7 +2995,7 @@
             // 
             this.overlayFolders_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayFolders_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayFolders_button.Location = new System.Drawing.Point(1166, 640);
+            this.overlayFolders_button.Location = new System.Drawing.Point(1166, 542);
             this.overlayFolders_button.Name = "overlayFolders_button";
             this.overlayFolders_button.Size = new System.Drawing.Size(94, 169);
             this.overlayFolders_button.TabIndex = 1;
@@ -2914,7 +3008,7 @@
             this.imageInterpolationAlphaValue_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageInterpolationAlphaValue_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageInterpolationAlphaValue_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(1166, 599);
+            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(1166, 501);
             this.imageInterpolationAlphaValue_textBox.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.imageInterpolationAlphaValue_textBox.Name = "imageInterpolationAlphaValue_textBox";
             this.imageInterpolationAlphaValue_textBox.ReadOnly = true;
@@ -2937,7 +3031,7 @@
             this.groupBox5.Controls.Add(this.resultsBPath_textBox);
             this.groupBox5.Controls.Add(this.resultsDestinationPath_textBox);
             this.groupBox5.Controls.Add(this.label28);
-            this.groupBox5.Location = new System.Drawing.Point(3, 640);
+            this.groupBox5.Location = new System.Drawing.Point(3, 542);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(661, 169);
             this.groupBox5.TabIndex = 0;
@@ -3067,7 +3161,7 @@
             // 
             this.panel3.Controls.Add(this.imageInterpolation_trackBar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 590);
+            this.panel3.Location = new System.Drawing.Point(3, 492);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(1157, 44);
             this.panel3.TabIndex = 6;
@@ -3118,7 +3212,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 841);
+            this.ClientSize = new System.Drawing.Size(1271, 743);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1000, 777);
@@ -3153,14 +3247,18 @@
             this.toolStrip.PerformLayout();
             this.settings_tabPage.ResumeLayout(false);
             this.settings_tabPage.PerformLayout();
+            this.groupBox8.ResumeLayout(false);
+            this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.imagePostprocess_groupBox.ResumeLayout(false);
-            this.imagePostprocess_groupBox.PerformLayout();
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.threshold_groupBox.ResumeLayout(false);
             this.threshold_groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdBlack_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdWhite_numericUpDown)).EndInit();
+            this.imagePostprocess_groupBox.ResumeLayout(false);
+            this.imagePostprocess_groupBox.PerformLayout();
             this.imagePreprocess_groupBox.ResumeLayout(false);
             this.imagePreprocess_groupBox.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -3459,6 +3557,13 @@
         private System.Windows.Forms.CheckBox useFilterForAlpha_checkBox;
         private Tulpep.NotificationWindow.PopupNotifier popupNotifier1;
         private System.Windows.Forms.CheckBox showPopups_checkBox;
+        private System.Windows.Forms.Button previewSaveOutputFormat_button;
+        private System.Windows.Forms.GroupBox groupBox8;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox comboBox2;
     }
 }
 
