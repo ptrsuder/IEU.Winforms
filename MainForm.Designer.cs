@@ -409,7 +409,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1271, 743);
+            this.tabControl1.Size = new System.Drawing.Size(988, 781);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -755,7 +755,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 190F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
@@ -776,7 +776,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(211, 75);
+            this.previewUpdate_button.Size = new System.Drawing.Size(210, 75);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -786,7 +786,7 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(220, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(219, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
             this.previewSave_button.Size = new System.Drawing.Size(212, 112);
@@ -801,7 +801,7 @@
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 84);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(211, 31);
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(210, 31);
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
@@ -811,10 +811,10 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(438, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(437, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(185, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(186, 112);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -940,7 +940,7 @@
             this.settings_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settings_tabPage.Name = "settings_tabPage";
             this.settings_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settings_tabPage.Size = new System.Drawing.Size(1263, 714);
+            this.settings_tabPage.Size = new System.Drawing.Size(980, 752);
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
@@ -1518,7 +1518,7 @@
             this.tableLayoutPanel2.Controls.Add(this.appCoreVersion_linkLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.appVersion_label, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkForUpdates_checkBox, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(1019, 655);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(736, 693);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -3212,10 +3212,10 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1271, 743);
+            this.ClientSize = new System.Drawing.Size(988, 781);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1000, 777);
+            this.MinimumSize = new System.Drawing.Size(1000, 815);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image Enhancing Utility";
