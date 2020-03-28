@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
@@ -15,7 +16,10 @@ using Cyotek.Windows.Forms;
 using DynamicData;
 using GitHubUpdate;
 using ImageEnhancingUtility.Core;
+using ImageEnhancingUtility.Core.Utility;
 using ReactiveUI;
+using Tulpep.NotificationWindow;
+using Rule = ImageEnhancingUtility.Core.Rule;
 
 //TODO:
 //ask to change all paths when changing ESRGAN path
@@ -25,7 +29,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<IEU>
     {
-        public readonly string AppVersion = "0.10.04";
+        public readonly string AppVersion = "0.11.00-dev-beta.3";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public IEU ViewModel { get; set; }
@@ -37,65 +41,29 @@ namespace ImageEnhancingUtility.Winforms
 
         private MyTreeView treeView1;
 
-        List<ModelInfo> checkedModels = new List<ModelInfo>();        
+        List<ModelInfo> checkedModels = new List<ModelInfo>();
 
         readonly List<TextBox> pathsTextBoxes;
 
         int widthBeforeResize, heightBeforeResize;
 
         bool lastUseDifferentModelAlpha = false;
-
-        private delegate void SafeCallDelegate(string text);
-        private delegate void SafeCallDelegateWithColor(string text, Color color);
-
-        private void WriteToLogsThreadSafe(string text)
-        {
-            if (richTextBox1.InvokeRequired)
-            {
-                var d = new SafeCallDelegate(WriteToLogsThreadSafe);
-                Invoke(d, new object[] { text });
-            }
-            else
-                richTextBox1.Text = text;
-            //richTextBox1.AppendText($"\n[{DateTime.Now}] {text}", System.Drawing.Color.White);
-        }        
+      
+        private delegate void SafeCallDelegateWithColor(LogMessage message);
 
         private void WriteToLogsThreadSafe(LogMessage message)
         {
             if (richTextBox1.InvokeRequired)
             {
-                var d = new SafeCallDelegate(WriteToLogsThreadSafe);
+                var d = new SafeCallDelegateWithColor(WriteToLogsThreadSafe);
                 Invoke(d, new object[] { message });
             }
             else
-            {      
+            {
                 richTextBox1.AppendText(message.Text, message.Color);
-            }
-            //richTextBox1.AppendText($"\n[{DateTime.Now}] {text}", System.Drawing.Color.White);
+            }           
         }
-
-        private void AppendToLogsThreadSafe(string text)
-        {
-            if (richTextBox1.InvokeRequired)
-            {
-                var d = new SafeCallDelegate(AppendToLogsThreadSafe);
-                Invoke(d, new object[] { text });
-            }
-            else
-                richTextBox1.AppendText($"\n[{DateTime.Now}] {text}", System.Drawing.Color.White);
-        }
-
-        private void WriteToLogsThreadSafe(string text, Color color)
-        {
-            if (richTextBox1.InvokeRequired)
-            {
-                var d = new SafeCallDelegateWithColor(WriteToLogsThreadSafe);
-                Invoke(d, new object[] { text, color });
-            }
-            else
-                richTextBox1.AppendText($"\n[{DateTime.Now}] {text}", color);
-        }
-
+        
         public double ProgressBarValue
         {
             get => 0;
@@ -115,210 +83,49 @@ namespace ImageEnhancingUtility.Winforms
             }
             else
             {
-                progressBar1.Value = (int) value;
+                progressBar1.Value = (int)value;
                 progress_label.Text = $@"{ViewModel.FilesDone}/{ViewModel.FilesTotal}"; //hack
                 progressFiltered_label.Text = ViewModel.FilesDoneSuccesfully.ToString();
             }
-        }              
-
-        public List<ModelInfo> ModelsItems
-        {
-            get => null;
-            set
-            {
-                CreateModelTree(value);
-                modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
-                previewModels_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
-                interpolationModelOne_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
-                interpolationModelTwo_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
-            }
         }
-
+              
         [DllImport("user32.dll")] //textbox hint
         private static extern IntPtr SendMessage(IntPtr hWnd, int Msg, int wParam, [MarshalAs(UnmanagedType.LPWStr)] string lParam);
 
-        #region BINDINGS
-
-        void BindSettingsTab()
-        {
-            this.Bind(ViewModel, vm => vm.ResultsPath, v => v.outputPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.ModelsPath, v => v.modelsPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.LrPath, v => v.inputPath_textBox.Text);
-
-            this.Bind(ViewModel, vm => vm.InputDirectoryPath, v => v.imgPath_textBox.Text);
-            this.Bind(ViewModel, vm => vm.OutputDirectoryPath, v => v.resultsMergedPath_textBox.Text);
-
-            this.Bind(ViewModel, vm => vm.EsrganPath, v => v.esrganPath_textBox.Text);
-
-
-            this.Bind(ViewModel, vm => vm.MaxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.MaxTileResolutionWidth, v => v.maxTileWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.MaxTileResolutionHeight, v => v.maxTileHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.PreciseTileResolution, v => v.preciseTile_checkBox.Checked);
-
-            this.Bind(ViewModel, vm => vm.IgnoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.IgnoreSingleColorAlphas, v => v.ignoreSingleColorAlpha_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.BalanceAlphas, v => v.balanceAlphas_checkBox.Checked);
-
-            this.Bind(ViewModel, vm => vm.DeleteResults, v => v.deleteResults_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.CreateMemoryImage, v => v.createMemoryImage_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.UseOriginalImageFormat, v => v.preserveFormat_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.SplitRGB, v => v.splitRGB_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.UseCPU, v => v.useCPU_checkBox.Checked);
-
-            this.Bind(ViewModel, vm => vm.UseDifferentModelForAlpha, v => v.useDifferentModelForAlpha_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.SeamlessTexture, v => v.seamlessTextures_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.OverlapSize, v => v.overlapSize_numericUpDown.Value, x => x, x => (int)x);
-
-            this.Bind(ViewModel, vm => vm.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
-        }
-
-        void BindMainTab()
-        {
-            this.Bind(ViewModel, vm => vm.OutputDestinationModes, v => v.outputDestinationMode_comboBox.DataSource, x => new BindingSource(x, null), x => (x as BindingSource).DataSource as Dictionary<string, int>);
-            outputDestinationMode_comboBox.DisplayMember = "Key";
-            outputDestinationMode_comboBox.ValueMember = "Value";
-            this.Bind(ViewModel, vm => vm.OutputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedValue, x => x, x => (int)x);
-
-            this.Bind(ViewModel, vm => vm.OverwriteModes, v => v.overwriteMode_comboBox.DataSource, x => new BindingSource(x, null), x => (x as BindingSource).DataSource as Dictionary<string, int>);
-            overwriteMode_comboBox.DisplayMember = "Key";
-            overwriteMode_comboBox.ValueMember = "Value";
-            this.Bind(ViewModel, vm => vm.OverwriteMode, v => v.overwriteMode_comboBox.SelectedIndex);
-
-            this.OneWayBind(ViewModel, vm => vm.ProgressBarValue, v => v.ProgressBarValue);
-            this.OneWayBind(ViewModel, vm => vm.ModelsItems, v => v.ModelsItems);
-        }
-
-        void BindOutputFormats()
-        {
-            ddsTextureType_comboBox.DataSource = new BindingSource(IEU.ddsTextureType, null);
-            ddsTextureType_comboBox.DisplayMember = "Key";
-            ddsTextureType_comboBox.ValueMember = "Value";
-            ddsTextureType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.DdsTextureTypeSelectedIndex, v => v.ddsTextureType_comboBox.SelectedIndex);
-
-            ddsFileFormat_comboBox.DisplayMember = "Name";
-            ddsFileFormat_comboBox.ValueMember = "DdsFileFormat";
-
-            this.Bind(ViewModel, vm => vm.DdsFileFormatsCurrent, v => v.ddsFileFormat_comboBox.DataSource);
-            this.Bind(ViewModel, vm => vm.DdsFileFormatSelectedIndex, v => v.ddsFileFormat_comboBox.SelectedIndex);
-
-            this.Bind(ViewModel, vm => vm.ddsGenerateMipmaps, v => v.ddsGenerateMipmaps_checkBox.Checked);
-
-            ddsCompresion_comboBox.DataSource = new List<string>() { "Fast", "Normal", "Slow (best)" };
-            ddsCompresion_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.DdsBC7CompressionSelected, v => v.ddsCompresion_comboBox.SelectedIndex);
-
-            outputFormat_comboBox.DataSource = new BindingSource(ViewModel.FormatInfos, null);
-            outputFormat_comboBox.DisplayMember = "DisplayName";
-            outputFormat_comboBox.ValueMember = "Extension";
-            this.Bind(ViewModel, vm => vm.SelectedOutputFormatIndex, v => v.outputFormat_comboBox.SelectedIndex);
-
-
-            tiffSettings_comboBox.DataSource = new BindingSource(IEU.TiffCompressionModes, null);
-            tiffSettings_comboBox.DisplayMember = "Key";
-            tiffSettings_comboBox.ValueMember = "Value";
-            tiffSettings_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.tiffFormat.CompressionMethod, v => v.tiffSettings_comboBox.SelectedValue, x => x, x => (string)x);
-            this.Bind(ViewModel, vm => vm.tiffFormat.QualityFactor, v => v.tiffJpegQuality_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-
-            webpPreset_comboBox.DataSource = new BindingSource(IEU.WebpPresets, null);
-            webpPreset_comboBox.DisplayMember = "Key";
-            webpPreset_comboBox.ValueMember = "Value";
-            webpPreset_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.webpFormat.CompressionMethod, v => v.webpPreset_comboBox.SelectedValue, x => x, x => (string)x);
-            this.Bind(ViewModel, vm => vm.webpFormat.QualityFactor, v => v.webpQuality_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.pngFormat.CompressionFactor, v => v.pngCompression_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-        }
-
-        void BindCommands()
-        {
-            this.BindCommand(ViewModel, vm => vm.SplitCommand, v => v.crop_button);
-            this.BindCommand(ViewModel, vm => vm.UpscaleCommand, v => v.upscale_button);
-            this.BindCommand(ViewModel, vm => vm.MergeCommand, v => v.merge_button);
-            this.BindCommand(ViewModel, vm => vm.SplitUpscaleMergeCommand, v => v.runAll_button);
-
-            ViewModel.SplitCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
-            ViewModel.UpscaleCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
-            ViewModel.MergeCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
-            ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => { AppendToLogsThreadSafe(error.Message); });
-        }
-
-        void BindAdvanced()
-        {
-            #region #ADVANCED_TAB           
-
-            this.Bind(ViewModel, vm => vm.AdvancedUseResultSuffix, v => v.advancedUseSuffix_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.AdvancedResultSuffix, v => v.advancedSuffix_textBox.Text);
-
-            this.Bind(ViewModel, vm => vm.FilterFilenameCaseSensitive, v => v.filterFilenameCaseSensitive_checkBox.Checked);
-
-            this.Bind(ViewModel, vm => vm.FilterFilenameContainsEnabled, v => v.filterFilenameContains_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.FilterFilenameContainsPattern, v => v.filterFilenameContains_textBox.Text);
-
-            this.Bind(ViewModel, vm => vm.FilterFilenameNotContainsEnabled, v => v.filterFilenameNotContains_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.FilterFilenameNotContainsPattern, v => v.filterFilenameNotContains_textBox.Text);
-
-            filterAlpha_comboBox.DataSource = new List<string>() { "None", "Contains alpha", "Doesn't contain alpha" };
-            filterAlpha_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.FilterAlpha, v => v.filterAlpha_comboBox.SelectedIndex);
-
-            this.Bind(ViewModel, vm => vm.FilterImageResolutionEnabled, v => v.filtersSizeOn_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.FilterImageResolutionOr, v => v.filterSizeOr_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.FilterImageResolutionMaxWidth, v => v.filterSizeWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.FilterImageResolutionMaxHeight, v => v.filterSizeHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-
-            foreach (var item in IEU.filterExtensionsList)
-                filterExtensions_checkedListBox.Items.Add(item);
-
-            noiseReductionType_comboBox.DataSource = ViewModel.postprocessNoiseFilter;
-            noiseReductionType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.NoiseReductionType, v => v.noiseReductionType_comboBox.SelectedIndex);
-
-            this.Bind(ViewModel, vm => vm.ThresholdEnabled, v => v.thresholdEnabled_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.ThresholdBlackValue, v => v.thresholdBlack_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.ThresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));            
-
-            #region #RESIZE
-            resizeImageBeforeScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
-            resizeImageBeforeScaleFactor_comboBox.SelectedIndex = 3;
-            this.Bind(ViewModel, vm => vm.ResizeImageBeforeScaleFactor, v => v.resizeImageBeforeScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
-
-            resizeImageBeforeFilterType_comboBox.DataSource = new BindingSource(IEU.MagickFilterTypes, null);
-            resizeImageBeforeFilterType_comboBox.DisplayMember = "Value";
-            resizeImageBeforeFilterType_comboBox.ValueMember = "Key";
-            resizeImageBeforeFilterType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.ResizeImageBeforeFilterType, v => v.resizeImageBeforeFilterType_comboBox.SelectedValue, x => x, x => (int)x);
-
-            resizeImageAfterScaleFactor_comboBox.DataSource = IEU.ResizeImageScaleFactors;
-            resizeImageAfterScaleFactor_comboBox.SelectedIndex = 3;
-            this.Bind(ViewModel, vm => vm.ResizeImageAfterScaleFactor, v => v.resizeImageAfterScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
-
-            resizeImageAfterFilterType_comboBox.DataSource = new BindingSource(IEU.MagickFilterTypes, null);
-            resizeImageAfterFilterType_comboBox.DisplayMember = "Value";
-            resizeImageAfterFilterType_comboBox.ValueMember = "Key";
-            resizeImageAfterFilterType_comboBox.SelectedIndex = 0;
-            this.Bind(ViewModel, vm => vm.ResizeImageAfterFilterType, v => v.resizeImageAfterFilterType_comboBox.SelectedValue, x => x, x => (int)x);
-            #endregion
-
-            #endregion
-        }
-
-        #endregion
-
+        #region CONSTRUCTOR
+               
         public MainForm()
         {
             InitializeComponent();
+
+            //disable mousewheel scrolling:
+            outputDestinationMode_comboBox.MouseWheel += (o, e) => ((HandledMouseEventArgs)e).Handled = true;
+            overwriteMode_comboBox.MouseWheel += (o, e) => ((HandledMouseEventArgs)e).Handled = true;            
+
             CreateMyTreeView();
             treeView_contextMenuStrip.Items[0].Click += OpenModelFolder;
 
-            FormClosing += MainForm_FormClosing;
+            FormClosing += MainForm_FormClosing;                      
+                       
+            ReadOnlyObservableCollection<Profile> bindingDataProfiles = null;
 
-            //this.OneWayBind(ViewModel, vm => vm.SelectedModelsItems, v => v.checkedModels, vmToViewConverterOverride: new ReactiveListConverter());
+            profiles_listBox.DisplayMember = "Name";
+            profilesMainTab_listBox.DisplayMember = "Name";
+            ruleProfiles_comboBox.DisplayMember = "Name";
 
-            BindMainTab();            
+            ReadOnlyObservableCollection<Filter> bindingDataFilters = null;
 
-            ViewModel = new IEU();
+            this.OneWayBind(ViewModel, vm => bindingDataFilters, v => v.filters_listBox.DataSource);
+            filters_listBox.DisplayMember = "Name";
+            this.OneWayBind(ViewModel, vm => bindingDataFilters, v => v.ruleFilters_comboBox.DataSource);
+            ruleFilters_comboBox.DisplayMember = "Name";
+
+            ViewModel = new IEU(false);
+
+            BindMainTab();
+            
+            this.Bind(ViewModel, vm => vm.DisableRuleSystem, v => v.disableRuleSystem_checkBox.Checked);
+            ViewModel.WhenAnyValue(vm => vm.DisableRuleSystem).Subscribe(x => HideRules(x));
 
             ReadOnlyObservableCollection<LogMessage> bindingData;
 
@@ -328,8 +135,31 @@ namespace ImageEnhancingUtility.Winforms
                 .OnItemAdded(x => WriteToLogsThreadSafe(x))
                 .Subscribe();
 
+            ViewModel.Profiles.Connect()
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Bind(out bindingDataProfiles)
+                .Subscribe(x => UpdateDataSource(profiles_listBox, ruleProfiles_comboBox, bindingDataProfiles));
+
+            ViewModel.Filters.Connect()
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Bind(out bindingDataFilters)
+                .Subscribe(x => UpdateDataSource(filters_listBox, ruleFilters_comboBox, bindingDataFilters));
+
+            ReadOnlyObservableCollection<ModelInfo> bindingDataModels = null;
+
+            ViewModel.ModelsItems.Connect()
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Bind(out bindingDataModels)
+                .Subscribe(_ => UpdateModels(bindingDataModels));
+
+            modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems.Items, null); //initial value
+            profileModel_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems.Items, null); //initial value
+
+            rules_listBox.DisplayMember = "Name";
+            rules_listBox.DataSource = new BindingSource(ViewModel.Ruleset.Values.ToList(), null);
+
             BindSettingsTab();
-            
+
             BindCommands();
 
             pathsTextBoxes = new List<TextBox> { esrganPath_textBox, imgPath_textBox, modelsPath_textBox };
@@ -347,35 +177,32 @@ namespace ImageEnhancingUtility.Winforms
             changeResultsDestinationPath_button.Tag = resultsDestinationPath_textBox;
 
             appVersion_label.Text = "GUI v" + this.AppVersion;
-            appCoreVersion_linkLabel.Text = "IEU.Core v" + ViewModel.AppVersion;       
+            appCoreVersion_linkLabel.Text = "IEU.Core v" + ViewModel.AppVersion;
 
-            interpolationModelOne_comboBox.DisplayMember = "Name";
-            interpolationModelOne_comboBox.ValueMember = "FullName";
-            interpolationModelOne_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
-
-            interpolationModelTwo_comboBox.DisplayMember = "Name";
-            interpolationModelTwo_comboBox.ValueMember = "FullName";
-            interpolationModelTwo_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
-
-            modelForAlpha_comboBox.DisplayMember = "Name";
-            modelForAlpha_comboBox.ValueMember = "FullName";
-            modelForAlpha_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);           
-
+            interpolationModelOne_comboBox.DisplayMember =
+            interpolationModelTwo_comboBox.DisplayMember =
+            modelForAlpha_comboBox.DisplayMember =
+            profileModel_comboBox.DisplayMember =
             previewModels_comboBox.DisplayMember = "Name";
+            interpolationModelOne_comboBox.ValueMember =
+            interpolationModelTwo_comboBox.ValueMember =
+            modelForAlpha_comboBox.ValueMember =
+            profileModel_comboBox.ValueMember =
             previewModels_comboBox.ValueMember = "FullName";
-            previewModels_comboBox.DataSource = new BindingSource(ViewModel.ModelsItems, null);
 
             if (ViewModel.ModelsItems.Count > 0)
-            {
-                interpolationModelOne_comboBox.SelectedIndex = 0;
-                interpolationModelTwo_comboBox.SelectedIndex = 0;
-                modelForAlpha_comboBox.SelectedIndex = 0;
+            {         
+                this.Bind(ViewModel,
+                   vm => vm.CurrentProfile.ModelForAlpha,
+                   v => v.modelForAlpha_comboBox.SelectedIndex,
+                   x => x == null ? 0 : ViewModel.ModelsItems.Items.ToList().FindIndex(y => y.FullName == x.FullName),
+                   x => GetModel(x));
 
                 this.Bind(ViewModel,
-                   vm => vm.LastModelForAlphaPath,
-                   v => v.modelForAlpha_comboBox.SelectedIndex,
-                   x => x==""?0:ViewModel.ModelsItems.FindIndex(y => y.FullName == x),
-                   x => ViewModel.ModelsItems[x].FullName);
+                   vm => vm.CurrentProfile.Model,
+                   v => v.profileModel_comboBox.SelectedIndex,
+                   x => GetIndex(x),
+                   x => GetModel(x));
             }
 
             lastUseDifferentModelAlpha = useDifferentModelForAlpha_checkBox.Checked;
@@ -413,12 +240,248 @@ namespace ImageEnhancingUtility.Winforms
 
             imageA_panel.Tag = imageA_pictureBox;
             imageB_panel.Tag = imageB_pictureBox;
-            imageA_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            imageB_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            imageA_pictureBox.SizeMode = imageB_pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            imageAName_label.Text = imageBName_label.Text = "";
 
-            //OpenImage(@"E:\Documents\GitHub\ImageEnhancingUtility\IEU.Winforms\sample.jpg");
+            originalImagesPath_textBox.Text = imgPath_textBox.Text;
+            resultsDestinationPath_textBox.Text = resultsMergedPath_textBox.Text;
+        }
+        #endregion
+
+        #region BINDINGS
+
+        void BindMainTab()
+        {
+            this.OneWayBind(ViewModel, vm => vm.OutputDestinationModes, v => v.outputDestinationMode_comboBox.DataSource, x => new BindingSource(x, null));
+            outputDestinationMode_comboBox.DisplayMember = "Key";
+            outputDestinationMode_comboBox.ValueMember = "Value";
+            this.Bind(ViewModel, vm => vm.OutputDestinationMode, v => v.outputDestinationMode_comboBox.SelectedValue, x => x, x => (int)x);
+
+            this.OneWayBind(ViewModel, vm => vm.OverwriteModes, v => v.overwriteMode_comboBox.DataSource, x => new BindingSource(x, null));
+            overwriteMode_comboBox.DisplayMember = "Key";
+            overwriteMode_comboBox.ValueMember = "Value";
+            this.Bind(ViewModel, vm => vm.CurrentProfile.OverwriteMode, v => v.overwriteMode_comboBox.SelectedValue);
+
+            this.OneWayBind(ViewModel, vm => vm.ProgressBarValue, v => v.ProgressBarValue);
+
+            this.Bind(ViewModel, vm => vm.WindowOnTop, v => v.topMost_checkBox.Checked);
+            this.OneWayBind(ViewModel, vm => vm.WindowOnTop, v => v.TopMost);
+
+            this.Bind(ViewModel, vm => vm.ShowPopups, v => v.showPopups_checkBox.Checked);
+        }
+
+        void BindSettingsTab()
+        {
+            this.Bind(ViewModel, vm => vm.ResultsPath, v => v.outputPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.ModelsPath, v => v.modelsPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.LrPath, v => v.inputPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.InputDirectoryPath, v => v.imgPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.OutputDirectoryPath, v => v.resultsMergedPath_textBox.Text);
+            this.Bind(ViewModel, vm => vm.EsrganPath, v => v.esrganPath_textBox.Text);
+
+            this.Bind(ViewModel, vm => vm.MaxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.MaxTileResolutionWidth, v => v.maxTileWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.MaxTileResolutionHeight, v => v.maxTileHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.CurrentProfile.PreciseTileResolution, v => v.preciseTile_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.IgnoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.IgnoreSingleColorAlphas, v => v.ignoreSingleColorAlpha_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.BalanceAlphas, v => v.balanceAlphas_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.BalanceRgb, v => v.balanceRgb_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.DeleteResults, v => v.deleteResults_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CreateMemoryImage, v => v.createMemoryImage_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.UseOriginalImageFormat, v => v.preserveFormat_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.SplitRGB, v => v.splitRGB_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.UseCPU, v => v.useCPU_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.UseBasicSR, v => v.useBasicSR_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.UseDifferentModelForAlpha, v => v.useDifferentModelForAlpha_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.UseFilterForAlpha, v => v.useFilterForAlpha_checkBox.Checked);         
+
+            filterForAlpha_comboBox.DataSource = new BindingSource(Dictionaries.MagickFilterTypes, null);
+            filterForAlpha_comboBox.DisplayMember = "Value";
+            filterForAlpha_comboBox.ValueMember = "Key";
+            filterForAlpha_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.AlphaFilterType, v => v.filterForAlpha_comboBox.SelectedValue, x => x, x => (int)x);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.UseModel, v => v.useProfileModel_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.SeamlessTexture, v => v.seamlessTextures_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.OverlapSize, v => v.overlapSize_numericUpDown.Value, x => x, x => (int)x);
+
+            this.Bind(ViewModel, vm => vm.UseCondaEnv, v => v.useCondaEnv_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CondaEnv, v => v.condaEnvName_textBox.Text);
+
+            this.Bind(ViewModel, vm => vm.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
         }
         
+        void BindOutputFormats()
+        {
+            ddsTextureType_comboBox.DataSource = new BindingSource(Dictionaries.ddsTextureType, null);
+            ddsTextureType_comboBox.DisplayMember = "Key";
+            ddsTextureType_comboBox.ValueMember = "Value";
+            ddsTextureType_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.DdsTextureTypeSelectedIndex, v => v.ddsTextureType_comboBox.SelectedIndex);
+
+            ddsFileFormat_comboBox.DisplayMember = "Name";
+            ddsFileFormat_comboBox.ValueMember = "DdsFileFormat";
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.DdsFileFormatsCurrent, v => v.ddsFileFormat_comboBox.DataSource);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.DdsFileFormatSelectedIndex, v => v.ddsFileFormat_comboBox.SelectedIndex);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ddsGenerateMipmaps, v => v.ddsGenerateMipmaps_checkBox.Checked);
+
+            ddsCompresion_comboBox.DataSource = new List<string>() { "Fast", "Normal", "Slow (best)" };
+            ddsCompresion_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.DdsBC7CompressionSelected, v => v.ddsCompresion_comboBox.SelectedIndex);
+
+            outputFormat_comboBox.DataSource = new BindingSource(ViewModel.CurrentProfile.FormatInfos, null);
+            outputFormat_comboBox.DisplayMember = "DisplayName";
+            outputFormat_comboBox.ValueMember = "Extension";
+            this.Bind(ViewModel, vm => vm.CurrentProfile.SelectedOutputFormatIndex, v => v.outputFormat_comboBox.SelectedIndex);
+
+
+            tiffSettings_comboBox.DataSource = new BindingSource(Dictionaries.TiffCompressionModes, null);
+            tiffSettings_comboBox.DisplayMember = "Key";
+            tiffSettings_comboBox.ValueMember = "Value";
+            tiffSettings_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.tiffFormat.CompressionMethod, v => v.tiffSettings_comboBox.SelectedValue, x => x, x => (string)x);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.tiffFormat.QualityFactor, v => v.tiffJpegQuality_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+
+            webpPreset_comboBox.DataSource = new BindingSource(Dictionaries.WebpPresets, null);
+            webpPreset_comboBox.DisplayMember = "Key";
+            webpPreset_comboBox.ValueMember = "Value";
+            webpPreset_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.webpFormat.CompressionMethod, v => v.webpPreset_comboBox.SelectedValue, x => x, x => (string)x);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.webpFormat.QualityFactor, v => v.webpQuality_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.CurrentProfile.pngFormat.CompressionFactor, v => v.pngCompression_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+        }
+
+        Tuple<bool, Profile> upscaleFunc() => new Tuple<bool, Profile>(false, null);
+
+        void BindCommands()
+        {    
+            this.BindCommand(ViewModel, vm => vm.SplitCommand, v => v.crop_button);
+            this.BindCommand(ViewModel, vm => vm.UpscaleCommand, v => v.upscale_button);
+            this.BindCommand(ViewModel, vm => vm.MergeCommand, v => v.merge_button);
+            this.BindCommand(ViewModel, vm => vm.SplitUpscaleMergeCommand, v => v.runAll_button);
+           
+            ViewModel.SplitCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
+            ViewModel.UpscaleCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
+            ViewModel.MergeCommand.ThrownExceptions.Subscribe(error => 
+            {
+                WriteErrors(error);
+            });
+            ViewModel.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
+
+            ViewModel.SplitCommand.Subscribe(_ => ShowNotification("\nFinished splitting images"));
+            ViewModel.UpscaleCommand.Subscribe(_ => ShowNotification("\nFinished upscaling images"));
+            ViewModel.MergeCommand.Subscribe(_ => ShowNotification("\nFinished merging images"));
+            ViewModel.SplitUpscaleMergeCommand.Subscribe(_ => ShowNotification("\nFinished processing images"));
+        }
+
+        bool notificationActive = false;
+        PopupNotifier popup;
+        void ShowNotification(string message)
+        {
+            if (ViewModel.ShowPopups)
+            {
+                popup = new PopupNotifier();
+                popup.Delay = 300000;
+                popup.TitleText = "Operation completed!";
+                popup.ContentText = message;
+                popup.Click += Popup_Click;
+                popup.Popup();
+                notificationActive = true;
+            }            
+        }
+
+        private void Popup_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;           
+        }
+
+        void WriteErrors(Exception error)
+        {           
+            if (error.InnerException != null)
+                WriteToLogsThreadSafe(new LogMessage(error.InnerException.Message, Color.Red));
+            else
+                WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red));
+        }
+
+        void BindAdvanced()
+        {
+            #region #ADVANCED_TAB           
+
+            this.Bind(ViewModel, vm => vm.AdvancedUseResultSuffix, v => v.advancedUseSuffix_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.AdvancedResultSuffix, v => v.advancedSuffix_textBox.Text);
+
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FilenameCaseSensitive, v => v.filterFilenameCaseSensitive_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FilenameContainsEnabled, v => v.filterFilenameContains_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FilenameContainsPattern, v => v.filterFilenameContains_textBox.Text);
+
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FilenameNotContainsEnabled, v => v.filterFilenameNotContains_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FilenameNotContainsPattern, v => v.filterFilenameNotContains_textBox.Text);
+
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FolderNameCaseSensitive, v => v.filterFolderNameCaseSensitive_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FolderNameContainsEnabled, v => v.filterFolderNameContains_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FolderNameContainsPattern, v => v.filterFolderNameContains_textBox.Text);
+
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FolderNameNotContainsEnabled, v => v.filterFolderNameNotContains_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentFilter.FolderNameNotContainsPattern, v => v.filterFolderNameNotContains_textBox.Text);
+
+            filterAlpha_comboBox.DataSource = Filter.FiltersAlpha;
+            filterAlpha_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentFilter.Alpha, v => v.filterAlpha_comboBox.SelectedIndex);
+
+            this.Bind(ViewModel, vm => vm.CurrentFilter.ImageResolutionEnabled, v => v.filtersSizeOn_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentFilter.ImageResolutionOr, v => v.filterSizeOr_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentFilter.ImageResolutionMaxWidth, v => v.filterSizeWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.CurrentFilter.ImageResolutionMaxHeight, v => v.filterSizeHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+
+            foreach (var item in Filter.ExtensionsList)
+                filterExtensions_checkedListBox.Items.Add(item);
+
+            noiseReductionType_comboBox.DataSource = IEU.NoiseReductionTypes;
+            noiseReductionType_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.NoiseReductionType, v => v.noiseReductionType_comboBox.SelectedIndex);
+
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdEnabled, v => v.thresholdEnabled_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdBlackValue, v => v.thresholdBlack_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+
+            #region #RESIZE
+            resizeImageBeforeScaleFactor_comboBox.DataSource = new BindingSource(IEU.ResizeImageScaleFactors, null);
+            resizeImageBeforeScaleFactor_comboBox.SelectedIndex = 3;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ResizeImageBeforeScaleFactor, v => v.resizeImageBeforeScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
+
+            resizeImageBeforeFilterType_comboBox.DataSource = new BindingSource(Dictionaries.MagickFilterTypes, null);
+            resizeImageBeforeFilterType_comboBox.DisplayMember = "Value";
+            resizeImageBeforeFilterType_comboBox.ValueMember = "Key";
+            resizeImageBeforeFilterType_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ResizeImageBeforeFilterType, v => v.resizeImageBeforeFilterType_comboBox.SelectedValue, x => x, x => (int)x);
+
+            resizeImageAfterScaleFactor_comboBox.DataSource = new BindingSource(IEU.ResizeImageScaleFactors, null);
+            resizeImageAfterScaleFactor_comboBox.SelectedIndex = 3;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ResizeImageAfterScaleFactor, v => v.resizeImageAfterScaleFactor_comboBox.Text, x => x.ToString(), x => Double.Parse(x.ToString()));
+
+            resizeImageAfterFilterType_comboBox.DataSource = new BindingSource(Dictionaries.MagickFilterTypes, null);
+            resizeImageAfterFilterType_comboBox.DisplayMember = "Value";
+            resizeImageAfterFilterType_comboBox.ValueMember = "Key";
+            resizeImageAfterFilterType_comboBox.SelectedIndex = 0;
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ResizeImageAfterFilterType, v => v.resizeImageAfterFilterType_comboBox.SelectedValue, x => x, x => (int)x);
+            #endregion
+            
+            #endregion
+        }
+
+        #endregion
+
+        #region MODELS/TREEVIEW
+
         private void CreateMyTreeView()
         {
             this.treeView1 = new MyTreeView
@@ -438,7 +501,88 @@ namespace ImageEnhancingUtility.Winforms
             this.splitContainer1.Panel1.Controls.Add(this.treeView1);
         }
 
-        void CreateModelTree(List<ModelInfo> items)
+        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
+        {
+            checkedModels = treeView1.Nodes.Find("", true).Where(x => x.Checked).ToList()
+                .ConvertAll(x => x.Tag as ModelInfo)
+                .Where(x => x?.GetType().ToString() == "ImageEnhancingUtility.Core.ModelInfo").ToList();
+            ViewModel.SelectedModelsItems = checkedModels; //hack           
+
+            DisableUseModelForAlpha();
+            //else
+            //{
+            //    if (outputDestinationMode_comboBox.Items.Count > 2 && outputDestinationMode_comboBox.SelectedIndex != 3)
+            //        outputDestinationMode_comboBox.SelectedIndex = 0;
+            //}
+        }
+
+        void UpdateDataSource(ListBox listBox, ComboBox comboBox, ReadOnlyObservableCollection<Profile> bindingData)
+        {
+            listBox.DataSource = new BindingSource(bindingData, null);
+            profilesMainTab_listBox.DataSource = new BindingSource(bindingData, null);
+            comboBox.DataSource = new BindingSource(bindingData, null);
+        }
+
+        void UpdateDataSource(ListBox listBox, ComboBox comboBox, ReadOnlyObservableCollection<Filter> bindingData)
+        {
+            listBox.DataSource = new BindingSource(bindingData, null);
+            comboBox.DataSource = new BindingSource(bindingData, null);
+        }
+
+        void UpdateModels(ReadOnlyObservableCollection<ModelInfo> bindingDataModels)
+        {
+            if (bindingDataModels.Count == 0) return;
+            string selectedModelFullname = ViewModel.CurrentProfile.ModelForAlpha?.FullName;            
+            modelForAlpha_comboBox.DataSource = new BindingSource(bindingDataModels, null);
+            int lastSelectedIndex = bindingDataModels.ToList().FindIndex(y => y.FullName == selectedModelFullname);
+            if (lastSelectedIndex >= bindingDataModels.Count || lastSelectedIndex < 0)
+                lastSelectedIndex = 0;
+            modelForAlpha_comboBox.SelectedIndex = lastSelectedIndex;
+
+            selectedModelFullname = ViewModel.CurrentProfile.Model?.FullName;
+            profileModel_comboBox.DataSource = new BindingSource(bindingDataModels, null);
+            lastSelectedIndex = bindingDataModels.ToList().FindIndex(y => y.FullName == selectedModelFullname);
+            if (lastSelectedIndex >= bindingDataModels.Count || lastSelectedIndex < 0)
+                lastSelectedIndex = 0;
+            profileModel_comboBox.SelectedIndex = lastSelectedIndex;
+
+            selectedModelFullname = (interpolationModelOne_comboBox.SelectedItem as ModelInfo)?.FullName;
+            interpolationModelOne_comboBox.DataSource = new BindingSource(bindingDataModels, null);
+            lastSelectedIndex = bindingDataModels.ToList().FindIndex(y => y.FullName == selectedModelFullname);
+            if (lastSelectedIndex >= bindingDataModels.Count || lastSelectedIndex < 0)
+                lastSelectedIndex = 0;
+            interpolationModelOne_comboBox.SelectedIndex = lastSelectedIndex;            
+
+            selectedModelFullname = (interpolationModelTwo_comboBox.SelectedItem as ModelInfo)?.FullName;
+            interpolationModelTwo_comboBox.DataSource = new BindingSource(bindingDataModels, null);
+            lastSelectedIndex = bindingDataModels.ToList().FindIndex(y => y.FullName == selectedModelFullname);
+            if (lastSelectedIndex >= bindingDataModels.Count || lastSelectedIndex < 0)
+                lastSelectedIndex = 0;
+            interpolationModelTwo_comboBox.SelectedIndex = lastSelectedIndex;
+
+            selectedModelFullname = (previewModels_comboBox.SelectedItem as ModelInfo)?.FullName;
+            previewModels_comboBox.DataSource = new BindingSource(bindingDataModels, null);            
+            lastSelectedIndex = bindingDataModels.ToList().FindIndex(y => y.FullName == selectedModelFullname);
+            if (lastSelectedIndex >= bindingDataModels.Count || lastSelectedIndex < 0)
+                lastSelectedIndex = 0;
+            previewModels_comboBox.SelectedIndex = lastSelectedIndex;
+
+            if (bindingDataModels.Count > 0)
+                CreateModelTree(bindingDataModels);
+        }
+
+        ModelInfo GetModel(int x)
+        {
+            return ViewModel.ModelsItems.Items.ToList()[x];
+        }
+
+        int GetIndex(ModelInfo x)
+        {
+            int r = x == null ? 0 : ViewModel.ModelsItems.Items.ToList().FindIndex(y => y.FullName == x.FullName);
+            return r;
+        }        
+        
+        void CreateModelTree(IEnumerable<ModelInfo> items)
         {
             treeView1.Nodes.Clear();
             treeView1.CheckBoxes = true;
@@ -474,7 +618,9 @@ namespace ImageEnhancingUtility.Winforms
             }
             treeView1.Nodes[0].ExpandAll();
         }
-        
+
+        #endregion
+
         bool VerifyPaths()
         {
             string message = "Some directories dont exist!";
@@ -541,7 +687,29 @@ namespace ImageEnhancingUtility.Winforms
                     break;
             }
         }
-        
+
+        void DisableUseModelForAlpha()
+        {
+            useDifferentModelForAlpha_checkBox.Enabled = checkedModels.Count <= 1 || useProfileModel_checkBox.Checked;
+
+            if (checkedModels.Count > 1)
+                if (useDifferentModelForAlpha_checkBox.Checked)
+                {
+                    lastUseDifferentModelAlpha = true;
+                    useDifferentModelForAlpha_checkBox.Checked = false;
+                }
+                else
+                {
+                    if (lastUseDifferentModelAlpha)
+                        useDifferentModelForAlpha_checkBox.Checked = lastUseDifferentModelAlpha;
+                }
+        }
+
+        void HideRules(bool on = true)
+        {
+            rules_groupBox.Visible = !on;
+        }
+
         #region PREVIEW methods
 
         Bitmap originalPreview, resultPreview;
@@ -563,7 +731,7 @@ namespace ImageEnhancingUtility.Winforms
             originalPreview = null;
             resultPreview = null;
 
-            Image image = Helper.LoadImageToBitmap(fullname);
+            Image image = ImageOperations.LoadImageToBitmap(fullname);
             previewFullname = fullname;
             //zoomImageBox.BeginUpdate();
             zoomImageBox.Image = image;
@@ -587,8 +755,7 @@ namespace ImageEnhancingUtility.Winforms
             }
             FillZoomLevels();
             UpdateStatusBar();
-            zoomImageBox.ZoomToFit();
-            
+            zoomImageBox.ZoomToFit();            
         }
 
         private void UpdatePreview()
@@ -624,15 +791,10 @@ namespace ImageEnhancingUtility.Winforms
             using (Graphics g = Graphics.FromImage(result))
             {
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-                g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                g.InterpolationMode = InterpolationMode.NearestNeighbor;
                 g.DrawImage(zoomImageBox.Image, new Rectangle(0, 0, w, h), visibleImageRegion, GraphicsUnit.Pixel);
-            }
-            //if( previewImageBox.Image != null)            
-            //    previewImageBox.Image.Dispose();
-            previewImageBox.Image = result;
-
-            //if (originalPreview != null)
-            //    originalPreview.Dispose();                  
+            }            
+            previewImageBox.Image = result;                        
             originalPreview = result;
             resultPreview = null;
         }
@@ -781,6 +943,20 @@ namespace ImageEnhancingUtility.Winforms
                 }
             }
         }
+        
+        private void PreviewInProgress(bool inProgress)
+        {
+            int progress = inProgress ? 30 : 0;
+            bool enabled = inProgress ? false : true;
+            preview_progressBar.Style = inProgress ? ProgressBarStyle.Marquee : preview_progressBar.Style = ProgressBarStyle.Continuous;
+            preview_progressBar.MarqueeAnimationSpeed = progress;
+            previewUpdate_button.Enabled = enabled;
+            zoomImageBox.Enabled = enabled;
+            previewModels_comboBox.Enabled = enabled;
+            button_previewSaveComparison.Enabled = enabled;
+            previewSave_button.Enabled = enabled;
+            previewSaveOutputFormat_button.Enabled = enabled;
+        }
 
         #endregion
 
@@ -850,8 +1026,7 @@ namespace ImageEnhancingUtility.Winforms
                 }
             }
         }
-
-
+        
         private void previewImageBox_MouseDown(object sender, MouseEventArgs e)
         {
             if (originalPreview == null || resultPreview == null)
@@ -876,18 +1051,15 @@ namespace ImageEnhancingUtility.Winforms
                 UpdatePreview();
             }
         }
-
+        
         private async void previewUpdate_button_Click(object sender, EventArgs e)
         {
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
             if (originalPreview == null)
-                return;
-
-            preview_progressBar.Style = ProgressBarStyle.Marquee;
-            preview_progressBar.MarqueeAnimationSpeed = 30;
-            Bitmap preview = await ViewModel.CreatePreview(originalPreview, modelPath);
-            preview_progressBar.Style = ProgressBarStyle.Continuous;
-            preview_progressBar.MarqueeAnimationSpeed = 0;
+                return;            
+            PreviewInProgress(true);
+            Bitmap preview = await ViewModel.CreatePreview(originalPreview, modelPath);            
+            PreviewInProgress(false);
             if (preview != null)
             {
                 previewImageBox.Image = preview;
@@ -899,16 +1071,47 @@ namespace ImageEnhancingUtility.Winforms
             }
         }
 
-        private async void previewSave_button_Click(object sender, EventArgs e)
+        private async void savePreview(bool saveAsPng = true)
         {
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
             if (zoomImageBox.Image == null)
                 return;
-            preview_progressBar.Style = ProgressBarStyle.Marquee;
-            preview_progressBar.MarqueeAnimationSpeed = 30;
+            PreviewInProgress(true);
+            try
+            {
+                bool success = await ViewModel.SavePreview(previewFullname, modelPath, saveAsPng);               
+                if (!success)
+                    MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
+            }
+            catch
+            {
+                MessageBox.Show("Unknown error ocured!");
+            }
+            finally
+            {
+                PreviewInProgress(false);
+            }
+           
+        }
+
+        private async void previewSavePng_button_Click(object sender, EventArgs e)
+        {
+           savePreview();
+        }
+
+        private async void previewSaveOutputFormat_button_Click(object sender, EventArgs e)
+        {
+            savePreview(false);
+        }
+
+        private async void previewSave_button_Click_(object sender, EventArgs e)
+        {
+            string modelPath = previewModels_comboBox.SelectedValue.ToString();
+            if (zoomImageBox.Image == null)
+                return;
+            PreviewInProgress(true);
             Bitmap preview = await ViewModel.CreatePreview((Bitmap)zoomImageBox.Image, modelPath);
-            preview_progressBar.Style = ProgressBarStyle.Continuous;
-            preview_progressBar.MarqueeAnimationSpeed = 0;
+            PreviewInProgress(false);
             if (preview != null)
             {
                 string modelName = Path.GetFileNameWithoutExtension(modelPath);
@@ -918,8 +1121,67 @@ namespace ImageEnhancingUtility.Winforms
             }
             else
             {
-                MessageBox.Show("Failed to create preview, sorry!");
+                MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
             }
+        }        
+
+        private async void previewSaveComparison_button_Click(object sender, EventArgs e)
+        {
+            if (resultPreview == null)
+                return;
+            int footerHeight = 45;
+            Bitmap outputImage = new Bitmap(2*resultPreview.Width, resultPreview.Height + footerHeight);
+            using (Graphics graphics = Graphics.FromImage(outputImage))
+            {
+                graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                graphics.InterpolationMode = InterpolationMode.NearestNeighbor;
+                graphics.SmoothingMode = SmoothingMode.HighQuality;
+                graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
+                graphics.CompositingQuality = CompositingQuality.HighQuality;
+                graphics.DrawImage(originalPreview, new Rectangle(0,0, resultPreview.Width, resultPreview.Height),
+                    new Rectangle(new Point(), originalPreview.Size), GraphicsUnit.Pixel);
+                graphics.DrawImage(resultPreview, new Rectangle(resultPreview.Width, 0, resultPreview.Width, resultPreview.Height),
+                    new Rectangle(0, 0, resultPreview.Width, resultPreview.Height), GraphicsUnit.Pixel);
+               
+                Bitmap Bmp = new Bitmap(2 * resultPreview.Width, footerHeight);
+                using (Graphics gfx = Graphics.FromImage(Bmp))
+                using (SolidBrush brush = new SolidBrush(Color.FromArgb(226, 00, 122)))
+                {
+                    gfx.FillRectangle(brush, 0, 0, 2 * resultPreview.Width, footerHeight);
+                }
+                graphics.DrawImage(Bmp, 0, resultPreview.Height);
+                
+                GraphicsPath p = new GraphicsPath();
+                int fontSize = 19;
+                SizeF s = new Size(999999999, 99999999);
+
+                Font font = new Font("Times New Roman", graphics.DpiY * fontSize / 72);                  
+                int cf = 0, lf = 0;
+                while (s.Width >= 2 * resultPreview.Width)
+                {
+                    fontSize--;
+                    font = new Font(FontFamily.GenericSansSerif, graphics.DpiY * fontSize / 72, FontStyle.Regular);   
+                    s = graphics.MeasureString(previewModels_comboBox.Text, font, new SizeF(), new StringFormat(), out cf, out lf);           
+                }              
+                StringFormat stringFormat = new StringFormat();
+                stringFormat.Alignment = StringAlignment.Center;
+                
+                double a = graphics.DpiY * fontSize / 72;
+                stringFormat.LineAlignment = StringAlignment.Center;                    
+         
+                graphics.DrawString(
+                    $"{previewModels_comboBox.Text}",
+                    font,
+                    Brushes.White,
+                    new Rectangle(0, resultPreview.Height, 2 * resultPreview.Width, footerHeight - 0),
+                    stringFormat );
+            }
+            try
+            {
+                Clipboard.SetDataObject(outputImage);
+            }
+            catch
+            { }
         }
 
         private void zoomLevelsToolStripComboBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -961,8 +1223,7 @@ namespace ImageEnhancingUtility.Winforms
                 }
             }
         }
-
-
+        
         #endregion
 
         #region MainForm
@@ -1005,6 +1266,8 @@ namespace ImageEnhancingUtility.Winforms
         {
             SendMessage(filterFilenameContains_textBox.Handle, 0x1501, 1, "word1;word2;word3");
             SendMessage(filterFilenameNotContains_textBox.Handle, 0x1501, 1, "word1;word2;word3");
+            SendMessage(filterFolderNameContains_textBox.Handle, 0x1501, 1, "word1;word2;word3");
+            SendMessage(filterFolderNameNotContains_textBox.Handle, 0x1501, 1, "word1;word2;word3");
             SendMessage(interpolationOutputModelName_textBox.Handle, 0x1501, 1, "New model name");
 
             Width = Convert.ToInt32(ViewModel.WindowWidth);
@@ -1046,31 +1309,16 @@ namespace ImageEnhancingUtility.Winforms
 
         #endregion
 
+        void comboBox_DisableMouseWheel(object sender, MouseEventArgs e)
+        {
+            ((HandledMouseEventArgs)e).Handled = true;
+        }
+
         private void advancedUseSuffix_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             advancedSuffix_textBox.ReadOnly = !advancedUseSuffix_checkBox.Checked;
         }
-
-        private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
-        {
-            checkedModels = treeView1.Nodes.Find("", true).Where(x => x.Checked).ToList()
-                .ConvertAll(x => x.Tag as ModelInfo)
-                .Where(x => x?.GetType().ToString() == "ImageEnhancingUtility.Core.ModelInfo").ToList();
-            ViewModel.SelectedModelsItems = checkedModels; //hack           
-
-            useDifferentModelForAlpha_checkBox.Enabled = checkedModels.Count <= 1;
-
-            if (checkedModels.Count > 1)            
-                if (useDifferentModelForAlpha_checkBox.Checked)
-                {
-                    lastUseDifferentModelAlpha = true;
-                    useDifferentModelForAlpha_checkBox.Checked = false;
-                }                         
-            else            
-                if (lastUseDifferentModelAlpha)
-                    useDifferentModelForAlpha_checkBox.Checked = lastUseDifferentModelAlpha;                       
-        }
-
+       
         private void richTextBox1_TextChanged(object sender, EventArgs e)
         {
             // set the current caret position to the end
@@ -1192,6 +1440,7 @@ namespace ImageEnhancingUtility.Winforms
             MessageBox.Show($"Succesfully copied {imagesCopied} files" + (modelsCopied > 0 ? $" and { modelsCopied} models" : ""));
         }
 
+
         string alphaPrev = "05";
         private void InterpolationSettingsChanged(object sender, EventArgs e)
         {
@@ -1222,6 +1471,22 @@ namespace ImageEnhancingUtility.Winforms
                 lastUseDifferentModelAlpha = false;
         }
 
+        private void useFilterForAlpha_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            filterForAlpha_comboBox.Enabled = useFilterForAlpha_checkBox.Checked;            
+        }
+
+        private void UseProfileModel_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            profileModel_comboBox.Enabled = useProfileModel_checkBox.Checked;
+            treeView1.Enabled = !useProfileModel_checkBox.Checked;
+
+            if (!useDifferentModelForAlpha_checkBox.Enabled && useProfileModel_checkBox.Checked)
+                useDifferentModelForAlpha_checkBox.Enabled = true;
+            if (useDifferentModelForAlpha_checkBox.Enabled && !useProfileModel_checkBox.Checked && checkedModels.Count > 1)
+                DisableUseModelForAlpha();
+        }
+
         private void preserveFormat_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             outputFormat_comboBox.Enabled = !preserveFormat_checkBox.Checked;
@@ -1231,12 +1496,13 @@ namespace ImageEnhancingUtility.Winforms
         {
             CheckedListBox checkedListBox = sender as CheckedListBox;
             var selectedITem = checkedListBox.SelectedItem;
-            ViewModel.FilterSelectedExtensionsList = checkedListBox.CheckedItems.Cast<string>().ToList(); //hack
+            ViewModel.CurrentFilter.SelectedExtensionsList = checkedListBox.CheckedItems.Cast<string>().ToList(); //hack
             if (checkedListBox.CheckedItems.Contains(selectedITem))
-                ViewModel.FilterSelectedExtensionsList.Remove(checkedListBox.SelectedItem.ToString());
+                ViewModel.CurrentFilter.SelectedExtensionsList.Remove(checkedListBox.SelectedItem.ToString());
             else
-                ViewModel.FilterSelectedExtensionsList.Add(checkedListBox.SelectedItem.ToString());
+                ViewModel.CurrentFilter.SelectedExtensionsList.Add(checkedListBox.SelectedItem.ToString());
         }
+
 
         #region IMAGE INTERPOLATION
 
@@ -1247,12 +1513,14 @@ namespace ImageEnhancingUtility.Winforms
             {
                 try
                 {
-                    Image image = Helper.LoadImageToBitmap(filePaths[0]);
+                    Image image = ImageOperations.LoadImageToBitmap(filePaths[0]);
                     PictureBox pictureBox = ((sender as Panel).Tag as PictureBox);
                     pictureBox.Image = image;
                     pictureBox.Tag = filePaths[0];
                     if(overlayResultName_textBox.Text != Path.GetFileName(imageA_pictureBox.Tag as string))
-                        overlayResultName_textBox.Text = Path.GetFileName(filePaths[0]);
+                        overlayResultName_textBox.Text = Path.GetFileNameWithoutExtension(filePaths[0]) + "_interpolated.png";
+                    Label label = pictureBox.Name == "imageA_pictureBox" ? imageAName_label : imageBName_label;
+                    label.Text = Path.GetFileName(filePaths[0]);
                 }
                 catch
                 {
@@ -1279,11 +1547,17 @@ namespace ImageEnhancingUtility.Winforms
             if (string.IsNullOrEmpty(overlayResultName_textBox.Text))
                 overlayResultName_textBox.Text = Path.GetFileName(pathA);
 
-            ViewModel.InterpolateImages(imageA_pictureBox.Image, imageB_pictureBox.Image, ViewModel.OutputDirectoryPath + "\\" + overlayResultName_textBox.Text, alpha.Value);
+            string destPath = pathA.Replace(Path.GetFileName(pathA), "");
 
-            StepFinishedForm finishedForm = new StepFinishedForm(ViewModel.OutputDirectoryPath, $"Result is saved in { ViewModel.OutputDirectoryPath }");
-            finishedForm.ShowDialog();
-            //MessageBox.Show($"Result is saved in {ViewModel.OutputDirectoryPath}");
+            bool success = ViewModel.InterpolateImages(imageA_pictureBox.Image, imageB_pictureBox.Image, destPath + overlayResultName_textBox.Text, alpha.Value);
+            if (!success)
+                tabControl1.SelectedIndex = 0;
+            else
+            {
+                StepFinishedForm finishedForm = new StepFinishedForm(ViewModel.OutputDirectoryPath, $"Result is saved in { destPath }");
+                finishedForm.ShowDialog();
+                //MessageBox.Show($"Result is saved in {ViewModel.OutputDirectoryPath}");
+            }
         }
 
         private async void OverlayFolders_button_Click(object sender, EventArgs e)
@@ -1310,10 +1584,156 @@ namespace ImageEnhancingUtility.Winforms
 
         #endregion
 
-        private void modelForAlpha_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        #region RULESET     
+
+        private void SaveProfile_button_Click(object sender, EventArgs e)
         {
-            ViewModel.ModelForAlpha = modelForAlpha_comboBox.SelectedItem as ModelInfo; //hack, breaks MVVM
+            ViewModel.AddProfile(saveProfileName_textBox.Text);
         }
+
+        private void LoadProfile_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.LoadProfile(profiles_listBox.SelectedValue as Profile);
+        }
+
+        private void LoadProfileMainTab_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.LoadProfile(profilesMainTab_listBox.SelectedValue as Profile);
+        }
+
+        private void configs_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (profiles_listBox.SelectedValue != null)
+                saveProfileName_textBox.Text = (profiles_listBox.SelectedValue as Profile).Name;
+            if ((profiles_listBox.SelectedValue as Profile).Name == "Global")
+                deleteProfile_button.Enabled = false;
+            else
+                deleteProfile_button.Enabled = true;
+        }
+
+        private void DeleteProfile_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.DeleteProfile(profiles_listBox.SelectedValue as Profile);
+        }     
+
+        private void SaveFilter_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.AddFilter(newFilterName_textBox.Text);
+        }
+
+        private void LoadFilter_button_Click(object sender, EventArgs e)
+        {
+            Filter loadedFilter = filters_listBox.SelectedValue as Filter;
+            ViewModel.LoadFilter(loadedFilter);
+
+            for (int i = 0; i < filterExtensions_checkedListBox.Items.Count; i++)
+                filterExtensions_checkedListBox.SetItemChecked(i, false);
+
+            foreach (var ext in loadedFilter.SelectedExtensionsList)
+            {
+                int index = filterExtensions_checkedListBox.Items.IndexOf(ext);
+                filterExtensions_checkedListBox.SetItemChecked(index, true);
+            }
+        }
+        
+        private void DeleteFilter_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.DeleteFilter(filters_listBox.SelectedValue as Filter);
+        }
+
+        private void filters_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (filters_listBox.SelectedValue != null)
+                newFilterName_textBox.Text = (filters_listBox.SelectedValue as Filter).Name;
+            if ((filters_listBox.SelectedValue as Filter).Name == "Global")
+                deleteFilter_button.Enabled = false;
+            else
+                deleteFilter_button.Enabled = true;
+        }
+
+        private void SaveRule_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.AddRule(
+                newRuleName_textBox.Text,
+                ruleProfiles_comboBox.SelectedValue as Profile,
+                ruleFilters_comboBox.SelectedValue as Filter);
+            rules_listBox.DataSource = new BindingSource(ViewModel.Ruleset.Values.ToList(), null);
+        }
+
+        private void SaveRuleFromCurrent_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.AddRule(
+                newRuleName_textBox.Text,
+                ViewModel.CurrentProfile,
+                ViewModel.CurrentFilter);
+            rules_listBox.DataSource = new BindingSource(ViewModel.Ruleset.Values.ToList(), null);
+        }
+
+        private void DeleteRule_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.DeleteRule(rules_listBox.SelectedValue as Rule);
+            rules_listBox.DataSource = new BindingSource(ViewModel.Ruleset.Values.ToList(), null);
+        }
+
+        private void Rules_listBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (rules_listBox.SelectedValue != null)
+                newRuleName_textBox.Text = (rules_listBox.SelectedValue as Rule).Name;
+            if ((rules_listBox.SelectedValue as Rule).Name == "Global")                            
+                deleteRule_button.Enabled = false;            
+            else            
+                deleteRule_button.Enabled = true;
+            rulePriority_numericUpDown.Value = (rules_listBox.SelectedValue as Rule).Priority;
+        }
+
+        private void NewRuleName_textBox_TextChanged(object sender, EventArgs e)
+        {
+            if(newRuleName_textBox.Text == "Global")
+                saveRule_button.Enabled = false;
+            else
+                saveRule_button.Enabled = true;
+        }
+
+        private void LoadRule_button_Click(object sender, EventArgs e)
+        {
+            Rule selectedRule = rules_listBox.SelectedValue as Rule;
+            if (selectedRule != null)
+            {
+                ViewModel.LoadProfile(selectedRule.Profile);
+                ViewModel.LoadFilter(selectedRule.Filter);
+            }
+        }
+
+        private void useCondaEnv_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            condaEnvName_textBox.Enabled = useCondaEnv_checkBox.Checked;
+        }
+        
+        private void MainForm_Enter(object sender, EventArgs e)
+        {
+            if (notificationActive)
+                popup.Hide();
+        }
+
+        private void RulePriority_numericUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            int newValue = (int)rulePriority_numericUpDown.Value;
+            Rule selectedRule = rules_listBox.SelectedValue as Rule;
+            if (selectedRule != null
+                && selectedRule.Name != "Global"
+                && newValue != selectedRule.Priority
+                && newValue > 0
+                && newValue < rules_listBox.Items.Count)
+            {
+                ViewModel.ChangeRulePriority(selectedRule, newValue);
+                rules_listBox.DataSource = new BindingSource(ViewModel.Ruleset.Values.ToList(), null);
+                rules_listBox.SelectedIndex = rules_listBox.Items.Count - 1 - newValue;
+            }
+            else
+                rulePriority_numericUpDown.Value = (rules_listBox.SelectedValue as Rule).Priority;
+
+        }
+        #endregion
 
         private void webpLossless_checkBox_CheckedChanged(object sender, EventArgs e)
         {
