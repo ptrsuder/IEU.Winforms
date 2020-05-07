@@ -1357,7 +1357,7 @@ namespace ImageEnhancingUtility.Winforms
 
         private void thresholdEnabled_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (thresholdEnabledRbg_checkBox.Checked)
+            if (thresholdEnabledRbg_checkBox.Checked || thresholdEnabledAlpha_checkBox.Checked)
             {
                 thresholdBlack_numericUpDown.Enabled = true;
                 thresholdWhite_numericUpDown.Enabled = true;

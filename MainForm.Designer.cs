@@ -91,6 +91,7 @@
             this.threshold_groupBox = new System.Windows.Forms.GroupBox();
             this.thresholdBlack_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
+            this.thresholdEnabledAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.thresholdEnabledRbg_checkBox = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.thresholdWhite_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -273,7 +274,6 @@
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.popupNotifier1 = new Tulpep.NotificationWindow.PopupNotifier();
-            this.thresholdEnabledAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -760,7 +760,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
@@ -794,7 +794,7 @@
             this.previewSave_button.Location = new System.Drawing.Point(144, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(136, 112);
+            this.previewSave_button.Size = new System.Drawing.Size(135, 112);
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
@@ -816,10 +816,10 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(286, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(285, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(195, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(196, 112);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -1154,6 +1154,17 @@
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 2;
             this.label13.Text = "% White";
+            // 
+            // thresholdEnabledAlpha_checkBox
+            // 
+            this.thresholdEnabledAlpha_checkBox.AutoSize = true;
+            this.thresholdEnabledAlpha_checkBox.Location = new System.Drawing.Point(12, 42);
+            this.thresholdEnabledAlpha_checkBox.Name = "thresholdEnabledAlpha_checkBox";
+            this.thresholdEnabledAlpha_checkBox.Size = new System.Drawing.Size(89, 17);
+            this.thresholdEnabledAlpha_checkBox.TabIndex = 0;
+            this.thresholdEnabledAlpha_checkBox.Text = "Use for alpha";
+            this.thresholdEnabledAlpha_checkBox.UseVisualStyleBackColor = true;
+            this.thresholdEnabledAlpha_checkBox.CheckedChanged += new System.EventHandler(this.thresholdEnabled_checkBox_CheckedChanged);
             // 
             // thresholdEnabledRbg_checkBox
             // 
@@ -3246,17 +3257,6 @@
             this.popupNotifier1.Size = new System.Drawing.Size(400, 100);
             this.popupNotifier1.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
             this.popupNotifier1.TitleText = null;
-            // 
-            // thresholdEnabledAlpha_checkBox
-            // 
-            this.thresholdEnabledAlpha_checkBox.AutoSize = true;
-            this.thresholdEnabledAlpha_checkBox.Location = new System.Drawing.Point(12, 42);
-            this.thresholdEnabledAlpha_checkBox.Name = "thresholdEnabledAlpha_checkBox";
-            this.thresholdEnabledAlpha_checkBox.Size = new System.Drawing.Size(89, 17);
-            this.thresholdEnabledAlpha_checkBox.TabIndex = 0;
-            this.thresholdEnabledAlpha_checkBox.Text = "Use for alpha";
-            this.thresholdEnabledAlpha_checkBox.UseVisualStyleBackColor = true;
-            this.thresholdEnabledAlpha_checkBox.CheckedChanged += new System.EventHandler(this.thresholdEnabled_checkBox_CheckedChanged);
             // 
             // MainForm
             // 
