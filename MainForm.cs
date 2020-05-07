@@ -245,6 +245,8 @@ namespace ImageEnhancingUtility.Winforms
 
             originalImagesPath_textBox.Text = imgPath_textBox.Text;
             resultsDestinationPath_textBox.Text = resultsMergedPath_textBox.Text;
+
+            //tabControl1.SelectedTab = previewResult_tabPage;
         }
         #endregion
 
@@ -314,6 +316,10 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.CondaEnv, v => v.condaEnvName_textBox.Text);
 
             this.Bind(ViewModel, vm => vm.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.EnableBlend, v => v.useMblend_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.InMemoryMode, v => v.inMemoryMode_checkBox.Checked);
         }
         
         void BindOutputFormats()
@@ -1058,17 +1064,25 @@ namespace ImageEnhancingUtility.Winforms
             if (originalPreview == null)
                 return;            
             PreviewInProgress(true);
-            Bitmap preview = await ViewModel.CreatePreview(originalPreview, modelPath);            
+            bool success = await ViewModel.Preview(previewFullname, originalPreview, modelPath, true);            
             PreviewInProgress(false);
-            if (preview != null)
-            {
-                previewImageBox.Image = preview;
-                resultPreview = preview;
-            }
-            else
+            if (!success)
             {
                 MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
+                return;
             }
+            string previewOutPath = $"{ViewModel.PreviewDirPath}\\preview.png";
+            if (File.Exists(previewOutPath))
+            {
+                Bitmap preview = new Bitmap(previewOutPath);
+                if (preview != null)
+                {
+                    Bitmap preview2 = new Bitmap(preview);
+                    previewImageBox.Image = preview2;
+                    resultPreview = preview2;
+                }
+                preview.Dispose();
+            }               
         }
 
         private async void savePreview(bool saveAsPng = true)
@@ -1079,7 +1093,7 @@ namespace ImageEnhancingUtility.Winforms
             PreviewInProgress(true);
             try
             {
-                bool success = await ViewModel.SavePreview(previewFullname, modelPath, saveAsPng);               
+                bool success = await ViewModel.Preview(previewFullname, zoomImageBox.Image, modelPath, saveAsPng, true);               
                 if (!success)
                     MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
             }
@@ -1102,27 +1116,6 @@ namespace ImageEnhancingUtility.Winforms
         private async void previewSaveOutputFormat_button_Click(object sender, EventArgs e)
         {
             savePreview(false);
-        }
-
-        private async void previewSave_button_Click_(object sender, EventArgs e)
-        {
-            string modelPath = previewModels_comboBox.SelectedValue.ToString();
-            if (zoomImageBox.Image == null)
-                return;
-            PreviewInProgress(true);
-            Bitmap preview = await ViewModel.CreatePreview((Bitmap)zoomImageBox.Image, modelPath);
-            PreviewInProgress(false);
-            if (preview != null)
-            {
-                string modelName = Path.GetFileNameWithoutExtension(modelPath);
-                string dir = Path.GetDirectoryName(previewFullname);
-                string fileName = Path.GetFileNameWithoutExtension(previewFullname);
-                preview.Save(dir + "\\" + fileName + "_" + modelName + ".png");
-            }
-            else
-            {
-                MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
-            }
         }        
 
         private async void previewSaveComparison_button_Click(object sender, EventArgs e)
