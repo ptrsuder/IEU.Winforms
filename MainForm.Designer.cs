@@ -75,6 +75,7 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
+            this.inMemoryMode_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.balanceRgb_checkBox = new System.Windows.Forms.CheckBox();
             this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
@@ -90,7 +91,7 @@
             this.threshold_groupBox = new System.Windows.Forms.GroupBox();
             this.thresholdBlack_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
-            this.thresholdEnabled_checkBox = new System.Windows.Forms.CheckBox();
+            this.thresholdEnabledRbg_checkBox = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.thresholdWhite_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
@@ -272,7 +273,7 @@
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.popupNotifier1 = new Tulpep.NotificationWindow.PopupNotifier();
-            this.inMemoryMode_checkBox = new System.Windows.Forms.CheckBox();
+            this.thresholdEnabledAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -759,7 +760,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 199F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
@@ -780,7 +781,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(136, 53);
+            this.previewUpdate_button.Size = new System.Drawing.Size(135, 53);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -790,7 +791,7 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(145, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(144, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
             this.previewSave_button.Size = new System.Drawing.Size(136, 112);
@@ -805,7 +806,7 @@
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 62);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(136, 53);
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(135, 53);
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
@@ -815,10 +816,10 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(287, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(286, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(194, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(195, 112);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -950,6 +951,17 @@
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // inMemoryMode_checkBox
+            // 
+            this.inMemoryMode_checkBox.AutoSize = true;
+            this.inMemoryMode_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.inMemoryMode_checkBox.Location = new System.Drawing.Point(736, 217);
+            this.inMemoryMode_checkBox.Name = "inMemoryMode_checkBox";
+            this.inMemoryMode_checkBox.Size = new System.Drawing.Size(115, 17);
+            this.inMemoryMode_checkBox.TabIndex = 56;
+            this.inMemoryMode_checkBox.Text = "INMEMORYMODE";
+            this.inMemoryMode_checkBox.UseVisualStyleBackColor = true;
             // 
             // groupBox12
             // 
@@ -1112,7 +1124,8 @@
             // 
             this.threshold_groupBox.Controls.Add(this.thresholdBlack_numericUpDown);
             this.threshold_groupBox.Controls.Add(this.label13);
-            this.threshold_groupBox.Controls.Add(this.thresholdEnabled_checkBox);
+            this.threshold_groupBox.Controls.Add(this.thresholdEnabledAlpha_checkBox);
+            this.threshold_groupBox.Controls.Add(this.thresholdEnabledRbg_checkBox);
             this.threshold_groupBox.Controls.Add(this.label12);
             this.threshold_groupBox.Controls.Add(this.thresholdWhite_numericUpDown);
             this.threshold_groupBox.Location = new System.Drawing.Point(9, 51);
@@ -1126,7 +1139,7 @@
             // 
             this.thresholdBlack_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.thresholdBlack_numericUpDown.Enabled = false;
-            this.thresholdBlack_numericUpDown.Location = new System.Drawing.Point(63, 16);
+            this.thresholdBlack_numericUpDown.Location = new System.Drawing.Point(135, 13);
             this.thresholdBlack_numericUpDown.Name = "thresholdBlack_numericUpDown";
             this.thresholdBlack_numericUpDown.Size = new System.Drawing.Size(45, 20);
             this.thresholdBlack_numericUpDown.TabIndex = 1;
@@ -1136,28 +1149,28 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(109, 46);
+            this.label13.Location = new System.Drawing.Point(181, 43);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 2;
             this.label13.Text = "% White";
             // 
-            // thresholdEnabled_checkBox
+            // thresholdEnabledRbg_checkBox
             // 
-            this.thresholdEnabled_checkBox.AutoSize = true;
-            this.thresholdEnabled_checkBox.Location = new System.Drawing.Point(12, 31);
-            this.thresholdEnabled_checkBox.Name = "thresholdEnabled_checkBox";
-            this.thresholdEnabled_checkBox.Size = new System.Drawing.Size(45, 17);
-            this.thresholdEnabled_checkBox.TabIndex = 0;
-            this.thresholdEnabled_checkBox.Text = "Use";
-            this.thresholdEnabled_checkBox.UseVisualStyleBackColor = true;
-            this.thresholdEnabled_checkBox.CheckedChanged += new System.EventHandler(this.thresholdEnabled_checkBox_CheckedChanged);
+            this.thresholdEnabledRbg_checkBox.AutoSize = true;
+            this.thresholdEnabledRbg_checkBox.Location = new System.Drawing.Point(12, 19);
+            this.thresholdEnabledRbg_checkBox.Name = "thresholdEnabledRbg_checkBox";
+            this.thresholdEnabledRbg_checkBox.Size = new System.Drawing.Size(86, 17);
+            this.thresholdEnabledRbg_checkBox.TabIndex = 0;
+            this.thresholdEnabledRbg_checkBox.Text = "Use for RGB";
+            this.thresholdEnabledRbg_checkBox.UseVisualStyleBackColor = true;
+            this.thresholdEnabledRbg_checkBox.CheckedChanged += new System.EventHandler(this.thresholdEnabled_checkBox_CheckedChanged);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(109, 20);
+            this.label12.Location = new System.Drawing.Point(181, 17);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 2;
@@ -1172,7 +1185,7 @@
             0,
             0,
             0});
-            this.thresholdWhite_numericUpDown.Location = new System.Drawing.Point(63, 42);
+            this.thresholdWhite_numericUpDown.Location = new System.Drawing.Point(135, 39);
             this.thresholdWhite_numericUpDown.Name = "thresholdWhite_numericUpDown";
             this.thresholdWhite_numericUpDown.Size = new System.Drawing.Size(45, 20);
             this.thresholdWhite_numericUpDown.TabIndex = 1;
@@ -3234,16 +3247,16 @@
             this.popupNotifier1.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
             this.popupNotifier1.TitleText = null;
             // 
-            // inMemoryMode_checkBox
+            // thresholdEnabledAlpha_checkBox
             // 
-            this.inMemoryMode_checkBox.AutoSize = true;
-            this.inMemoryMode_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.inMemoryMode_checkBox.Location = new System.Drawing.Point(736, 217);
-            this.inMemoryMode_checkBox.Name = "inMemoryMode_checkBox";
-            this.inMemoryMode_checkBox.Size = new System.Drawing.Size(115, 17);
-            this.inMemoryMode_checkBox.TabIndex = 56;
-            this.inMemoryMode_checkBox.Text = "INMEMORYMODE";
-            this.inMemoryMode_checkBox.UseVisualStyleBackColor = true;
+            this.thresholdEnabledAlpha_checkBox.AutoSize = true;
+            this.thresholdEnabledAlpha_checkBox.Location = new System.Drawing.Point(12, 42);
+            this.thresholdEnabledAlpha_checkBox.Name = "thresholdEnabledAlpha_checkBox";
+            this.thresholdEnabledAlpha_checkBox.Size = new System.Drawing.Size(89, 17);
+            this.thresholdEnabledAlpha_checkBox.TabIndex = 0;
+            this.thresholdEnabledAlpha_checkBox.Text = "Use for alpha";
+            this.thresholdEnabledAlpha_checkBox.UseVisualStyleBackColor = true;
+            this.thresholdEnabledAlpha_checkBox.CheckedChanged += new System.EventHandler(this.thresholdEnabled_checkBox_CheckedChanged);
             // 
             // MainForm
             // 
@@ -3434,7 +3447,7 @@
         private System.Windows.Forms.GroupBox threshold_groupBox;
         private System.Windows.Forms.NumericUpDown thresholdBlack_numericUpDown;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.CheckBox thresholdEnabled_checkBox;
+        private System.Windows.Forms.CheckBox thresholdEnabledRbg_checkBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown thresholdWhite_numericUpDown;
         private System.Windows.Forms.GroupBox imagePreprocess_groupBox;
@@ -3607,6 +3620,7 @@
         private System.Windows.Forms.CheckBox useMblend_checkBox;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.CheckBox inMemoryMode_checkBox;
+        private System.Windows.Forms.CheckBox thresholdEnabledAlpha_checkBox;
     }
 }
 

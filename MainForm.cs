@@ -455,7 +455,8 @@ namespace ImageEnhancingUtility.Winforms
             noiseReductionType_comboBox.SelectedIndex = 0;
             this.Bind(ViewModel, vm => vm.CurrentProfile.NoiseReductionType, v => v.noiseReductionType_comboBox.SelectedIndex);
 
-            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdEnabled, v => v.thresholdEnabled_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdEnabled, v => v.thresholdEnabledRbg_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdAlphaEnabled, v => v.thresholdEnabledAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdBlackValue, v => v.thresholdBlack_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
@@ -1356,7 +1357,7 @@ namespace ImageEnhancingUtility.Winforms
 
         private void thresholdEnabled_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (thresholdEnabled_checkBox.Checked)
+            if (thresholdEnabledRbg_checkBox.Checked)
             {
                 thresholdBlack_numericUpDown.Enabled = true;
                 thresholdWhite_numericUpDown.Enabled = true;
