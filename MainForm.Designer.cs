@@ -3,14 +3,14 @@
     partial class MainForm
     {
         /// <summary>
-        /// Обязательная переменная конструктора.
+        /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
         /// <summary>
-        /// Освободить все используемые ресурсы.
+        /// Clean up any resources being used.
         /// </summary>
-        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -20,11 +20,11 @@
             base.Dispose(disposing);
         }
 
-        #region Код, автоматически созданный конструктором форм Windows
+        #region Windows Form Designer generated code
 
         /// <summary>
-        /// Требуемый метод для поддержки конструктора — не изменяйте 
-        /// содержимое этого метода с помощью редактора кода.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -75,11 +75,19 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
+<<<<<<< Updated upstream
+=======
+            this.showDebugInfo_checkBox = new System.Windows.Forms.CheckBox();
+            this.useMergeWithGradient_checkBox = new System.Windows.Forms.CheckBox();
             this.inMemoryMode_checkBox = new System.Windows.Forms.CheckBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.balanceRgb_checkBox = new System.Windows.Forms.CheckBox();
             this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
             this.useMblend_checkBox = new System.Windows.Forms.CheckBox();
+>>>>>>> Stashed changes
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.topMost_checkBox = new System.Windows.Forms.CheckBox();
             this.showPopups_checkBox = new System.Windows.Forms.CheckBox();
@@ -91,8 +99,7 @@
             this.threshold_groupBox = new System.Windows.Forms.GroupBox();
             this.thresholdBlack_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
-            this.thresholdEnabledAlpha_checkBox = new System.Windows.Forms.CheckBox();
-            this.thresholdEnabledRbg_checkBox = new System.Windows.Forms.CheckBox();
+            this.thresholdEnabled_checkBox = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.thresholdWhite_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label35 = new System.Windows.Forms.Label();
@@ -112,6 +119,8 @@
             this.noiseReductionType_comboBox = new System.Windows.Forms.ComboBox();
             this.outputFormat_comboBox = new System.Windows.Forms.ComboBox();
             this.ignoreSingleColorAlpha_checkBox = new System.Windows.Forms.CheckBox();
+            this.balanceRgb_checkBox = new System.Windows.Forms.CheckBox();
+            this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
             this.splitRGB_checkBox = new System.Windows.Forms.CheckBox();
             this.profileModel_comboBox = new System.Windows.Forms.ComboBox();
             this.useProfileModel_checkBox = new System.Windows.Forms.CheckBox();
@@ -293,7 +302,11 @@
             this.tableLayoutPanel6.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.settings_tabPage.SuspendLayout();
+<<<<<<< Updated upstream
+=======
+            this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
+>>>>>>> Stashed changes
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.groupBox11.SuspendLayout();
@@ -427,7 +440,7 @@
             this.main_tabPage.Location = new System.Drawing.Point(4, 25);
             this.main_tabPage.Name = "main_tabPage";
             this.main_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.main_tabPage.Size = new System.Drawing.Size(980, 752);
+            this.main_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.main_tabPage.TabIndex = 0;
             this.main_tabPage.Text = "Basic";
             this.main_tabPage.UseVisualStyleBackColor = true;
@@ -449,7 +462,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(974, 746);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1257, 708);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // panel2
@@ -457,7 +470,7 @@
             this.panel2.Controls.Add(this.progressFiltered_label);
             this.panel2.Controls.Add(this.progress_label);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 719);
+            this.panel2.Location = new System.Drawing.Point(3, 681);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 24);
             this.panel2.TabIndex = 37;
@@ -502,7 +515,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 710);
+            this.panel1.Size = new System.Drawing.Size(149, 672);
             this.panel1.TabIndex = 20;
             // 
             // button1
@@ -533,7 +546,7 @@
             this.groupBox1.Size = new System.Drawing.Size(149, 50);
             this.groupBox1.TabIndex = 36;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Profile:Overwrite";
+            this.groupBox1.Text = "Profile : Overwrite";
             // 
             // overwriteMode_comboBox
             // 
@@ -586,8 +599,8 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(813, 710);
-            this.splitContainer1.SplitterDistance = 430;
+            this.splitContainer1.Size = new System.Drawing.Size(1096, 672);
+            this.splitContainer1.SplitterDistance = 581;
             this.splitContainer1.TabIndex = 21;
             // 
             // richTextBox1
@@ -599,7 +612,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(379, 710);
+            this.richTextBox1.Size = new System.Drawing.Size(511, 672);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -607,9 +620,9 @@
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(158, 719);
+            this.progressBar1.Location = new System.Drawing.Point(158, 681);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(813, 24);
+            this.progressBar1.Size = new System.Drawing.Size(1096, 24);
             this.progressBar1.TabIndex = 22;
             // 
             // previewResult_tabPage
@@ -618,7 +631,7 @@
             this.previewResult_tabPage.Controls.Add(this.toolStrip);
             this.previewResult_tabPage.Location = new System.Drawing.Point(4, 25);
             this.previewResult_tabPage.Name = "previewResult_tabPage";
-            this.previewResult_tabPage.Size = new System.Drawing.Size(980, 752);
+            this.previewResult_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.previewResult_tabPage.TabIndex = 5;
             this.previewResult_tabPage.Text = "Preview result";
             this.previewResult_tabPage.UseVisualStyleBackColor = true;
@@ -643,7 +656,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(980, 727);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1263, 689);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // zoomImageBox
@@ -658,7 +671,7 @@
             this.zoomImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
             this.zoomImageBox.Location = new System.Drawing.Point(3, 3);
             this.zoomImageBox.Name = "zoomImageBox";
-            this.zoomImageBox.Size = new System.Drawing.Size(484, 536);
+            this.zoomImageBox.Size = new System.Drawing.Size(625, 498);
             this.zoomImageBox.TabIndex = 0;
             this.zoomImageBox.TabStop = false;
             this.zoomImageBox.ImageChanged += new System.EventHandler(this.zoomImageBox_ImageChanged);
@@ -677,9 +690,9 @@
             this.previewImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.previewImageBox.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
-            this.previewImageBox.Location = new System.Drawing.Point(493, 3);
+            this.previewImageBox.Location = new System.Drawing.Point(634, 3);
             this.previewImageBox.Name = "previewImageBox";
-            this.previewImageBox.Size = new System.Drawing.Size(484, 536);
+            this.previewImageBox.Size = new System.Drawing.Size(626, 498);
             this.previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.previewImageBox.TabIndex = 4;
             this.previewImageBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.previewImageBox_MouseDown);
@@ -692,25 +705,25 @@
             this.previewModels_comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewModels_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewModels_comboBox.FormattingEnabled = true;
-            this.previewModels_comboBox.Location = new System.Drawing.Point(493, 545);
+            this.previewModels_comboBox.Location = new System.Drawing.Point(634, 507);
             this.previewModels_comboBox.Name = "previewModels_comboBox";
-            this.previewModels_comboBox.Size = new System.Drawing.Size(484, 21);
+            this.previewModels_comboBox.Size = new System.Drawing.Size(626, 21);
             this.previewModels_comboBox.TabIndex = 6;
             // 
             // preview_progressBar
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.preview_progressBar, 2);
             this.preview_progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.preview_progressBar.Location = new System.Drawing.Point(3, 700);
+            this.preview_progressBar.Location = new System.Drawing.Point(3, 662);
             this.preview_progressBar.Name = "preview_progressBar";
-            this.preview_progressBar.Size = new System.Drawing.Size(974, 24);
+            this.preview_progressBar.Size = new System.Drawing.Size(1257, 24);
             this.preview_progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.preview_progressBar.TabIndex = 8;
             // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 545);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 507);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -721,8 +734,8 @@
             // 
             this.splitContainer3.Panel2.Controls.Add(this.imageSizeToolStripStatusLabel);
             this.tableLayoutPanel3.SetRowSpan(this.splitContainer3, 2);
-            this.splitContainer3.Size = new System.Drawing.Size(484, 149);
-            this.splitContainer3.SplitterDistance = 185;
+            this.splitContainer3.Size = new System.Drawing.Size(625, 149);
+            this.splitContainer3.SplitterDistance = 239;
             this.splitContainer3.TabIndex = 9;
             // 
             // miniMapImageBox
@@ -748,7 +761,7 @@
             // 
             this.imageSizeToolStripStatusLabel.AutoSize = true;
             this.imageSizeToolStripStatusLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(253, 0);
+            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(340, 0);
             this.imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
             this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(42, 13);
             this.imageSizeToolStripStatusLabel.TabIndex = 0;
@@ -760,19 +773,23 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 201F));
+<<<<<<< Updated upstream
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 191F));
+=======
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+>>>>>>> Stashed changes
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.previewSaveOutputFormat_button, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(493, 576);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(634, 538);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 37F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(484, 118);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(626, 118);
             this.tableLayoutPanel6.TabIndex = 10;
             // 
             // previewUpdate_button
@@ -781,7 +798,11 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(135, 53);
+<<<<<<< Updated upstream
+            this.previewUpdate_button.Size = new System.Drawing.Size(210, 75);
+=======
+            this.previewUpdate_button.Size = new System.Drawing.Size(130, 53);
+>>>>>>> Stashed changes
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -791,10 +812,17 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(144, 3);
+<<<<<<< Updated upstream
+            this.previewSave_button.Location = new System.Drawing.Point(219, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(135, 112);
+            this.previewSave_button.Size = new System.Drawing.Size(212, 112);
+=======
+            this.previewSave_button.Location = new System.Drawing.Point(139, 3);
+            this.previewSave_button.Name = "previewSave_button";
+            this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
+            this.previewSave_button.Size = new System.Drawing.Size(131, 112);
+>>>>>>> Stashed changes
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
@@ -804,9 +832,13 @@
             // 
             this.button_previewSaveComparison.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 62);
+            this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 84);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(135, 53);
+<<<<<<< Updated upstream
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(210, 31);
+=======
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(130, 53);
+>>>>>>> Stashed changes
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
@@ -816,10 +848,17 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(285, 3);
+<<<<<<< Updated upstream
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(437, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(196, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(186, 112);
+=======
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(276, 3);
+            this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
+            this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(205, 112);
+>>>>>>> Stashed changes
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -837,7 +876,7 @@
             this.zoomLevelsToolStripComboBox});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(980, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1263, 25);
             this.toolStrip.TabIndex = 3;
             // 
             // openFromFileToolStripButton
@@ -900,8 +939,14 @@
             // settings_tabPage
             // 
             this.settings_tabPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+<<<<<<< Updated upstream
+=======
+            this.settings_tabPage.Controls.Add(this.showDebugInfo_checkBox);
+            this.settings_tabPage.Controls.Add(this.useMergeWithGradient_checkBox);
             this.settings_tabPage.Controls.Add(this.inMemoryMode_checkBox);
+            this.settings_tabPage.Controls.Add(this.groupBox13);
             this.settings_tabPage.Controls.Add(this.groupBox12);
+>>>>>>> Stashed changes
             this.settings_tabPage.Controls.Add(this.groupBox8);
             this.settings_tabPage.Controls.Add(this.deleteProfile_button);
             this.settings_tabPage.Controls.Add(this.groupBox9);
@@ -952,28 +997,92 @@
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
             // 
+<<<<<<< Updated upstream
+=======
+            // showDebugInfo_checkBox
+            // 
+            this.showDebugInfo_checkBox.AutoSize = true;
+            this.showDebugInfo_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showDebugInfo_checkBox.Location = new System.Drawing.Point(294, 307);
+            this.showDebugInfo_checkBox.Name = "showDebugInfo_checkBox";
+            this.showDebugInfo_checkBox.Size = new System.Drawing.Size(103, 17);
+            this.showDebugInfo_checkBox.TabIndex = 56;
+            this.showDebugInfo_checkBox.Text = "Show debug info";
+            this.showDebugInfo_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // useMergeWithGradient_checkBox
+            // 
+            this.useMergeWithGradient_checkBox.AutoSize = true;
+            this.useMergeWithGradient_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.useMergeWithGradient_checkBox.Location = new System.Drawing.Point(294, 284);
+            this.useMergeWithGradient_checkBox.Name = "useMergeWithGradient_checkBox";
+            this.useMergeWithGradient_checkBox.Size = new System.Drawing.Size(136, 17);
+            this.useMergeWithGradient_checkBox.TabIndex = 56;
+            this.useMergeWithGradient_checkBox.Text = "Use new merge (slower)";
+            this.useMergeWithGradient_checkBox.UseVisualStyleBackColor = true;
+            // 
             // inMemoryMode_checkBox
             // 
             this.inMemoryMode_checkBox.AutoSize = true;
-            this.inMemoryMode_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.inMemoryMode_checkBox.Location = new System.Drawing.Point(736, 217);
+            this.inMemoryMode_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inMemoryMode_checkBox.Location = new System.Drawing.Point(294, 261);
             this.inMemoryMode_checkBox.Name = "inMemoryMode_checkBox";
-            this.inMemoryMode_checkBox.Size = new System.Drawing.Size(115, 17);
+            this.inMemoryMode_checkBox.Size = new System.Drawing.Size(147, 17);
             this.inMemoryMode_checkBox.TabIndex = 56;
-            this.inMemoryMode_checkBox.Text = "INMEMORYMODE";
+            this.inMemoryMode_checkBox.Text = "Process images in memory";
             this.inMemoryMode_checkBox.UseVisualStyleBackColor = true;
+            this.inMemoryMode_checkBox.CheckedChanged += new System.EventHandler(this.inMemoryMode_checkBox_CheckedChanged);
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.checkBox1);
+            this.groupBox13.Controls.Add(this.checkBox2);
+            this.groupBox13.Location = new System.Drawing.Point(670, 283);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(158, 70);
+            this.groupBox13.TabIndex = 54;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "UI";
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.Cursor = System.Windows.Forms.Cursors.Default;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox1.Location = new System.Drawing.Point(11, 24);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBox1.Size = new System.Drawing.Size(77, 17);
+            this.checkBox1.TabIndex = 38;
+            this.checkBox1.Text = "Stay on top";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Cursor = System.Windows.Forms.Cursors.Default;
+            this.checkBox2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.checkBox2.Location = new System.Drawing.Point(11, 47);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBox2.Size = new System.Drawing.Size(142, 17);
+            this.checkBox2.TabIndex = 38;
+            this.checkBox2.Text = "Show popup notifications";
+            this.checkBox2.UseVisualStyleBackColor = true;
             // 
             // groupBox12
             // 
             this.groupBox12.Controls.Add(this.balanceRgb_checkBox);
             this.groupBox12.Controls.Add(this.balanceAlphas_checkBox);
             this.groupBox12.Controls.Add(this.useMblend_checkBox);
-            this.groupBox12.Location = new System.Drawing.Point(725, 125);
+            this.groupBox12.Location = new System.Drawing.Point(793, 6);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(200, 86);
+            this.groupBox12.Size = new System.Drawing.Size(179, 86);
             this.groupBox12.TabIndex = 55;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "groupBox12";
+            this.groupBox12.Text = "Legacy";
             // 
             // balanceRgb_checkBox
             // 
@@ -1005,11 +1114,12 @@
             this.useMblend_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.useMblend_checkBox.Location = new System.Drawing.Point(11, 65);
             this.useMblend_checkBox.Name = "useMblend_checkBox";
-            this.useMblend_checkBox.Size = new System.Drawing.Size(80, 17);
+            this.useMblend_checkBox.Size = new System.Drawing.Size(129, 17);
             this.useMblend_checkBox.TabIndex = 25;
-            this.useMblend_checkBox.Text = "Use mblend";
+            this.useMblend_checkBox.Text = "Use old merge mblend";
             this.useMblend_checkBox.UseVisualStyleBackColor = true;
             // 
+>>>>>>> Stashed changes
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.topMost_checkBox);
@@ -1068,6 +1178,8 @@
             this.groupBox9.Controls.Add(this.imagePreprocess_groupBox);
             this.groupBox9.Controls.Add(this.outputFormat_comboBox);
             this.groupBox9.Controls.Add(this.ignoreSingleColorAlpha_checkBox);
+            this.groupBox9.Controls.Add(this.balanceRgb_checkBox);
+            this.groupBox9.Controls.Add(this.balanceAlphas_checkBox);
             this.groupBox9.Controls.Add(this.splitRGB_checkBox);
             this.groupBox9.Controls.Add(this.profileModel_comboBox);
             this.groupBox9.Controls.Add(this.useProfileModel_checkBox);
@@ -1083,15 +1195,15 @@
             this.groupBox9.Size = new System.Drawing.Size(570, 333);
             this.groupBox9.TabIndex = 52;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Profile:Settings";
+            this.groupBox9.Text = "Profile : Settings";
             // 
             // ignoreAlpha_checkBox
             // 
             this.ignoreAlpha_checkBox.AutoSize = true;
-            this.ignoreAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ignoreAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ignoreAlpha_checkBox.Location = new System.Drawing.Point(319, 119);
             this.ignoreAlpha_checkBox.Name = "ignoreAlpha_checkBox";
-            this.ignoreAlpha_checkBox.Size = new System.Drawing.Size(124, 17);
+            this.ignoreAlpha_checkBox.Size = new System.Drawing.Size(123, 17);
             this.ignoreAlpha_checkBox.TabIndex = 25;
             this.ignoreAlpha_checkBox.Text = "Ignore alpha channel";
             this.toolTip1.SetToolTip(this.ignoreAlpha_checkBox, "Don\'t create alpha tiles in LR, don\'t read alpha tiles from results");
@@ -1124,8 +1236,7 @@
             // 
             this.threshold_groupBox.Controls.Add(this.thresholdBlack_numericUpDown);
             this.threshold_groupBox.Controls.Add(this.label13);
-            this.threshold_groupBox.Controls.Add(this.thresholdEnabledAlpha_checkBox);
-            this.threshold_groupBox.Controls.Add(this.thresholdEnabledRbg_checkBox);
+            this.threshold_groupBox.Controls.Add(this.thresholdEnabled_checkBox);
             this.threshold_groupBox.Controls.Add(this.label12);
             this.threshold_groupBox.Controls.Add(this.thresholdWhite_numericUpDown);
             this.threshold_groupBox.Location = new System.Drawing.Point(9, 51);
@@ -1139,7 +1250,7 @@
             // 
             this.thresholdBlack_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.thresholdBlack_numericUpDown.Enabled = false;
-            this.thresholdBlack_numericUpDown.Location = new System.Drawing.Point(135, 13);
+            this.thresholdBlack_numericUpDown.Location = new System.Drawing.Point(63, 16);
             this.thresholdBlack_numericUpDown.Name = "thresholdBlack_numericUpDown";
             this.thresholdBlack_numericUpDown.Size = new System.Drawing.Size(45, 20);
             this.thresholdBlack_numericUpDown.TabIndex = 1;
@@ -1149,18 +1260,31 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label13.Location = new System.Drawing.Point(181, 43);
+            this.label13.Location = new System.Drawing.Point(109, 46);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(46, 13);
             this.label13.TabIndex = 2;
             this.label13.Text = "% White";
             // 
+<<<<<<< Updated upstream
+            // thresholdEnabled_checkBox
+            // 
+            this.thresholdEnabled_checkBox.AutoSize = true;
+            this.thresholdEnabled_checkBox.Location = new System.Drawing.Point(12, 31);
+            this.thresholdEnabled_checkBox.Name = "thresholdEnabled_checkBox";
+            this.thresholdEnabled_checkBox.Size = new System.Drawing.Size(45, 17);
+            this.thresholdEnabled_checkBox.TabIndex = 0;
+            this.thresholdEnabled_checkBox.Text = "Use";
+            this.thresholdEnabled_checkBox.UseVisualStyleBackColor = true;
+            this.thresholdEnabled_checkBox.CheckedChanged += new System.EventHandler(this.thresholdEnabled_checkBox_CheckedChanged);
+=======
             // thresholdEnabledAlpha_checkBox
             // 
             this.thresholdEnabledAlpha_checkBox.AutoSize = true;
+            this.thresholdEnabledAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.thresholdEnabledAlpha_checkBox.Location = new System.Drawing.Point(12, 42);
             this.thresholdEnabledAlpha_checkBox.Name = "thresholdEnabledAlpha_checkBox";
-            this.thresholdEnabledAlpha_checkBox.Size = new System.Drawing.Size(89, 17);
+            this.thresholdEnabledAlpha_checkBox.Size = new System.Drawing.Size(86, 17);
             this.thresholdEnabledAlpha_checkBox.TabIndex = 0;
             this.thresholdEnabledAlpha_checkBox.Text = "Use for alpha";
             this.thresholdEnabledAlpha_checkBox.UseVisualStyleBackColor = true;
@@ -1169,19 +1293,21 @@
             // thresholdEnabledRbg_checkBox
             // 
             this.thresholdEnabledRbg_checkBox.AutoSize = true;
+            this.thresholdEnabledRbg_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.thresholdEnabledRbg_checkBox.Location = new System.Drawing.Point(12, 19);
             this.thresholdEnabledRbg_checkBox.Name = "thresholdEnabledRbg_checkBox";
-            this.thresholdEnabledRbg_checkBox.Size = new System.Drawing.Size(86, 17);
+            this.thresholdEnabledRbg_checkBox.Size = new System.Drawing.Size(83, 17);
             this.thresholdEnabledRbg_checkBox.TabIndex = 0;
             this.thresholdEnabledRbg_checkBox.Text = "Use for RGB";
             this.thresholdEnabledRbg_checkBox.UseVisualStyleBackColor = true;
             this.thresholdEnabledRbg_checkBox.CheckedChanged += new System.EventHandler(this.thresholdEnabled_checkBox_CheckedChanged);
+>>>>>>> Stashed changes
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label12.Location = new System.Drawing.Point(181, 17);
+            this.label12.Location = new System.Drawing.Point(109, 20);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(45, 13);
             this.label12.TabIndex = 2;
@@ -1196,7 +1322,7 @@
             0,
             0,
             0});
-            this.thresholdWhite_numericUpDown.Location = new System.Drawing.Point(135, 39);
+            this.thresholdWhite_numericUpDown.Location = new System.Drawing.Point(63, 42);
             this.thresholdWhite_numericUpDown.Name = "thresholdWhite_numericUpDown";
             this.thresholdWhite_numericUpDown.Size = new System.Drawing.Size(45, 20);
             this.thresholdWhite_numericUpDown.TabIndex = 1;
@@ -1372,22 +1498,46 @@
             // ignoreSingleColorAlpha_checkBox
             // 
             this.ignoreSingleColorAlpha_checkBox.AutoSize = true;
-            this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(319, 140);
             this.ignoreSingleColorAlpha_checkBox.Name = "ignoreSingleColorAlpha_checkBox";
-            this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(135, 17);
+            this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(134, 17);
             this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
             this.ignoreSingleColorAlpha_checkBox.Text = "Ignore solid white alpha";
             this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid white alpha will be always ignored on split");
             this.ignoreSingleColorAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
+            // balanceRgb_checkBox
+            // 
+            this.balanceRgb_checkBox.AutoSize = true;
+            this.balanceRgb_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.balanceRgb_checkBox.Location = new System.Drawing.Point(403, 20);
+            this.balanceRgb_checkBox.Name = "balanceRgb_checkBox";
+            this.balanceRgb_checkBox.Size = new System.Drawing.Size(153, 17);
+            this.balanceRgb_checkBox.TabIndex = 25;
+            this.balanceRgb_checkBox.Text = "Use globalbalance on RGB";
+            this.toolTip1.SetToolTip(this.balanceRgb_checkBox, "No need to enable this for most cases");
+            this.balanceRgb_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // balanceAlphas_checkBox
+            // 
+            this.balanceAlphas_checkBox.AutoSize = true;
+            this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(403, 39);
+            this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
+            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(156, 17);
+            this.balanceAlphas_checkBox.TabIndex = 25;
+            this.balanceAlphas_checkBox.Text = "Use globalbalance on alpha";
+            this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "No need to enable this for most cases");
+            this.balanceAlphas_checkBox.UseVisualStyleBackColor = true;
+            // 
             // splitRGB_checkBox
             // 
             this.splitRGB_checkBox.AutoSize = true;
-            this.splitRGB_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.splitRGB_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.splitRGB_checkBox.Location = new System.Drawing.Point(17, 140);
             this.splitRGB_checkBox.Name = "splitRGB_checkBox";
-            this.splitRGB_checkBox.Size = new System.Drawing.Size(116, 17);
+            this.splitRGB_checkBox.Size = new System.Drawing.Size(115, 17);
             this.splitRGB_checkBox.TabIndex = 25;
             this.splitRGB_checkBox.Text = "Split RGB channels";
             this.splitRGB_checkBox.UseVisualStyleBackColor = true;
@@ -1407,10 +1557,10 @@
             // useProfileModel_checkBox
             // 
             this.useProfileModel_checkBox.AutoSize = true;
-            this.useProfileModel_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useProfileModel_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.useProfileModel_checkBox.Location = new System.Drawing.Point(17, 62);
             this.useProfileModel_checkBox.Name = "useProfileModel_checkBox";
-            this.useProfileModel_checkBox.Size = new System.Drawing.Size(113, 17);
+            this.useProfileModel_checkBox.Size = new System.Drawing.Size(112, 17);
             this.useProfileModel_checkBox.TabIndex = 25;
             this.useProfileModel_checkBox.Text = "Use specific model";
             this.useProfileModel_checkBox.UseVisualStyleBackColor = true;
@@ -1431,10 +1581,10 @@
             // useFilterForAlpha_checkBox
             // 
             this.useFilterForAlpha_checkBox.AutoSize = true;
-            this.useFilterForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useFilterForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.useFilterForAlpha_checkBox.Location = new System.Drawing.Point(17, 117);
             this.useFilterForAlpha_checkBox.Name = "useFilterForAlpha_checkBox";
-            this.useFilterForAlpha_checkBox.Size = new System.Drawing.Size(109, 17);
+            this.useFilterForAlpha_checkBox.Size = new System.Drawing.Size(108, 17);
             this.useFilterForAlpha_checkBox.TabIndex = 25;
             this.useFilterForAlpha_checkBox.Text = "Use filter for alpha";
             this.useFilterForAlpha_checkBox.UseVisualStyleBackColor = true;
@@ -1455,10 +1605,10 @@
             // useDifferentModelForAlpha_checkBox
             // 
             this.useDifferentModelForAlpha_checkBox.AutoSize = true;
-            this.useDifferentModelForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useDifferentModelForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.useDifferentModelForAlpha_checkBox.Location = new System.Drawing.Point(17, 90);
             this.useDifferentModelForAlpha_checkBox.Name = "useDifferentModelForAlpha_checkBox";
-            this.useDifferentModelForAlpha_checkBox.Size = new System.Drawing.Size(159, 17);
+            this.useDifferentModelForAlpha_checkBox.Size = new System.Drawing.Size(158, 17);
             this.useDifferentModelForAlpha_checkBox.TabIndex = 25;
             this.useDifferentModelForAlpha_checkBox.Text = "Use different model for alpha";
             this.toolTip1.SetToolTip(this.useDifferentModelForAlpha_checkBox, "Need to split images when changing this setting");
@@ -1468,11 +1618,11 @@
             // seamlessTextures_checkBox
             // 
             this.seamlessTextures_checkBox.AutoSize = true;
-            this.seamlessTextures_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.seamlessTextures_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.seamlessTextures_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.seamlessTextures_checkBox.Location = new System.Drawing.Point(17, 163);
             this.seamlessTextures_checkBox.Name = "seamlessTextures_checkBox";
-            this.seamlessTextures_checkBox.Size = new System.Drawing.Size(137, 17);
+            this.seamlessTextures_checkBox.Size = new System.Drawing.Size(136, 17);
             this.seamlessTextures_checkBox.TabIndex = 30;
             this.seamlessTextures_checkBox.Text = "Seamless (tiled) textures";
             this.toolTip1.SetToolTip(this.seamlessTextures_checkBox, "Use if original image is seamless texture");
@@ -1481,11 +1631,11 @@
             // preserveFormat_checkBox
             // 
             this.preserveFormat_checkBox.AutoSize = true;
-            this.preserveFormat_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.preserveFormat_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.preserveFormat_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.preserveFormat_checkBox.Location = new System.Drawing.Point(227, 29);
+            this.preserveFormat_checkBox.Location = new System.Drawing.Point(227, 28);
             this.preserveFormat_checkBox.Name = "preserveFormat_checkBox";
-            this.preserveFormat_checkBox.Size = new System.Drawing.Size(142, 17);
+            this.preserveFormat_checkBox.Size = new System.Drawing.Size(141, 17);
             this.preserveFormat_checkBox.TabIndex = 30;
             this.preserveFormat_checkBox.Text = "Use original image format";
             this.toolTip1.SetToolTip(this.preserveFormat_checkBox, "Use original image extension with settings from [Output formats] tab");
@@ -1521,10 +1671,10 @@
             // useBasicSR_checkBox
             // 
             this.useBasicSR_checkBox.AutoSize = true;
-            this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.useBasicSR_checkBox.Location = new System.Drawing.Point(111, 284);
             this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
-            this.useBasicSR_checkBox.Size = new System.Drawing.Size(146, 17);
+            this.useBasicSR_checkBox.Size = new System.Drawing.Size(145, 17);
             this.useBasicSR_checkBox.TabIndex = 51;
             this.useBasicSR_checkBox.Text = "Use BasicSR architecture";
             this.useBasicSR_checkBox.UseVisualStyleBackColor = true;
@@ -1613,9 +1763,10 @@
             this.checkForUpdates_checkBox.Checked = true;
             this.checkForUpdates_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
             this.checkForUpdates_checkBox.Dock = System.Windows.Forms.DockStyle.Left;
+            this.checkForUpdates_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkForUpdates_checkBox.Location = new System.Drawing.Point(3, 23);
             this.checkForUpdates_checkBox.Name = "checkForUpdates_checkBox";
-            this.checkForUpdates_checkBox.Size = new System.Drawing.Size(113, 31);
+            this.checkForUpdates_checkBox.Size = new System.Drawing.Size(110, 31);
             this.checkForUpdates_checkBox.TabIndex = 39;
             this.checkForUpdates_checkBox.Text = "Check for updates";
             this.checkForUpdates_checkBox.UseVisualStyleBackColor = true;
@@ -1654,12 +1805,12 @@
             // 
             this.useCondaEnv_checkBox.AutoSize = true;
             this.useCondaEnv_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.useCondaEnv_checkBox.Location = new System.Drawing.Point(370, 333);
             this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
             this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.useCondaEnv_checkBox.Size = new System.Drawing.Size(131, 17);
+            this.useCondaEnv_checkBox.Size = new System.Drawing.Size(130, 17);
             this.useCondaEnv_checkBox.TabIndex = 38;
             this.useCondaEnv_checkBox.Text = "Use conda enviroment";
             this.useCondaEnv_checkBox.UseVisualStyleBackColor = true;
@@ -1669,12 +1820,12 @@
             // 
             this.deleteResults_checkBox.AutoSize = true;
             this.deleteResults_checkBox.Cursor = System.Windows.Forms.Cursors.Default;
-            this.deleteResults_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.deleteResults_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.deleteResults_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.deleteResults_checkBox.Location = new System.Drawing.Point(111, 261);
             this.deleteResults_checkBox.Name = "deleteResults_checkBox";
             this.deleteResults_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.deleteResults_checkBox.Size = new System.Drawing.Size(144, 17);
+            this.deleteResults_checkBox.Size = new System.Drawing.Size(143, 17);
             this.deleteResults_checkBox.TabIndex = 38;
             this.deleteResults_checkBox.Text = "Delete results after merge";
             this.deleteResults_checkBox.UseVisualStyleBackColor = true;
@@ -1780,10 +1931,10 @@
             // createMemoryImage_checkBox
             // 
             this.createMemoryImage_checkBox.AutoSize = true;
-            this.createMemoryImage_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.createMemoryImage_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.createMemoryImage_checkBox.Location = new System.Drawing.Point(111, 307);
             this.createMemoryImage_checkBox.Name = "createMemoryImage_checkBox";
-            this.createMemoryImage_checkBox.Size = new System.Drawing.Size(169, 17);
+            this.createMemoryImage_checkBox.Size = new System.Drawing.Size(168, 17);
             this.createMemoryImage_checkBox.TabIndex = 31;
             this.createMemoryImage_checkBox.Text = "Create max resolution tile in LR";
             this.toolTip1.SetToolTip(this.createMemoryImage_checkBox, " Helps with ESRGAN memory allocation, when you have images with different dimensi" +
@@ -1804,11 +1955,11 @@
             // useCPU_checkBox
             // 
             this.useCPU_checkBox.AutoSize = true;
-            this.useCPU_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useCPU_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.useCPU_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.useCPU_checkBox.Location = new System.Drawing.Point(111, 330);
             this.useCPU_checkBox.Name = "useCPU_checkBox";
-            this.useCPU_checkBox.Size = new System.Drawing.Size(68, 17);
+            this.useCPU_checkBox.Size = new System.Drawing.Size(67, 17);
             this.useCPU_checkBox.TabIndex = 30;
             this.useCPU_checkBox.Text = "Use CPU";
             this.toolTip1.SetToolTip(this.useCPU_checkBox, "Use CPU instead of GPU (very slow)");
@@ -1879,10 +2030,10 @@
             // preciseTile_checkBox
             // 
             this.preciseTile_checkBox.AutoSize = true;
-            this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.preciseTile_checkBox.Location = new System.Drawing.Point(396, 209);
             this.preciseTile_checkBox.Name = "preciseTile_checkBox";
-            this.preciseTile_checkBox.Size = new System.Drawing.Size(130, 17);
+            this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
             this.preciseTile_checkBox.TabIndex = 25;
             this.preciseTile_checkBox.Text = "Precise tile dimensions";
             this.toolTip1.SetToolTip(this.preciseTile_checkBox, "Usefull when you need to create tiles for training");
@@ -2001,7 +2152,7 @@
             this.settingsOutputFormat_tabPage.Controls.Add(this.ddsOutputSettings_groupBox);
             this.settingsOutputFormat_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settingsOutputFormat_tabPage.Name = "settingsOutputFormat_tabPage";
-            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(980, 752);
+            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.settingsOutputFormat_tabPage.TabIndex = 4;
             this.settingsOutputFormat_tabPage.Text = "Output formats";
             this.settingsOutputFormat_tabPage.UseVisualStyleBackColor = true;
@@ -2087,10 +2238,10 @@
             // webpLossless_checkBox
             // 
             this.webpLossless_checkBox.AutoSize = true;
-            this.webpLossless_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.webpLossless_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.webpLossless_checkBox.Location = new System.Drawing.Point(9, 24);
             this.webpLossless_checkBox.Name = "webpLossless_checkBox";
-            this.webpLossless_checkBox.Size = new System.Drawing.Size(64, 17);
+            this.webpLossless_checkBox.Size = new System.Drawing.Size(63, 17);
             this.webpLossless_checkBox.TabIndex = 47;
             this.webpLossless_checkBox.Text = "Lossless";
             this.webpLossless_checkBox.UseVisualStyleBackColor = true;
@@ -2272,10 +2423,10 @@
             this.ddsGenerateMipmaps_checkBox.AutoSize = true;
             this.ddsGenerateMipmaps_checkBox.Checked = true;
             this.ddsGenerateMipmaps_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.ddsGenerateMipmaps_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.ddsGenerateMipmaps_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ddsGenerateMipmaps_checkBox.Location = new System.Drawing.Point(104, 110);
             this.ddsGenerateMipmaps_checkBox.Name = "ddsGenerateMipmaps_checkBox";
-            this.ddsGenerateMipmaps_checkBox.Size = new System.Drawing.Size(112, 17);
+            this.ddsGenerateMipmaps_checkBox.Size = new System.Drawing.Size(111, 17);
             this.ddsGenerateMipmaps_checkBox.TabIndex = 1;
             this.ddsGenerateMipmaps_checkBox.Text = "Generate mipmaps";
             this.ddsGenerateMipmaps_checkBox.UseVisualStyleBackColor = true;
@@ -2317,7 +2468,7 @@
             this.advanced_tabPage.Controls.Add(this.filters_groupBox);
             this.advanced_tabPage.Location = new System.Drawing.Point(4, 25);
             this.advanced_tabPage.Name = "advanced_tabPage";
-            this.advanced_tabPage.Size = new System.Drawing.Size(980, 752);
+            this.advanced_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.advanced_tabPage.TabIndex = 2;
             this.advanced_tabPage.Text = "Filters/Rules";
             this.advanced_tabPage.UseVisualStyleBackColor = true;
@@ -2803,7 +2954,7 @@
             this.interpolation_tabPage.Controls.Add(this.interpolationModelOne_comboBox);
             this.interpolation_tabPage.Location = new System.Drawing.Point(4, 25);
             this.interpolation_tabPage.Name = "interpolation_tabPage";
-            this.interpolation_tabPage.Size = new System.Drawing.Size(980, 752);
+            this.interpolation_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.interpolation_tabPage.TabIndex = 3;
             this.interpolation_tabPage.Text = "Models interpolation";
             this.interpolation_tabPage.UseVisualStyleBackColor = true;
@@ -2881,7 +3032,7 @@
             this.overlayResults_tabPage.Controls.Add(this.tableLayoutPanel4);
             this.overlayResults_tabPage.Location = new System.Drawing.Point(4, 25);
             this.overlayResults_tabPage.Name = "overlayResults_tabPage";
-            this.overlayResults_tabPage.Size = new System.Drawing.Size(980, 752);
+            this.overlayResults_tabPage.Size = new System.Drawing.Size(1263, 714);
             this.overlayResults_tabPage.TabIndex = 6;
             this.overlayResults_tabPage.Text = "Image interpolation";
             this.overlayResults_tabPage.UseVisualStyleBackColor = true;
@@ -2904,16 +3055,16 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(980, 752);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1263, 714);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // overlayImages_button
             // 
             this.overlayImages_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayImages_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayImages_button.Location = new System.Drawing.Point(883, 3);
+            this.overlayImages_button.Location = new System.Drawing.Point(1166, 3);
             this.overlayImages_button.Name = "overlayImages_button";
-            this.overlayImages_button.Size = new System.Drawing.Size(94, 521);
+            this.overlayImages_button.Size = new System.Drawing.Size(94, 483);
             this.overlayImages_button.TabIndex = 1;
             this.overlayImages_button.Text = "Interpolate";
             this.overlayImages_button.UseVisualStyleBackColor = true;
@@ -2925,7 +3076,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(874, 521);
+            this.groupBox4.Size = new System.Drawing.Size(1157, 483);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Interpolate two images";
@@ -2945,7 +3096,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(868, 502);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1151, 464);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // groupBox7
@@ -2953,9 +3104,9 @@
             this.groupBox7.Controls.Add(this.imageBName_label);
             this.groupBox7.Controls.Add(this.imageB_panel);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(437, 3);
+            this.groupBox7.Location = new System.Drawing.Point(578, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(428, 468);
+            this.groupBox7.Size = new System.Drawing.Size(570, 430);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Image B";
@@ -2976,7 +3127,7 @@
             this.imageB_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_panel.Location = new System.Drawing.Point(3, 16);
             this.imageB_panel.Name = "imageB_panel";
-            this.imageB_panel.Size = new System.Drawing.Size(422, 449);
+            this.imageB_panel.Size = new System.Drawing.Size(564, 411);
             this.imageB_panel.TabIndex = 5;
             this.imageB_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageB_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -2986,7 +3137,7 @@
             this.imageB_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageB_pictureBox.Name = "imageB_pictureBox";
-            this.imageB_pictureBox.Size = new System.Drawing.Size(422, 449);
+            this.imageB_pictureBox.Size = new System.Drawing.Size(564, 411);
             this.imageB_pictureBox.TabIndex = 0;
             this.imageB_pictureBox.TabStop = false;
             // 
@@ -2997,7 +3148,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(428, 468);
+            this.groupBox6.Size = new System.Drawing.Size(569, 430);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Image A";
@@ -3018,7 +3169,7 @@
             this.imageA_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_panel.Location = new System.Drawing.Point(3, 16);
             this.imageA_panel.Name = "imageA_panel";
-            this.imageA_panel.Size = new System.Drawing.Size(422, 449);
+            this.imageA_panel.Size = new System.Drawing.Size(563, 411);
             this.imageA_panel.TabIndex = 4;
             this.imageA_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageA_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -3028,7 +3179,7 @@
             this.imageA_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageA_pictureBox.Name = "imageA_pictureBox";
-            this.imageA_pictureBox.Size = new System.Drawing.Size(422, 449);
+            this.imageA_pictureBox.Size = new System.Drawing.Size(563, 411);
             this.imageA_pictureBox.TabIndex = 0;
             this.imageA_pictureBox.TabStop = false;
             // 
@@ -3037,16 +3188,16 @@
             this.overlayResultName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel5.SetColumnSpan(this.overlayResultName_textBox, 2);
             this.overlayResultName_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 477);
+            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 439);
             this.overlayResultName_textBox.Name = "overlayResultName_textBox";
-            this.overlayResultName_textBox.Size = new System.Drawing.Size(862, 20);
+            this.overlayResultName_textBox.Size = new System.Drawing.Size(1145, 20);
             this.overlayResultName_textBox.TabIndex = 2;
             // 
             // overlayFolders_button
             // 
             this.overlayFolders_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayFolders_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayFolders_button.Location = new System.Drawing.Point(883, 580);
+            this.overlayFolders_button.Location = new System.Drawing.Point(1166, 542);
             this.overlayFolders_button.Name = "overlayFolders_button";
             this.overlayFolders_button.Size = new System.Drawing.Size(94, 169);
             this.overlayFolders_button.TabIndex = 1;
@@ -3059,7 +3210,7 @@
             this.imageInterpolationAlphaValue_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageInterpolationAlphaValue_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageInterpolationAlphaValue_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(883, 539);
+            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(1166, 501);
             this.imageInterpolationAlphaValue_textBox.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.imageInterpolationAlphaValue_textBox.Name = "imageInterpolationAlphaValue_textBox";
             this.imageInterpolationAlphaValue_textBox.ReadOnly = true;
@@ -3082,7 +3233,7 @@
             this.groupBox5.Controls.Add(this.resultsBPath_textBox);
             this.groupBox5.Controls.Add(this.resultsDestinationPath_textBox);
             this.groupBox5.Controls.Add(this.label28);
-            this.groupBox5.Location = new System.Drawing.Point(3, 580);
+            this.groupBox5.Location = new System.Drawing.Point(3, 542);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(661, 169);
             this.groupBox5.TabIndex = 0;
@@ -3212,9 +3363,9 @@
             // 
             this.panel3.Controls.Add(this.imageInterpolation_trackBar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 530);
+            this.panel3.Location = new System.Drawing.Point(3, 492);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(874, 44);
+            this.panel3.Size = new System.Drawing.Size(1157, 44);
             this.panel3.TabIndex = 6;
             // 
             // imageInterpolation_trackBar
@@ -3225,7 +3376,7 @@
             this.imageInterpolation_trackBar.Maximum = 99;
             this.imageInterpolation_trackBar.Minimum = 1;
             this.imageInterpolation_trackBar.Name = "imageInterpolation_trackBar";
-            this.imageInterpolation_trackBar.Size = new System.Drawing.Size(874, 44);
+            this.imageInterpolation_trackBar.Size = new System.Drawing.Size(1157, 44);
             this.imageInterpolation_trackBar.TabIndex = 5;
             this.imageInterpolation_trackBar.Value = 50;
             this.imageInterpolation_trackBar.Scroll += new System.EventHandler(this.ImageInterpolation_trackBar_Scroll);
@@ -3298,8 +3449,13 @@
             this.toolStrip.PerformLayout();
             this.settings_tabPage.ResumeLayout(false);
             this.settings_tabPage.PerformLayout();
+<<<<<<< Updated upstream
+=======
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
+>>>>>>> Stashed changes
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -3447,7 +3603,7 @@
         private System.Windows.Forms.GroupBox threshold_groupBox;
         private System.Windows.Forms.NumericUpDown thresholdBlack_numericUpDown;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.CheckBox thresholdEnabledRbg_checkBox;
+        private System.Windows.Forms.CheckBox thresholdEnabled_checkBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.NumericUpDown thresholdWhite_numericUpDown;
         private System.Windows.Forms.GroupBox imagePreprocess_groupBox;
@@ -3617,10 +3773,18 @@
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
+<<<<<<< Updated upstream
+=======
         private System.Windows.Forms.CheckBox useMblend_checkBox;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.CheckBox inMemoryMode_checkBox;
         private System.Windows.Forms.CheckBox thresholdEnabledAlpha_checkBox;
+        private System.Windows.Forms.CheckBox useMergeWithGradient_checkBox;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox checkBox2;
+        private System.Windows.Forms.CheckBox showDebugInfo_checkBox;
+>>>>>>> Stashed changes
     }
 }
 
