@@ -245,6 +245,8 @@ namespace ImageEnhancingUtility.Winforms
 
             originalImagesPath_textBox.Text = imgPath_textBox.Text;
             resultsDestinationPath_textBox.Text = resultsMergedPath_textBox.Text;
+
+            //tabControl1.SelectedTab = previewResult_tabPage;
         }
         #endregion
 
@@ -314,13 +316,10 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.CondaEnv, v => v.condaEnvName_textBox.Text);
 
             this.Bind(ViewModel, vm => vm.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
-<<<<<<< Updated upstream
-=======
             this.Bind(ViewModel, vm => vm.EnableBlend, v => v.useMblend_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.InMemoryMode, v => v.inMemoryMode_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.UseMergeWithGradient, v => v.useMergeWithGradient_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.DebugMode, v => v.showDebugInfo_checkBox.Checked);
->>>>>>> Stashed changes
         }
         
         void BindOutputFormats()
@@ -456,7 +455,8 @@ namespace ImageEnhancingUtility.Winforms
             noiseReductionType_comboBox.SelectedIndex = 0;
             this.Bind(ViewModel, vm => vm.CurrentProfile.NoiseReductionType, v => v.noiseReductionType_comboBox.SelectedIndex);
 
-            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdEnabled, v => v.thresholdEnabled_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdEnabled, v => v.thresholdEnabledRbg_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdAlphaEnabled, v => v.thresholdEnabledAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdBlackValue, v => v.thresholdBlack_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.CurrentProfile.ThresholdWhiteValue, v => v.thresholdWhite_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
@@ -1065,17 +1065,25 @@ namespace ImageEnhancingUtility.Winforms
             if (originalPreview == null)
                 return;            
             PreviewInProgress(true);
-            Bitmap preview = await ViewModel.CreatePreview(originalPreview, modelPath);            
+            bool success = await ViewModel.Preview(previewFullname, originalPreview, modelPath, true);            
             PreviewInProgress(false);
-            if (preview != null)
-            {
-                previewImageBox.Image = preview;
-                resultPreview = preview;
-            }
-            else
+            if (!success)
             {
                 MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
+                return;
             }
+            string previewOutPath = $"{ViewModel.PreviewDirPath}\\preview.png";
+            if (File.Exists(previewOutPath))
+            {
+                Bitmap preview = new Bitmap(previewOutPath);
+                if (preview != null)
+                {
+                    Bitmap preview2 = new Bitmap(preview);
+                    previewImageBox.Image = preview2;
+                    resultPreview = preview2;
+                }
+                preview.Dispose();
+            }               
         }
 
         private async void savePreview(bool saveAsPng = true)
@@ -1086,7 +1094,7 @@ namespace ImageEnhancingUtility.Winforms
             PreviewInProgress(true);
             try
             {
-                bool success = await ViewModel.SavePreview(previewFullname, modelPath, saveAsPng);               
+                bool success = await ViewModel.Preview(previewFullname, zoomImageBox.Image, modelPath, saveAsPng, true);               
                 if (!success)
                     MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
             }
@@ -1109,27 +1117,6 @@ namespace ImageEnhancingUtility.Winforms
         private async void previewSaveOutputFormat_button_Click(object sender, EventArgs e)
         {
             savePreview(false);
-        }
-
-        private async void previewSave_button_Click_(object sender, EventArgs e)
-        {
-            string modelPath = previewModels_comboBox.SelectedValue.ToString();
-            if (zoomImageBox.Image == null)
-                return;
-            PreviewInProgress(true);
-            Bitmap preview = await ViewModel.CreatePreview((Bitmap)zoomImageBox.Image, modelPath);
-            PreviewInProgress(false);
-            if (preview != null)
-            {
-                string modelName = Path.GetFileNameWithoutExtension(modelPath);
-                string dir = Path.GetDirectoryName(previewFullname);
-                string fileName = Path.GetFileNameWithoutExtension(previewFullname);
-                preview.Save(dir + "\\" + fileName + "_" + modelName + ".png");
-            }
-            else
-            {
-                MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.EsrganPath}\\IEU_preview>");
-            }
         }        
 
         private async void previewSaveComparison_button_Click(object sender, EventArgs e)
@@ -1370,7 +1357,7 @@ namespace ImageEnhancingUtility.Winforms
 
         private void thresholdEnabled_checkBox_CheckedChanged(object sender, EventArgs e)
         {
-            if (thresholdEnabled_checkBox.Checked)
+            if (thresholdEnabledRbg_checkBox.Checked || thresholdEnabledAlpha_checkBox.Checked)
             {
                 thresholdBlack_numericUpDown.Enabled = true;
                 thresholdWhite_numericUpDown.Enabled = true;
