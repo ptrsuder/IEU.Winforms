@@ -91,8 +91,6 @@
             this.deleteProfile_button = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
             this.ignoreAlpha_checkBox = new System.Windows.Forms.CheckBox();
-            this.groupBox11 = new System.Windows.Forms.GroupBox();
-            this.label34 = new System.Windows.Forms.Label();
             this.threshold_groupBox = new System.Windows.Forms.GroupBox();
             this.thresholdBlack_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label13 = new System.Windows.Forms.Label();
@@ -100,9 +98,6 @@
             this.thresholdEnabledRbg_checkBox = new System.Windows.Forms.CheckBox();
             this.label12 = new System.Windows.Forms.Label();
             this.thresholdWhite_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.label35 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.imagePostprocess_groupBox = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -302,7 +297,6 @@
             this.groupBox12.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
-            this.groupBox11.SuspendLayout();
             this.threshold_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdBlack_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdWhite_numericUpDown)).BeginInit();
@@ -766,7 +760,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 212F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
@@ -787,7 +781,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(130, 53);
+            this.previewUpdate_button.Size = new System.Drawing.Size(129, 53);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -797,10 +791,10 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(139, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(138, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(131, 112);
+            this.previewSave_button.Size = new System.Drawing.Size(130, 112);
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
@@ -812,7 +806,7 @@
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 62);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(130, 53);
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(129, 53);
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
@@ -822,10 +816,10 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(276, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(274, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(205, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(207, 112);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -1134,7 +1128,6 @@
             // groupBox9
             // 
             this.groupBox9.Controls.Add(this.ignoreAlpha_checkBox);
-            this.groupBox9.Controls.Add(this.groupBox11);
             this.groupBox9.Controls.Add(this.imagePostprocess_groupBox);
             this.groupBox9.Controls.Add(this.imagePreprocess_groupBox);
             this.groupBox9.Controls.Add(this.outputFormat_comboBox);
@@ -1168,29 +1161,6 @@
             this.toolTip1.SetToolTip(this.ignoreAlpha_checkBox, "Don\'t create alpha tiles in LR, don\'t read alpha tiles from results");
             this.ignoreAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
-            // groupBox11
-            // 
-            this.groupBox11.Controls.Add(this.label34);
-            this.groupBox11.Controls.Add(this.threshold_groupBox);
-            this.groupBox11.Controls.Add(this.label35);
-            this.groupBox11.Controls.Add(this.comboBox1);
-            this.groupBox11.Controls.Add(this.comboBox2);
-            this.groupBox11.Location = new System.Drawing.Point(298, 194);
-            this.groupBox11.Name = "groupBox11";
-            this.groupBox11.Size = new System.Drawing.Size(266, 126);
-            this.groupBox11.TabIndex = 42;
-            this.groupBox11.TabStop = false;
-            this.groupBox11.Text = "Image postprocess";
-            // 
-            // label34
-            // 
-            this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(173, 28);
-            this.label34.Name = "label34";
-            this.label34.Size = new System.Drawing.Size(16, 13);
-            this.label34.TabIndex = 2;
-            this.label34.Text = "to";
-            // 
             // threshold_groupBox
             // 
             this.threshold_groupBox.Controls.Add(this.thresholdBlack_numericUpDown);
@@ -1199,7 +1169,7 @@
             this.threshold_groupBox.Controls.Add(this.thresholdEnabledRbg_checkBox);
             this.threshold_groupBox.Controls.Add(this.label12);
             this.threshold_groupBox.Controls.Add(this.thresholdWhite_numericUpDown);
-            this.threshold_groupBox.Location = new System.Drawing.Point(9, 51);
+            this.threshold_groupBox.Location = new System.Drawing.Point(9, 48);
             this.threshold_groupBox.Name = "threshold_groupBox";
             this.threshold_groupBox.Size = new System.Drawing.Size(247, 70);
             this.threshold_groupBox.TabIndex = 3;
@@ -1280,38 +1250,10 @@
             0,
             0});
             // 
-            // label35
-            // 
-            this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(9, 27);
-            this.label35.Name = "label35";
-            this.label35.Size = new System.Drawing.Size(61, 13);
-            this.label35.TabIndex = 2;
-            this.label35.Text = "Resize with";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(75, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(95, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(196, 24);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(60, 21);
-            this.comboBox2.TabIndex = 0;
-            // 
             // imagePostprocess_groupBox
             // 
             this.imagePostprocess_groupBox.Controls.Add(this.label22);
+            this.imagePostprocess_groupBox.Controls.Add(this.threshold_groupBox);
             this.imagePostprocess_groupBox.Controls.Add(this.label21);
             this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterFilterType_comboBox);
             this.imagePostprocess_groupBox.Controls.Add(this.resizeImageAfterScaleFactor_comboBox);
@@ -1325,7 +1267,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(173, 24);
+            this.label22.Location = new System.Drawing.Point(173, 27);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(16, 13);
             this.label22.TabIndex = 2;
@@ -1334,7 +1276,7 @@
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(9, 24);
+            this.label21.Location = new System.Drawing.Point(9, 27);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(61, 13);
             this.label21.TabIndex = 2;
@@ -1345,7 +1287,7 @@
             this.resizeImageAfterFilterType_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageAfterFilterType_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageAfterFilterType_comboBox.FormattingEnabled = true;
-            this.resizeImageAfterFilterType_comboBox.Location = new System.Drawing.Point(75, 21);
+            this.resizeImageAfterFilterType_comboBox.Location = new System.Drawing.Point(75, 24);
             this.resizeImageAfterFilterType_comboBox.Name = "resizeImageAfterFilterType_comboBox";
             this.resizeImageAfterFilterType_comboBox.Size = new System.Drawing.Size(95, 21);
             this.resizeImageAfterFilterType_comboBox.TabIndex = 0;
@@ -1355,7 +1297,7 @@
             this.resizeImageAfterScaleFactor_comboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.resizeImageAfterScaleFactor_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.resizeImageAfterScaleFactor_comboBox.FormattingEnabled = true;
-            this.resizeImageAfterScaleFactor_comboBox.Location = new System.Drawing.Point(196, 21);
+            this.resizeImageAfterScaleFactor_comboBox.Location = new System.Drawing.Point(196, 24);
             this.resizeImageAfterScaleFactor_comboBox.Name = "resizeImageAfterScaleFactor_comboBox";
             this.resizeImageAfterScaleFactor_comboBox.Size = new System.Drawing.Size(60, 21);
             this.resizeImageAfterScaleFactor_comboBox.TabIndex = 0;
@@ -3380,8 +3322,6 @@
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
             this.groupBox9.PerformLayout();
-            this.groupBox11.ResumeLayout(false);
-            this.groupBox11.PerformLayout();
             this.threshold_groupBox.ResumeLayout(false);
             this.threshold_groupBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.thresholdBlack_numericUpDown)).EndInit();
@@ -3688,11 +3628,6 @@
         private System.Windows.Forms.CheckBox showPopups_checkBox;
         private System.Windows.Forms.Button previewSaveOutputFormat_button;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.GroupBox groupBox11;
-        private System.Windows.Forms.Label label34;
-        private System.Windows.Forms.Label label35;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.CheckBox useMblend_checkBox;
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.CheckBox inMemoryMode_checkBox;
