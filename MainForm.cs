@@ -115,15 +115,14 @@ namespace ImageEnhancingUtility.Winforms
 
             ReadOnlyObservableCollection<Filter> bindingDataFilters = null;
 
-            this.OneWayBind(ViewModel, vm => bindingDataFilters, v => v.filters_listBox.DataSource);
+            //this.OneWayBind(ViewModel, vm => bindingDataFilters, v => v.filters_listBox.DataSource);
             filters_listBox.DisplayMember = "Name";
-            this.OneWayBind(ViewModel, vm => bindingDataFilters, v => v.ruleFilters_comboBox.DataSource);
+            //this.OneWayBind(ViewModel, vm => bindingDataFilters, v => v.ruleFilters_comboBox.DataSource);
             ruleFilters_comboBox.DisplayMember = "Name";
 
             ViewModel = new IEU(false);
 
-            BindMainTab();
-            
+            BindMainTab();   
             this.Bind(ViewModel, vm => vm.DisableRuleSystem, v => v.disableRuleSystem_checkBox.Checked);
             ViewModel.WhenAnyValue(vm => vm.DisableRuleSystem).Subscribe(x => HideRules(x));
 
@@ -270,6 +269,8 @@ namespace ImageEnhancingUtility.Winforms
             this.OneWayBind(ViewModel, vm => vm.WindowOnTop, v => v.TopMost);
 
             this.Bind(ViewModel, vm => vm.ShowPopups, v => v.showPopups_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.UseModelChain, v => v.UseModelChain_checkBox.Checked);
         }
 
         void BindSettingsTab()
@@ -318,7 +319,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.EnableBlend, v => v.useMblend_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.InMemoryMode, v => v.inMemoryMode_checkBox.Checked);
-            this.Bind(ViewModel, vm => vm.UseMergeWithGradient, v => v.useMergeWithGradient_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.UseMergeWithGradient, v => v.useMergeWithGradient_checkBox.Checked, x => !x, x => !x);
             this.Bind(ViewModel, vm => vm.DebugMode, v => v.showDebugInfo_checkBox.Checked);
         }
         
@@ -1716,6 +1717,27 @@ namespace ImageEnhancingUtility.Winforms
             upscale_button.Enabled = !inMemoryMode_checkBox.Checked;
         }
 
+        private void chainOrder_button_Click(object sender, EventArgs e)
+        {
+            ViewModel.GetCheckedModels();
+            if (checkedModels.Count == 0) return;
+            var chainForm = new SortListForm(ViewModel);
+            chainForm.Show();
+        }
+
+        private void UseModelChain_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            overwriteMode_comboBox.Enabled = !UseModelChain_checkBox.Checked;
+            outputDestinationMode_comboBox.Enabled = !UseModelChain_checkBox.Checked;
+            chainOrder_button.Enabled = UseModelChain_checkBox.Checked;
+        }
+
+        private void showIEU_button_Click(object sender, EventArgs e)
+        {
+            PropertiesForm propertiesForm = new PropertiesForm(ViewModel);
+            propertiesForm.Show();
+        }
+
         private void RulePriority_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             int newValue = (int)rulePriority_numericUpDown.Value;
@@ -1732,7 +1754,6 @@ namespace ImageEnhancingUtility.Winforms
             }
             else
                 rulePriority_numericUpDown.Value = (rules_listBox.SelectedValue as Rule).Priority;
-
         }
         #endregion
 

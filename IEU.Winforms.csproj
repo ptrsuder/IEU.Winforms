@@ -96,6 +96,18 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PropertiesForm.Designer.cs">
+      <DependentUpon>PropertiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SortListForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SortListForm.Designer.cs">
+      <DependentUpon>SortListForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="WinformsControls\MyTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -128,6 +140,12 @@
     <Compile Include="UpdateNotifyDialog.designer.cs">
       <DependentUpon>UpdateNotifyDialog.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="PropertiesForm.resx">
+      <DependentUpon>PropertiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SortListForm.resx">
+      <DependentUpon>SortListForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="WinformsControls\MyTreeView.resx">
       <DependentUpon>MyTreeView.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,9 +188,9 @@
     </PackageReference>
     <PackageReference Include="DynamicData" version="6.9.1.2588" />
     <PackageReference Include="Microsoft.CSharp" version="4.5.0" />
-    <PackageReference Include="ReactiveUI" version="9.16.9" />
-    <PackageReference Include="ReactiveUI.WinForms" version="9.16.9" />
-    <PackageReference Include="Splat" version="7.2.1" />
+    <PackageReference Include="ReactiveUI" version="10.3.6" />
+    <PackageReference Include="ReactiveUI.WinForms" version="10.3.6" />
+    <PackageReference Include="Splat" version="9.4.5" />
     <PackageReference Include="System.Drawing.Primitives" version="4.3.0" />
     <PackageReference Include="System.Reactive" version="4.1.5" />
     <PackageReference Include="System.Runtime.CompilerServices.Unsafe" version="4.5.2" />
