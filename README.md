@@ -24,6 +24,7 @@ Uses [net-vips](https://github.com/kleisauke/net-vips) library to merge splitted
 
 ## Requirements
 
+* Windows x64
 * .NET Framework 4.6.1
 
 ## How to use
