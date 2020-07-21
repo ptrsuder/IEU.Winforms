@@ -62,6 +62,7 @@
             this.preview_progressBar = new System.Windows.Forms.ProgressBar();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.miniMapImageBox = new Cyotek.Windows.Forms.ImageBox();
+            this.comparison_colorWheel = new Cyotek.Windows.Forms.ColorWheel();
             this.imageSizeToolStripStatusLabel = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.previewUpdate_button = new System.Windows.Forms.Button();
@@ -77,11 +78,14 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
+            this.label34 = new System.Windows.Forms.Label();
+            this.montorVram_checkBox = new System.Windows.Forms.CheckBox();
             this.showIEU_button = new System.Windows.Forms.Button();
             this.inMemoryMode_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.balanceRgb_checkBox = new System.Windows.Forms.CheckBox();
-            this.useMergeWithGradient_checkBox = new System.Windows.Forms.CheckBox();
+            this.useImMerge_checkBox = new System.Windows.Forms.CheckBox();
+            this.useOldVipsMerge_checkBox = new System.Windows.Forms.CheckBox();
             this.useMblend_checkBox = new System.Windows.Forms.CheckBox();
             this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
@@ -140,6 +144,7 @@
             this.outputPath_textBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.inputPath_textBox = new System.Windows.Forms.TextBox();
+            this.monitorFrequency_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.maxTileHeight_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.changeModelsPath_button = new System.Windows.Forms.Button();
             this.maxTileWidth_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -153,6 +158,7 @@
             this.changeInputImgPath_button = new System.Windows.Forms.Button();
             this.changeMergedResultsPath_button = new System.Windows.Forms.Button();
             this.changeEsrganPath_button = new System.Windows.Forms.Button();
+            this.autoSetTileSize_checkBox = new System.Windows.Forms.CheckBox();
             this.preciseTile_checkBox = new System.Windows.Forms.CheckBox();
             this.label6 = new System.Windows.Forms.Label();
             this.overlapSize_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -272,6 +278,7 @@
             this.imageInterpolation_trackBar = new System.Windows.Forms.TrackBar();
             this.treeView_contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.openModelFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshModelList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.popupNotifier1 = new Tulpep.NotificationWindow.PopupNotifier();
             this.tabControl1.SuspendLayout();
@@ -302,6 +309,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.thresholdWhite_numericUpDown)).BeginInit();
             this.imagePreprocess_groupBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileWidth_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overlapSize_numericUpDown)).BeginInit();
@@ -743,6 +751,7 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.comparison_colorWheel);
             this.splitContainer3.Panel2.Controls.Add(this.imageSizeToolStripStatusLabel);
             this.tableLayoutPanel3.SetRowSpan(this.splitContainer3, 2);
             this.splitContainer3.Size = new System.Drawing.Size(492, 149);
@@ -768,15 +777,25 @@
             this.miniMapImageBox.VirtualMode = true;
             this.miniMapImageBox.Paint += new System.Windows.Forms.PaintEventHandler(this.miniMapImageBox_Paint);
             // 
+            // comparison_colorWheel
+            // 
+            this.comparison_colorWheel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comparison_colorWheel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(104)))));
+            this.comparison_colorWheel.Location = new System.Drawing.Point(166, 16);
+            this.comparison_colorWheel.Name = "comparison_colorWheel";
+            this.comparison_colorWheel.Size = new System.Drawing.Size(132, 130);
+            this.comparison_colorWheel.TabIndex = 1;
+            this.comparison_colorWheel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comparison_colorWheel_MouseClick);
+            // 
             // imageSizeToolStripStatusLabel
             // 
             this.imageSizeToolStripStatusLabel.AutoSize = true;
             this.imageSizeToolStripStatusLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(259, 0);
+            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(254, 0);
             this.imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
-            this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(42, 13);
+            this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(47, 13);
             this.imageSizeToolStripStatusLabel.TabIndex = 0;
-            this.imageSizeToolStripStatusLabel.Text = "X:0 Y:0";
+            this.imageSizeToolStripStatusLabel.Text = "W:0 H:0";
             this.imageSizeToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel6
@@ -784,7 +803,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 228F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
@@ -805,7 +824,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(125, 53);
+            this.previewUpdate_button.Size = new System.Drawing.Size(112, 53);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -815,10 +834,10 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(134, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(121, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(126, 112);
+            this.previewSave_button.Size = new System.Drawing.Size(113, 112);
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
@@ -830,7 +849,7 @@
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 62);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(125, 53);
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(112, 53);
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
@@ -840,10 +859,10 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(266, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(240, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(223, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(249, 112);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -924,6 +943,8 @@
             // settings_tabPage
             // 
             this.settings_tabPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settings_tabPage.Controls.Add(this.label34);
+            this.settings_tabPage.Controls.Add(this.montorVram_checkBox);
             this.settings_tabPage.Controls.Add(this.showIEU_button);
             this.settings_tabPage.Controls.Add(this.inMemoryMode_checkBox);
             this.settings_tabPage.Controls.Add(this.groupBox12);
@@ -945,6 +966,7 @@
             this.settings_tabPage.Controls.Add(this.outputPath_textBox);
             this.settings_tabPage.Controls.Add(this.label9);
             this.settings_tabPage.Controls.Add(this.inputPath_textBox);
+            this.settings_tabPage.Controls.Add(this.monitorFrequency_numericUpDown);
             this.settings_tabPage.Controls.Add(this.maxTileHeight_numericUpDown);
             this.settings_tabPage.Controls.Add(this.changeModelsPath_button);
             this.settings_tabPage.Controls.Add(this.maxTileWidth_numericUpDown);
@@ -958,6 +980,7 @@
             this.settings_tabPage.Controls.Add(this.changeInputImgPath_button);
             this.settings_tabPage.Controls.Add(this.changeMergedResultsPath_button);
             this.settings_tabPage.Controls.Add(this.changeEsrganPath_button);
+            this.settings_tabPage.Controls.Add(this.autoSetTileSize_checkBox);
             this.settings_tabPage.Controls.Add(this.preciseTile_checkBox);
             this.settings_tabPage.Controls.Add(this.label6);
             this.settings_tabPage.Controls.Add(this.overlapSize_numericUpDown);
@@ -977,11 +1000,31 @@
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
             // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.Location = new System.Drawing.Point(576, 312);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(20, 13);
+            this.label34.TabIndex = 59;
+            this.label34.Text = "ms";
+            // 
+            // montorVram_checkBox
+            // 
+            this.montorVram_checkBox.AutoSize = true;
+            this.montorVram_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.montorVram_checkBox.Location = new System.Drawing.Point(369, 310);
+            this.montorVram_checkBox.Name = "montorVram_checkBox";
+            this.montorVram_checkBox.Size = new System.Drawing.Size(136, 17);
+            this.montorVram_checkBox.TabIndex = 58;
+            this.montorVram_checkBox.Text = "Log VRAM usage every";
+            this.montorVram_checkBox.UseVisualStyleBackColor = true;
+            // 
             // showIEU_button
             // 
             this.showIEU_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.showIEU_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.showIEU_button.Location = new System.Drawing.Point(793, 124);
+            this.showIEU_button.Location = new System.Drawing.Point(804, 150);
             this.showIEU_button.Name = "showIEU_button";
             this.showIEU_button.Size = new System.Drawing.Size(179, 69);
             this.showIEU_button.TabIndex = 57;
@@ -1005,15 +1048,16 @@
             // 
             this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox12.Controls.Add(this.balanceRgb_checkBox);
-            this.groupBox12.Controls.Add(this.useMergeWithGradient_checkBox);
+            this.groupBox12.Controls.Add(this.useImMerge_checkBox);
+            this.groupBox12.Controls.Add(this.useOldVipsMerge_checkBox);
             this.groupBox12.Controls.Add(this.useMblend_checkBox);
             this.groupBox12.Controls.Add(this.balanceAlphas_checkBox);
-            this.groupBox12.Location = new System.Drawing.Point(793, 6);
+            this.groupBox12.Location = new System.Drawing.Point(804, 15);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(179, 113);
+            this.groupBox12.Size = new System.Drawing.Size(179, 130);
             this.groupBox12.TabIndex = 55;
             this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Legacy vips merge";
+            this.groupBox12.Text = "Legacy merge";
             // 
             // balanceRgb_checkBox
             // 
@@ -1027,16 +1071,27 @@
             this.toolTip1.SetToolTip(this.balanceRgb_checkBox, "No need to enable this for most cases");
             this.balanceRgb_checkBox.UseVisualStyleBackColor = true;
             // 
-            // useMergeWithGradient_checkBox
+            // useImMerge_checkBox
             // 
-            this.useMergeWithGradient_checkBox.AutoSize = true;
-            this.useMergeWithGradient_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useMergeWithGradient_checkBox.Location = new System.Drawing.Point(11, 19);
-            this.useMergeWithGradient_checkBox.Name = "useMergeWithGradient_checkBox";
-            this.useMergeWithGradient_checkBox.Size = new System.Drawing.Size(97, 17);
-            this.useMergeWithGradient_checkBox.TabIndex = 56;
-            this.useMergeWithGradient_checkBox.Text = "Use vips merge";
-            this.useMergeWithGradient_checkBox.UseVisualStyleBackColor = true;
+            this.useImMerge_checkBox.AutoSize = true;
+            this.useImMerge_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useImMerge_checkBox.Location = new System.Drawing.Point(11, 110);
+            this.useImMerge_checkBox.Name = "useImMerge_checkBox";
+            this.useImMerge_checkBox.Size = new System.Drawing.Size(90, 17);
+            this.useImMerge_checkBox.TabIndex = 56;
+            this.useImMerge_checkBox.Text = "Use IM merge";
+            this.useImMerge_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // useOldVipsMerge_checkBox
+            // 
+            this.useOldVipsMerge_checkBox.AutoSize = true;
+            this.useOldVipsMerge_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.useOldVipsMerge_checkBox.Location = new System.Drawing.Point(11, 19);
+            this.useOldVipsMerge_checkBox.Name = "useOldVipsMerge_checkBox";
+            this.useOldVipsMerge_checkBox.Size = new System.Drawing.Size(132, 17);
+            this.useOldVipsMerge_checkBox.TabIndex = 56;
+            this.useOldVipsMerge_checkBox.Text = "Use default vips merge";
+            this.useOldVipsMerge_checkBox.UseVisualStyleBackColor = true;
             // 
             // useMblend_checkBox
             // 
@@ -1076,12 +1131,12 @@
             // topMost_checkBox
             // 
             this.topMost_checkBox.AutoSize = true;
-            this.topMost_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.topMost_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.topMost_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.topMost_checkBox.Location = new System.Drawing.Point(6, 24);
             this.topMost_checkBox.Name = "topMost_checkBox";
             this.topMost_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.topMost_checkBox.Size = new System.Drawing.Size(78, 17);
+            this.topMost_checkBox.Size = new System.Drawing.Size(77, 17);
             this.topMost_checkBox.TabIndex = 38;
             this.topMost_checkBox.Text = "Stay on top";
             this.topMost_checkBox.UseVisualStyleBackColor = true;
@@ -1100,12 +1155,12 @@
             // showPopups_checkBox
             // 
             this.showPopups_checkBox.AutoSize = true;
-            this.showPopups_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.showPopups_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.showPopups_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.showPopups_checkBox.Location = new System.Drawing.Point(6, 47);
             this.showPopups_checkBox.Name = "showPopups_checkBox";
             this.showPopups_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.showPopups_checkBox.Size = new System.Drawing.Size(143, 17);
+            this.showPopups_checkBox.Size = new System.Drawing.Size(142, 17);
             this.showPopups_checkBox.TabIndex = 38;
             this.showPopups_checkBox.Text = "Show popup notifications";
             this.showPopups_checkBox.UseVisualStyleBackColor = true;
@@ -1389,7 +1444,7 @@
             this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(134, 17);
             this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
             this.ignoreSingleColorAlpha_checkBox.Text = "Ignore solid white alpha";
-            this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid white alpha will be always ignored on split");
+            this.toolTip1.SetToolTip(this.ignoreSingleColorAlpha_checkBox, "Solid white alpha will be always ignored, may be slow for big images");
             this.ignoreSingleColorAlpha_checkBox.UseVisualStyleBackColor = true;
             // 
             // splitRGB_checkBox
@@ -1667,7 +1722,7 @@
             this.useCondaEnv_checkBox.AutoSize = true;
             this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(370, 333);
+            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(369, 333);
             this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
             this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.useCondaEnv_checkBox.Size = new System.Drawing.Size(130, 17);
@@ -1702,7 +1757,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(306, 210);
+            this.label9.Location = new System.Drawing.Point(307, 210);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(14, 13);
             this.label9.TabIndex = 33;
@@ -1717,6 +1772,34 @@
             this.inputPath_textBox.Size = new System.Drawing.Size(502, 20);
             this.inputPath_textBox.TabIndex = 19;
             this.toolTip1.SetToolTip(this.inputPath_textBox, "ESRGAN input folder");
+            // 
+            // monitorFrequency_numericUpDown
+            // 
+            this.monitorFrequency_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.monitorFrequency_numericUpDown.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.monitorFrequency_numericUpDown.Location = new System.Drawing.Point(507, 310);
+            this.monitorFrequency_numericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.monitorFrequency_numericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.monitorFrequency_numericUpDown.Name = "monitorFrequency_numericUpDown";
+            this.monitorFrequency_numericUpDown.Size = new System.Drawing.Size(66, 20);
+            this.monitorFrequency_numericUpDown.TabIndex = 32;
+            this.monitorFrequency_numericUpDown.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             // 
             // maxTileHeight_numericUpDown
             // 
@@ -1886,17 +1969,30 @@
             this.changeEsrganPath_button.UseVisualStyleBackColor = true;
             this.changeEsrganPath_button.Click += new System.EventHandler(this.changePath_button_Click);
             // 
+            // autoSetTileSize_checkBox
+            // 
+            this.autoSetTileSize_checkBox.AutoSize = true;
+            this.autoSetTileSize_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.autoSetTileSize_checkBox.Location = new System.Drawing.Point(401, 208);
+            this.autoSetTileSize_checkBox.Name = "autoSetTileSize_checkBox";
+            this.autoSetTileSize_checkBox.Size = new System.Drawing.Size(133, 17);
+            this.autoSetTileSize_checkBox.TabIndex = 25;
+            this.autoSetTileSize_checkBox.Text = "Auto set tile dimensions";
+            this.autoSetTileSize_checkBox.UseVisualStyleBackColor = true;
+            this.autoSetTileSize_checkBox.CheckedChanged += new System.EventHandler(this.autoSetTileSize_checkBox_CheckedChanged);
+            // 
             // preciseTile_checkBox
             // 
             this.preciseTile_checkBox.AutoSize = true;
             this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(396, 208);
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(815, 227);
             this.preciseTile_checkBox.Name = "preciseTile_checkBox";
             this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
             this.preciseTile_checkBox.TabIndex = 25;
             this.preciseTile_checkBox.Text = "Precise tile dimensions";
             this.toolTip1.SetToolTip(this.preciseTile_checkBox, "Usefull when you need to create tiles for training");
             this.preciseTile_checkBox.UseVisualStyleBackColor = true;
+            this.preciseTile_checkBox.Visible = false;
             this.preciseTile_checkBox.CheckedChanged += new System.EventHandler(this.preciseTile_checkBox_CheckedChanged);
             // 
             // label6
@@ -2335,9 +2431,10 @@
             // disableRuleSystem_checkBox
             // 
             this.disableRuleSystem_checkBox.AutoSize = true;
+            this.disableRuleSystem_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.disableRuleSystem_checkBox.Location = new System.Drawing.Point(562, 494);
             this.disableRuleSystem_checkBox.Name = "disableRuleSystem_checkBox";
-            this.disableRuleSystem_checkBox.Size = new System.Drawing.Size(123, 17);
+            this.disableRuleSystem_checkBox.Size = new System.Drawing.Size(120, 17);
             this.disableRuleSystem_checkBox.TabIndex = 41;
             this.disableRuleSystem_checkBox.Text = "Disable Rule System";
             this.disableRuleSystem_checkBox.UseVisualStyleBackColor = true;
@@ -2493,7 +2590,7 @@
             this.filterExtensions_checkedListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.filterExtensions_checkedListBox.CheckOnClick = true;
             this.filterExtensions_checkedListBox.FormattingEnabled = true;
-            this.filterExtensions_checkedListBox.Location = new System.Drawing.Point(388, 25);
+            this.filterExtensions_checkedListBox.Location = new System.Drawing.Point(388, 27);
             this.filterExtensions_checkedListBox.Name = "filterExtensions_checkedListBox";
             this.filterExtensions_checkedListBox.Size = new System.Drawing.Size(128, 182);
             this.filterExtensions_checkedListBox.TabIndex = 10;
@@ -2622,7 +2719,7 @@
             this.groupBox10.Controls.Add(this.filterFolderNameContains_textBox);
             this.groupBox10.Controls.Add(this.filterFolderNameNotContains_checkBox);
             this.groupBox10.Controls.Add(this.filterFolderNameNotContains_textBox);
-            this.groupBox10.Location = new System.Drawing.Point(3, 121);
+            this.groupBox10.Location = new System.Drawing.Point(3, 116);
             this.groupBox10.Name = "groupBox10";
             this.groupBox10.Size = new System.Drawing.Size(378, 94);
             this.groupBox10.TabIndex = 8;
@@ -2689,7 +2786,7 @@
             this.filtersFilename_groupBox.Controls.Add(this.filterFilenameContains_textBox);
             this.filtersFilename_groupBox.Controls.Add(this.filterFilenameNotContains_checkBox);
             this.filtersFilename_groupBox.Controls.Add(this.filterFilenameNotContains_textBox);
-            this.filtersFilename_groupBox.Location = new System.Drawing.Point(4, 21);
+            this.filtersFilename_groupBox.Location = new System.Drawing.Point(4, 22);
             this.filtersFilename_groupBox.Name = "filtersFilename_groupBox";
             this.filtersFilename_groupBox.Size = new System.Drawing.Size(378, 94);
             this.filtersFilename_groupBox.TabIndex = 8;
@@ -3243,15 +3340,22 @@
             // treeView_contextMenuStrip
             // 
             this.treeView_contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openModelFolder});
+            this.openModelFolder,
+            this.refreshModelList});
             this.treeView_contextMenuStrip.Name = "treeView_contextMenuStrip";
-            this.treeView_contextMenuStrip.Size = new System.Drawing.Size(175, 26);
+            this.treeView_contextMenuStrip.Size = new System.Drawing.Size(175, 48);
             // 
             // openModelFolder
             // 
             this.openModelFolder.Name = "openModelFolder";
             this.openModelFolder.Size = new System.Drawing.Size(174, 22);
             this.openModelFolder.Text = "Open model folder";
+            // 
+            // refreshModelList
+            // 
+            this.refreshModelList.Name = "refreshModelList";
+            this.refreshModelList.Size = new System.Drawing.Size(174, 22);
+            this.refreshModelList.Text = "Refresh models";
             // 
             // toolTip1
             // 
@@ -3325,6 +3429,7 @@
             this.imagePreprocess_groupBox.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileWidth_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.overlapSize_numericUpDown)).EndInit();
@@ -3625,11 +3730,18 @@
         private System.Windows.Forms.GroupBox groupBox12;
         private System.Windows.Forms.CheckBox inMemoryMode_checkBox;
         private System.Windows.Forms.CheckBox thresholdEnabledAlpha_checkBox;
-        private System.Windows.Forms.CheckBox useMergeWithGradient_checkBox;
+        private System.Windows.Forms.CheckBox useOldVipsMerge_checkBox;
         private System.Windows.Forms.CheckBox showDebugInfo_checkBox;
         private System.Windows.Forms.Button chainOrder_button;
         private System.Windows.Forms.CheckBox UseModelChain_checkBox;
         private System.Windows.Forms.Button showIEU_button;
+        private Cyotek.Windows.Forms.ColorWheel comparison_colorWheel;
+        private System.Windows.Forms.ToolStripMenuItem refreshModelList;
+        private System.Windows.Forms.CheckBox montorVram_checkBox;
+        private System.Windows.Forms.NumericUpDown monitorFrequency_numericUpDown;
+        private System.Windows.Forms.Label label34;
+        private System.Windows.Forms.CheckBox autoSetTileSize_checkBox;
+        private System.Windows.Forms.CheckBox useImMerge_checkBox;
     }
 }
 
