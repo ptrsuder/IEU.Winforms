@@ -79,7 +79,7 @@ namespace ImageEnhancingUtility.Winforms
             set => this.RaiseAndSetIfChanged(ref _showPopups, value);
         }
 
-        Color _comparisonColor;
+        Color _comparisonColor = Color.FromArgb(225, 0, 104);
         public Color ComparisonColor
         {
             get => _comparisonColor;
