@@ -785,6 +785,7 @@
             this.comparison_colorWheel.Name = "comparison_colorWheel";
             this.comparison_colorWheel.Size = new System.Drawing.Size(132, 130);
             this.comparison_colorWheel.TabIndex = 1;
+            this.toolTip1.SetToolTip(this.comparison_colorWheel, "Color for comparison footer");
             this.comparison_colorWheel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comparison_colorWheel_MouseClick);
             // 
             // imageSizeToolStripStatusLabel
@@ -803,7 +804,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 254F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 256F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
@@ -824,7 +825,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(112, 53);
+            this.previewUpdate_button.Size = new System.Drawing.Size(111, 53);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -834,10 +835,10 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(121, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(120, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(113, 112);
+            this.previewSave_button.Size = new System.Drawing.Size(112, 112);
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
@@ -849,7 +850,7 @@
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 62);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(112, 53);
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(111, 53);
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
@@ -859,10 +860,10 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(240, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(238, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(249, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(251, 112);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -1063,7 +1064,7 @@
             // 
             this.balanceRgb_checkBox.AutoSize = true;
             this.balanceRgb_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.balanceRgb_checkBox.Location = new System.Drawing.Point(11, 66);
+            this.balanceRgb_checkBox.Location = new System.Drawing.Point(11, 63);
             this.balanceRgb_checkBox.Name = "balanceRgb_checkBox";
             this.balanceRgb_checkBox.Size = new System.Drawing.Size(153, 17);
             this.balanceRgb_checkBox.TabIndex = 25;
@@ -1097,7 +1098,7 @@
             // 
             this.useMblend_checkBox.AutoSize = true;
             this.useMblend_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.useMblend_checkBox.Location = new System.Drawing.Point(11, 42);
+            this.useMblend_checkBox.Location = new System.Drawing.Point(11, 41);
             this.useMblend_checkBox.Name = "useMblend_checkBox";
             this.useMblend_checkBox.Size = new System.Drawing.Size(140, 17);
             this.useMblend_checkBox.TabIndex = 25;
@@ -1108,7 +1109,7 @@
             // 
             this.balanceAlphas_checkBox.AutoSize = true;
             this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(11, 89);
+            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(11, 87);
             this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
             this.balanceAlphas_checkBox.Size = new System.Drawing.Size(156, 17);
             this.balanceAlphas_checkBox.TabIndex = 25;

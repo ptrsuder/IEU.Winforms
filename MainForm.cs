@@ -952,6 +952,17 @@ namespace ImageEnhancingUtility.Winforms
             previewSaveOutputFormat_button.Enabled = enabled;
         }
 
+        private double GetColorContrast(Color background, Color text)
+        {
+            double L1 = 0.2126 * background.R /255 + 0.7152 * background.G / 255 + 0.0722 * background.B / 255;
+            double L2 = 0.2126 * text.R / 255 + 0.7152 * text.G / 255 + 0.0722 * text.B / 255;
+            if (L1 > L2)
+                return (L1 + 0.05) / (L2 + 0.05);
+            else
+                return (L2 + 0.05) / (L1 + 0.05);
+
+        }
+
         #endregion
 
         #region PREVIEW event handlers
@@ -1151,12 +1162,16 @@ namespace ImageEnhancingUtility.Winforms
                 stringFormat.Alignment = StringAlignment.Center;
                 
                 double a = graphics.DpiY * fontSize / 72;
-                stringFormat.LineAlignment = StringAlignment.Center;                    
-         
+                stringFormat.LineAlignment = StringAlignment.Center;
+
+                double contrastW = GetColorContrast(color, Color.White);
+                double contrastB = GetColorContrast(color, Color.Black);
+                Brush textBrush = contrastW < 3.0 ? Brushes.Black : Brushes.White;
+
                 graphics.DrawString(
                     $"{previewModels_comboBox.Text}",
                     font,
-                    Brushes.White,
+                    textBrush,
                     new Rectangle(0, resultPreview.Height, 2 * resultPreview.Width, footerHeight - 0),
                     stringFormat );
             }
