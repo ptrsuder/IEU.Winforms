@@ -144,7 +144,7 @@ namespace ImageEnhancingUtility.Winforms
             interpolationModelTwo_comboBox.DisplayMember =
             modelForAlpha_comboBox.DisplayMember =
             profileModel_comboBox.DisplayMember =
-            previewModels_comboBox.DisplayMember = "Name";
+            previewModels_comboBox.DisplayMember = "ComboBoxName";
             interpolationModelOne_comboBox.ValueMember =
             interpolationModelTwo_comboBox.ValueMember =
             modelForAlpha_comboBox.ValueMember =
@@ -209,6 +209,8 @@ namespace ImageEnhancingUtility.Winforms
 
             originalImagesPath_textBox.Text = imgPath_textBox.Text;
             resultsDestinationPath_textBox.Text = resultsMergedPath_textBox.Text;
+
+            treeView1.Enabled = !useProfileModel_checkBox.Checked;
         }
 
         #endregion
@@ -329,7 +331,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.IEU.UseOldVipsMerge, v => v.useOldVipsMerge_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.IEU.DebugMode, v => v.showDebugInfo_checkBox.Checked);
 
-            this.Bind(ViewModel, vm => vm.IEU.VramMonitorEnable, v => v.montorVram_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.IEU.VramMonitorEnable, v => v.monitorVram_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.IEU.VramMonitorFrequency, v => v.monitorFrequency_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             this.Bind(ViewModel, vm => vm.IEU.AutoSetTileSizeEnable, v => v.autoSetTileSize_checkBox.Checked);

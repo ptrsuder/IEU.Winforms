@@ -79,7 +79,7 @@
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
             this.label34 = new System.Windows.Forms.Label();
-            this.montorVram_checkBox = new System.Windows.Forms.CheckBox();
+            this.monitorVram_checkBox = new System.Windows.Forms.CheckBox();
             this.showIEU_button = new System.Windows.Forms.Button();
             this.inMemoryMode_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
@@ -804,7 +804,7 @@
             this.tableLayoutPanel6.ColumnCount = 3;
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 256F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 259F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
             this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
@@ -825,7 +825,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(111, 53);
+            this.previewUpdate_button.Size = new System.Drawing.Size(110, 53);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -835,10 +835,10 @@
             // 
             this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(120, 3);
+            this.previewSave_button.Location = new System.Drawing.Point(119, 3);
             this.previewSave_button.Name = "previewSave_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(112, 112);
+            this.previewSave_button.Size = new System.Drawing.Size(110, 112);
             this.previewSave_button.TabIndex = 6;
             this.previewSave_button.Text = "Enhance and save as png";
             this.previewSave_button.UseVisualStyleBackColor = true;
@@ -850,7 +850,7 @@
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 62);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(111, 53);
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(110, 53);
             this.button_previewSaveComparison.TabIndex = 7;
             this.button_previewSaveComparison.Text = "Save comparison to clipboard";
             this.button_previewSaveComparison.UseVisualStyleBackColor = true;
@@ -860,10 +860,10 @@
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(238, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(235, 3);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(251, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(254, 112);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -945,7 +945,7 @@
             // 
             this.settings_tabPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.settings_tabPage.Controls.Add(this.label34);
-            this.settings_tabPage.Controls.Add(this.montorVram_checkBox);
+            this.settings_tabPage.Controls.Add(this.monitorVram_checkBox);
             this.settings_tabPage.Controls.Add(this.showIEU_button);
             this.settings_tabPage.Controls.Add(this.inMemoryMode_checkBox);
             this.settings_tabPage.Controls.Add(this.groupBox12);
@@ -1010,16 +1010,16 @@
             this.label34.TabIndex = 59;
             this.label34.Text = "ms";
             // 
-            // montorVram_checkBox
+            // monitorVram_checkBox
             // 
-            this.montorVram_checkBox.AutoSize = true;
-            this.montorVram_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.montorVram_checkBox.Location = new System.Drawing.Point(369, 310);
-            this.montorVram_checkBox.Name = "montorVram_checkBox";
-            this.montorVram_checkBox.Size = new System.Drawing.Size(136, 17);
-            this.montorVram_checkBox.TabIndex = 58;
-            this.montorVram_checkBox.Text = "Log VRAM usage every";
-            this.montorVram_checkBox.UseVisualStyleBackColor = true;
+            this.monitorVram_checkBox.AutoSize = true;
+            this.monitorVram_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.monitorVram_checkBox.Location = new System.Drawing.Point(369, 310);
+            this.monitorVram_checkBox.Name = "monitorVram_checkBox";
+            this.monitorVram_checkBox.Size = new System.Drawing.Size(136, 17);
+            this.monitorVram_checkBox.TabIndex = 58;
+            this.monitorVram_checkBox.Text = "Log VRAM usage every";
+            this.monitorVram_checkBox.UseVisualStyleBackColor = true;
             // 
             // showIEU_button
             // 
@@ -2439,6 +2439,7 @@
             this.disableRuleSystem_checkBox.TabIndex = 41;
             this.disableRuleSystem_checkBox.Text = "Disable Rule System";
             this.disableRuleSystem_checkBox.UseVisualStyleBackColor = true;
+            this.disableRuleSystem_checkBox.Visible = false;
             // 
             // rules_groupBox
             // 
@@ -3738,7 +3739,7 @@
         private System.Windows.Forms.Button showIEU_button;
         private Cyotek.Windows.Forms.ColorWheel comparison_colorWheel;
         private System.Windows.Forms.ToolStripMenuItem refreshModelList;
-        private System.Windows.Forms.CheckBox montorVram_checkBox;
+        private System.Windows.Forms.CheckBox monitorVram_checkBox;
         private System.Windows.Forms.NumericUpDown monitorFrequency_numericUpDown;
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.CheckBox autoSetTileSize_checkBox;
