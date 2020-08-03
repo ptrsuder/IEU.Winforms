@@ -335,6 +335,9 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.IEU.VramMonitorFrequency, v => v.monitorFrequency_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             this.Bind(ViewModel, vm => vm.IEU.AutoSetTileSizeEnable, v => v.autoSetTileSize_checkBox.Checked);
+
+            this.OneWayBind(ViewModel, vm => vm.IEU.NoNvidia, v => v.autoSetTileSize_checkBox.Enabled, x => !x);
+            this.OneWayBind(ViewModel, vm => vm.IEU.NoNvidia, v => v.monitorVram_checkBox.Enabled, x => !x);            
         }
         
         void BindOutputFormats()
