@@ -6,6 +6,8 @@ Windows only GUI for [IEU.Core](https://github.com/ptrsuder/IEU.Core) - "wrapper
 
 Uses [net-vips](https://github.com/kleisauke/net-vips) library to merge splitted tiles after processing them with ESRGAN. Also supports **alpha channels** and **various image formats: .dds (BC1-BC7), .tga etc.**
 
+Version 0.11.0 and forward doesn't requires files from ESRGAN repo as they are already included with IEU. You still need to install all python dependencies (pytorch and opencv-python).
+
 ## List of features
 * Split images into tiles before processing them with ESRGAN and merge them afterwards with as little visible seams as possible
 * Detect currently available VRAM amount and auto set maximum tile dimensions depending on model upscale factor
