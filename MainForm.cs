@@ -211,6 +211,9 @@ namespace ImageEnhancingUtility.Winforms
             resultsDestinationPath_textBox.Text = resultsMergedPath_textBox.Text;
 
             treeView1.Enabled = !useProfileModel_checkBox.Checked;
+
+            inMemoryMode_checkBox.Checked = !inMemoryMode_checkBox.Checked; //HACK
+            inMemoryMode_checkBox.Checked = !inMemoryMode_checkBox.Checked; //LAZY
         }
 
         #endregion
