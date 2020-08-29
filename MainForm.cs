@@ -214,6 +214,9 @@ namespace ImageEnhancingUtility.Winforms
 
             inMemoryMode_checkBox.Checked = !inMemoryMode_checkBox.Checked; //HACK
             inMemoryMode_checkBox.Checked = !inMemoryMode_checkBox.Checked; //LAZY
+
+            comparisonMod_comboBox.DataSource = new BindingSource(IEU.ResizeImageScaleFactors, null);
+            comparisonMod_comboBox.SelectedIndex = 3;
         }
 
         #endregion
@@ -1125,14 +1128,22 @@ namespace ImageEnhancingUtility.Winforms
         private async void previewSaveOutputFormat_button_Click(object sender, EventArgs e)
         {
             savePreview(false);
-        }        
+        }
+
+        
 
         private async void previewSaveComparison_button_Click(object sender, EventArgs e)
         {
             if (resultPreview == null)
                 return;
             int footerHeight = 45;
-            Bitmap outputImage = new Bitmap(2*resultPreview.Width, resultPreview.Height + footerHeight);
+
+            int comparisonMod = 1;
+            int.TryParse(comparisonMod_comboBox.SelectedValue.ToString(), out comparisonMod);
+            int newWidth = comparisonMod * resultPreview.Width, newHeight = comparisonMod * resultPreview.Height;
+
+            Bitmap outputImage = new Bitmap(2 * newWidth, newHeight + footerHeight);            
+            string modelName = Path.GetFileNameWithoutExtension(previewModels_comboBox.SelectedValue.ToString());
             using (Graphics graphics = Graphics.FromImage(outputImage))
             {
                 graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
@@ -1140,19 +1151,19 @@ namespace ImageEnhancingUtility.Winforms
                 graphics.SmoothingMode = SmoothingMode.HighQuality;
                 graphics.TextRenderingHint = TextRenderingHint.AntiAliasGridFit;
                 graphics.CompositingQuality = CompositingQuality.HighQuality;
-                graphics.DrawImage(originalPreview, new Rectangle(0,0, resultPreview.Width, resultPreview.Height),
+                graphics.DrawImage(originalPreview, new Rectangle(0,0, newWidth, newHeight),
                     new Rectangle(new Point(), originalPreview.Size), GraphicsUnit.Pixel);
-                graphics.DrawImage(resultPreview, new Rectangle(resultPreview.Width, 0, resultPreview.Width, resultPreview.Height),
-                    new Rectangle(0, 0, resultPreview.Width, resultPreview.Height), GraphicsUnit.Pixel);
+                graphics.DrawImage(resultPreview, new Rectangle(newWidth, 0, newWidth, newHeight),
+                    new Rectangle(new Point(), resultPreview.Size), GraphicsUnit.Pixel);
                
-                Bitmap Bmp = new Bitmap(2 * resultPreview.Width, footerHeight);
+                Bitmap Bmp = new Bitmap(2 * newWidth, footerHeight);
                 Color color = comparison_colorWheel.Color; //Color.FromArgb(226, 00, 122)
                 using (Graphics gfx = Graphics.FromImage(Bmp))
                 using (SolidBrush brush = new SolidBrush(color))
                 {
-                    gfx.FillRectangle(brush, 0, 0, 2 * resultPreview.Width, footerHeight);
+                    gfx.FillRectangle(brush, 0, 0, 2 * newWidth, footerHeight);
                 }
-                graphics.DrawImage(Bmp, 0, resultPreview.Height);
+                graphics.DrawImage(Bmp, 0, newHeight);
                 
                 GraphicsPath p = new GraphicsPath();
                 int fontSize = 19;
@@ -1160,11 +1171,11 @@ namespace ImageEnhancingUtility.Winforms
 
                 Font font = new Font("Times New Roman", graphics.DpiY * fontSize / 72);                  
                 int cf = 0, lf = 0;
-                while (s.Width >= 2 * resultPreview.Width)
+                while (s.Width >= 2 * newWidth)
                 {
                     fontSize--;
                     font = new Font(FontFamily.GenericSansSerif, graphics.DpiY * fontSize / 72, FontStyle.Regular);   
-                    s = graphics.MeasureString(previewModels_comboBox.Text, font, new SizeF(), new StringFormat(), out cf, out lf);           
+                    s = graphics.MeasureString(modelName, font, new SizeF(), new StringFormat(), out cf, out lf);           
                 }              
                 StringFormat stringFormat = new StringFormat();
                 stringFormat.Alignment = StringAlignment.Center;
@@ -1177,10 +1188,10 @@ namespace ImageEnhancingUtility.Winforms
                 Brush textBrush = contrastW < 3.0 ? Brushes.Black : Brushes.White;
 
                 graphics.DrawString(
-                    $"{previewModels_comboBox.Text}",
+                    $"{modelName}",
                     font,
                     textBrush,
-                    new Rectangle(0, resultPreview.Height, 2 * resultPreview.Width, footerHeight - 0),
+                    new Rectangle(0, newHeight, 2 * newWidth, footerHeight - 0),
                     stringFormat );
             }
             try
@@ -1326,7 +1337,7 @@ namespace ImageEnhancingUtility.Winforms
 
         #endregion
 
-        void comboBox_DisableMouseWheel(object sender, MouseEventArgs e)
+        private void comboBox_DisableMouseWheel(object sender, MouseEventArgs e)
         {
             ((HandledMouseEventArgs)e).Handled = true;
         }
@@ -1493,7 +1504,7 @@ namespace ImageEnhancingUtility.Winforms
             filterForAlpha_comboBox.Enabled = useFilterForAlpha_checkBox.Checked;            
         }
 
-        private void UseProfileModel_checkBox_CheckedChanged(object sender, EventArgs e)
+        private void useProfileModel_checkBox_CheckedChanged(object sender, EventArgs e)
         {
             profileModel_comboBox.Enabled = useProfileModel_checkBox.Checked;
             treeView1.Enabled = !useProfileModel_checkBox.Checked;

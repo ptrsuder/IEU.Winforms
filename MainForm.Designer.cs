@@ -62,13 +62,15 @@
             this.preview_progressBar = new System.Windows.Forms.ProgressBar();
             this.splitContainer3 = new System.Windows.Forms.SplitContainer();
             this.miniMapImageBox = new Cyotek.Windows.Forms.ImageBox();
+            this.label35 = new System.Windows.Forms.Label();
+            this.comparisonMod_comboBox = new System.Windows.Forms.ComboBox();
             this.comparison_colorWheel = new Cyotek.Windows.Forms.ColorWheel();
             this.imageSizeToolStripStatusLabel = new System.Windows.Forms.Label();
+            this.button_previewSaveComparison = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.previewUpdate_button = new System.Windows.Forms.Button();
-            this.previewSave_button = new System.Windows.Forms.Button();
-            this.button_previewSaveComparison = new System.Windows.Forms.Button();
             this.previewSaveOutputFormat_button = new System.Windows.Forms.Button();
+            this.previewSave_button = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.openFromFileToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -751,8 +753,11 @@
             // 
             // splitContainer3.Panel2
             // 
+            this.splitContainer3.Panel2.Controls.Add(this.label35);
+            this.splitContainer3.Panel2.Controls.Add(this.comparisonMod_comboBox);
             this.splitContainer3.Panel2.Controls.Add(this.comparison_colorWheel);
             this.splitContainer3.Panel2.Controls.Add(this.imageSizeToolStripStatusLabel);
+            this.splitContainer3.Panel2.Controls.Add(this.button_previewSaveComparison);
             this.tableLayoutPanel3.SetRowSpan(this.splitContainer3, 2);
             this.splitContainer3.Size = new System.Drawing.Size(492, 149);
             this.splitContainer3.SplitterDistance = 187;
@@ -777,13 +782,33 @@
             this.miniMapImageBox.VirtualMode = true;
             this.miniMapImageBox.Paint += new System.Windows.Forms.PaintEventHandler(this.miniMapImageBox_Paint);
             // 
+            // label35
+            // 
+            this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label35.AutoSize = true;
+            this.label35.Location = new System.Drawing.Point(9, 12);
+            this.label35.Name = "label35";
+            this.label35.Size = new System.Drawing.Size(84, 13);
+            this.label35.TabIndex = 9;
+            this.label35.Text = "Size modificator:";
+            // 
+            // comparisonMod_comboBox
+            // 
+            this.comparisonMod_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.comparisonMod_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.comparisonMod_comboBox.FormattingEnabled = true;
+            this.comparisonMod_comboBox.Location = new System.Drawing.Point(101, 9);
+            this.comparisonMod_comboBox.Name = "comparisonMod_comboBox";
+            this.comparisonMod_comboBox.Size = new System.Drawing.Size(62, 21);
+            this.comparisonMod_comboBox.TabIndex = 8;
+            // 
             // comparison_colorWheel
             // 
             this.comparison_colorWheel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comparison_colorWheel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(104)))));
-            this.comparison_colorWheel.Location = new System.Drawing.Point(166, 16);
+            this.comparison_colorWheel.Location = new System.Drawing.Point(166, 34);
             this.comparison_colorWheel.Name = "comparison_colorWheel";
-            this.comparison_colorWheel.Size = new System.Drawing.Size(132, 130);
+            this.comparison_colorWheel.Size = new System.Drawing.Size(132, 112);
             this.comparison_colorWheel.TabIndex = 1;
             this.toolTip1.SetToolTip(this.comparison_colorWheel, "Color for comparison footer");
             this.comparison_colorWheel.MouseClick += new System.Windows.Forms.MouseEventHandler(this.comparison_colorWheel_MouseClick);
@@ -799,22 +824,34 @@
             this.imageSizeToolStripStatusLabel.Text = "W:0 H:0";
             this.imageSizeToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // button_previewSaveComparison
+            // 
+            this.button_previewSaveComparison.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button_previewSaveComparison.Location = new System.Drawing.Point(6, 34);
+            this.button_previewSaveComparison.Name = "button_previewSaveComparison";
+            this.button_previewSaveComparison.Size = new System.Drawing.Size(157, 112);
+            this.button_previewSaveComparison.TabIndex = 7;
+            this.button_previewSaveComparison.Text = "Save comparison to clipboard";
+            this.button_previewSaveComparison.UseVisualStyleBackColor = true;
+            this.button_previewSaveComparison.Click += new System.EventHandler(this.previewSaveComparison_button_Click);
+            // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 3;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 49.84026F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50.15974F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 259F));
+            this.tableLayoutPanel6.ColumnCount = 2;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.95122F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.04878F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 1, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button_previewSaveComparison, 0, 1);
-            this.tableLayoutPanel6.Controls.Add(this.previewSaveOutputFormat_button, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.previewSaveOutputFormat_button, 2, 1);
+            this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(501, 576);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 59F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel6.Size = new System.Drawing.Size(492, 118);
             this.tableLayoutPanel6.TabIndex = 10;
@@ -825,49 +862,37 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(110, 53);
+            this.tableLayoutPanel6.SetRowSpan(this.previewUpdate_button, 3);
+            this.previewUpdate_button.Size = new System.Drawing.Size(225, 112);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
             this.previewUpdate_button.Click += new System.EventHandler(this.previewUpdate_button_Click);
             // 
-            // previewSave_button
-            // 
-            this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(119, 3);
-            this.previewSave_button.Name = "previewSave_button";
-            this.tableLayoutPanel6.SetRowSpan(this.previewSave_button, 2);
-            this.previewSave_button.Size = new System.Drawing.Size(110, 112);
-            this.previewSave_button.TabIndex = 6;
-            this.previewSave_button.Text = "Enhance and save as png";
-            this.previewSave_button.UseVisualStyleBackColor = true;
-            this.previewSave_button.Click += new System.EventHandler(this.previewSavePng_button_Click);
-            // 
-            // button_previewSaveComparison
-            // 
-            this.button_previewSaveComparison.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_previewSaveComparison.Location = new System.Drawing.Point(3, 62);
-            this.button_previewSaveComparison.Name = "button_previewSaveComparison";
-            this.button_previewSaveComparison.Size = new System.Drawing.Size(110, 53);
-            this.button_previewSaveComparison.TabIndex = 7;
-            this.button_previewSaveComparison.Text = "Save comparison to clipboard";
-            this.button_previewSaveComparison.UseVisualStyleBackColor = true;
-            this.button_previewSaveComparison.Click += new System.EventHandler(this.previewSaveComparison_button_Click);
-            // 
             // previewSaveOutputFormat_button
             // 
             this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(235, 3);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(234, 63);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
             this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(254, 112);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(255, 52);
             this.previewSaveOutputFormat_button.TabIndex = 9;
-            this.previewSaveOutputFormat_button.Text = "Enhance and save with ouput format";
+            this.previewSaveOutputFormat_button.Text = "Enhance and save with selected format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
             this.previewSaveOutputFormat_button.Click += new System.EventHandler(this.previewSaveOutputFormat_button_Click);
+            // 
+            // previewSave_button
+            // 
+            this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.previewSave_button.Location = new System.Drawing.Point(234, 3);
+            this.previewSave_button.Name = "previewSave_button";
+            this.previewSave_button.Size = new System.Drawing.Size(255, 54);
+            this.previewSave_button.TabIndex = 6;
+            this.previewSave_button.Text = "Enhance and save as png";
+            this.previewSave_button.UseVisualStyleBackColor = true;
+            this.previewSave_button.Click += new System.EventHandler(this.previewSavePng_button_Click);
             // 
             // toolStrip
             // 
@@ -1481,7 +1506,7 @@
             this.useProfileModel_checkBox.TabIndex = 25;
             this.useProfileModel_checkBox.Text = "Use specific model";
             this.useProfileModel_checkBox.UseVisualStyleBackColor = true;
-            this.useProfileModel_checkBox.CheckedChanged += new System.EventHandler(this.UseProfileModel_checkBox_CheckedChanged);
+            this.useProfileModel_checkBox.CheckedChanged += new System.EventHandler(this.useProfileModel_checkBox_CheckedChanged);
             // 
             // filterForAlpha_comboBox
             // 
@@ -3744,6 +3769,8 @@
         private System.Windows.Forms.Label label34;
         private System.Windows.Forms.CheckBox autoSetTileSize_checkBox;
         private System.Windows.Forms.CheckBox useImMerge_checkBox;
+        private System.Windows.Forms.Label label35;
+        private System.Windows.Forms.ComboBox comparisonMod_comboBox;
     }
 }
 
