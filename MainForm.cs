@@ -598,6 +598,8 @@ namespace ImageEnhancingUtility.Winforms
 
         ModelInfo GetModel(int x)
         {
+            if(x == -1)
+                return ViewModel.IEU.ModelsItems.Items.ToList()[0];
             return ViewModel.IEU.ModelsItems.Items.ToList()[x];
         }
 
