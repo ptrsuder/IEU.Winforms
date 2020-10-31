@@ -8,6 +8,8 @@ Uses [net-vips](https://github.com/kleisauke/net-vips) library to merge splitted
 
 Version 0.11.0 and forward doesn't requires files from ESRGAN repo as they are already included with IEU. You still need to install all python dependencies (pytorch and opencv-python).
 
+Join [Game Upscale discord](https://discord.gg/cpAUpDK) for ESRGAN models, news and help! You can get support with IEU in #ieu channel.
+
 ## List of features
 * Split images into tiles before processing them with ESRGAN and merge them afterwards with as little visible seams as possible
 * Detect currently available VRAM amount and auto set maximum tile dimensions depending on model upscale factor
