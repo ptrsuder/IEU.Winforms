@@ -21,6 +21,7 @@ using ReactiveUI;
 using Tulpep.NotificationWindow;
 using Rule = ImageEnhancingUtility.Core.Rule;
 using Newtonsoft.Json;
+using System.Drawing.Imaging;
 
 //TODO:
 //ask to change all paths when changing ESRGAN path
@@ -30,7 +31,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<MainViewModel>
     {
-        public readonly string AppVersion = "0.11.01";
+        public readonly string AppVersion = "0.12.00";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public MainViewModel ViewModel { get; set; }
@@ -46,29 +47,7 @@ namespace ImageEnhancingUtility.Winforms
 
         readonly List<TextBox> pathsTextBoxes;   
       
-        private delegate void SafeCallDelegateWithColor(LogMessage message);
-
-        private void WriteToLogsThreadSafe(LogMessage message)
-        {
-            if (richTextBox1.InvokeRequired)
-            {
-                var d = new SafeCallDelegateWithColor(WriteToLogsThreadSafe);
-                Invoke(d, new object[] { message });
-            }
-            else
-            {
-                richTextBox1.AppendText(message.Text, message.Color);
-            }           
-        }
-
-        void WriteErrors(Exception error)
-        {
-            if (error.InnerException != null)
-                WriteToLogsThreadSafe(new LogMessage(error.InnerException.Message, Color.Red));
-            else
-                WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red));
-        }
-
+        private delegate void SafeCallDelegateWithColor(LogMessage message);      
         public double ProgressBarValue
         {
             get => 0;
@@ -196,7 +175,7 @@ namespace ImageEnhancingUtility.Winforms
 
             if (ViewModel.Config.CheckForUpdates)
             {
-                ViewModel.IEU.WriteToLog("Checking new releases on github...");
+                ViewModel.IEU.Logger.Write("Checking new releases on github...");
                 CheckNewReleases();
             }
 
@@ -216,50 +195,12 @@ namespace ImageEnhancingUtility.Winforms
             inMemoryMode_checkBox.Checked = !inMemoryMode_checkBox.Checked; //LAZY
 
             comparisonMod_comboBox.DataSource = new BindingSource(IEU.ResizeImageScaleFactors, null);
-            comparisonMod_comboBox.SelectedIndex = 3;
+            comparisonMod_comboBox.SelectedIndex = 2;
+
+            OpenImage(@"C:\Users\MKso\Desktop\flickr_2254208141.jpg");
         }
 
-        #endregion
-
-        bool VerifyPaths()
-        {
-            string message = "Some directories dont exist!";
-            bool allgood = true;
-            foreach (TextBox t in pathsTextBoxes)
-            {
-                if (t.Text == "")
-                    allgood = false;
-                else
-                {
-                    if (!Directory.Exists(t.Text))
-                        message += $"\n{t.Text}";
-                    allgood = allgood && Directory.Exists(t.Text);
-                }
-            }
-            if (!allgood)
-                MessageBox.Show(message);
-
-            main_tabPage.Enabled = allgood;
-            interpolation_tabPage.Enabled = allgood;
-
-            return allgood;
-        }
-
-        void SetPathButtons()
-        {           
-            progress_label.Text = "0/0";
-            changeEsrganPath_button.Tag = esrganPath_textBox;
-            changeInputImgPath_button.Tag = imgPath_textBox;
-            changeMergedResultsPath_button.Tag = resultsMergedPath_textBox;
-            changeInputPath_button.Tag = inputPath_textBox;
-            changeOutputPath_button.Tag = outputPath_textBox;
-            changeModelsPath_button.Tag = modelsPath_textBox;
-
-            changeOriginalImagesPath_button.Tag = originalImagesPath_textBox;
-            changeResultsAPath_button.Tag = resultsAPath_textBox;
-            changeResultsBPath_button.Tag = resultsBPath_textBox;
-            changeResultsDestinationPath_button.Tag = resultsDestinationPath_textBox;
-        }
+        #endregion              
 
         #region BINDINGS
 
@@ -273,7 +214,7 @@ namespace ImageEnhancingUtility.Winforms
             this.OneWayBind(ViewModel, vm => vm.IEU.OverwriteModes, v => v.overwriteMode_comboBox.DataSource, x => new BindingSource(x, null));
             overwriteMode_comboBox.DisplayMember = "Key";
             overwriteMode_comboBox.ValueMember = "Value";
-            this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.OverwriteMode, v => v.overwriteMode_comboBox.SelectedValue);
+            this.Bind(ViewModel, vm => vm.IEU.OverwriteMode, v => v.overwriteMode_comboBox.SelectedValue);
 
             this.OneWayBind(ViewModel, vm => vm.IEU.ProgressBarValue, v => v.ProgressBarValue);
 
@@ -286,6 +227,7 @@ namespace ImageEnhancingUtility.Winforms
             this.OneWayBind(ViewModel, vm => vm.Config.WindowOnTop, v => v.TopMost);
             this.Bind(ViewModel, vm => vm.Config.ShowPopups, v => v.showPopups_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.Config.CheckForUpdates, v => v.checkForUpdates_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.Config.ShowPreviewSaveDialog, v => v.previewShowSaveDialog_checkBox.Checked);
         }
 
         void BindSettingsTab()
@@ -300,7 +242,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.IEU.MaxTileResolution, v => v.maxTileResolution_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.IEU.MaxTileResolutionWidth, v => v.maxTileWidth_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
             this.Bind(ViewModel, vm => vm.IEU.MaxTileResolutionHeight, v => v.maxTileHeight_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
-            this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.PreciseTileResolution, v => v.preciseTile_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.IEU.PreciseTileResolution, v => v.preciseTile_checkBox.Checked);
 
             this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.IgnoreAlpha, v => v.ignoreAlpha_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.IgnoreSingleColorAlphas, v => v.ignoreSingleColorAlpha_checkBox.Checked);
@@ -343,7 +285,9 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.IEU.AutoSetTileSizeEnable, v => v.autoSetTileSize_checkBox.Checked);
 
             this.OneWayBind(ViewModel, vm => vm.IEU.NoNvidia, v => v.autoSetTileSize_checkBox.Enabled, x => !x);
-            this.OneWayBind(ViewModel, vm => vm.IEU.NoNvidia, v => v.monitorVram_checkBox.Enabled, x => !x);            
+            this.OneWayBind(ViewModel, vm => vm.IEU.NoNvidia, v => v.monitorVram_checkBox.Enabled, x => !x);
+
+            this.Bind(ViewModel, vm => vm.IEU.PaddingSize, v => v.tilesPadding_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
         }
         
         void BindOutputFormats()
@@ -360,7 +304,8 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.DdsFileFormatsCurrent, v => v.ddsFileFormat_comboBox.DataSource);
             this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.DdsFileFormatSelectedIndex, v => v.ddsFileFormat_comboBox.SelectedIndex);
 
-            this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.ddsGenerateMipmaps, v => v.ddsGenerateMipmaps_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.DdsGenerateMipmaps, v => v.ddsGenerateMipmaps_checkBox.Checked);
+            this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.DdsIsCubemap, v => v.ddsIsCubemap_checkBox.Checked);
 
             ddsCompresion_comboBox.DataSource = new List<string>() { "Fast", "Normal", "Slow (best)" };
             ddsCompresion_comboBox.SelectedIndex = 0;
@@ -370,6 +315,11 @@ namespace ImageEnhancingUtility.Winforms
             outputFormat_comboBox.DisplayMember = "DisplayName";
             outputFormat_comboBox.ValueMember = "Extension";
             this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.SelectedOutputFormatIndex, v => v.outputFormat_comboBox.SelectedIndex);
+
+            outputFormatPreview_comboBox.DataSource = new BindingSource(ViewModel.IEU.CurrentProfile.FormatInfos, null);
+            outputFormatPreview_comboBox.DisplayMember = "DisplayName";
+            outputFormatPreview_comboBox.ValueMember = "Extension";
+            this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.SelectedOutputFormatIndex, v => v.outputFormatPreview_comboBox.SelectedIndex);
 
 
             tiffSettings_comboBox.DataSource = new BindingSource(Dictionaries.TiffCompressionModes, null);
@@ -393,7 +343,7 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.IEU.DisableRuleSystem, v => v.disableRuleSystem_checkBox.Checked);
             ViewModel.WhenAnyValue(vm => vm.IEU.DisableRuleSystem).Subscribe(x => HideRules(x));
 
-            ViewModel.IEU.Log.Connect()
+            ViewModel.IEU.Logger.Log.Connect()
                 .ObserveOn(RxApp.MainThreadScheduler)
                 .Bind(out ReadOnlyObservableCollection<LogMessage> bindingData)
                 .OnItemAdded(x => WriteToLogsThreadSafe(x))
@@ -648,7 +598,7 @@ namespace ImageEnhancingUtility.Winforms
 
         #endregion
 
-        #region Notification
+        #region NOTIFICATIONS
         bool notificationActive = false;
         PopupNotifier popup;
         void ShowNotification(string message)
@@ -671,22 +621,44 @@ namespace ImageEnhancingUtility.Winforms
         }
         #endregion
 
+        #region LOG
+        private void WriteToLogsThreadSafe(LogMessage message)
+        {
+            if (richTextBox1.InvokeRequired)
+            {
+                var d = new SafeCallDelegateWithColor(WriteToLogsThreadSafe);
+                Invoke(d, new object[] { message });
+            }
+            else
+            {
+                richTextBox1.AppendText(message.Text, message.Color);
+            }
+        }        
+        void WriteErrors(Exception error)
+        {
+            if (error.InnerException != null)
+                WriteToLogsThreadSafe(new LogMessage(error.InnerException.Message, Color.Red));
+            else
+                WriteToLogsThreadSafe(new LogMessage(error.Message, Color.Red));
+        }
+        #endregion
+
         async Task CheckNewReleases()
         {
             var checkerWinforms = new UpdateChecker("ptrsuder", GitHubRepoName, AppVersion);
             //ServicePointManager.SecurityProtocol = SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
             UpdateType updateWinforms = await checkerWinforms.CheckUpdate();
 
-            string updateMessage = "";          
+            string updateMessage = "";
 
             switch (updateWinforms)
             {
                 case UpdateType.None:
-                    ViewModel.IEU.WriteToLog("No new update.");
+                    ViewModel.IEU.Logger.Write("No new update.");
                     break;
                 case UpdateType.Fail:
-                    ViewModel.IEU.WriteToLog("Failed to check update.");
-                    ViewModel.IEU.WriteToLog(checkerWinforms.ErrorMessage);                  
+                    ViewModel.IEU.Logger.Write("Failed to check update.");
+                    ViewModel.IEU.Logger.Write(checkerWinforms.ErrorMessage);
                     break;
                 default:
                     updateMessage += "New version of IEU.Winforms is available!";
@@ -698,6 +670,45 @@ namespace ImageEnhancingUtility.Winforms
             }
         }
 
+        bool VerifyPaths()
+        {
+            string message = "Some directories dont exist!";
+            bool allgood = true;
+            foreach (TextBox t in pathsTextBoxes)
+            {
+                if (t.Text == "")
+                    allgood = false;
+                else
+                {
+                    if (!Directory.Exists(t.Text))
+                        message += $"\n{t.Text}";
+                    allgood = allgood && Directory.Exists(t.Text);
+                }
+            }
+            if (!allgood)
+                MessageBox.Show(message);
+
+            main_tabPage.Enabled = allgood;
+            interpolation_tabPage.Enabled = allgood;
+
+            return allgood;
+        }
+        void SetPathButtons()
+        {
+            progress_label.Text = "0/0";
+            changeEsrganPath_button.Tag = esrganPath_textBox;
+            changeInputImgPath_button.Tag = imgPath_textBox;
+            changeMergedResultsPath_button.Tag = resultsMergedPath_textBox;
+            changeInputPath_button.Tag = inputPath_textBox;
+            changeOutputPath_button.Tag = outputPath_textBox;
+            changeModelsPath_button.Tag = modelsPath_textBox;
+
+            changeOriginalImagesPath_button.Tag = originalImagesPath_textBox;
+            changeResultsAPath_button.Tag = resultsAPath_textBox;
+            changeResultsBPath_button.Tag = resultsBPath_textBox;
+            changeResultsDestinationPath_button.Tag = resultsDestinationPath_textBox;
+        }
+                
         bool lastUseDifferentModelAlpha = false;
 
         void DisableUseModelForAlpha()
@@ -722,6 +733,11 @@ namespace ImageEnhancingUtility.Winforms
             rules_groupBox.Visible = !on;
         }
 
+        private void OpenModelFolder(object sender, EventArgs e)
+        {
+            Process.Start(modelsPath_textBox.Text);
+        }
+
         #region PREVIEW methods
 
         Bitmap originalPreview, resultPreview;
@@ -733,19 +749,23 @@ namespace ImageEnhancingUtility.Winforms
         string previewFullname;
         
         private void UpdateStatusBar()
-        {      
+        {
             RectangleF rect = zoomImageBox.GetSourceImageRegion();
-            imageSizeToolStripStatusLabel.Text = $"W:{(int)rect.Width}, H:{(int)rect.Height}";            
-        }              
+            if (rect.Width > zoomImageBox.Image.Width) rect.Width = zoomImageBox.Image.Width;
+            if (rect.Height > zoomImageBox.Image.Height) rect.Height = zoomImageBox.Image.Height;
+            currentW = (int)Math.Floor(rect.Width);
+            currentH = (int)Math.Round(rect.Height);
+            imageSizeToolStripStatusLabel.Text = $"W:{currentW}, H:{currentH}";            
+        }
 
         private void OpenImage(string fullname)
-        {
+        {          
             originalPreview = null;
             resultPreview = null;
 
             Image image = ImageOperations.LoadImageToBitmap(fullname);
             previewFullname = fullname;
-            //zoomImageBox.BeginUpdate();
+            //zoomImageBox.BeginUpdate();          
             zoomImageBox.Image = image;
             zoomImageBox.ZoomToFit();
             //zoomImageBox.EndUpdate();
@@ -766,9 +786,10 @@ namespace ImageEnhancingUtility.Winforms
                 }
             }
             FillZoomLevels();
-            UpdateStatusBar();
-            zoomImageBox.ZoomToFit();            
-        }
+            UpdateStatusBar();           
+            zoomImageBox.ZoomToFit();
+            FitImage();
+        }        
 
         private void UpdatePreview()
         {
@@ -788,24 +809,41 @@ namespace ImageEnhancingUtility.Winforms
             int scaledHeight = Convert.ToInt32(visibleImageRegion.Height * zoomFactor);
 
             Size viewSize = zoomImageBox.GetInsideViewPort().Size;
+            Size previewSize = previewImageBox.GetInsideViewPort().Size;
+                       
+            //visibleImageRegion.Width = Convert.ToInt32(previewSize.Width / zoomFactor) ;
+            //visibleImageRegion.Height = Convert.ToInt32(previewSize.Height / zoomFactor) ;           
 
-            if (scaledWidth <= viewSize.Width)
+            if (previewSize.Width == viewSize.Width)
+            {
                 wOffset = 0;
-            if (scaledHeight <= viewSize.Height)
+                h = imageSize.Height;               
+            }
+            if (previewSize.Height == viewSize.Height)
+            {
                 hOffset = 0;
+                w = imageSize.Width;
+            }
 
-            w += wOffset;
-            h += hOffset;
-            visibleImageRegion.Width = w;
-            visibleImageRegion.Height = h;
+            w = (int)visibleImageRegion.Width + wOffset;
+            h = (int)visibleImageRegion.Height + hOffset;
+
             Bitmap result = new Bitmap(w, h);
+
+            visibleImageRegion.Width += wOffset;
+            visibleImageRegion.Height += hOffset;
 
             using (Graphics g = Graphics.FromImage(result))
             {
                 g.PixelOffsetMode = PixelOffsetMode.HighQuality;
                 g.InterpolationMode = InterpolationMode.NearestNeighbor;
-                g.DrawImage(zoomImageBox.Image, new Rectangle(0, 0, w, h), visibleImageRegion, GraphicsUnit.Pixel);
-            }            
+                g.DrawImage(
+                    zoomImageBox.Image,
+                    new Rectangle(0, 0, (int)visibleImageRegion.Width, (int)visibleImageRegion.Height),
+                    visibleImageRegion,
+                    GraphicsUnit.Pixel);
+            }
+
             previewImageBox.Image = result;                        
             originalPreview = result;
             resultPreview = null;
@@ -960,8 +998,7 @@ namespace ImageEnhancingUtility.Winforms
             previewUpdate_button.Enabled = enabled;
             zoomImageBox.Enabled = enabled;
             previewModels_comboBox.Enabled = enabled;
-            button_previewSaveComparison.Enabled = enabled;
-            previewSave_button.Enabled = enabled;
+            button_previewSaveComparison.Enabled = enabled;            
             previewSaveOutputFormat_button.Enabled = enabled;
         }
 
@@ -987,30 +1024,114 @@ namespace ImageEnhancingUtility.Winforms
             RefreshMiniMap();
         }
 
+        public int currentX = 0, currentY = 0, currentW, currentH;
         private void zoomImageBox_Scroll(object sender, ScrollEventArgs e)
-        {
-            UpdateMiniMap();
-            if (!zoomImageBox.IsPanning)
-                UpdatePreview();            
-        }
+        {                
+            float newX = currentX, newY = currentY;
+        
+            var rect = zoomImageBox.GetSourceImageRegion();
+            //if (rect.Width > zoomImageBox.Image.Width) rect.Width = zoomImageBox.Image.Width;
+            //if (rect.Height > zoomImageBox.Image.Height) rect.Height = zoomImageBox.Image.Height;
+            //currentW = (int)Math.Floor(rect.Width);
+            //currentH = (int)Math.Round(rect.Height);
+            //if (currentW == zoomImageBox.Image.Width && currentH == zoomImageBox.Image.Height) //whole image fit
+            //    return;
 
+            if (rect.Width != 0 && rect.Height != 0)
+            {
+                bool fit = false;
+                if (Math.Round(rect.X + rect.Width,0) > Math.Round(zoomImageBox.Image.Width - 17 / zoomImageBox.ZoomFactor, 0) && zoomImageBox.ZoomFactor >= 1)
+                {
+                    newX = (int)Math.Round(zoomImageBox.Image.Width - rect.Width - 17 / zoomImageBox.ZoomFactor, 0);
+                    if (newX - rect.X < 1) newX--;
+                    if (newX > 0)
+                        fit = true;
+                }
+                if (Math.Round(rect.Y + rect.Height, 0) > Math.Round(zoomImageBox.Image.Height - 17 / zoomImageBox.ZoomFactor, 0) && zoomImageBox.ZoomFactor >= 1)
+                {
+                    newY = (int)Math.Round(zoomImageBox.Image.Height  - rect.Height - 17 / zoomImageBox.ZoomFactor, 0);
+                    if (newY - rect.Y < 1) newY--;
+                    if (newY > 0)
+                        fit = true;
+                }
+
+                currentX = (int)rect.X;
+                currentY = (int)rect.Y;              
+
+                if (fit)
+                    zoomImageBox.ZoomToRegion(newX, newY, rect.Width, rect.Height);
+            }
+
+            UpdateMiniMap();
+
+            if (!zoomImageBox.IsPanning)
+            {
+                UpdatePreview();
+            }
+        }
+              
         private void zoomImageBox_PanEnd(object sender, EventArgs e)
         {
+            //var rect = zoomImageBox.GetSourceImageRegion();
+            //double zoomFactor = zoomImageBox.ZoomFactor;
+
+            //int w = (int)(rect.Width / zoomFactor);
+            //int h = (int)(rect.Height / zoomFactor);
+            //if (w == 0 || h == 0) return;
+            //Bitmap crop = new Bitmap((int)rect.Width, (int)rect.Height);
+           
+            //using (Graphics g = Graphics.FromImage(crop))
+            //{
+            //    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            //    g.InterpolationMode = InterpolationMode.NearestNeighbor;
+            //    g.DrawImage(
+            //        zoomImageBox.Image,
+            //        new Rectangle(0, 0, (int)rect.Width, (int)rect.Height),
+            //        rect,
+            //        GraphicsUnit.Pixel);
+            //}
+            //rect = zoomImageBox.GetSourceImageRegion();
+            //currentX = (int)rect.X;
+            //currentY = (int)rect.Y;
+            //currentW = (int)rect.Width;
+            //currentH = (int)rect.Height;
+            //zoomImageBox.Image = crop;
+            FitImage();
             UpdatePreview();
+        }
+               
+        private void zoomImageBox_ZoomChanged(object sender, EventArgs e)
+        {
         }
 
         private void zoomImageBox_Zoomed(object sender, ImageBoxZoomEventArgs e)
         {
+            //var rect = zoomImageBox.GetSourceImageRegion();
+            //currentX = (int)rect.X;
+            //currentY = (int)rect.Y;
+            //currentW = (int)rect.Width;
+            //currentH = (int)rect.Height;
+
             UpdateMiniMap();
             UpdatePreview();
             FitImage();
             UpdateStatusBar();
             zoomLevelsToolStripComboBox.Text = string.Format("{0}%", zoomImageBox.Zoom);
-        }     
 
-        private void OpenModelFolder(object sender, EventArgs e)
-        {
-            Process.Start(modelsPath_textBox.Text);
+            //var zoom = zoomImageBox.ZoomFactor;
+
+            //zoomImageBox.Image = zoomBoxImage;
+            //var newRect = zoomImageBox.GetScaledRectangle(currentX, currentY, currentW, currentH);
+
+            //zoomImageBox.Image = zoomBoxImage;
+            //currentX = (int)newRect.X;
+            //currentY = (int)newRect.Y;
+            //currentW = (int)newRect.Width;
+            //currentH = (int)newRect.Height;
+
+            //if (currentW != 0 && currentH != 0)
+            //    zoomImageBox.ZoomToRegion(currentX, currentY, currentW, currentH);
+
         }
 
         private void miniMapImageBox_Paint(object sender, PaintEventArgs e)
@@ -1077,7 +1198,8 @@ namespace ImageEnhancingUtility.Winforms
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
             if (originalPreview == null)
                 return;            
-            PreviewInProgress(true);
+            PreviewInProgress(true);          
+
             bool success = await ViewModel.IEU.Preview(previewFullname, originalPreview, modelPath, true);            
             PreviewInProgress(false);
             if (!success)
@@ -1099,17 +1221,42 @@ namespace ImageEnhancingUtility.Winforms
             }               
         }
 
-        private async void savePreview(bool saveAsPng = true)
+        private async void savePreview(bool saveAsPng)
         {
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
             if (zoomImageBox.Image == null)
                 return;
-            PreviewInProgress(true);
+
+            string imagePath = "";
+            if (previewFullname == Path.GetTempPath() + clipboardImageName || ViewModel.Config.ShowPreviewSaveDialog) //image from clipboard
+            {
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.DefaultExt = "";
+                saveFileDialog.InitialDirectory = ViewModel.IEU.OutputDirectoryPath;
+
+                string modelName = Path.GetFileNameWithoutExtension(modelPath);
+
+                if (previewFullname == Path.GetTempPath() + clipboardImageName)
+                    saveFileDialog.FileName = $"ClipboardImage_{modelName}";
+                else
+                    saveFileDialog.FileName = $"{Path.GetFileNameWithoutExtension(previewFullname)}_{modelName}";
+                var diResult = saveFileDialog.ShowDialog();
+                if (diResult == DialogResult.OK)
+                    imagePath = saveFileDialog.FileName;
+                else
+                    return;
+
+                string fileName = Path.GetFileNameWithoutExtension(imagePath);
+                string dir = Path.GetDirectoryName(imagePath);
+
+                imagePath = $"{ dir }\\{fileName}{"." + outputFormatPreview_comboBox.Text.ToLower()}";
+            }
+            PreviewInProgress(true);          
             try
             {
-                bool success = await ViewModel.IEU.Preview(previewFullname, zoomImageBox.Image, modelPath, saveAsPng, true);               
+                bool success = await ViewModel.IEU.Preview(previewFullname, zoomImageBox.Image, modelPath, saveAsPng, true, imagePath);               
                 if (!success)
-                    MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.IEU.EsrganPath}\\IEU_preview>");
+                    MessageBox.Show($"Failed to create preview! Log.txt is saved in <{ViewModel.IEU.EsrganPath}\\IEU_preview>");
             }
             catch
             {
@@ -1117,23 +1264,16 @@ namespace ImageEnhancingUtility.Winforms
             }
             finally
             {
-                PreviewInProgress(false);
+                PreviewInProgress(false);              
             }
            
-        }
-
-        private async void previewSavePng_button_Click(object sender, EventArgs e)
-        {
-           savePreview();
-        }
+        }      
 
         private async void previewSaveOutputFormat_button_Click(object sender, EventArgs e)
         {
             savePreview(false);
         }
-
-        
-
+                
         private async void previewSaveComparison_button_Click(object sender, EventArgs e)
         {
             if (resultPreview == null)
@@ -1258,7 +1398,7 @@ namespace ImageEnhancingUtility.Winforms
         }
 
         private void MainForm_ResizeEnd(object sender, EventArgs e)
-        {
+        {      
             if (tabControl1.SelectedIndex == 1 && (widthBeforeResize != Width || heightBeforeResize != Height))
                 FitImage();
             else
@@ -1275,16 +1415,14 @@ namespace ImageEnhancingUtility.Winforms
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            ViewModel.Config.WindowWidth = Width;
-            ViewModel.Config.WindowHeight = Height;
+        {         
             ViewModel.Config.LogPanelWidth = splitContainer1.SplitterDistance;
-            ViewModel.Config.WindowLocation = Location;
+            
             ViewModel.Config.ActiveTab = tabControl1.SelectedIndex;
             ViewModel.Config.ComparisonColor = comparison_colorWheel.Color;
-            ViewModel.IEU.SaveSettings();
-
+            ViewModel.Config.WindowState = WindowState;
             ViewModel.Config.SaveSettings();
+            ViewModel.IEU.SaveSettings();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -1297,18 +1435,45 @@ namespace ImageEnhancingUtility.Winforms
             
             ViewModel.Config.ReadSettings();
 
+            if(ViewModel.Config.WindowState != FormWindowState.Minimized)
+                WindowState = ViewModel.Config.WindowState;
             Location = ViewModel.Config.WindowLocation;
             Width = Convert.ToInt32(ViewModel.Config.WindowWidth);
-            Height = Convert.ToInt32(ViewModel.Config.WindowHeight);
+            Height = Convert.ToInt32(ViewModel.Config.WindowHeight);           
+
             splitContainer1.SplitterDistance = Convert.ToInt32(ViewModel.Config.LogPanelWidth);
             tabControl1.SelectedIndex = ViewModel.Config.ActiveTab;
             comparison_colorWheel.Color = ViewModel.Config.ComparisonColor;
+            comparisonMod_comboBox.SelectedIndex = ViewModel.Config.ComparisonModSelectedIndex;
+        }
+
+        private void MainForm_DoubleClick(object sender, EventArgs e)
+        {
+            var location = (e as MouseEventArgs).X;
+            var form = sender as MainForm;
+            var x1 = form.Width - 30;
+            var x2 = form.Width;
+            if (location > x1 && location < x2)
+            {
+                splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+                if (splitContainer1.Panel2.Size.Width < 51)
+                    splitContainer1.SplitterDistance = 100;
+            }
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            if (WindowState != FormWindowState.Minimized)
+            {
+                ViewModel.Config.WindowWidth = Width;
+                ViewModel.Config.WindowHeight = Height;
+                ViewModel.Config.WindowLocation = Location;
+            }            
         }
 
         #endregion
 
         #region BUTTONS
-
         private void changePath_button_Click(object sender, EventArgs e)
         {
             TextBox textBox = (sender as Button).Tag as TextBox;
@@ -1414,7 +1579,6 @@ namespace ImageEnhancingUtility.Winforms
         {
             Process.Start(@"https://github.com/ptrsuder/" + GitHubRepoName);
         }
-
         
         private void general_DragEnter(object sender, DragEventArgs e)
         {
@@ -1470,7 +1634,7 @@ namespace ImageEnhancingUtility.Winforms
             MessageBox.Show($"Succesfully copied {imagesCopied} files" + (modelsCopied > 0 ? $" and { modelsCopied} models" : ""));
         }
 
-
+        #region MODEL INTERPOLATION
         string alphaPrev = "05";
         private void InterpolationSettingsChanged(object sender, EventArgs e)
         {
@@ -1492,7 +1656,7 @@ namespace ImageEnhancingUtility.Winforms
         {
             modelInterpolationAlphaValue_textBox.Text = (modelInterpolationAlpha_trackBar.Value * 0.01).ToString();
         }
-
+        #endregion
 
         private void useDifferentModelForAlpha_checkBox_CheckedChanged(object sender, EventArgs e)
         {
@@ -1788,6 +1952,67 @@ namespace ImageEnhancingUtility.Winforms
             maxTileHeight_numericUpDown.Enabled = maxTileWidth_numericUpDown.Enabled = !autoSetTileSize_checkBox.Checked;
         }
 
+        private void outputFormat_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void preserveFormatPreview_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            //outputFormatPreview_comboBox.Enabled = !preserveFormatPreview_checkBox.Checked;
+            //preserveFormat_checkBox.Checked = preserveFormatPreview_checkBox.Checked;
+        }
+
+        private void comparisonMod_comboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            ViewModel.Config.ComparisonModSelectedIndex = comparisonMod_comboBox.SelectedIndex;
+        }
+
+        private void showStepsButtons_checkBox_CheckedChanged(object sender, EventArgs e)
+        {
+            SetStepVisibility(!showStepsButtons_checkBox.Checked);
+        }
+
+        void SetStepVisibility(bool visible)
+        {
+            crop_button.Visible = upscale_button.Visible = merge_button.Visible = visible;
+        }
+
+        private void showJoeyProperties_button_Click(object sender, EventArgs e)
+        {
+            PropertiesForm propertiesForm = new PropertiesForm(ViewModel.IEU.JoeyEsrgan, 270);
+            propertiesForm.Show();
+        }
+            
+        private void toogleLogView_button_Click(object sender, EventArgs e)
+        {
+            if (splitContainer1.Panel2Collapsed)
+                toogleLogView_button.Text = "Hide logs"; 
+            else
+                toogleLogView_button.Text = "Show logs";
+            
+            splitContainer1.Panel2Collapsed = !splitContainer1.Panel2Collapsed;
+        }
+               
+
+        string clipboardImageName = "ieu.clipboard.image.png";
+        private void MainForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.V)
+            {
+                string tmpPath = Path.GetTempPath() + clipboardImageName;
+
+                Image returnImage = null;
+                if (Clipboard.ContainsImage())
+                {
+                    returnImage = Clipboard.GetImage();
+                    returnImage.Save(tmpPath, ImageFormat.Png);
+                    OpenImage(tmpPath);
+                    tabControl1.SelectedIndex = 1;
+                }
+            }
+        }
+     
         private void RulePriority_numericUpDown_ValueChanged(object sender, EventArgs e)
         {
             int newValue = (int)rulePriority_numericUpDown.Value;

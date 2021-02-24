@@ -1,5 +1,6 @@
 ﻿using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 using Newtonsoft.Json;
 using ReactiveUI;
 
@@ -44,6 +45,13 @@ namespace ImageEnhancingUtility.Winforms
             set => this.RaiseAndSetIfChanged(ref _windowLocation, value);
         }
 
+        private FormWindowState _windowState = FormWindowState.Normal;
+        public FormWindowState WindowState
+        {
+            get => _windowState;
+            set => this.RaiseAndSetIfChanged(ref _windowState, value);
+        }
+
         private double _logPanelWidth = 400; 
         public double LogPanelWidth
         {
@@ -84,6 +92,21 @@ namespace ImageEnhancingUtility.Winforms
         {
             get => _comparisonColor;
             set => this.RaiseAndSetIfChanged(ref _comparisonColor, value);
+        }
+
+        int _comparisonModSelectedIndex = 2;
+        public int ComparisonModSelectedIndex
+        {
+            get => _comparisonModSelectedIndex;
+            set => this.RaiseAndSetIfChanged(ref _comparisonModSelectedIndex, value);
+        }
+
+
+        bool _showPreviewSaveDialog = false;
+        public bool ShowPreviewSaveDialog
+        {
+            get => _showPreviewSaveDialog;
+            set => this.RaiseAndSetIfChanged(ref _showPreviewSaveDialog, value);
         }
     }
 }

@@ -42,18 +42,22 @@
             this.progressFiltered_label = new System.Windows.Forms.Label();
             this.progress_label = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chainOrder_button = new System.Windows.Forms.Button();
-            this.UseModelChain_checkBox = new System.Windows.Forms.CheckBox();
+            this.showStepsButtons_checkBox = new System.Windows.Forms.CheckBox();
             this.loadProfileMainTab_button = new System.Windows.Forms.Button();
             this.profilesMainTab_listBox = new System.Windows.Forms.ListBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.overwriteMode_comboBox = new System.Windows.Forms.ComboBox();
             this.runAll_button = new System.Windows.Forms.Button();
+            this.groupBox11 = new System.Windows.Forms.GroupBox();
+            this.UseModelChain_checkBox = new System.Windows.Forms.CheckBox();
+            this.chainOrder_button = new System.Windows.Forms.Button();
             this.outputMode_groupBox = new System.Windows.Forms.GroupBox();
             this.outputDestinationMode_comboBox = new System.Windows.Forms.ComboBox();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.toogleLogView_button = new System.Windows.Forms.Button();
             this.previewResult_tabPage = new System.Windows.Forms.TabPage();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.zoomImageBox = new Cyotek.Windows.Forms.ImageBox();
@@ -69,8 +73,10 @@
             this.button_previewSaveComparison = new System.Windows.Forms.Button();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.previewUpdate_button = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.previewShowSaveDialog_checkBox = new System.Windows.Forms.CheckBox();
+            this.outputFormatPreview_comboBox = new System.Windows.Forms.ComboBox();
             this.previewSaveOutputFormat_button = new System.Windows.Forms.Button();
-            this.previewSave_button = new System.Windows.Forms.Button();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.openFromFileToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
@@ -80,9 +86,11 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
+            this.showJoeyProperties_button = new System.Windows.Forms.Button();
             this.label34 = new System.Windows.Forms.Label();
             this.monitorVram_checkBox = new System.Windows.Forms.CheckBox();
             this.showIEU_button = new System.Windows.Forms.Button();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.inMemoryMode_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.balanceRgb_checkBox = new System.Windows.Forms.CheckBox();
@@ -162,7 +170,9 @@
             this.changeEsrganPath_button = new System.Windows.Forms.Button();
             this.autoSetTileSize_checkBox = new System.Windows.Forms.CheckBox();
             this.preciseTile_checkBox = new System.Windows.Forms.CheckBox();
+            this.label36 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.tilesPadding_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.overlapSize_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.maxTileResolution_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -195,6 +205,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.ddsIsCubemap_checkBox = new System.Windows.Forms.CheckBox();
             this.ddsGenerateMipmaps_checkBox = new System.Windows.Forms.CheckBox();
             this.ddsCompresion_comboBox = new System.Windows.Forms.ComboBox();
             this.ddsFileFormat_comboBox = new System.Windows.Forms.ComboBox();
@@ -289,10 +300,12 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox11.SuspendLayout();
             this.outputMode_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
             this.previewResult_tabPage.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
@@ -300,6 +313,7 @@
             this.splitContainer3.Panel2.SuspendLayout();
             this.splitContainer3.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.settings_tabPage.SuspendLayout();
             this.groupBox12.SuspendLayout();
@@ -314,6 +328,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileWidth_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tilesPadding_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.overlapSize_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileResolution_numericUpDown)).BeginInit();
             this.settingsOutputFormat_tabPage.SuspendLayout();
@@ -355,7 +370,7 @@
             // upscale_button
             // 
             this.upscale_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.upscale_button.Location = new System.Drawing.Point(0, 196);
+            this.upscale_button.Location = new System.Drawing.Point(0, 256);
             this.upscale_button.Name = "upscale_button";
             this.upscale_button.Size = new System.Drawing.Size(149, 34);
             this.upscale_button.TabIndex = 1;
@@ -387,7 +402,7 @@
             // crop_button
             // 
             this.crop_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.crop_button.Location = new System.Drawing.Point(0, 59);
+            this.crop_button.Location = new System.Drawing.Point(0, 216);
             this.crop_button.Name = "crop_button";
             this.crop_button.Size = new System.Drawing.Size(149, 34);
             this.crop_button.TabIndex = 17;
@@ -398,7 +413,7 @@
             // merge_button
             // 
             this.merge_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.merge_button.Location = new System.Drawing.Point(0, 308);
+            this.merge_button.Location = new System.Drawing.Point(0, 296);
             this.merge_button.Name = "merge_button";
             this.merge_button.Size = new System.Drawing.Size(149, 34);
             this.merge_button.TabIndex = 18;
@@ -423,12 +438,13 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1004, 781);
+            this.tabControl1.Size = new System.Drawing.Size(1018, 781);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.mainTab_DragDrop);
             this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
+            this.tabControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             // 
             // main_tabPage
             // 
@@ -436,9 +452,9 @@
             this.main_tabPage.Location = new System.Drawing.Point(4, 25);
             this.main_tabPage.Name = "main_tabPage";
             this.main_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.main_tabPage.Size = new System.Drawing.Size(996, 752);
+            this.main_tabPage.Size = new System.Drawing.Size(1010, 752);
             this.main_tabPage.TabIndex = 0;
-            this.main_tabPage.Text = "Basic";
+            this.main_tabPage.Text = "Main";
             this.main_tabPage.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel1
@@ -450,15 +466,15 @@
             this.tableLayoutPanel1.Controls.Add(this.panel2, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.panel1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.progressBar1, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel7, 1, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.FixedSize;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(990, 746);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 746);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // panel2
@@ -466,46 +482,44 @@
             this.panel2.Controls.Add(this.progressFiltered_label);
             this.panel2.Controls.Add(this.progress_label);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 719);
+            this.panel2.Location = new System.Drawing.Point(3, 706);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(149, 24);
+            this.panel2.Size = new System.Drawing.Size(149, 37);
             this.panel2.TabIndex = 37;
             // 
             // progressFiltered_label
             // 
-            this.progressFiltered_label.AutoSize = true;
             this.progressFiltered_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.progressFiltered_label.Dock = System.Windows.Forms.DockStyle.Left;
             this.progressFiltered_label.Font = new System.Drawing.Font("Malgun Gothic", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.progressFiltered_label.ForeColor = System.Drawing.SystemColors.ControlText;
             this.progressFiltered_label.Location = new System.Drawing.Point(0, 0);
             this.progressFiltered_label.Name = "progressFiltered_label";
-            this.progressFiltered_label.Size = new System.Drawing.Size(19, 21);
+            this.progressFiltered_label.Size = new System.Drawing.Size(63, 37);
             this.progressFiltered_label.TabIndex = 24;
             this.progressFiltered_label.Text = "0";
-            this.progressFiltered_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.progressFiltered_label.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // progress_label
             // 
-            this.progress_label.AutoSize = true;
             this.progress_label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.progress_label.Dock = System.Windows.Forms.DockStyle.Right;
             this.progress_label.Font = new System.Drawing.Font("Malgun Gothic", 10.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.progress_label.Location = new System.Drawing.Point(116, 0);
+            this.progress_label.Location = new System.Drawing.Point(69, 0);
             this.progress_label.Name = "progress_label";
-            this.progress_label.Size = new System.Drawing.Size(33, 21);
+            this.progress_label.Size = new System.Drawing.Size(80, 37);
             this.progress_label.TabIndex = 23;
             this.progress_label.Text = "0/0";
             this.progress_label.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.chainOrder_button);
-            this.panel1.Controls.Add(this.UseModelChain_checkBox);
+            this.panel1.Controls.Add(this.showStepsButtons_checkBox);
             this.panel1.Controls.Add(this.loadProfileMainTab_button);
             this.panel1.Controls.Add(this.profilesMainTab_listBox);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.runAll_button);
+            this.panel1.Controls.Add(this.groupBox11);
             this.panel1.Controls.Add(this.outputMode_groupBox);
             this.panel1.Controls.Add(this.upscale_button);
             this.panel1.Controls.Add(this.crop_button);
@@ -513,36 +527,25 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 710);
+            this.panel1.Size = new System.Drawing.Size(149, 697);
             this.panel1.TabIndex = 20;
             // 
-            // chainOrder_button
+            // showStepsButtons_checkBox
             // 
-            this.chainOrder_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.chainOrder_button.Location = new System.Drawing.Point(0, 259);
-            this.chainOrder_button.Name = "chainOrder_button";
-            this.chainOrder_button.Size = new System.Drawing.Size(149, 30);
-            this.chainOrder_button.TabIndex = 54;
-            this.chainOrder_button.Text = "Chain order";
-            this.chainOrder_button.UseVisualStyleBackColor = true;
-            this.chainOrder_button.Click += new System.EventHandler(this.chainOrder_button_Click);
-            // 
-            // UseModelChain_checkBox
-            // 
-            this.UseModelChain_checkBox.AutoSize = true;
-            this.UseModelChain_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UseModelChain_checkBox.Location = new System.Drawing.Point(2, 236);
-            this.UseModelChain_checkBox.Name = "UseModelChain_checkBox";
-            this.UseModelChain_checkBox.Size = new System.Drawing.Size(102, 17);
-            this.UseModelChain_checkBox.TabIndex = 53;
-            this.UseModelChain_checkBox.Text = "Use model chain";
-            this.UseModelChain_checkBox.UseVisualStyleBackColor = true;
-            this.UseModelChain_checkBox.CheckedChanged += new System.EventHandler(this.UseModelChain_checkBox_CheckedChanged);
+            this.showStepsButtons_checkBox.AutoSize = true;
+            this.showStepsButtons_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.showStepsButtons_checkBox.Location = new System.Drawing.Point(2, 679);
+            this.showStepsButtons_checkBox.Name = "showStepsButtons_checkBox";
+            this.showStepsButtons_checkBox.Size = new System.Drawing.Size(73, 17);
+            this.showStepsButtons_checkBox.TabIndex = 61;
+            this.showStepsButtons_checkBox.Text = "Hide steps";
+            this.showStepsButtons_checkBox.UseVisualStyleBackColor = true;
+            this.showStepsButtons_checkBox.CheckedChanged += new System.EventHandler(this.showStepsButtons_checkBox_CheckedChanged);
             // 
             // loadProfileMainTab_button
             // 
             this.loadProfileMainTab_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.loadProfileMainTab_button.Location = new System.Drawing.Point(0, 648);
+            this.loadProfileMainTab_button.Location = new System.Drawing.Point(0, 642);
             this.loadProfileMainTab_button.Name = "loadProfileMainTab_button";
             this.loadProfileMainTab_button.Size = new System.Drawing.Size(149, 31);
             this.loadProfileMainTab_button.TabIndex = 52;
@@ -554,7 +557,7 @@
             // 
             this.profilesMainTab_listBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.profilesMainTab_listBox.FormattingEnabled = true;
-            this.profilesMainTab_listBox.Location = new System.Drawing.Point(0, 458);
+            this.profilesMainTab_listBox.Location = new System.Drawing.Point(0, 452);
             this.profilesMainTab_listBox.Name = "profilesMainTab_listBox";
             this.profilesMainTab_listBox.Size = new System.Drawing.Size(149, 184);
             this.profilesMainTab_listBox.TabIndex = 48;
@@ -562,7 +565,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.overwriteMode_comboBox);
-            this.groupBox1.Location = new System.Drawing.Point(0, 140);
+            this.groupBox1.Location = new System.Drawing.Point(0, 55);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(149, 50);
             this.groupBox1.TabIndex = 36;
@@ -582,17 +585,51 @@
             // runAll_button
             // 
             this.runAll_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.runAll_button.Location = new System.Drawing.Point(0, 395);
+            this.runAll_button.Location = new System.Drawing.Point(0, 408);
             this.runAll_button.Name = "runAll_button";
-            this.runAll_button.Size = new System.Drawing.Size(149, 44);
+            this.runAll_button.Size = new System.Drawing.Size(149, 38);
             this.runAll_button.TabIndex = 32;
-            this.runAll_button.Text = "SPLIT-ESRGAN-MERGE";
+            this.runAll_button.Text = "START";
             this.runAll_button.UseVisualStyleBackColor = true;
+            // 
+            // groupBox11
+            // 
+            this.groupBox11.Controls.Add(this.UseModelChain_checkBox);
+            this.groupBox11.Controls.Add(this.chainOrder_button);
+            this.groupBox11.Location = new System.Drawing.Point(0, 108);
+            this.groupBox11.Name = "groupBox11";
+            this.groupBox11.Size = new System.Drawing.Size(149, 85);
+            this.groupBox11.TabIndex = 31;
+            this.groupBox11.TabStop = false;
+            this.groupBox11.Text = "Model chain";
+            // 
+            // UseModelChain_checkBox
+            // 
+            this.UseModelChain_checkBox.AutoSize = true;
+            this.UseModelChain_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UseModelChain_checkBox.Location = new System.Drawing.Point(6, 19);
+            this.UseModelChain_checkBox.Name = "UseModelChain_checkBox";
+            this.UseModelChain_checkBox.Size = new System.Drawing.Size(102, 17);
+            this.UseModelChain_checkBox.TabIndex = 53;
+            this.UseModelChain_checkBox.Text = "Use model chain";
+            this.UseModelChain_checkBox.UseVisualStyleBackColor = true;
+            this.UseModelChain_checkBox.CheckedChanged += new System.EventHandler(this.UseModelChain_checkBox_CheckedChanged);
+            // 
+            // chainOrder_button
+            // 
+            this.chainOrder_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.chainOrder_button.Location = new System.Drawing.Point(6, 42);
+            this.chainOrder_button.Name = "chainOrder_button";
+            this.chainOrder_button.Size = new System.Drawing.Size(137, 30);
+            this.chainOrder_button.TabIndex = 54;
+            this.chainOrder_button.Text = "Chain order";
+            this.chainOrder_button.UseVisualStyleBackColor = true;
+            this.chainOrder_button.Click += new System.EventHandler(this.chainOrder_button_Click);
             // 
             // outputMode_groupBox
             // 
             this.outputMode_groupBox.Controls.Add(this.outputDestinationMode_comboBox);
-            this.outputMode_groupBox.Location = new System.Drawing.Point(0, 3);
+            this.outputMode_groupBox.Location = new System.Drawing.Point(0, 1);
             this.outputMode_groupBox.Name = "outputMode_groupBox";
             this.outputMode_groupBox.Size = new System.Drawing.Size(149, 52);
             this.outputMode_groupBox.TabIndex = 31;
@@ -619,8 +656,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
-            this.splitContainer1.Panel2MinSize = 100;
-            this.splitContainer1.Size = new System.Drawing.Size(829, 710);
+            this.splitContainer1.Panel2MinSize = 400;
+            this.splitContainer1.Size = new System.Drawing.Size(843, 697);
             this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -633,18 +670,46 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(425, 710);
+            this.richTextBox1.Size = new System.Drawing.Size(439, 697);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
             // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 83F));
+            this.tableLayoutPanel7.Controls.Add(this.progressBar1, 0, 0);
+            this.tableLayoutPanel7.Controls.Add(this.toogleLogView_button, 1, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(158, 706);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(843, 37);
+            this.tableLayoutPanel7.TabIndex = 38;
+            // 
             // progressBar1
             // 
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.progressBar1.Location = new System.Drawing.Point(158, 719);
+            this.progressBar1.Location = new System.Drawing.Point(3, 3);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(829, 24);
+            this.progressBar1.Size = new System.Drawing.Size(754, 31);
             this.progressBar1.TabIndex = 22;
+            // 
+            // toogleLogView_button
+            // 
+            this.toogleLogView_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.toogleLogView_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.toogleLogView_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.toogleLogView_button.Location = new System.Drawing.Point(763, 3);
+            this.toogleLogView_button.Name = "toogleLogView_button";
+            this.toogleLogView_button.Size = new System.Drawing.Size(77, 31);
+            this.toogleLogView_button.TabIndex = 23;
+            this.toogleLogView_button.Text = "Hide logs";
+            this.toogleLogView_button.UseVisualStyleBackColor = true;
+            this.toogleLogView_button.Click += new System.EventHandler(this.toogleLogView_button_Click);
             // 
             // previewResult_tabPage
             // 
@@ -652,7 +717,7 @@
             this.previewResult_tabPage.Controls.Add(this.toolStrip);
             this.previewResult_tabPage.Location = new System.Drawing.Point(4, 25);
             this.previewResult_tabPage.Name = "previewResult_tabPage";
-            this.previewResult_tabPage.Size = new System.Drawing.Size(996, 752);
+            this.previewResult_tabPage.Size = new System.Drawing.Size(1010, 752);
             this.previewResult_tabPage.TabIndex = 5;
             this.previewResult_tabPage.Text = "Preview result";
             this.previewResult_tabPage.UseVisualStyleBackColor = true;
@@ -677,7 +742,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(996, 727);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1010, 727);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // zoomImageBox
@@ -692,11 +757,13 @@
             this.zoomImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
             this.zoomImageBox.Location = new System.Drawing.Point(3, 3);
             this.zoomImageBox.Name = "zoomImageBox";
-            this.zoomImageBox.Size = new System.Drawing.Size(492, 536);
+            this.zoomImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Left;
+            this.zoomImageBox.Size = new System.Drawing.Size(499, 536);
             this.zoomImageBox.TabIndex = 0;
             this.zoomImageBox.TabStop = false;
             this.zoomImageBox.ImageChanged += new System.EventHandler(this.zoomImageBox_ImageChanged);
             this.zoomImageBox.PanEnd += new System.EventHandler(this.zoomImageBox_PanEnd);
+            this.zoomImageBox.ZoomChanged += new System.EventHandler(this.zoomImageBox_ZoomChanged);
             this.zoomImageBox.Zoomed += new System.EventHandler<Cyotek.Windows.Forms.ImageBoxZoomEventArgs>(this.zoomImageBox_Zoomed);
             this.zoomImageBox.Scroll += new System.Windows.Forms.ScrollEventHandler(this.zoomImageBox_Scroll);
             this.zoomImageBox.DragDrop += new System.Windows.Forms.DragEventHandler(this.zoomImageBox_DragDrop);
@@ -705,17 +772,21 @@
             // 
             // previewImageBox
             // 
+            this.previewImageBox.AlwaysShowHScroll = true;
+            this.previewImageBox.AlwaysShowVScroll = true;
             this.previewImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.previewImageBox.AutoScroll = false;
             this.previewImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.previewImageBox.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
-            this.previewImageBox.Location = new System.Drawing.Point(501, 3);
+            this.previewImageBox.Location = new System.Drawing.Point(508, 3);
             this.previewImageBox.Name = "previewImageBox";
-            this.previewImageBox.Size = new System.Drawing.Size(492, 536);
+            this.previewImageBox.Size = new System.Drawing.Size(499, 536);
             this.previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.previewImageBox.TabIndex = 4;
+            this.previewImageBox.TabStop = false;
             this.previewImageBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.previewImageBox_MouseDown);
             this.previewImageBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.previewImageBox_MouseUp);
             // 
@@ -726,9 +797,9 @@
             this.previewModels_comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewModels_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewModels_comboBox.FormattingEnabled = true;
-            this.previewModels_comboBox.Location = new System.Drawing.Point(501, 545);
+            this.previewModels_comboBox.Location = new System.Drawing.Point(508, 545);
             this.previewModels_comboBox.Name = "previewModels_comboBox";
-            this.previewModels_comboBox.Size = new System.Drawing.Size(492, 21);
+            this.previewModels_comboBox.Size = new System.Drawing.Size(499, 21);
             this.previewModels_comboBox.TabIndex = 6;
             // 
             // preview_progressBar
@@ -737,7 +808,7 @@
             this.preview_progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
             this.preview_progressBar.Location = new System.Drawing.Point(3, 700);
             this.preview_progressBar.Name = "preview_progressBar";
-            this.preview_progressBar.Size = new System.Drawing.Size(990, 24);
+            this.preview_progressBar.Size = new System.Drawing.Size(1004, 24);
             this.preview_progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.preview_progressBar.TabIndex = 8;
             // 
@@ -759,8 +830,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.imageSizeToolStripStatusLabel);
             this.splitContainer3.Panel2.Controls.Add(this.button_previewSaveComparison);
             this.tableLayoutPanel3.SetRowSpan(this.splitContainer3, 2);
-            this.splitContainer3.Size = new System.Drawing.Size(492, 149);
-            this.splitContainer3.SplitterDistance = 187;
+            this.splitContainer3.Size = new System.Drawing.Size(499, 149);
+            this.splitContainer3.SplitterDistance = 188;
             this.splitContainer3.TabIndex = 9;
             // 
             // miniMapImageBox
@@ -786,7 +857,7 @@
             // 
             this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(9, 12);
+            this.label35.Location = new System.Drawing.Point(15, 12);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(84, 13);
             this.label35.TabIndex = 9;
@@ -797,16 +868,17 @@
             this.comparisonMod_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comparisonMod_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comparisonMod_comboBox.FormattingEnabled = true;
-            this.comparisonMod_comboBox.Location = new System.Drawing.Point(101, 9);
+            this.comparisonMod_comboBox.Location = new System.Drawing.Point(107, 9);
             this.comparisonMod_comboBox.Name = "comparisonMod_comboBox";
             this.comparisonMod_comboBox.Size = new System.Drawing.Size(62, 21);
             this.comparisonMod_comboBox.TabIndex = 8;
+            this.comparisonMod_comboBox.SelectedIndexChanged += new System.EventHandler(this.comparisonMod_comboBox_SelectedIndexChanged);
             // 
             // comparison_colorWheel
             // 
             this.comparison_colorWheel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comparison_colorWheel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(104)))));
-            this.comparison_colorWheel.Location = new System.Drawing.Point(166, 34);
+            this.comparison_colorWheel.Location = new System.Drawing.Point(172, 34);
             this.comparison_colorWheel.Name = "comparison_colorWheel";
             this.comparison_colorWheel.Size = new System.Drawing.Size(132, 112);
             this.comparison_colorWheel.TabIndex = 1;
@@ -817,7 +889,7 @@
             // 
             this.imageSizeToolStripStatusLabel.AutoSize = true;
             this.imageSizeToolStripStatusLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(254, 0);
+            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(260, 0);
             this.imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
             this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(47, 13);
             this.imageSizeToolStripStatusLabel.TabIndex = 0;
@@ -828,7 +900,7 @@
             // 
             this.button_previewSaveComparison.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_previewSaveComparison.Location = new System.Drawing.Point(6, 34);
+            this.button_previewSaveComparison.Location = new System.Drawing.Point(12, 34);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
             this.button_previewSaveComparison.Size = new System.Drawing.Size(157, 112);
             this.button_previewSaveComparison.TabIndex = 7;
@@ -839,21 +911,17 @@
             // tableLayoutPanel6
             // 
             this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 46.95122F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.04878F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 208F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.previewSaveOutputFormat_button, 2, 1);
-            this.tableLayoutPanel6.Controls.Add(this.previewSave_button, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(501, 576);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(508, 576);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 38F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(492, 118);
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(499, 118);
             this.tableLayoutPanel6.TabIndex = 10;
             // 
             // previewUpdate_button
@@ -862,37 +930,57 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.tableLayoutPanel6.SetRowSpan(this.previewUpdate_button, 3);
-            this.previewUpdate_button.Size = new System.Drawing.Size(225, 112);
+            this.previewUpdate_button.Size = new System.Drawing.Size(243, 112);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
             this.previewUpdate_button.Click += new System.EventHandler(this.previewUpdate_button_Click);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.previewShowSaveDialog_checkBox);
+            this.panel4.Controls.Add(this.outputFormatPreview_comboBox);
+            this.panel4.Controls.Add(this.previewSaveOutputFormat_button);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(252, 3);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(244, 112);
+            this.panel4.TabIndex = 7;
+            // 
+            // previewShowSaveDialog_checkBox
+            // 
+            this.previewShowSaveDialog_checkBox.AutoSize = true;
+            this.previewShowSaveDialog_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.previewShowSaveDialog_checkBox.Location = new System.Drawing.Point(3, 6);
+            this.previewShowSaveDialog_checkBox.Name = "previewShowSaveDialog_checkBox";
+            this.previewShowSaveDialog_checkBox.Size = new System.Drawing.Size(123, 17);
+            this.previewShowSaveDialog_checkBox.TabIndex = 51;
+            this.previewShowSaveDialog_checkBox.Text = "Show save file dialog";
+            this.previewShowSaveDialog_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // outputFormatPreview_comboBox
+            // 
+            this.outputFormatPreview_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.outputFormatPreview_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.outputFormatPreview_comboBox.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.outputFormatPreview_comboBox.FormattingEnabled = true;
+            this.outputFormatPreview_comboBox.Location = new System.Drawing.Point(175, 2);
+            this.outputFormatPreview_comboBox.Name = "outputFormatPreview_comboBox";
+            this.outputFormatPreview_comboBox.Size = new System.Drawing.Size(69, 21);
+            this.outputFormatPreview_comboBox.TabIndex = 50;
+            // 
             // previewSaveOutputFormat_button
             // 
-            this.previewSaveOutputFormat_button.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.previewSaveOutputFormat_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(234, 63);
+            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(0, 25);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
-            this.tableLayoutPanel6.SetRowSpan(this.previewSaveOutputFormat_button, 2);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(255, 52);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(244, 86);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with selected format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
             this.previewSaveOutputFormat_button.Click += new System.EventHandler(this.previewSaveOutputFormat_button_Click);
-            // 
-            // previewSave_button
-            // 
-            this.previewSave_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewSave_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.previewSave_button.Location = new System.Drawing.Point(234, 3);
-            this.previewSave_button.Name = "previewSave_button";
-            this.previewSave_button.Size = new System.Drawing.Size(255, 54);
-            this.previewSave_button.TabIndex = 6;
-            this.previewSave_button.Text = "Enhance and save as png";
-            this.previewSave_button.UseVisualStyleBackColor = true;
-            this.previewSave_button.Click += new System.EventHandler(this.previewSavePng_button_Click);
             // 
             // toolStrip
             // 
@@ -906,7 +994,7 @@
             this.zoomLevelsToolStripComboBox});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(996, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1010, 25);
             this.toolStrip.TabIndex = 3;
             // 
             // openFromFileToolStripButton
@@ -969,9 +1057,11 @@
             // settings_tabPage
             // 
             this.settings_tabPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settings_tabPage.Controls.Add(this.showJoeyProperties_button);
             this.settings_tabPage.Controls.Add(this.label34);
             this.settings_tabPage.Controls.Add(this.monitorVram_checkBox);
             this.settings_tabPage.Controls.Add(this.showIEU_button);
+            this.settings_tabPage.Controls.Add(this.checkBox1);
             this.settings_tabPage.Controls.Add(this.inMemoryMode_checkBox);
             this.settings_tabPage.Controls.Add(this.groupBox12);
             this.settings_tabPage.Controls.Add(this.groupBox8);
@@ -1008,7 +1098,9 @@
             this.settings_tabPage.Controls.Add(this.changeEsrganPath_button);
             this.settings_tabPage.Controls.Add(this.autoSetTileSize_checkBox);
             this.settings_tabPage.Controls.Add(this.preciseTile_checkBox);
+            this.settings_tabPage.Controls.Add(this.label36);
             this.settings_tabPage.Controls.Add(this.label6);
+            this.settings_tabPage.Controls.Add(this.tilesPadding_numericUpDown);
             this.settings_tabPage.Controls.Add(this.overlapSize_numericUpDown);
             this.settings_tabPage.Controls.Add(this.label5);
             this.settings_tabPage.Controls.Add(this.maxTileResolution_numericUpDown);
@@ -1021,10 +1113,22 @@
             this.settings_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settings_tabPage.Name = "settings_tabPage";
             this.settings_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settings_tabPage.Size = new System.Drawing.Size(996, 752);
+            this.settings_tabPage.Size = new System.Drawing.Size(1010, 752);
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
+            // 
+            // showJoeyProperties_button
+            // 
+            this.showJoeyProperties_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.showJoeyProperties_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.showJoeyProperties_button.Location = new System.Drawing.Point(834, 200);
+            this.showJoeyProperties_button.Name = "showJoeyProperties_button";
+            this.showJoeyProperties_button.Size = new System.Drawing.Size(149, 47);
+            this.showJoeyProperties_button.TabIndex = 60;
+            this.showJoeyProperties_button.Text = "Joey\'s properties";
+            this.showJoeyProperties_button.UseVisualStyleBackColor = true;
+            this.showJoeyProperties_button.Click += new System.EventHandler(this.showJoeyProperties_button_Click);
             // 
             // label34
             // 
@@ -1050,13 +1154,25 @@
             // 
             this.showIEU_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.showIEU_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.showIEU_button.Location = new System.Drawing.Point(804, 150);
+            this.showIEU_button.Location = new System.Drawing.Point(834, 150);
             this.showIEU_button.Name = "showIEU_button";
-            this.showIEU_button.Size = new System.Drawing.Size(179, 69);
+            this.showIEU_button.Size = new System.Drawing.Size(149, 47);
             this.showIEU_button.TabIndex = 57;
-            this.showIEU_button.Text = "Expose properties";
+            this.showIEU_button.Text = "Expose all properties";
             this.showIEU_button.UseVisualStyleBackColor = true;
             this.showIEU_button.Click += new System.EventHandler(this.showIEU_button_Click);
+            // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Location = new System.Drawing.Point(111, 285);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(122, 17);
+            this.checkBox1.TabIndex = 56;
+            this.checkBox1.Text = "Use Joey\'s ESRGAN";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.inMemoryMode_checkBox_CheckedChanged);
             // 
             // inMemoryMode_checkBox
             // 
@@ -1078,9 +1194,9 @@
             this.groupBox12.Controls.Add(this.useOldVipsMerge_checkBox);
             this.groupBox12.Controls.Add(this.useMblend_checkBox);
             this.groupBox12.Controls.Add(this.balanceAlphas_checkBox);
-            this.groupBox12.Location = new System.Drawing.Point(804, 15);
+            this.groupBox12.Location = new System.Drawing.Point(834, 14);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(179, 130);
+            this.groupBox12.Size = new System.Drawing.Size(149, 130);
             this.groupBox12.TabIndex = 55;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Legacy merge";
@@ -1091,9 +1207,9 @@
             this.balanceRgb_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.balanceRgb_checkBox.Location = new System.Drawing.Point(11, 63);
             this.balanceRgb_checkBox.Name = "balanceRgb_checkBox";
-            this.balanceRgb_checkBox.Size = new System.Drawing.Size(153, 17);
+            this.balanceRgb_checkBox.Size = new System.Drawing.Size(118, 17);
             this.balanceRgb_checkBox.TabIndex = 25;
-            this.balanceRgb_checkBox.Text = "Use globalbalance on RGB";
+            this.balanceRgb_checkBox.Text = "Globalbalance RGB";
             this.toolTip1.SetToolTip(this.balanceRgb_checkBox, "No need to enable this for most cases");
             this.balanceRgb_checkBox.UseVisualStyleBackColor = true;
             // 
@@ -1111,6 +1227,7 @@
             // useOldVipsMerge_checkBox
             // 
             this.useOldVipsMerge_checkBox.AutoSize = true;
+            this.useOldVipsMerge_checkBox.Enabled = false;
             this.useOldVipsMerge_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.useOldVipsMerge_checkBox.Location = new System.Drawing.Point(11, 19);
             this.useOldVipsMerge_checkBox.Name = "useOldVipsMerge_checkBox";
@@ -1125,9 +1242,9 @@
             this.useMblend_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.useMblend_checkBox.Location = new System.Drawing.Point(11, 41);
             this.useMblend_checkBox.Name = "useMblend_checkBox";
-            this.useMblend_checkBox.Size = new System.Drawing.Size(140, 17);
+            this.useMblend_checkBox.Size = new System.Drawing.Size(80, 17);
             this.useMblend_checkBox.TabIndex = 25;
-            this.useMblend_checkBox.Text = "Use vipse merge mblend";
+            this.useMblend_checkBox.Text = "Use mblend";
             this.useMblend_checkBox.UseVisualStyleBackColor = true;
             // 
             // balanceAlphas_checkBox
@@ -1136,9 +1253,9 @@
             this.balanceAlphas_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.balanceAlphas_checkBox.Location = new System.Drawing.Point(11, 87);
             this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
-            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(156, 17);
+            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(121, 17);
             this.balanceAlphas_checkBox.TabIndex = 25;
-            this.balanceAlphas_checkBox.Text = "Use globalbalance on alpha";
+            this.balanceAlphas_checkBox.Text = "Globalbalance alpha";
             this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "No need to enable this for most cases");
             this.balanceAlphas_checkBox.UseVisualStyleBackColor = true;
             // 
@@ -1455,11 +1572,13 @@
             // outputFormat_comboBox
             // 
             this.outputFormat_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.outputFormat_comboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.outputFormat_comboBox.FormattingEnabled = true;
-            this.outputFormat_comboBox.Location = new System.Drawing.Point(101, 26);
+            this.outputFormat_comboBox.Location = new System.Drawing.Point(108, 31);
             this.outputFormat_comboBox.Name = "outputFormat_comboBox";
             this.outputFormat_comboBox.Size = new System.Drawing.Size(120, 21);
             this.outputFormat_comboBox.TabIndex = 48;
+            this.outputFormat_comboBox.SelectedIndexChanged += new System.EventHandler(this.outputFormat_comboBox_SelectedIndexChanged);
             // 
             // ignoreSingleColorAlpha_checkBox
             // 
@@ -1575,7 +1694,7 @@
             this.preserveFormat_checkBox.AutoSize = true;
             this.preserveFormat_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.preserveFormat_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.preserveFormat_checkBox.Location = new System.Drawing.Point(227, 28);
+            this.preserveFormat_checkBox.Location = new System.Drawing.Point(234, 33);
             this.preserveFormat_checkBox.Name = "preserveFormat_checkBox";
             this.preserveFormat_checkBox.Size = new System.Drawing.Size(141, 17);
             this.preserveFormat_checkBox.TabIndex = 30;
@@ -1587,7 +1706,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(25, 29);
+            this.label23.Location = new System.Drawing.Point(32, 34);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(71, 13);
             this.label23.TabIndex = 24;
@@ -1614,12 +1733,13 @@
             // 
             this.useBasicSR_checkBox.AutoSize = true;
             this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.useBasicSR_checkBox.Location = new System.Drawing.Point(111, 284);
+            this.useBasicSR_checkBox.Location = new System.Drawing.Point(834, 516);
             this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
             this.useBasicSR_checkBox.Size = new System.Drawing.Size(145, 17);
             this.useBasicSR_checkBox.TabIndex = 51;
             this.useBasicSR_checkBox.Text = "Use BasicSR architecture";
             this.useBasicSR_checkBox.UseVisualStyleBackColor = true;
+            this.useBasicSR_checkBox.Visible = false;
             // 
             // modelsPath_textBox
             // 
@@ -1634,11 +1754,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(82, 102);
+            this.label2.Location = new System.Drawing.Point(75, 104);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(21, 13);
+            this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 20;
-            this.label2.Text = "LR";
+            this.label2.Text = "Tiles";
             // 
             // saveProfile_button
             // 
@@ -1661,7 +1781,7 @@
             this.tableLayoutPanel2.Controls.Add(this.appCoreVersion_linkLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.appVersion_label, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkForUpdates_checkBox, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(753, 694);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(767, 694);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -1726,7 +1846,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(61, 127);
+            this.label7.Location = new System.Drawing.Point(62, 127);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 13);
             this.label7.TabIndex = 20;
@@ -2011,7 +2131,7 @@
             // 
             this.preciseTile_checkBox.AutoSize = true;
             this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(815, 227);
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(834, 537);
             this.preciseTile_checkBox.Name = "preciseTile_checkBox";
             this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
             this.preciseTile_checkBox.TabIndex = 25;
@@ -2021,6 +2141,15 @@
             this.preciseTile_checkBox.Visible = false;
             this.preciseTile_checkBox.CheckedChanged += new System.EventHandler(this.preciseTile_checkBox_CheckedChanged);
             // 
+            // label36
+            // 
+            this.label36.AutoSize = true;
+            this.label36.Location = new System.Drawing.Point(246, 235);
+            this.label36.Name = "label36";
+            this.label36.Size = new System.Drawing.Size(70, 13);
+            this.label36.TabIndex = 24;
+            this.label36.Text = "Tiles padding";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -2029,6 +2158,19 @@
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 24;
             this.label6.Text = "Tiles overlap";
+            // 
+            // tilesPadding_numericUpDown
+            // 
+            this.tilesPadding_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tilesPadding_numericUpDown.Location = new System.Drawing.Point(321, 232);
+            this.tilesPadding_numericUpDown.Maximum = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.tilesPadding_numericUpDown.Name = "tilesPadding_numericUpDown";
+            this.tilesPadding_numericUpDown.Size = new System.Drawing.Size(69, 20);
+            this.tilesPadding_numericUpDown.TabIndex = 23;
             // 
             // overlapSize_numericUpDown
             // 
@@ -2085,11 +2227,11 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(55, 48);
+            this.label4.Location = new System.Drawing.Point(72, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.Size = new System.Drawing.Size(31, 13);
             this.label4.TabIndex = 20;
-            this.label4.Text = "IEU input";
+            this.label4.Text = "Input";
             // 
             // imgPath_textBox
             // 
@@ -2104,20 +2246,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(48, 76);
+            this.label3.Location = new System.Drawing.Point(63, 76);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(58, 13);
+            this.label3.Size = new System.Drawing.Size(39, 13);
             this.label3.TabIndex = 18;
-            this.label3.Text = "IEU output";
+            this.label3.Text = "Output";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 23);
+            this.label1.Location = new System.Drawing.Point(28, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(98, 13);
+            this.label1.Size = new System.Drawing.Size(76, 13);
             this.label1.TabIndex = 16;
-            this.label1.Text = "ESRGAN/BasicSR";
+            this.label1.Text = "Working folder";
             // 
             // settingsOutputFormat_tabPage
             // 
@@ -2133,7 +2275,7 @@
             this.settingsOutputFormat_tabPage.Controls.Add(this.ddsOutputSettings_groupBox);
             this.settingsOutputFormat_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settingsOutputFormat_tabPage.Name = "settingsOutputFormat_tabPage";
-            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(996, 752);
+            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1010, 752);
             this.settingsOutputFormat_tabPage.TabIndex = 4;
             this.settingsOutputFormat_tabPage.Text = "Output formats";
             this.settingsOutputFormat_tabPage.UseVisualStyleBackColor = true;
@@ -2361,13 +2503,14 @@
             this.ddsOutputSettings_groupBox.Controls.Add(this.label17);
             this.ddsOutputSettings_groupBox.Controls.Add(this.label16);
             this.ddsOutputSettings_groupBox.Controls.Add(this.label15);
+            this.ddsOutputSettings_groupBox.Controls.Add(this.ddsIsCubemap_checkBox);
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsGenerateMipmaps_checkBox);
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsCompresion_comboBox);
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsFileFormat_comboBox);
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsTextureType_comboBox);
             this.ddsOutputSettings_groupBox.Location = new System.Drawing.Point(368, 17);
             this.ddsOutputSettings_groupBox.Name = "ddsOutputSettings_groupBox";
-            this.ddsOutputSettings_groupBox.Size = new System.Drawing.Size(344, 139);
+            this.ddsOutputSettings_groupBox.Size = new System.Drawing.Size(344, 156);
             this.ddsOutputSettings_groupBox.TabIndex = 42;
             this.ddsOutputSettings_groupBox.TabStop = false;
             this.ddsOutputSettings_groupBox.Text = "DDS output settings";
@@ -2398,6 +2541,19 @@
             this.label15.Size = new System.Drawing.Size(66, 13);
             this.label15.TabIndex = 2;
             this.label15.Text = "Texture type";
+            // 
+            // ddsIsCubemap_checkBox
+            // 
+            this.ddsIsCubemap_checkBox.AutoSize = true;
+            this.ddsIsCubemap_checkBox.Checked = true;
+            this.ddsIsCubemap_checkBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.ddsIsCubemap_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ddsIsCubemap_checkBox.Location = new System.Drawing.Point(104, 133);
+            this.ddsIsCubemap_checkBox.Name = "ddsIsCubemap_checkBox";
+            this.ddsIsCubemap_checkBox.Size = new System.Drawing.Size(109, 17);
+            this.ddsIsCubemap_checkBox.TabIndex = 1;
+            this.ddsIsCubemap_checkBox.Text = "Save as cubemap";
+            this.ddsIsCubemap_checkBox.UseVisualStyleBackColor = true;
             // 
             // ddsGenerateMipmaps_checkBox
             // 
@@ -2449,7 +2605,7 @@
             this.advanced_tabPage.Controls.Add(this.filters_groupBox);
             this.advanced_tabPage.Location = new System.Drawing.Point(4, 25);
             this.advanced_tabPage.Name = "advanced_tabPage";
-            this.advanced_tabPage.Size = new System.Drawing.Size(996, 752);
+            this.advanced_tabPage.Size = new System.Drawing.Size(1010, 752);
             this.advanced_tabPage.TabIndex = 2;
             this.advanced_tabPage.Text = "Filters/Rules";
             this.advanced_tabPage.UseVisualStyleBackColor = true;
@@ -2937,7 +3093,7 @@
             this.interpolation_tabPage.Controls.Add(this.interpolationModelOne_comboBox);
             this.interpolation_tabPage.Location = new System.Drawing.Point(4, 25);
             this.interpolation_tabPage.Name = "interpolation_tabPage";
-            this.interpolation_tabPage.Size = new System.Drawing.Size(996, 752);
+            this.interpolation_tabPage.Size = new System.Drawing.Size(1010, 752);
             this.interpolation_tabPage.TabIndex = 3;
             this.interpolation_tabPage.Text = "Models interpolation";
             this.interpolation_tabPage.UseVisualStyleBackColor = true;
@@ -3015,7 +3171,7 @@
             this.overlayResults_tabPage.Controls.Add(this.tableLayoutPanel4);
             this.overlayResults_tabPage.Location = new System.Drawing.Point(4, 25);
             this.overlayResults_tabPage.Name = "overlayResults_tabPage";
-            this.overlayResults_tabPage.Size = new System.Drawing.Size(996, 752);
+            this.overlayResults_tabPage.Size = new System.Drawing.Size(1010, 752);
             this.overlayResults_tabPage.TabIndex = 6;
             this.overlayResults_tabPage.Text = "Image interpolation";
             this.overlayResults_tabPage.UseVisualStyleBackColor = true;
@@ -3038,14 +3194,14 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(996, 752);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1010, 752);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // overlayImages_button
             // 
             this.overlayImages_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayImages_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayImages_button.Location = new System.Drawing.Point(899, 3);
+            this.overlayImages_button.Location = new System.Drawing.Point(913, 3);
             this.overlayImages_button.Name = "overlayImages_button";
             this.overlayImages_button.Size = new System.Drawing.Size(94, 521);
             this.overlayImages_button.TabIndex = 1;
@@ -3059,7 +3215,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(890, 521);
+            this.groupBox4.Size = new System.Drawing.Size(904, 521);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Interpolate two images";
@@ -3079,7 +3235,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(884, 502);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(898, 502);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // groupBox7
@@ -3087,9 +3243,9 @@
             this.groupBox7.Controls.Add(this.imageBName_label);
             this.groupBox7.Controls.Add(this.imageB_panel);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(445, 3);
+            this.groupBox7.Location = new System.Drawing.Point(452, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(436, 468);
+            this.groupBox7.Size = new System.Drawing.Size(443, 468);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Image B";
@@ -3110,7 +3266,7 @@
             this.imageB_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_panel.Location = new System.Drawing.Point(3, 16);
             this.imageB_panel.Name = "imageB_panel";
-            this.imageB_panel.Size = new System.Drawing.Size(430, 449);
+            this.imageB_panel.Size = new System.Drawing.Size(437, 449);
             this.imageB_panel.TabIndex = 5;
             this.imageB_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageB_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -3120,7 +3276,7 @@
             this.imageB_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageB_pictureBox.Name = "imageB_pictureBox";
-            this.imageB_pictureBox.Size = new System.Drawing.Size(430, 449);
+            this.imageB_pictureBox.Size = new System.Drawing.Size(437, 449);
             this.imageB_pictureBox.TabIndex = 0;
             this.imageB_pictureBox.TabStop = false;
             // 
@@ -3131,7 +3287,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(436, 468);
+            this.groupBox6.Size = new System.Drawing.Size(443, 468);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Image A";
@@ -3152,7 +3308,7 @@
             this.imageA_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_panel.Location = new System.Drawing.Point(3, 16);
             this.imageA_panel.Name = "imageA_panel";
-            this.imageA_panel.Size = new System.Drawing.Size(430, 449);
+            this.imageA_panel.Size = new System.Drawing.Size(437, 449);
             this.imageA_panel.TabIndex = 4;
             this.imageA_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageA_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -3162,7 +3318,7 @@
             this.imageA_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageA_pictureBox.Name = "imageA_pictureBox";
-            this.imageA_pictureBox.Size = new System.Drawing.Size(430, 449);
+            this.imageA_pictureBox.Size = new System.Drawing.Size(437, 449);
             this.imageA_pictureBox.TabIndex = 0;
             this.imageA_pictureBox.TabStop = false;
             // 
@@ -3173,14 +3329,14 @@
             this.overlayResultName_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 477);
             this.overlayResultName_textBox.Name = "overlayResultName_textBox";
-            this.overlayResultName_textBox.Size = new System.Drawing.Size(878, 20);
+            this.overlayResultName_textBox.Size = new System.Drawing.Size(892, 20);
             this.overlayResultName_textBox.TabIndex = 2;
             // 
             // overlayFolders_button
             // 
             this.overlayFolders_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayFolders_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayFolders_button.Location = new System.Drawing.Point(899, 580);
+            this.overlayFolders_button.Location = new System.Drawing.Point(913, 580);
             this.overlayFolders_button.Name = "overlayFolders_button";
             this.overlayFolders_button.Size = new System.Drawing.Size(94, 169);
             this.overlayFolders_button.TabIndex = 1;
@@ -3193,7 +3349,7 @@
             this.imageInterpolationAlphaValue_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageInterpolationAlphaValue_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageInterpolationAlphaValue_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(899, 539);
+            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(913, 539);
             this.imageInterpolationAlphaValue_textBox.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.imageInterpolationAlphaValue_textBox.Name = "imageInterpolationAlphaValue_textBox";
             this.imageInterpolationAlphaValue_textBox.ReadOnly = true;
@@ -3348,7 +3504,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 530);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(890, 44);
+            this.panel3.Size = new System.Drawing.Size(904, 44);
             this.panel3.TabIndex = 6;
             // 
             // imageInterpolation_trackBar
@@ -3359,7 +3515,7 @@
             this.imageInterpolation_trackBar.Maximum = 99;
             this.imageInterpolation_trackBar.Minimum = 1;
             this.imageInterpolation_trackBar.Name = "imageInterpolation_trackBar";
-            this.imageInterpolation_trackBar.Size = new System.Drawing.Size(890, 44);
+            this.imageInterpolation_trackBar.Size = new System.Drawing.Size(904, 44);
             this.imageInterpolation_trackBar.TabIndex = 5;
             this.imageInterpolation_trackBar.Value = 50;
             this.imageInterpolation_trackBar.Scroll += new System.EventHandler(this.ImageInterpolation_trackBar_Scroll);
@@ -3404,10 +3560,10 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1004, 781);
+            this.ClientSize = new System.Drawing.Size(1018, 781);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1000, 815);
+            this.MinimumSize = new System.Drawing.Size(1030, 815);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image Enhancing Utility";
@@ -3415,18 +3571,22 @@
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResizeBegin += new System.EventHandler(this.MainForm_ResizeBegin);
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
+            this.DoubleClick += new System.EventHandler(this.MainForm_DoubleClick);
+            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.tabControl1.ResumeLayout(false);
             this.main_tabPage.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox11.ResumeLayout(false);
+            this.groupBox11.PerformLayout();
             this.outputMode_groupBox.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
             this.previewResult_tabPage.ResumeLayout(false);
             this.previewResult_tabPage.PerformLayout();
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -3436,6 +3596,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
             this.splitContainer3.ResumeLayout(false);
             this.tableLayoutPanel6.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
             this.settings_tabPage.ResumeLayout(false);
@@ -3459,6 +3621,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileWidth_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tilesPadding_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.overlapSize_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileResolution_numericUpDown)).EndInit();
             this.settingsOutputFormat_tabPage.ResumeLayout(false);
@@ -3664,8 +3827,6 @@
         private Cyotek.Windows.Forms.ImageBox previewImageBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.ComboBox previewModels_comboBox;
-        private System.Windows.Forms.Button previewUpdate_button;
-        private System.Windows.Forms.Button previewSave_button;
         private System.Windows.Forms.ProgressBar preview_progressBar;
         private System.Windows.Forms.SplitContainer splitContainer3;
         private Cyotek.Windows.Forms.ImageBox miniMapImageBox;
@@ -3739,7 +3900,6 @@
         private System.Windows.Forms.Button saveRuleFromCurrent_button;
         private System.Windows.Forms.ComboBox profileModel_comboBox;
         private System.Windows.Forms.CheckBox useProfileModel_checkBox;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
         private System.Windows.Forms.Label imageBName_label;
         private System.Windows.Forms.Label imageAName_label;
         private System.Windows.Forms.CheckBox topMost_checkBox;
@@ -3771,6 +3931,20 @@
         private System.Windows.Forms.CheckBox useImMerge_checkBox;
         private System.Windows.Forms.Label label35;
         private System.Windows.Forms.ComboBox comparisonMod_comboBox;
+        private System.Windows.Forms.CheckBox showStepsButtons_checkBox;
+        private System.Windows.Forms.GroupBox groupBox11;
+        private System.Windows.Forms.ComboBox outputFormatPreview_comboBox;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Button previewUpdate_button;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button showJoeyProperties_button;
+        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.Button toogleLogView_button;
+        private System.Windows.Forms.CheckBox previewShowSaveDialog_checkBox;
+        private System.Windows.Forms.Label label36;
+        private System.Windows.Forms.NumericUpDown tilesPadding_numericUpDown;
+        private System.Windows.Forms.CheckBox ddsIsCubemap_checkBox;
     }
 }
 

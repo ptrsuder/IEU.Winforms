@@ -1,4 +1,5 @@
-﻿using System.Drawing.Text;
+﻿using System;
+using System.Drawing.Text;
 using System.IO;
 using System.Linq;
 using System.Reactive.Linq;
@@ -16,22 +17,23 @@ using Rule = ImageEnhancingUtility.Core.Rule;
 
 namespace ImageEnhancingUtility.Winforms
 {
-    public partial class PropertiesForm : Form, IViewFor<IEU>
+    public partial class PropertiesForm : Form, IViewFor<ReactiveObject>
     {
-        public IEU ViewModel { get; set; }
+        public ReactiveObject ViewModel { get; set; }
         object IViewFor.ViewModel
         {
             get => ViewModel;
-            set => ViewModel = (IEU)value;
+            set => ViewModel = (ReactiveObject)value;
         }
 
-        public PropertiesForm(IEU viewModel)
+        public PropertiesForm(ReactiveObject viewModel, int height = 650)
         {            
             InitializeComponent();
 
             ViewModel = viewModel;
 
             settings_propertyGrid.SelectedObject = ViewModel;
+            this.Height = height;
             //this.OneWayBind(ViewModel, vm => vm., v => v.settings_propertyGrid.SelectedObject);
         }
     }
