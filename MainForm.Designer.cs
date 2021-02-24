@@ -370,7 +370,7 @@
             // upscale_button
             // 
             this.upscale_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.upscale_button.Location = new System.Drawing.Point(0, 256);
+            this.upscale_button.Location = new System.Drawing.Point(0, 599);
             this.upscale_button.Name = "upscale_button";
             this.upscale_button.Size = new System.Drawing.Size(149, 34);
             this.upscale_button.TabIndex = 1;
@@ -402,7 +402,7 @@
             // crop_button
             // 
             this.crop_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.crop_button.Location = new System.Drawing.Point(0, 216);
+            this.crop_button.Location = new System.Drawing.Point(0, 559);
             this.crop_button.Name = "crop_button";
             this.crop_button.Size = new System.Drawing.Size(149, 34);
             this.crop_button.TabIndex = 17;
@@ -413,7 +413,7 @@
             // merge_button
             // 
             this.merge_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.merge_button.Location = new System.Drawing.Point(0, 296);
+            this.merge_button.Location = new System.Drawing.Point(0, 639);
             this.merge_button.Name = "merge_button";
             this.merge_button.Size = new System.Drawing.Size(149, 34);
             this.merge_button.TabIndex = 18;
@@ -514,16 +514,16 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.crop_button);
             this.panel1.Controls.Add(this.showStepsButtons_checkBox);
+            this.panel1.Controls.Add(this.merge_button);
             this.panel1.Controls.Add(this.loadProfileMainTab_button);
+            this.panel1.Controls.Add(this.upscale_button);
             this.panel1.Controls.Add(this.profilesMainTab_listBox);
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.runAll_button);
             this.panel1.Controls.Add(this.groupBox11);
             this.panel1.Controls.Add(this.outputMode_groupBox);
-            this.panel1.Controls.Add(this.upscale_button);
-            this.panel1.Controls.Add(this.crop_button);
-            this.panel1.Controls.Add(this.merge_button);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
@@ -534,7 +534,7 @@
             // 
             this.showStepsButtons_checkBox.AutoSize = true;
             this.showStepsButtons_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showStepsButtons_checkBox.Location = new System.Drawing.Point(2, 679);
+            this.showStepsButtons_checkBox.Location = new System.Drawing.Point(2, 677);
             this.showStepsButtons_checkBox.Name = "showStepsButtons_checkBox";
             this.showStepsButtons_checkBox.Size = new System.Drawing.Size(73, 17);
             this.showStepsButtons_checkBox.TabIndex = 61;
@@ -545,7 +545,7 @@
             // loadProfileMainTab_button
             // 
             this.loadProfileMainTab_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.loadProfileMainTab_button.Location = new System.Drawing.Point(0, 642);
+            this.loadProfileMainTab_button.Location = new System.Drawing.Point(0, 516);
             this.loadProfileMainTab_button.Name = "loadProfileMainTab_button";
             this.loadProfileMainTab_button.Size = new System.Drawing.Size(149, 31);
             this.loadProfileMainTab_button.TabIndex = 52;
@@ -557,7 +557,7 @@
             // 
             this.profilesMainTab_listBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.profilesMainTab_listBox.FormattingEnabled = true;
-            this.profilesMainTab_listBox.Location = new System.Drawing.Point(0, 452);
+            this.profilesMainTab_listBox.Location = new System.Drawing.Point(0, 326);
             this.profilesMainTab_listBox.Name = "profilesMainTab_listBox";
             this.profilesMainTab_listBox.Size = new System.Drawing.Size(149, 184);
             this.profilesMainTab_listBox.TabIndex = 48;
@@ -585,9 +585,9 @@
             // runAll_button
             // 
             this.runAll_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.runAll_button.Location = new System.Drawing.Point(0, 408);
+            this.runAll_button.Location = new System.Drawing.Point(0, 214);
             this.runAll_button.Name = "runAll_button";
-            this.runAll_button.Size = new System.Drawing.Size(149, 38);
+            this.runAll_button.Size = new System.Drawing.Size(149, 92);
             this.runAll_button.TabIndex = 32;
             this.runAll_button.Text = "START";
             this.runAll_button.UseVisualStyleBackColor = true;

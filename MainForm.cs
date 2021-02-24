@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Drawing2D;
+using System.Drawing.Imaging;
 using System.Drawing.Text;
 using System.IO;
 using System.Linq;
@@ -20,8 +21,6 @@ using ImageEnhancingUtility.Core.Utility;
 using ReactiveUI;
 using Tulpep.NotificationWindow;
 using Rule = ImageEnhancingUtility.Core.Rule;
-using Newtonsoft.Json;
-using System.Drawing.Imaging;
 
 //TODO:
 //ask to change all paths when changing ESRGAN path
@@ -197,7 +196,9 @@ namespace ImageEnhancingUtility.Winforms
             comparisonMod_comboBox.DataSource = new BindingSource(IEU.ResizeImageScaleFactors, null);
             comparisonMod_comboBox.SelectedIndex = 2;
 
-            OpenImage(@"C:\Users\MKso\Desktop\flickr_2254208141.jpg");
+            SetStepVisibility(false);
+
+            //OpenImage(@"C:\Users\MKso\Desktop\flickr_2254208141.jpg");
         }
 
         #endregion              
@@ -654,14 +655,14 @@ namespace ImageEnhancingUtility.Winforms
             switch (updateWinforms)
             {
                 case UpdateType.None:
-                    ViewModel.IEU.Logger.Write("No new update.");
+                    ViewModel.IEU.Logger.Write("No new updates.");
                     break;
                 case UpdateType.Fail:
-                    ViewModel.IEU.Logger.Write("Failed to check update.");
+                    ViewModel.IEU.Logger.Write("Failed to check updates.");
                     ViewModel.IEU.Logger.Write(checkerWinforms.ErrorMessage);
                     break;
                 default:
-                    updateMessage += "New version of IEU.Winforms is available!";
+                    updateMessage += "New version is available!";
                     using (UpdateNotifyDialog updateNotifyDialog = new UpdateNotifyDialog(checkerWinforms, updateMessage))
                     {
                         updateNotifyDialog.ShowDialog(this);
@@ -1916,9 +1917,10 @@ namespace ImageEnhancingUtility.Winforms
         private void chainOrder_button_Click(object sender, EventArgs e)
         {
             ViewModel.IEU.GetCheckedModels();
-            if (checkedModels.Count == 0) return;
+            if (checkedModels.Count == 0) return;                      
             var chainForm = new SortListForm(ViewModel.IEU);
-            chainForm.Show();
+            chainForm.StartPosition = FormStartPosition.CenterParent;
+            chainForm.ShowDialog(this);
         }
 
         private void UseModelChain_checkBox_CheckedChanged(object sender, EventArgs e)
@@ -1976,6 +1978,7 @@ namespace ImageEnhancingUtility.Winforms
         void SetStepVisibility(bool visible)
         {
             crop_button.Visible = upscale_button.Visible = merge_button.Visible = visible;
+            showStepsButtons_checkBox.Checked = !visible;
         }
 
         private void showJoeyProperties_button_Click(object sender, EventArgs e)
