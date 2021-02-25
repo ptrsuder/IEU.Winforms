@@ -1026,17 +1026,15 @@ namespace ImageEnhancingUtility.Winforms
         }
 
         public int currentX = 0, currentY = 0, currentW, currentH;
+        bool zoomed = false;
         private void zoomImageBox_Scroll(object sender, ScrollEventArgs e)
-        {                
+        {         
+            if(zoomed)
+                return;
+            
             float newX = currentX, newY = currentY;
         
-            var rect = zoomImageBox.GetSourceImageRegion();
-            //if (rect.Width > zoomImageBox.Image.Width) rect.Width = zoomImageBox.Image.Width;
-            //if (rect.Height > zoomImageBox.Image.Height) rect.Height = zoomImageBox.Image.Height;
-            //currentW = (int)Math.Floor(rect.Width);
-            //currentH = (int)Math.Round(rect.Height);
-            //if (currentW == zoomImageBox.Image.Width && currentH == zoomImageBox.Image.Height) //whole image fit
-            //    return;
+            var rect = zoomImageBox.GetSourceImageRegion();        
 
             if (rect.Width != 0 && rect.Height != 0)
             {
@@ -1057,18 +1055,20 @@ namespace ImageEnhancingUtility.Winforms
                 }
 
                 currentX = (int)rect.X;
-                currentY = (int)rect.Y;              
+                currentY = (int)rect.Y;
 
                 if (fit)
+                {
+                    zoomed = true;
                     zoomImageBox.ZoomToRegion(newX, newY, rect.Width, rect.Height);
+                    zoomed = false;
+                }
             }
 
             UpdateMiniMap();
 
-            if (!zoomImageBox.IsPanning)
-            {
-                UpdatePreview();
-            }
+            if (!zoomImageBox.IsPanning)            
+                UpdatePreview();            
         }
               
         private void zoomImageBox_PanEnd(object sender, EventArgs e)
