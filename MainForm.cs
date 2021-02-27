@@ -289,6 +289,8 @@ namespace ImageEnhancingUtility.Winforms
             this.OneWayBind(ViewModel, vm => vm.IEU.NoNvidia, v => v.monitorVram_checkBox.Enabled, x => !x);
 
             this.Bind(ViewModel, vm => vm.IEU.PaddingSize, v => v.tilesPadding_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
+
+            this.Bind(ViewModel, vm => vm.IEU.UseJoey, v => v.useJoey_checkBox.Checked);
         }
         
         void BindOutputFormats()
@@ -1933,7 +1935,8 @@ namespace ImageEnhancingUtility.Winforms
         private void showIEU_button_Click(object sender, EventArgs e)
         {
             PropertiesForm propertiesForm = new PropertiesForm(ViewModel.IEU);
-            propertiesForm.Show();
+           
+            propertiesForm.ShowDialog(this);
         }
                
         private void comparison_colorWheel_MouseClick(object sender, MouseEventArgs e)
@@ -1983,10 +1986,15 @@ namespace ImageEnhancingUtility.Winforms
 
         private void showJoeyProperties_button_Click(object sender, EventArgs e)
         {
-            PropertiesForm propertiesForm = new PropertiesForm(ViewModel.IEU.JoeyEsrgan, 270);
-            propertiesForm.Show();
+            PropertiesForm propertiesForm = new PropertiesForm(ViewModel.IEU.JoeyEsrgan, 400);
+            propertiesForm.ShowDialog(this);
         }
-            
+
+        private void linkLabel1_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start(@"https://github.com/JoeyBallentine/ESRGAN");
+        }
+
         private void toogleLogView_button_Click(object sender, EventArgs e)
         {
             if (splitContainer1.Panel2Collapsed)

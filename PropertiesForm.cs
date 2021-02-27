@@ -34,6 +34,7 @@ namespace ImageEnhancingUtility.Winforms
 
             settings_propertyGrid.SelectedObject = ViewModel;
             this.Height = height;
+            this.CenterToParent();
             //this.OneWayBind(ViewModel, vm => vm., v => v.settings_propertyGrid.SelectedObject);
         }
     }

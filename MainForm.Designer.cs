@@ -86,12 +86,24 @@
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.zoomLevelsToolStripComboBox = new System.Windows.Forms.ToolStripComboBox();
             this.settings_tabPage = new System.Windows.Forms.TabPage();
-            this.showJoeyProperties_button = new System.Windows.Forms.Button();
+            this.groupBox14 = new System.Windows.Forms.GroupBox();
+            this.condaEnvName_textBox = new System.Windows.Forms.TextBox();
+            this.advancedSuffix_textBox = new System.Windows.Forms.TextBox();
+            this.createMemoryImage_checkBox = new System.Windows.Forms.CheckBox();
             this.label34 = new System.Windows.Forms.Label();
+            this.advancedUseSuffix_checkBox = new System.Windows.Forms.CheckBox();
             this.monitorVram_checkBox = new System.Windows.Forms.CheckBox();
-            this.showIEU_button = new System.Windows.Forms.Button();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.monitorFrequency_numericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.deleteResults_checkBox = new System.Windows.Forms.CheckBox();
+            this.useCondaEnv_checkBox = new System.Windows.Forms.CheckBox();
+            this.groupBox13 = new System.Windows.Forms.GroupBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.useCPU_checkBox = new System.Windows.Forms.CheckBox();
             this.inMemoryMode_checkBox = new System.Windows.Forms.CheckBox();
+            this.useJoey_checkBox = new System.Windows.Forms.CheckBox();
+            this.useBasicSR_checkBox = new System.Windows.Forms.CheckBox();
+            this.showJoeyProperties_button = new System.Windows.Forms.Button();
+            this.showIEU_button = new System.Windows.Forms.Button();
             this.groupBox12 = new System.Windows.Forms.GroupBox();
             this.balanceRgb_checkBox = new System.Windows.Forms.CheckBox();
             this.useImMerge_checkBox = new System.Windows.Forms.CheckBox();
@@ -136,9 +148,7 @@
             this.seamlessTextures_checkBox = new System.Windows.Forms.CheckBox();
             this.preserveFormat_checkBox = new System.Windows.Forms.CheckBox();
             this.label23 = new System.Windows.Forms.Label();
-            this.condaEnvName_textBox = new System.Windows.Forms.TextBox();
             this.saveProfileName_textBox = new System.Windows.Forms.TextBox();
-            this.useBasicSR_checkBox = new System.Windows.Forms.CheckBox();
             this.modelsPath_textBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.saveProfile_button = new System.Windows.Forms.Button();
@@ -149,21 +159,14 @@
             this.profiles_listBox = new System.Windows.Forms.ListBox();
             this.label7 = new System.Windows.Forms.Label();
             this.loadProfile_button = new System.Windows.Forms.Button();
-            this.useCondaEnv_checkBox = new System.Windows.Forms.CheckBox();
-            this.deleteResults_checkBox = new System.Windows.Forms.CheckBox();
             this.outputPath_textBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.inputPath_textBox = new System.Windows.Forms.TextBox();
-            this.monitorFrequency_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.maxTileHeight_numericUpDown = new System.Windows.Forms.NumericUpDown();
             this.changeModelsPath_button = new System.Windows.Forms.Button();
             this.maxTileWidth_numericUpDown = new System.Windows.Forms.NumericUpDown();
-            this.advancedUseSuffix_checkBox = new System.Windows.Forms.CheckBox();
-            this.createMemoryImage_checkBox = new System.Windows.Forms.CheckBox();
             this.changeInputPath_button = new System.Windows.Forms.Button();
-            this.useCPU_checkBox = new System.Windows.Forms.CheckBox();
             this.changeOutputPath_button = new System.Windows.Forms.Button();
-            this.advancedSuffix_textBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.changeInputImgPath_button = new System.Windows.Forms.Button();
             this.changeMergedResultsPath_button = new System.Windows.Forms.Button();
@@ -316,6 +319,9 @@
             this.panel4.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.settings_tabPage.SuspendLayout();
+            this.groupBox14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).BeginInit();
+            this.groupBox13.SuspendLayout();
             this.groupBox12.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
@@ -325,7 +331,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.thresholdWhite_numericUpDown)).BeginInit();
             this.imagePreprocess_groupBox.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileWidth_numericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tilesPadding_numericUpDown)).BeginInit();
@@ -370,7 +375,7 @@
             // upscale_button
             // 
             this.upscale_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.upscale_button.Location = new System.Drawing.Point(0, 599);
+            this.upscale_button.Location = new System.Drawing.Point(0, 618);
             this.upscale_button.Name = "upscale_button";
             this.upscale_button.Size = new System.Drawing.Size(149, 34);
             this.upscale_button.TabIndex = 1;
@@ -402,7 +407,7 @@
             // crop_button
             // 
             this.crop_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.crop_button.Location = new System.Drawing.Point(0, 559);
+            this.crop_button.Location = new System.Drawing.Point(0, 578);
             this.crop_button.Name = "crop_button";
             this.crop_button.Size = new System.Drawing.Size(149, 34);
             this.crop_button.TabIndex = 17;
@@ -413,7 +418,7 @@
             // merge_button
             // 
             this.merge_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.merge_button.Location = new System.Drawing.Point(0, 639);
+            this.merge_button.Location = new System.Drawing.Point(0, 658);
             this.merge_button.Name = "merge_button";
             this.merge_button.Size = new System.Drawing.Size(149, 34);
             this.merge_button.TabIndex = 18;
@@ -438,7 +443,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1018, 781);
+            this.tabControl1.Size = new System.Drawing.Size(1018, 804);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -452,7 +457,7 @@
             this.main_tabPage.Location = new System.Drawing.Point(4, 25);
             this.main_tabPage.Name = "main_tabPage";
             this.main_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.main_tabPage.Size = new System.Drawing.Size(1010, 752);
+            this.main_tabPage.Size = new System.Drawing.Size(1010, 775);
             this.main_tabPage.TabIndex = 0;
             this.main_tabPage.Text = "Main";
             this.main_tabPage.UseVisualStyleBackColor = true;
@@ -474,7 +479,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 746);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 769);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // panel2
@@ -482,7 +487,7 @@
             this.panel2.Controls.Add(this.progressFiltered_label);
             this.panel2.Controls.Add(this.progress_label);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 706);
+            this.panel2.Location = new System.Drawing.Point(3, 729);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 37);
             this.panel2.TabIndex = 37;
@@ -527,14 +532,14 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 697);
+            this.panel1.Size = new System.Drawing.Size(149, 720);
             this.panel1.TabIndex = 20;
             // 
             // showStepsButtons_checkBox
             // 
             this.showStepsButtons_checkBox.AutoSize = true;
             this.showStepsButtons_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.showStepsButtons_checkBox.Location = new System.Drawing.Point(2, 677);
+            this.showStepsButtons_checkBox.Location = new System.Drawing.Point(3, 700);
             this.showStepsButtons_checkBox.Name = "showStepsButtons_checkBox";
             this.showStepsButtons_checkBox.Size = new System.Drawing.Size(73, 17);
             this.showStepsButtons_checkBox.TabIndex = 61;
@@ -657,7 +662,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2MinSize = 400;
-            this.splitContainer1.Size = new System.Drawing.Size(843, 697);
+            this.splitContainer1.Size = new System.Drawing.Size(843, 720);
             this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -670,7 +675,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(439, 697);
+            this.richTextBox1.Size = new System.Drawing.Size(439, 720);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -683,7 +688,7 @@
             this.tableLayoutPanel7.Controls.Add(this.progressBar1, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.toogleLogView_button, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(158, 706);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(158, 729);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -717,7 +722,7 @@
             this.previewResult_tabPage.Controls.Add(this.toolStrip);
             this.previewResult_tabPage.Location = new System.Drawing.Point(4, 25);
             this.previewResult_tabPage.Name = "previewResult_tabPage";
-            this.previewResult_tabPage.Size = new System.Drawing.Size(1010, 752);
+            this.previewResult_tabPage.Size = new System.Drawing.Size(1010, 775);
             this.previewResult_tabPage.TabIndex = 5;
             this.previewResult_tabPage.Text = "Preview result";
             this.previewResult_tabPage.UseVisualStyleBackColor = true;
@@ -742,7 +747,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1010, 727);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1010, 750);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // zoomImageBox
@@ -758,7 +763,7 @@
             this.zoomImageBox.Location = new System.Drawing.Point(3, 3);
             this.zoomImageBox.Name = "zoomImageBox";
             this.zoomImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Left;
-            this.zoomImageBox.Size = new System.Drawing.Size(499, 536);
+            this.zoomImageBox.Size = new System.Drawing.Size(499, 559);
             this.zoomImageBox.TabIndex = 0;
             this.zoomImageBox.TabStop = false;
             this.zoomImageBox.ImageChanged += new System.EventHandler(this.zoomImageBox_ImageChanged);
@@ -783,7 +788,7 @@
             this.previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
             this.previewImageBox.Location = new System.Drawing.Point(508, 3);
             this.previewImageBox.Name = "previewImageBox";
-            this.previewImageBox.Size = new System.Drawing.Size(499, 536);
+            this.previewImageBox.Size = new System.Drawing.Size(499, 559);
             this.previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.previewImageBox.TabIndex = 4;
             this.previewImageBox.TabStop = false;
@@ -797,7 +802,7 @@
             this.previewModels_comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewModels_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewModels_comboBox.FormattingEnabled = true;
-            this.previewModels_comboBox.Location = new System.Drawing.Point(508, 545);
+            this.previewModels_comboBox.Location = new System.Drawing.Point(508, 568);
             this.previewModels_comboBox.Name = "previewModels_comboBox";
             this.previewModels_comboBox.Size = new System.Drawing.Size(499, 21);
             this.previewModels_comboBox.TabIndex = 6;
@@ -806,7 +811,7 @@
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.preview_progressBar, 2);
             this.preview_progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.preview_progressBar.Location = new System.Drawing.Point(3, 700);
+            this.preview_progressBar.Location = new System.Drawing.Point(3, 723);
             this.preview_progressBar.Name = "preview_progressBar";
             this.preview_progressBar.Size = new System.Drawing.Size(1004, 24);
             this.preview_progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
@@ -815,7 +820,7 @@
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 545);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 568);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -916,7 +921,7 @@
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(508, 576);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(508, 599);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -1057,19 +1062,15 @@
             // settings_tabPage
             // 
             this.settings_tabPage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.settings_tabPage.Controls.Add(this.groupBox14);
+            this.settings_tabPage.Controls.Add(this.groupBox13);
             this.settings_tabPage.Controls.Add(this.showJoeyProperties_button);
-            this.settings_tabPage.Controls.Add(this.label34);
-            this.settings_tabPage.Controls.Add(this.monitorVram_checkBox);
             this.settings_tabPage.Controls.Add(this.showIEU_button);
-            this.settings_tabPage.Controls.Add(this.checkBox1);
-            this.settings_tabPage.Controls.Add(this.inMemoryMode_checkBox);
             this.settings_tabPage.Controls.Add(this.groupBox12);
             this.settings_tabPage.Controls.Add(this.groupBox8);
             this.settings_tabPage.Controls.Add(this.deleteProfile_button);
             this.settings_tabPage.Controls.Add(this.groupBox9);
-            this.settings_tabPage.Controls.Add(this.condaEnvName_textBox);
             this.settings_tabPage.Controls.Add(this.saveProfileName_textBox);
-            this.settings_tabPage.Controls.Add(this.useBasicSR_checkBox);
             this.settings_tabPage.Controls.Add(this.modelsPath_textBox);
             this.settings_tabPage.Controls.Add(this.label2);
             this.settings_tabPage.Controls.Add(this.saveProfile_button);
@@ -1077,21 +1078,14 @@
             this.settings_tabPage.Controls.Add(this.profiles_listBox);
             this.settings_tabPage.Controls.Add(this.label7);
             this.settings_tabPage.Controls.Add(this.loadProfile_button);
-            this.settings_tabPage.Controls.Add(this.useCondaEnv_checkBox);
-            this.settings_tabPage.Controls.Add(this.deleteResults_checkBox);
             this.settings_tabPage.Controls.Add(this.outputPath_textBox);
             this.settings_tabPage.Controls.Add(this.label9);
             this.settings_tabPage.Controls.Add(this.inputPath_textBox);
-            this.settings_tabPage.Controls.Add(this.monitorFrequency_numericUpDown);
             this.settings_tabPage.Controls.Add(this.maxTileHeight_numericUpDown);
             this.settings_tabPage.Controls.Add(this.changeModelsPath_button);
             this.settings_tabPage.Controls.Add(this.maxTileWidth_numericUpDown);
-            this.settings_tabPage.Controls.Add(this.advancedUseSuffix_checkBox);
-            this.settings_tabPage.Controls.Add(this.createMemoryImage_checkBox);
             this.settings_tabPage.Controls.Add(this.changeInputPath_button);
-            this.settings_tabPage.Controls.Add(this.useCPU_checkBox);
             this.settings_tabPage.Controls.Add(this.changeOutputPath_button);
-            this.settings_tabPage.Controls.Add(this.advancedSuffix_textBox);
             this.settings_tabPage.Controls.Add(this.label8);
             this.settings_tabPage.Controls.Add(this.changeInputImgPath_button);
             this.settings_tabPage.Controls.Add(this.changeMergedResultsPath_button);
@@ -1113,78 +1107,246 @@
             this.settings_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settings_tabPage.Name = "settings_tabPage";
             this.settings_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settings_tabPage.Size = new System.Drawing.Size(1010, 752);
+            this.settings_tabPage.Size = new System.Drawing.Size(1010, 775);
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
             // 
-            // showJoeyProperties_button
+            // groupBox14
             // 
-            this.showJoeyProperties_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.showJoeyProperties_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.showJoeyProperties_button.Location = new System.Drawing.Point(834, 200);
-            this.showJoeyProperties_button.Name = "showJoeyProperties_button";
-            this.showJoeyProperties_button.Size = new System.Drawing.Size(149, 47);
-            this.showJoeyProperties_button.TabIndex = 60;
-            this.showJoeyProperties_button.Text = "Joey\'s properties";
-            this.showJoeyProperties_button.UseVisualStyleBackColor = true;
-            this.showJoeyProperties_button.Click += new System.EventHandler(this.showJoeyProperties_button_Click);
+            this.groupBox14.Controls.Add(this.condaEnvName_textBox);
+            this.groupBox14.Controls.Add(this.advancedSuffix_textBox);
+            this.groupBox14.Controls.Add(this.createMemoryImage_checkBox);
+            this.groupBox14.Controls.Add(this.label34);
+            this.groupBox14.Controls.Add(this.advancedUseSuffix_checkBox);
+            this.groupBox14.Controls.Add(this.monitorVram_checkBox);
+            this.groupBox14.Controls.Add(this.monitorFrequency_numericUpDown);
+            this.groupBox14.Controls.Add(this.deleteResults_checkBox);
+            this.groupBox14.Controls.Add(this.useCondaEnv_checkBox);
+            this.groupBox14.Location = new System.Drawing.Point(276, 238);
+            this.groupBox14.Name = "groupBox14";
+            this.groupBox14.Size = new System.Drawing.Size(322, 138);
+            this.groupBox14.TabIndex = 62;
+            this.groupBox14.TabStop = false;
+            this.groupBox14.Text = "Secondary";
+            // 
+            // condaEnvName_textBox
+            // 
+            this.condaEnvName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.condaEnvName_textBox.Enabled = false;
+            this.condaEnvName_textBox.Location = new System.Drawing.Point(150, 88);
+            this.condaEnvName_textBox.Name = "condaEnvName_textBox";
+            this.condaEnvName_textBox.Size = new System.Drawing.Size(157, 20);
+            this.condaEnvName_textBox.TabIndex = 52;
+            // 
+            // advancedSuffix_textBox
+            // 
+            this.advancedSuffix_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.advancedSuffix_textBox.Location = new System.Drawing.Point(150, 112);
+            this.advancedSuffix_textBox.Name = "advancedSuffix_textBox";
+            this.advancedSuffix_textBox.ReadOnly = true;
+            this.advancedSuffix_textBox.Size = new System.Drawing.Size(157, 20);
+            this.advancedSuffix_textBox.TabIndex = 1;
+            // 
+            // createMemoryImage_checkBox
+            // 
+            this.createMemoryImage_checkBox.AutoSize = true;
+            this.createMemoryImage_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.createMemoryImage_checkBox.Location = new System.Drawing.Point(11, 43);
+            this.createMemoryImage_checkBox.Name = "createMemoryImage_checkBox";
+            this.createMemoryImage_checkBox.Size = new System.Drawing.Size(168, 17);
+            this.createMemoryImage_checkBox.TabIndex = 31;
+            this.createMemoryImage_checkBox.Text = "Create max resolution tile in LR";
+            this.toolTip1.SetToolTip(this.createMemoryImage_checkBox, " Helps with ESRGAN memory allocation, when you have images with different dimensi" +
+        "ons in LR");
+            this.createMemoryImage_checkBox.UseVisualStyleBackColor = true;
             // 
             // label34
             // 
             this.label34.AutoSize = true;
-            this.label34.Location = new System.Drawing.Point(576, 312);
+            this.label34.Location = new System.Drawing.Point(219, 69);
             this.label34.Name = "label34";
             this.label34.Size = new System.Drawing.Size(20, 13);
             this.label34.TabIndex = 59;
             this.label34.Text = "ms";
             // 
+            // advancedUseSuffix_checkBox
+            // 
+            this.advancedUseSuffix_checkBox.AutoSize = true;
+            this.advancedUseSuffix_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.advancedUseSuffix_checkBox.Location = new System.Drawing.Point(11, 112);
+            this.advancedUseSuffix_checkBox.Name = "advancedUseSuffix_checkBox";
+            this.advancedUseSuffix_checkBox.Size = new System.Drawing.Size(117, 17);
+            this.advancedUseSuffix_checkBox.TabIndex = 0;
+            this.advancedUseSuffix_checkBox.Text = "Use suffix for results";
+            this.advancedUseSuffix_checkBox.UseVisualStyleBackColor = true;
+            this.advancedUseSuffix_checkBox.CheckedChanged += new System.EventHandler(this.advancedUseSuffix_checkBox_CheckedChanged);
+            // 
             // monitorVram_checkBox
             // 
             this.monitorVram_checkBox.AutoSize = true;
             this.monitorVram_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.monitorVram_checkBox.Location = new System.Drawing.Point(369, 310);
+            this.monitorVram_checkBox.Location = new System.Drawing.Point(11, 66);
             this.monitorVram_checkBox.Name = "monitorVram_checkBox";
             this.monitorVram_checkBox.Size = new System.Drawing.Size(136, 17);
             this.monitorVram_checkBox.TabIndex = 58;
             this.monitorVram_checkBox.Text = "Log VRAM usage every";
             this.monitorVram_checkBox.UseVisualStyleBackColor = true;
             // 
-            // showIEU_button
+            // monitorFrequency_numericUpDown
             // 
-            this.showIEU_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.showIEU_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.showIEU_button.Location = new System.Drawing.Point(834, 150);
-            this.showIEU_button.Name = "showIEU_button";
-            this.showIEU_button.Size = new System.Drawing.Size(149, 47);
-            this.showIEU_button.TabIndex = 57;
-            this.showIEU_button.Text = "Expose all properties";
-            this.showIEU_button.UseVisualStyleBackColor = true;
-            this.showIEU_button.Click += new System.EventHandler(this.showIEU_button_Click);
+            this.monitorFrequency_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.monitorFrequency_numericUpDown.Increment = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.monitorFrequency_numericUpDown.Location = new System.Drawing.Point(150, 66);
+            this.monitorFrequency_numericUpDown.Maximum = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
+            this.monitorFrequency_numericUpDown.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            0});
+            this.monitorFrequency_numericUpDown.Name = "monitorFrequency_numericUpDown";
+            this.monitorFrequency_numericUpDown.Size = new System.Drawing.Size(66, 20);
+            this.monitorFrequency_numericUpDown.TabIndex = 32;
+            this.monitorFrequency_numericUpDown.Value = new decimal(new int[] {
+            10000,
+            0,
+            0,
+            0});
             // 
-            // checkBox1
+            // deleteResults_checkBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.checkBox1.Location = new System.Drawing.Point(111, 285);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(122, 17);
-            this.checkBox1.TabIndex = 56;
-            this.checkBox1.Text = "Use Joey\'s ESRGAN";
-            this.checkBox1.UseVisualStyleBackColor = true;
-            this.checkBox1.CheckedChanged += new System.EventHandler(this.inMemoryMode_checkBox_CheckedChanged);
+            this.deleteResults_checkBox.AutoSize = true;
+            this.deleteResults_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deleteResults_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.deleteResults_checkBox.Location = new System.Drawing.Point(11, 20);
+            this.deleteResults_checkBox.Name = "deleteResults_checkBox";
+            this.deleteResults_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.deleteResults_checkBox.Size = new System.Drawing.Size(143, 17);
+            this.deleteResults_checkBox.TabIndex = 38;
+            this.deleteResults_checkBox.Text = "Delete results after merge";
+            this.deleteResults_checkBox.UseVisualStyleBackColor = true;
+            // 
+            // useCondaEnv_checkBox
+            // 
+            this.useCondaEnv_checkBox.AutoSize = true;
+            this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(11, 89);
+            this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
+            this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.useCondaEnv_checkBox.Size = new System.Drawing.Size(130, 17);
+            this.useCondaEnv_checkBox.TabIndex = 38;
+            this.useCondaEnv_checkBox.Text = "Use conda enviroment";
+            this.useCondaEnv_checkBox.UseVisualStyleBackColor = true;
+            this.useCondaEnv_checkBox.CheckedChanged += new System.EventHandler(this.useCondaEnv_checkBox_CheckedChanged);
+            // 
+            // groupBox13
+            // 
+            this.groupBox13.Controls.Add(this.linkLabel1);
+            this.groupBox13.Controls.Add(this.useCPU_checkBox);
+            this.groupBox13.Controls.Add(this.inMemoryMode_checkBox);
+            this.groupBox13.Controls.Add(this.useJoey_checkBox);
+            this.groupBox13.Controls.Add(this.useBasicSR_checkBox);
+            this.groupBox13.Location = new System.Drawing.Point(94, 238);
+            this.groupBox13.Name = "groupBox13";
+            this.groupBox13.Size = new System.Drawing.Size(175, 138);
+            this.groupBox13.TabIndex = 61;
+            this.groupBox13.TabStop = false;
+            this.groupBox13.Text = "Core";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.Location = new System.Drawing.Point(53, 68);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(84, 13);
+            this.linkLabel1.TabIndex = 57;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Joey\'s ESRGAN";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked_1);
+            // 
+            // useCPU_checkBox
+            // 
+            this.useCPU_checkBox.AutoSize = true;
+            this.useCPU_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.useCPU_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.useCPU_checkBox.Location = new System.Drawing.Point(17, 43);
+            this.useCPU_checkBox.Name = "useCPU_checkBox";
+            this.useCPU_checkBox.Size = new System.Drawing.Size(67, 17);
+            this.useCPU_checkBox.TabIndex = 30;
+            this.useCPU_checkBox.Text = "Use CPU";
+            this.toolTip1.SetToolTip(this.useCPU_checkBox, "Use CPU instead of GPU (very slow)");
+            this.useCPU_checkBox.UseVisualStyleBackColor = true;
             // 
             // inMemoryMode_checkBox
             // 
             this.inMemoryMode_checkBox.AutoSize = true;
             this.inMemoryMode_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inMemoryMode_checkBox.Location = new System.Drawing.Point(294, 261);
+            this.inMemoryMode_checkBox.Location = new System.Drawing.Point(17, 20);
             this.inMemoryMode_checkBox.Name = "inMemoryMode_checkBox";
             this.inMemoryMode_checkBox.Size = new System.Drawing.Size(147, 17);
             this.inMemoryMode_checkBox.TabIndex = 56;
             this.inMemoryMode_checkBox.Text = "Process images in memory";
             this.inMemoryMode_checkBox.UseVisualStyleBackColor = true;
             this.inMemoryMode_checkBox.CheckedChanged += new System.EventHandler(this.inMemoryMode_checkBox_CheckedChanged);
+            // 
+            // useJoey_checkBox
+            // 
+            this.useJoey_checkBox.AutoSize = true;
+            this.useJoey_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.useJoey_checkBox.Location = new System.Drawing.Point(17, 66);
+            this.useJoey_checkBox.Name = "useJoey_checkBox";
+            this.useJoey_checkBox.Size = new System.Drawing.Size(42, 17);
+            this.useJoey_checkBox.TabIndex = 56;
+            this.useJoey_checkBox.Text = "Use";
+            this.useJoey_checkBox.UseVisualStyleBackColor = true;
+            this.useJoey_checkBox.CheckedChanged += new System.EventHandler(this.inMemoryMode_checkBox_CheckedChanged);
+            // 
+            // useBasicSR_checkBox
+            // 
+            this.useBasicSR_checkBox.AutoSize = true;
+            this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.useBasicSR_checkBox.Location = new System.Drawing.Point(17, 88);
+            this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
+            this.useBasicSR_checkBox.Size = new System.Drawing.Size(86, 17);
+            this.useBasicSR_checkBox.TabIndex = 51;
+            this.useBasicSR_checkBox.Text = "Use BasicSR";
+            this.useBasicSR_checkBox.UseVisualStyleBackColor = true;
+            this.useBasicSR_checkBox.Visible = false;
+            // 
+            // showJoeyProperties_button
+            // 
+            this.showJoeyProperties_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.showJoeyProperties_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.showJoeyProperties_button.Location = new System.Drawing.Point(768, 315);
+            this.showJoeyProperties_button.Name = "showJoeyProperties_button";
+            this.showJoeyProperties_button.Size = new System.Drawing.Size(149, 61);
+            this.showJoeyProperties_button.TabIndex = 60;
+            this.showJoeyProperties_button.Text = "Joey\'s settings";
+            this.showJoeyProperties_button.UseVisualStyleBackColor = true;
+            this.showJoeyProperties_button.Click += new System.EventHandler(this.showJoeyProperties_button_Click);
+            // 
+            // showIEU_button
+            // 
+            this.showIEU_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.showIEU_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.showIEU_button.Location = new System.Drawing.Point(767, 245);
+            this.showIEU_button.Name = "showIEU_button";
+            this.showIEU_button.Size = new System.Drawing.Size(150, 61);
+            this.showIEU_button.TabIndex = 57;
+            this.showIEU_button.Text = "Expose all settings";
+            this.showIEU_button.UseVisualStyleBackColor = true;
+            this.showIEU_button.Click += new System.EventHandler(this.showIEU_button_Click);
             // 
             // groupBox12
             // 
@@ -1194,12 +1356,13 @@
             this.groupBox12.Controls.Add(this.useOldVipsMerge_checkBox);
             this.groupBox12.Controls.Add(this.useMblend_checkBox);
             this.groupBox12.Controls.Add(this.balanceAlphas_checkBox);
-            this.groupBox12.Location = new System.Drawing.Point(834, 14);
+            this.groupBox12.Location = new System.Drawing.Point(834, 424);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(149, 130);
             this.groupBox12.TabIndex = 55;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Legacy merge";
+            this.groupBox12.Visible = false;
             // 
             // balanceRgb_checkBox
             // 
@@ -1264,9 +1427,9 @@
             this.groupBox8.Controls.Add(this.topMost_checkBox);
             this.groupBox8.Controls.Add(this.showDebugInfo_checkBox);
             this.groupBox8.Controls.Add(this.showPopups_checkBox);
-            this.groupBox8.Location = new System.Drawing.Point(670, 261);
+            this.groupBox8.Location = new System.Drawing.Point(604, 238);
             this.groupBox8.Name = "groupBox8";
-            this.groupBox8.Size = new System.Drawing.Size(158, 92);
+            this.groupBox8.Size = new System.Drawing.Size(158, 138);
             this.groupBox8.TabIndex = 54;
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "UI";
@@ -1311,7 +1474,7 @@
             // deleteProfile_button
             // 
             this.deleteProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteProfile_button.Location = new System.Drawing.Point(834, 655);
+            this.deleteProfile_button.Location = new System.Drawing.Point(834, 678);
             this.deleteProfile_button.Name = "deleteProfile_button";
             this.deleteProfile_button.Size = new System.Drawing.Size(149, 31);
             this.deleteProfile_button.TabIndex = 53;
@@ -1336,18 +1499,18 @@
             this.groupBox9.Controls.Add(this.seamlessTextures_checkBox);
             this.groupBox9.Controls.Add(this.preserveFormat_checkBox);
             this.groupBox9.Controls.Add(this.label23);
-            this.groupBox9.Location = new System.Drawing.Point(94, 353);
+            this.groupBox9.Location = new System.Drawing.Point(94, 376);
             this.groupBox9.Name = "groupBox9";
             this.groupBox9.Size = new System.Drawing.Size(570, 333);
             this.groupBox9.TabIndex = 52;
             this.groupBox9.TabStop = false;
-            this.groupBox9.Text = "Profile : Settings";
+            this.groupBox9.Text = "Image profile : Settings";
             // 
             // ignoreAlpha_checkBox
             // 
             this.ignoreAlpha_checkBox.AutoSize = true;
             this.ignoreAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ignoreAlpha_checkBox.Location = new System.Drawing.Point(319, 119);
+            this.ignoreAlpha_checkBox.Location = new System.Drawing.Point(319, 116);
             this.ignoreAlpha_checkBox.Name = "ignoreAlpha_checkBox";
             this.ignoreAlpha_checkBox.Size = new System.Drawing.Size(123, 17);
             this.ignoreAlpha_checkBox.TabIndex = 25;
@@ -1584,7 +1747,7 @@
             // 
             this.ignoreSingleColorAlpha_checkBox.AutoSize = true;
             this.ignoreSingleColorAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(319, 140);
+            this.ignoreSingleColorAlpha_checkBox.Location = new System.Drawing.Point(319, 137);
             this.ignoreSingleColorAlpha_checkBox.Name = "ignoreSingleColorAlpha_checkBox";
             this.ignoreSingleColorAlpha_checkBox.Size = new System.Drawing.Size(134, 17);
             this.ignoreSingleColorAlpha_checkBox.TabIndex = 25;
@@ -1596,7 +1759,7 @@
             // 
             this.splitRGB_checkBox.AutoSize = true;
             this.splitRGB_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.splitRGB_checkBox.Location = new System.Drawing.Point(17, 140);
+            this.splitRGB_checkBox.Location = new System.Drawing.Point(17, 141);
             this.splitRGB_checkBox.Name = "splitRGB_checkBox";
             this.splitRGB_checkBox.Size = new System.Drawing.Size(115, 17);
             this.splitRGB_checkBox.TabIndex = 25;
@@ -1619,7 +1782,7 @@
             // 
             this.useProfileModel_checkBox.AutoSize = true;
             this.useProfileModel_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.useProfileModel_checkBox.Location = new System.Drawing.Point(17, 62);
+            this.useProfileModel_checkBox.Location = new System.Drawing.Point(17, 63);
             this.useProfileModel_checkBox.Name = "useProfileModel_checkBox";
             this.useProfileModel_checkBox.Size = new System.Drawing.Size(112, 17);
             this.useProfileModel_checkBox.TabIndex = 25;
@@ -1634,7 +1797,7 @@
             this.filterForAlpha_comboBox.Enabled = false;
             this.filterForAlpha_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.filterForAlpha_comboBox.FormattingEnabled = true;
-            this.filterForAlpha_comboBox.Location = new System.Drawing.Point(182, 115);
+            this.filterForAlpha_comboBox.Location = new System.Drawing.Point(182, 116);
             this.filterForAlpha_comboBox.Name = "filterForAlpha_comboBox";
             this.filterForAlpha_comboBox.Size = new System.Drawing.Size(121, 21);
             this.filterForAlpha_comboBox.TabIndex = 47;
@@ -1643,7 +1806,7 @@
             // 
             this.useFilterForAlpha_checkBox.AutoSize = true;
             this.useFilterForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.useFilterForAlpha_checkBox.Location = new System.Drawing.Point(17, 117);
+            this.useFilterForAlpha_checkBox.Location = new System.Drawing.Point(17, 116);
             this.useFilterForAlpha_checkBox.Name = "useFilterForAlpha_checkBox";
             this.useFilterForAlpha_checkBox.Size = new System.Drawing.Size(108, 17);
             this.useFilterForAlpha_checkBox.TabIndex = 25;
@@ -1667,7 +1830,7 @@
             // 
             this.useDifferentModelForAlpha_checkBox.AutoSize = true;
             this.useDifferentModelForAlpha_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.useDifferentModelForAlpha_checkBox.Location = new System.Drawing.Point(17, 90);
+            this.useDifferentModelForAlpha_checkBox.Location = new System.Drawing.Point(17, 89);
             this.useDifferentModelForAlpha_checkBox.Name = "useDifferentModelForAlpha_checkBox";
             this.useDifferentModelForAlpha_checkBox.Size = new System.Drawing.Size(158, 17);
             this.useDifferentModelForAlpha_checkBox.TabIndex = 25;
@@ -1681,7 +1844,7 @@
             this.seamlessTextures_checkBox.AutoSize = true;
             this.seamlessTextures_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.seamlessTextures_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(17, 163);
+            this.seamlessTextures_checkBox.Location = new System.Drawing.Point(17, 166);
             this.seamlessTextures_checkBox.Name = "seamlessTextures_checkBox";
             this.seamlessTextures_checkBox.Size = new System.Drawing.Size(136, 17);
             this.seamlessTextures_checkBox.TabIndex = 30;
@@ -1696,9 +1859,9 @@
             this.preserveFormat_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.preserveFormat_checkBox.Location = new System.Drawing.Point(234, 33);
             this.preserveFormat_checkBox.Name = "preserveFormat_checkBox";
-            this.preserveFormat_checkBox.Size = new System.Drawing.Size(141, 17);
+            this.preserveFormat_checkBox.Size = new System.Drawing.Size(110, 17);
             this.preserveFormat_checkBox.TabIndex = 30;
-            this.preserveFormat_checkBox.Text = "Use original image format";
+            this.preserveFormat_checkBox.Text = "Use original format";
             this.toolTip1.SetToolTip(this.preserveFormat_checkBox, "Use original image extension with settings from [Output formats] tab");
             this.preserveFormat_checkBox.UseVisualStyleBackColor = true;
             this.preserveFormat_checkBox.CheckedChanged += new System.EventHandler(this.preserveFormat_checkBox_CheckedChanged);
@@ -1712,34 +1875,13 @@
             this.label23.TabIndex = 24;
             this.label23.Text = "Output format";
             // 
-            // condaEnvName_textBox
-            // 
-            this.condaEnvName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.condaEnvName_textBox.Enabled = false;
-            this.condaEnvName_textBox.Location = new System.Drawing.Point(507, 332);
-            this.condaEnvName_textBox.Name = "condaEnvName_textBox";
-            this.condaEnvName_textBox.Size = new System.Drawing.Size(157, 20);
-            this.condaEnvName_textBox.TabIndex = 52;
-            // 
             // saveProfileName_textBox
             // 
             this.saveProfileName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.saveProfileName_textBox.Location = new System.Drawing.Point(834, 560);
+            this.saveProfileName_textBox.Location = new System.Drawing.Point(834, 583);
             this.saveProfileName_textBox.Name = "saveProfileName_textBox";
             this.saveProfileName_textBox.Size = new System.Drawing.Size(149, 20);
             this.saveProfileName_textBox.TabIndex = 52;
-            // 
-            // useBasicSR_checkBox
-            // 
-            this.useBasicSR_checkBox.AutoSize = true;
-            this.useBasicSR_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.useBasicSR_checkBox.Location = new System.Drawing.Point(834, 516);
-            this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
-            this.useBasicSR_checkBox.Size = new System.Drawing.Size(145, 17);
-            this.useBasicSR_checkBox.TabIndex = 51;
-            this.useBasicSR_checkBox.Text = "Use BasicSR architecture";
-            this.useBasicSR_checkBox.UseVisualStyleBackColor = true;
-            this.useBasicSR_checkBox.Visible = false;
             // 
             // modelsPath_textBox
             // 
@@ -1763,7 +1905,7 @@
             // saveProfile_button
             // 
             this.saveProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveProfile_button.Location = new System.Drawing.Point(834, 586);
+            this.saveProfile_button.Location = new System.Drawing.Point(834, 609);
             this.saveProfile_button.Name = "saveProfile_button";
             this.saveProfile_button.Size = new System.Drawing.Size(149, 31);
             this.saveProfile_button.TabIndex = 50;
@@ -1781,7 +1923,7 @@
             this.tableLayoutPanel2.Controls.Add(this.appCoreVersion_linkLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.appVersion_label, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkForUpdates_checkBox, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(767, 694);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(767, 717);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -1837,7 +1979,7 @@
             // 
             this.profiles_listBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.profiles_listBox.FormattingEnabled = true;
-            this.profiles_listBox.Location = new System.Drawing.Point(670, 359);
+            this.profiles_listBox.Location = new System.Drawing.Point(670, 382);
             this.profiles_listBox.Name = "profiles_listBox";
             this.profiles_listBox.Size = new System.Drawing.Size(158, 327);
             this.profiles_listBox.TabIndex = 47;
@@ -1855,40 +1997,13 @@
             // loadProfile_button
             // 
             this.loadProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.loadProfile_button.Location = new System.Drawing.Point(834, 620);
+            this.loadProfile_button.Location = new System.Drawing.Point(834, 643);
             this.loadProfile_button.Name = "loadProfile_button";
             this.loadProfile_button.Size = new System.Drawing.Size(149, 31);
             this.loadProfile_button.TabIndex = 51;
             this.loadProfile_button.Text = "Load profile";
             this.loadProfile_button.UseVisualStyleBackColor = true;
             this.loadProfile_button.Click += new System.EventHandler(this.LoadProfile_button_Click);
-            // 
-            // useCondaEnv_checkBox
-            // 
-            this.useCondaEnv_checkBox.AutoSize = true;
-            this.useCondaEnv_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.useCondaEnv_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.useCondaEnv_checkBox.Location = new System.Drawing.Point(369, 333);
-            this.useCondaEnv_checkBox.Name = "useCondaEnv_checkBox";
-            this.useCondaEnv_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.useCondaEnv_checkBox.Size = new System.Drawing.Size(130, 17);
-            this.useCondaEnv_checkBox.TabIndex = 38;
-            this.useCondaEnv_checkBox.Text = "Use conda enviroment";
-            this.useCondaEnv_checkBox.UseVisualStyleBackColor = true;
-            this.useCondaEnv_checkBox.CheckedChanged += new System.EventHandler(this.useCondaEnv_checkBox_CheckedChanged);
-            // 
-            // deleteResults_checkBox
-            // 
-            this.deleteResults_checkBox.AutoSize = true;
-            this.deleteResults_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deleteResults_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.deleteResults_checkBox.Location = new System.Drawing.Point(111, 261);
-            this.deleteResults_checkBox.Name = "deleteResults_checkBox";
-            this.deleteResults_checkBox.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.deleteResults_checkBox.Size = new System.Drawing.Size(143, 17);
-            this.deleteResults_checkBox.TabIndex = 38;
-            this.deleteResults_checkBox.Text = "Delete results after merge";
-            this.deleteResults_checkBox.UseVisualStyleBackColor = true;
             // 
             // outputPath_textBox
             // 
@@ -1903,7 +2018,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(307, 210);
+            this.label9.Location = new System.Drawing.Point(307, 190);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(14, 13);
             this.label9.TabIndex = 33;
@@ -1919,38 +2034,10 @@
             this.inputPath_textBox.TabIndex = 19;
             this.toolTip1.SetToolTip(this.inputPath_textBox, "ESRGAN input folder");
             // 
-            // monitorFrequency_numericUpDown
-            // 
-            this.monitorFrequency_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.monitorFrequency_numericUpDown.Increment = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-            this.monitorFrequency_numericUpDown.Location = new System.Drawing.Point(507, 310);
-            this.monitorFrequency_numericUpDown.Maximum = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            this.monitorFrequency_numericUpDown.Minimum = new decimal(new int[] {
-            100,
-            0,
-            0,
-            0});
-            this.monitorFrequency_numericUpDown.Name = "monitorFrequency_numericUpDown";
-            this.monitorFrequency_numericUpDown.Size = new System.Drawing.Size(66, 20);
-            this.monitorFrequency_numericUpDown.TabIndex = 32;
-            this.monitorFrequency_numericUpDown.Value = new decimal(new int[] {
-            10000,
-            0,
-            0,
-            0});
-            // 
             // maxTileHeight_numericUpDown
             // 
             this.maxTileHeight_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.maxTileHeight_numericUpDown.Location = new System.Drawing.Point(321, 206);
+            this.maxTileHeight_numericUpDown.Location = new System.Drawing.Point(321, 186);
             this.maxTileHeight_numericUpDown.Maximum = new decimal(new int[] {
             4096,
             0,
@@ -1984,7 +2071,7 @@
             // maxTileWidth_numericUpDown
             // 
             this.maxTileWidth_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.maxTileWidth_numericUpDown.Location = new System.Drawing.Point(237, 206);
+            this.maxTileWidth_numericUpDown.Location = new System.Drawing.Point(237, 186);
             this.maxTileWidth_numericUpDown.Maximum = new decimal(new int[] {
             4096,
             0,
@@ -2004,31 +2091,6 @@
             0,
             0});
             // 
-            // advancedUseSuffix_checkBox
-            // 
-            this.advancedUseSuffix_checkBox.AutoSize = true;
-            this.advancedUseSuffix_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.advancedUseSuffix_checkBox.Location = new System.Drawing.Point(323, 179);
-            this.advancedUseSuffix_checkBox.Name = "advancedUseSuffix_checkBox";
-            this.advancedUseSuffix_checkBox.Size = new System.Drawing.Size(117, 17);
-            this.advancedUseSuffix_checkBox.TabIndex = 0;
-            this.advancedUseSuffix_checkBox.Text = "Use suffix for results";
-            this.advancedUseSuffix_checkBox.UseVisualStyleBackColor = true;
-            this.advancedUseSuffix_checkBox.CheckedChanged += new System.EventHandler(this.advancedUseSuffix_checkBox_CheckedChanged);
-            // 
-            // createMemoryImage_checkBox
-            // 
-            this.createMemoryImage_checkBox.AutoSize = true;
-            this.createMemoryImage_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.createMemoryImage_checkBox.Location = new System.Drawing.Point(111, 307);
-            this.createMemoryImage_checkBox.Name = "createMemoryImage_checkBox";
-            this.createMemoryImage_checkBox.Size = new System.Drawing.Size(168, 17);
-            this.createMemoryImage_checkBox.TabIndex = 31;
-            this.createMemoryImage_checkBox.Text = "Create max resolution tile in LR";
-            this.toolTip1.SetToolTip(this.createMemoryImage_checkBox, " Helps with ESRGAN memory allocation, when you have images with different dimensi" +
-        "ons in LR");
-            this.createMemoryImage_checkBox.UseVisualStyleBackColor = true;
-            // 
             // changeInputPath_button
             // 
             this.changeInputPath_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -2040,19 +2102,6 @@
             this.changeInputPath_button.UseVisualStyleBackColor = true;
             this.changeInputPath_button.Click += new System.EventHandler(this.changePath_button_Click);
             // 
-            // useCPU_checkBox
-            // 
-            this.useCPU_checkBox.AutoSize = true;
-            this.useCPU_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.useCPU_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.useCPU_checkBox.Location = new System.Drawing.Point(111, 330);
-            this.useCPU_checkBox.Name = "useCPU_checkBox";
-            this.useCPU_checkBox.Size = new System.Drawing.Size(67, 17);
-            this.useCPU_checkBox.TabIndex = 30;
-            this.useCPU_checkBox.Text = "Use CPU";
-            this.toolTip1.SetToolTip(this.useCPU_checkBox, "Use CPU instead of GPU (very slow)");
-            this.useCPU_checkBox.UseVisualStyleBackColor = true;
-            // 
             // changeOutputPath_button
             // 
             this.changeOutputPath_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
@@ -2063,15 +2112,6 @@
             this.changeOutputPath_button.Text = "...";
             this.changeOutputPath_button.UseVisualStyleBackColor = true;
             this.changeOutputPath_button.Click += new System.EventHandler(this.changePath_button_Click);
-            // 
-            // advancedSuffix_textBox
-            // 
-            this.advancedSuffix_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.advancedSuffix_textBox.Location = new System.Drawing.Point(442, 177);
-            this.advancedSuffix_textBox.Name = "advancedSuffix_textBox";
-            this.advancedSuffix_textBox.ReadOnly = true;
-            this.advancedSuffix_textBox.Size = new System.Drawing.Size(171, 20);
-            this.advancedSuffix_textBox.TabIndex = 1;
             // 
             // label8
             // 
@@ -2119,7 +2159,7 @@
             // 
             this.autoSetTileSize_checkBox.AutoSize = true;
             this.autoSetTileSize_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.autoSetTileSize_checkBox.Location = new System.Drawing.Point(401, 208);
+            this.autoSetTileSize_checkBox.Location = new System.Drawing.Point(401, 188);
             this.autoSetTileSize_checkBox.Name = "autoSetTileSize_checkBox";
             this.autoSetTileSize_checkBox.Size = new System.Drawing.Size(133, 17);
             this.autoSetTileSize_checkBox.TabIndex = 25;
@@ -2131,7 +2171,7 @@
             // 
             this.preciseTile_checkBox.AutoSize = true;
             this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(834, 537);
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(834, 560);
             this.preciseTile_checkBox.Name = "preciseTile_checkBox";
             this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
             this.preciseTile_checkBox.TabIndex = 25;
@@ -2144,7 +2184,7 @@
             // label36
             // 
             this.label36.AutoSize = true;
-            this.label36.Location = new System.Drawing.Point(246, 235);
+            this.label36.Location = new System.Drawing.Point(246, 215);
             this.label36.Name = "label36";
             this.label36.Size = new System.Drawing.Size(70, 13);
             this.label36.TabIndex = 24;
@@ -2153,7 +2193,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(39, 234);
+            this.label6.Location = new System.Drawing.Point(39, 214);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 24;
@@ -2162,7 +2202,7 @@
             // tilesPadding_numericUpDown
             // 
             this.tilesPadding_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tilesPadding_numericUpDown.Location = new System.Drawing.Point(321, 232);
+            this.tilesPadding_numericUpDown.Location = new System.Drawing.Point(321, 212);
             this.tilesPadding_numericUpDown.Maximum = new decimal(new int[] {
             10,
             0,
@@ -2180,7 +2220,7 @@
             0,
             0,
             0});
-            this.overlapSize_numericUpDown.Location = new System.Drawing.Point(111, 232);
+            this.overlapSize_numericUpDown.Location = new System.Drawing.Point(111, 212);
             this.overlapSize_numericUpDown.Maximum = new decimal(new int[] {
             128,
             0,
@@ -2198,7 +2238,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(36, 210);
+            this.label5.Location = new System.Drawing.Point(36, 190);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(70, 13);
             this.label5.TabIndex = 22;
@@ -2208,7 +2248,7 @@
             // 
             this.maxTileResolution_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.maxTileResolution_numericUpDown.Enabled = false;
-            this.maxTileResolution_numericUpDown.Location = new System.Drawing.Point(111, 206);
+            this.maxTileResolution_numericUpDown.Location = new System.Drawing.Point(111, 186);
             this.maxTileResolution_numericUpDown.Maximum = new decimal(new int[] {
             16777216,
             0,
@@ -2275,7 +2315,7 @@
             this.settingsOutputFormat_tabPage.Controls.Add(this.ddsOutputSettings_groupBox);
             this.settingsOutputFormat_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settingsOutputFormat_tabPage.Name = "settingsOutputFormat_tabPage";
-            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1010, 752);
+            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1010, 775);
             this.settingsOutputFormat_tabPage.TabIndex = 4;
             this.settingsOutputFormat_tabPage.Text = "Output formats";
             this.settingsOutputFormat_tabPage.UseVisualStyleBackColor = true;
@@ -2605,7 +2645,7 @@
             this.advanced_tabPage.Controls.Add(this.filters_groupBox);
             this.advanced_tabPage.Location = new System.Drawing.Point(4, 25);
             this.advanced_tabPage.Name = "advanced_tabPage";
-            this.advanced_tabPage.Size = new System.Drawing.Size(1010, 752);
+            this.advanced_tabPage.Size = new System.Drawing.Size(1010, 775);
             this.advanced_tabPage.TabIndex = 2;
             this.advanced_tabPage.Text = "Filters/Rules";
             this.advanced_tabPage.UseVisualStyleBackColor = true;
@@ -3093,7 +3133,7 @@
             this.interpolation_tabPage.Controls.Add(this.interpolationModelOne_comboBox);
             this.interpolation_tabPage.Location = new System.Drawing.Point(4, 25);
             this.interpolation_tabPage.Name = "interpolation_tabPage";
-            this.interpolation_tabPage.Size = new System.Drawing.Size(1010, 752);
+            this.interpolation_tabPage.Size = new System.Drawing.Size(1010, 775);
             this.interpolation_tabPage.TabIndex = 3;
             this.interpolation_tabPage.Text = "Models interpolation";
             this.interpolation_tabPage.UseVisualStyleBackColor = true;
@@ -3171,7 +3211,7 @@
             this.overlayResults_tabPage.Controls.Add(this.tableLayoutPanel4);
             this.overlayResults_tabPage.Location = new System.Drawing.Point(4, 25);
             this.overlayResults_tabPage.Name = "overlayResults_tabPage";
-            this.overlayResults_tabPage.Size = new System.Drawing.Size(1010, 752);
+            this.overlayResults_tabPage.Size = new System.Drawing.Size(1010, 775);
             this.overlayResults_tabPage.TabIndex = 6;
             this.overlayResults_tabPage.Text = "Image interpolation";
             this.overlayResults_tabPage.UseVisualStyleBackColor = true;
@@ -3194,7 +3234,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1010, 752);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1010, 775);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // overlayImages_button
@@ -3203,7 +3243,7 @@
             this.overlayImages_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.overlayImages_button.Location = new System.Drawing.Point(913, 3);
             this.overlayImages_button.Name = "overlayImages_button";
-            this.overlayImages_button.Size = new System.Drawing.Size(94, 521);
+            this.overlayImages_button.Size = new System.Drawing.Size(94, 544);
             this.overlayImages_button.TabIndex = 1;
             this.overlayImages_button.Text = "Interpolate";
             this.overlayImages_button.UseVisualStyleBackColor = true;
@@ -3215,7 +3255,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(904, 521);
+            this.groupBox4.Size = new System.Drawing.Size(904, 544);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Interpolate two images";
@@ -3235,7 +3275,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(898, 502);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(898, 525);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // groupBox7
@@ -3245,7 +3285,7 @@
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox7.Location = new System.Drawing.Point(452, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(443, 468);
+            this.groupBox7.Size = new System.Drawing.Size(443, 491);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Image B";
@@ -3266,7 +3306,7 @@
             this.imageB_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_panel.Location = new System.Drawing.Point(3, 16);
             this.imageB_panel.Name = "imageB_panel";
-            this.imageB_panel.Size = new System.Drawing.Size(437, 449);
+            this.imageB_panel.Size = new System.Drawing.Size(437, 472);
             this.imageB_panel.TabIndex = 5;
             this.imageB_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageB_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -3276,7 +3316,7 @@
             this.imageB_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageB_pictureBox.Name = "imageB_pictureBox";
-            this.imageB_pictureBox.Size = new System.Drawing.Size(437, 449);
+            this.imageB_pictureBox.Size = new System.Drawing.Size(437, 472);
             this.imageB_pictureBox.TabIndex = 0;
             this.imageB_pictureBox.TabStop = false;
             // 
@@ -3287,7 +3327,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(443, 468);
+            this.groupBox6.Size = new System.Drawing.Size(443, 491);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Image A";
@@ -3308,7 +3348,7 @@
             this.imageA_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_panel.Location = new System.Drawing.Point(3, 16);
             this.imageA_panel.Name = "imageA_panel";
-            this.imageA_panel.Size = new System.Drawing.Size(437, 449);
+            this.imageA_panel.Size = new System.Drawing.Size(437, 472);
             this.imageA_panel.TabIndex = 4;
             this.imageA_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageA_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -3318,7 +3358,7 @@
             this.imageA_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageA_pictureBox.Name = "imageA_pictureBox";
-            this.imageA_pictureBox.Size = new System.Drawing.Size(437, 449);
+            this.imageA_pictureBox.Size = new System.Drawing.Size(437, 472);
             this.imageA_pictureBox.TabIndex = 0;
             this.imageA_pictureBox.TabStop = false;
             // 
@@ -3327,7 +3367,7 @@
             this.overlayResultName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel5.SetColumnSpan(this.overlayResultName_textBox, 2);
             this.overlayResultName_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 477);
+            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 500);
             this.overlayResultName_textBox.Name = "overlayResultName_textBox";
             this.overlayResultName_textBox.Size = new System.Drawing.Size(892, 20);
             this.overlayResultName_textBox.TabIndex = 2;
@@ -3336,7 +3376,7 @@
             // 
             this.overlayFolders_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayFolders_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayFolders_button.Location = new System.Drawing.Point(913, 580);
+            this.overlayFolders_button.Location = new System.Drawing.Point(913, 603);
             this.overlayFolders_button.Name = "overlayFolders_button";
             this.overlayFolders_button.Size = new System.Drawing.Size(94, 169);
             this.overlayFolders_button.TabIndex = 1;
@@ -3349,7 +3389,7 @@
             this.imageInterpolationAlphaValue_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageInterpolationAlphaValue_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageInterpolationAlphaValue_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(913, 539);
+            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(913, 562);
             this.imageInterpolationAlphaValue_textBox.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.imageInterpolationAlphaValue_textBox.Name = "imageInterpolationAlphaValue_textBox";
             this.imageInterpolationAlphaValue_textBox.ReadOnly = true;
@@ -3372,7 +3412,7 @@
             this.groupBox5.Controls.Add(this.resultsBPath_textBox);
             this.groupBox5.Controls.Add(this.resultsDestinationPath_textBox);
             this.groupBox5.Controls.Add(this.label28);
-            this.groupBox5.Location = new System.Drawing.Point(3, 580);
+            this.groupBox5.Location = new System.Drawing.Point(3, 603);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(661, 169);
             this.groupBox5.TabIndex = 0;
@@ -3502,7 +3542,7 @@
             // 
             this.panel3.Controls.Add(this.imageInterpolation_trackBar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 530);
+            this.panel3.Location = new System.Drawing.Point(3, 553);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(904, 44);
             this.panel3.TabIndex = 6;
@@ -3560,7 +3600,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 781);
+            this.ClientSize = new System.Drawing.Size(1018, 804);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1030, 815);
@@ -3602,6 +3642,11 @@
             this.toolStrip.PerformLayout();
             this.settings_tabPage.ResumeLayout(false);
             this.settings_tabPage.PerformLayout();
+            this.groupBox14.ResumeLayout(false);
+            this.groupBox14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).EndInit();
+            this.groupBox13.ResumeLayout(false);
+            this.groupBox13.PerformLayout();
             this.groupBox12.ResumeLayout(false);
             this.groupBox12.PerformLayout();
             this.groupBox8.ResumeLayout(false);
@@ -3618,7 +3663,6 @@
             this.imagePreprocess_groupBox.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileHeight_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.maxTileWidth_numericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tilesPadding_numericUpDown)).EndInit();
@@ -3938,13 +3982,16 @@
         private System.Windows.Forms.Button previewUpdate_button;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Button showJoeyProperties_button;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox useJoey_checkBox;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.Button toogleLogView_button;
         private System.Windows.Forms.CheckBox previewShowSaveDialog_checkBox;
         private System.Windows.Forms.Label label36;
         private System.Windows.Forms.NumericUpDown tilesPadding_numericUpDown;
         private System.Windows.Forms.CheckBox ddsIsCubemap_checkBox;
+        private System.Windows.Forms.GroupBox groupBox14;
+        private System.Windows.Forms.GroupBox groupBox13;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 
