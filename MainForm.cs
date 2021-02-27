@@ -170,7 +170,11 @@ namespace ImageEnhancingUtility.Winforms
 
             BindAdvanced();
 
-            VerifyPaths();
+            bool myPathAreOk = VerifyPaths();
+
+            if (!myPathAreOk)
+                tabControl1.SelectedIndex = 2;
+
 
             if (ViewModel.Config.CheckForUpdates)
             {
