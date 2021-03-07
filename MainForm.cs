@@ -1186,7 +1186,8 @@ namespace ImageEnhancingUtility.Winforms
             PreviewInProgress(false);
             if (!success)
             {
-                MessageBox.Show($"Failed to create preview! Logs saved in <{ViewModel.IEU.EsrganPath}\\IEU_preview>");
+                ErrorLogForm errorLogForm = new ErrorLogForm(ViewModel.IEU.PreviewLog);
+                errorLogForm.ShowDialog(this);                
                 return;
             }
             string previewOutPath = $"{ViewModel.IEU.PreviewDirPath}\\preview.png";
@@ -1236,19 +1237,23 @@ namespace ImageEnhancingUtility.Winforms
             PreviewInProgress(true);          
             try
             {
-                bool success = await ViewModel.IEU.Preview(previewFullname, zoomImageBox.Image, modelPath, saveAsPng, true, imagePath);               
+                bool success = await ViewModel.IEU.Preview(previewFullname, zoomImageBox.Image, modelPath, saveAsPng, true, imagePath);
                 if (!success)
-                    MessageBox.Show($"Failed to create preview! Log.txt is saved in <{ViewModel.IEU.EsrganPath}\\IEU_preview>");
+                {
+                    ErrorLogForm errorLogForm = new ErrorLogForm(ViewModel.IEU.PreviewLog);
+                    errorLogForm.ShowDialog(this);                   
+                }
             }
-            catch
+            catch(Exception ex)
             {
-                MessageBox.Show("Unknown error ocured!");
+                ErrorLogForm errorLogForm = new ErrorLogForm(ex.Message);
+                errorLogForm.ShowDialog(this);
             }
             finally
             {
                 PreviewInProgress(false);              
             }
-           
+            return;           
         }      
 
         private async void previewSaveOutputFormat_button_Click(object sender, EventArgs e)
