@@ -297,6 +297,7 @@
             this.refreshModelList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.popupNotifier1 = new Tulpep.NotificationWindow.PopupNotifier();
+            this.supportRgba_checkBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -1484,6 +1485,7 @@
             // 
             // groupBox9
             // 
+            this.groupBox9.Controls.Add(this.supportRgba_checkBox);
             this.groupBox9.Controls.Add(this.ignoreAlpha_checkBox);
             this.groupBox9.Controls.Add(this.imagePostprocess_groupBox);
             this.groupBox9.Controls.Add(this.imagePreprocess_groupBox);
@@ -2171,7 +2173,7 @@
             // 
             this.preciseTile_checkBox.AutoSize = true;
             this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(834, 560);
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(845, 560);
             this.preciseTile_checkBox.Name = "preciseTile_checkBox";
             this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
             this.preciseTile_checkBox.TabIndex = 25;
@@ -3595,6 +3597,17 @@
             this.popupNotifier1.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
             this.popupNotifier1.TitleText = null;
             // 
+            // supportRgba_checkBox
+            // 
+            this.supportRgba_checkBox.AutoSize = true;
+            this.supportRgba_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.supportRgba_checkBox.Location = new System.Drawing.Point(319, 158);
+            this.supportRgba_checkBox.Name = "supportRgba_checkBox";
+            this.supportRgba_checkBox.Size = new System.Drawing.Size(122, 17);
+            this.supportRgba_checkBox.TabIndex = 25;
+            this.supportRgba_checkBox.Text = "RGBA model support";
+            this.supportRgba_checkBox.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AllowDrop = true;
@@ -3992,6 +4005,7 @@
         private System.Windows.Forms.GroupBox groupBox14;
         private System.Windows.Forms.GroupBox groupBox13;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.CheckBox supportRgba_checkBox;
     }
 }
 

@@ -67,6 +67,9 @@ namespace ImageEnhancingUtility.Winforms
             else
             {
                 progressBar1.Value = (int)value;
+                if(ViewModel.IEU.FilesDone == ViewModel.IEU.FilesTotal && ViewModel.IEU.InMemoryMode)                
+                    ShowNotification("\nFinished processing images");
+                
                 progress_label.Text = $@"{ViewModel.IEU.FilesDone}/{ViewModel.IEU.FilesTotal}"; //hack, change to reactive bindings 
                 progressFiltered_label.Text = ViewModel.IEU.FilesDoneSuccesfully.ToString();
             }
@@ -200,9 +203,7 @@ namespace ImageEnhancingUtility.Winforms
             comparisonMod_comboBox.DataSource = new BindingSource(IEU.ResizeImageScaleFactors, null);
             comparisonMod_comboBox.SelectedIndex = 2;
 
-            SetStepVisibility(false);
-
-            //OpenImage(@"C:\Users\MKso\Desktop\flickr_2254208141.jpg");
+            SetStepVisibility(false);          
         }
 
         #endregion              
@@ -295,6 +296,8 @@ namespace ImageEnhancingUtility.Winforms
             this.Bind(ViewModel, vm => vm.IEU.PaddingSize, v => v.tilesPadding_numericUpDown.Value, x => x, y => decimal.ToInt32(y));
 
             this.Bind(ViewModel, vm => vm.IEU.UseJoey, v => v.useJoey_checkBox.Checked);
+
+            this.Bind(ViewModel, vm => vm.IEU.RgbaModel, v => v.supportRgba_checkBox.Checked);
         }
         
         void BindOutputFormats()
@@ -384,17 +387,12 @@ namespace ImageEnhancingUtility.Winforms
            
             ViewModel.IEU.SplitCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
             ViewModel.IEU.UpscaleCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
-            ViewModel.IEU.MergeCommand.ThrownExceptions.Subscribe(error => 
-            {
-                WriteErrors(error);
-            });
+            ViewModel.IEU.MergeCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));      
             ViewModel.IEU.SplitUpscaleMergeCommand.ThrownExceptions.Subscribe(error => WriteErrors(error));
 
-            ViewModel.IEU.SplitCommand.Subscribe(_ => ShowNotification("\nFinished splitting images"));
-            ViewModel.IEU.UpscaleCommand.Subscribe(_ => ShowNotification("\nFinished upscaling images"));
-            ViewModel.IEU.MergeCommand.Subscribe(_ => ShowNotification("\nFinished merging images"));
-            ViewModel.IEU.SplitUpscaleMergeCommand.Subscribe(_ => ShowNotification("\nFinished processing images"));
-        }
+            ViewModel.IEU.SplitUpscaleMergeCommand.Subscribe(
+                showNotif => ShowNotification("\nFinished processing images", !showNotif));
+        }        
               
         void BindAdvanced()
         {
@@ -608,8 +606,9 @@ namespace ImageEnhancingUtility.Winforms
         #region NOTIFICATIONS
         bool notificationActive = false;
         PopupNotifier popup;
-        void ShowNotification(string message)
+        void ShowNotification(string message, bool ignore = false)
         {
+            if (ignore) return;
             if (ViewModel.Config.ShowPopups)
             {
                 popup = new PopupNotifier();
@@ -796,7 +795,7 @@ namespace ImageEnhancingUtility.Winforms
             UpdateStatusBar();           
             zoomImageBox.ZoomToFit();
             FitImage();
-        }        
+        } 
 
         private void UpdatePreview()
         {
@@ -1078,31 +1077,7 @@ namespace ImageEnhancingUtility.Winforms
         }
               
         private void zoomImageBox_PanEnd(object sender, EventArgs e)
-        {
-            //var rect = zoomImageBox.GetSourceImageRegion();
-            //double zoomFactor = zoomImageBox.ZoomFactor;
-
-            //int w = (int)(rect.Width / zoomFactor);
-            //int h = (int)(rect.Height / zoomFactor);
-            //if (w == 0 || h == 0) return;
-            //Bitmap crop = new Bitmap((int)rect.Width, (int)rect.Height);
-           
-            //using (Graphics g = Graphics.FromImage(crop))
-            //{
-            //    g.PixelOffsetMode = PixelOffsetMode.HighQuality;
-            //    g.InterpolationMode = InterpolationMode.NearestNeighbor;
-            //    g.DrawImage(
-            //        zoomImageBox.Image,
-            //        new Rectangle(0, 0, (int)rect.Width, (int)rect.Height),
-            //        rect,
-            //        GraphicsUnit.Pixel);
-            //}
-            //rect = zoomImageBox.GetSourceImageRegion();
-            //currentX = (int)rect.X;
-            //currentY = (int)rect.Y;
-            //currentW = (int)rect.Width;
-            //currentH = (int)rect.Height;
-            //zoomImageBox.Image = crop;
+        {           
             FitImage();
             UpdatePreview();
         }
