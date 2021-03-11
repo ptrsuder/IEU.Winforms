@@ -30,7 +30,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<MainViewModel>
     {
-        public readonly string AppVersion = "0.12.00";
+        public readonly string AppVersion = "0.12.05";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public MainViewModel ViewModel { get; set; }
@@ -126,11 +126,11 @@ namespace ImageEnhancingUtility.Winforms
             modelForAlpha_comboBox.DisplayMember =
             profileModel_comboBox.DisplayMember =
             previewModels_comboBox.DisplayMember = "ComboBoxName";
-            interpolationModelOne_comboBox.ValueMember =
-            interpolationModelTwo_comboBox.ValueMember =
-            modelForAlpha_comboBox.ValueMember =
-            profileModel_comboBox.ValueMember =
-            previewModels_comboBox.ValueMember = "FullName";
+            //interpolationModelOne_comboBox.ValueMember =
+            //interpolationModelTwo_comboBox.ValueMember =
+            //modelForAlpha_comboBox.ValueMember =
+            //profileModel_comboBox.ValueMember =
+            //previewModels_comboBox.ValueMember = "Value";
 
             if (ViewModel.IEU.ModelsItems.Count > 0)
             {         
@@ -1178,11 +1178,12 @@ namespace ImageEnhancingUtility.Winforms
         private async void previewUpdate_button_Click(object sender, EventArgs e)
         {
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
+            var model = previewModels_comboBox.SelectedValue as ModelInfo;
             if (originalPreview == null)
                 return;            
             PreviewInProgress(true);          
 
-            bool success = await ViewModel.IEU.Preview(previewFullname, originalPreview, modelPath, true);            
+            bool success = await ViewModel.IEU.Preview(previewFullname, originalPreview, model, true);            
             PreviewInProgress(false);
             if (!success)
             {
@@ -1207,6 +1208,7 @@ namespace ImageEnhancingUtility.Winforms
         private async void savePreview(bool saveAsPng)
         {
             string modelPath = previewModels_comboBox.SelectedValue.ToString();
+            var model = previewModels_comboBox.SelectedValue as ModelInfo;
             if (zoomImageBox.Image == null)
                 return;
 
@@ -1237,7 +1239,7 @@ namespace ImageEnhancingUtility.Winforms
             PreviewInProgress(true);          
             try
             {
-                bool success = await ViewModel.IEU.Preview(previewFullname, zoomImageBox.Image, modelPath, saveAsPng, true, imagePath);
+                bool success = await ViewModel.IEU.Preview(previewFullname, zoomImageBox.Image, model, saveAsPng, true, imagePath);
                 if (!success)
                 {
                     ErrorLogForm errorLogForm = new ErrorLogForm(ViewModel.IEU.PreviewLog);
@@ -1483,8 +1485,8 @@ namespace ImageEnhancingUtility.Winforms
             }
             tabControl1.SelectedTab = main_tabPage;
             bool success = await ViewModel.IEU.CreateInterpolatedModel(
-                interpolationModelOne_comboBox.SelectedValue.ToString(),
-                interpolationModelTwo_comboBox.SelectedValue.ToString(),
+                (interpolationModelOne_comboBox.SelectedValue as ModelInfo).FullName,
+                (interpolationModelTwo_comboBox.SelectedValue as ModelInfo).FullName,
                 alpha.Value,
                 interpolationOutputModelName_textBox.Text);      
         }
