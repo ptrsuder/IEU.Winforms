@@ -116,6 +116,7 @@
             this.showPopups_checkBox = new System.Windows.Forms.CheckBox();
             this.deleteProfile_button = new System.Windows.Forms.Button();
             this.groupBox9 = new System.Windows.Forms.GroupBox();
+            this.supportRgba_checkBox = new System.Windows.Forms.CheckBox();
             this.ignoreAlpha_checkBox = new System.Windows.Forms.CheckBox();
             this.imagePostprocess_groupBox = new System.Windows.Forms.GroupBox();
             this.label22 = new System.Windows.Forms.Label();
@@ -297,7 +298,6 @@
             this.refreshModelList = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.popupNotifier1 = new Tulpep.NotificationWindow.PopupNotifier();
-            this.supportRgba_checkBox = new System.Windows.Forms.CheckBox();
             this.tabControl1.SuspendLayout();
             this.main_tabPage.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -1507,6 +1507,17 @@
             this.groupBox9.TabIndex = 52;
             this.groupBox9.TabStop = false;
             this.groupBox9.Text = "Image profile : Settings";
+            // 
+            // supportRgba_checkBox
+            // 
+            this.supportRgba_checkBox.AutoSize = true;
+            this.supportRgba_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.supportRgba_checkBox.Location = new System.Drawing.Point(319, 158);
+            this.supportRgba_checkBox.Name = "supportRgba_checkBox";
+            this.supportRgba_checkBox.Size = new System.Drawing.Size(122, 17);
+            this.supportRgba_checkBox.TabIndex = 25;
+            this.supportRgba_checkBox.Text = "RGBA model support";
+            this.supportRgba_checkBox.UseVisualStyleBackColor = true;
             // 
             // ignoreAlpha_checkBox
             // 
@@ -3596,17 +3607,6 @@
             this.popupNotifier1.Size = new System.Drawing.Size(400, 100);
             this.popupNotifier1.TitleFont = new System.Drawing.Font("Segoe UI", 9.75F);
             this.popupNotifier1.TitleText = null;
-            // 
-            // supportRgba_checkBox
-            // 
-            this.supportRgba_checkBox.AutoSize = true;
-            this.supportRgba_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.supportRgba_checkBox.Location = new System.Drawing.Point(319, 158);
-            this.supportRgba_checkBox.Name = "supportRgba_checkBox";
-            this.supportRgba_checkBox.Size = new System.Drawing.Size(122, 17);
-            this.supportRgba_checkBox.TabIndex = 25;
-            this.supportRgba_checkBox.Text = "RGBA model support";
-            this.supportRgba_checkBox.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
