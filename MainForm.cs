@@ -396,8 +396,6 @@ namespace ImageEnhancingUtility.Winforms
               
         void BindAdvanced()
         {
-            #region #ADVANCED_TAB           
-
             this.Bind(ViewModel, vm => vm.IEU.UseResultSuffix, v => v.advancedUseSuffix_checkBox.Checked);
             this.Bind(ViewModel, vm => vm.IEU.ResultSuffix, v => v.advancedSuffix_textBox.Text);
 
@@ -458,9 +456,7 @@ namespace ImageEnhancingUtility.Winforms
             resizeImageAfterFilterType_comboBox.ValueMember = "Key";
             resizeImageAfterFilterType_comboBox.SelectedIndex = 0;
             this.Bind(ViewModel, vm => vm.IEU.CurrentProfile.ResizeImageAfterFilterType, v => v.resizeImageAfterFilterType_comboBox.SelectedValue, x => x, x => (int)x);
-            #endregion
-            
-            #endregion
+            #endregion         
         }
 
         #endregion
@@ -1176,8 +1172,7 @@ namespace ImageEnhancingUtility.Winforms
         }
         
         private async void previewUpdate_button_Click(object sender, EventArgs e)
-        {
-            string modelPath = previewModels_comboBox.SelectedValue.ToString();
+        {            
             var model = previewModels_comboBox.SelectedValue as ModelInfo;
             if (originalPreview == null)
                 return;            
@@ -1207,7 +1202,7 @@ namespace ImageEnhancingUtility.Winforms
 
         private async void savePreview(bool saveAsPng)
         {
-            string modelPath = previewModels_comboBox.SelectedValue.ToString();
+            
             var model = previewModels_comboBox.SelectedValue as ModelInfo;
             if (zoomImageBox.Image == null)
                 return;
@@ -1219,7 +1214,7 @@ namespace ImageEnhancingUtility.Winforms
                 saveFileDialog.DefaultExt = "";
                 saveFileDialog.InitialDirectory = ViewModel.IEU.OutputDirectoryPath;
 
-                string modelName = Path.GetFileNameWithoutExtension(modelPath);
+                string modelName = model.Name;
 
                 if (previewFullname == Path.GetTempPath() + clipboardImageName)
                     saveFileDialog.FileName = $"ClipboardImage_{modelName}";
@@ -1273,8 +1268,9 @@ namespace ImageEnhancingUtility.Winforms
             int.TryParse(comparisonMod_comboBox.SelectedValue.ToString(), out comparisonMod);
             int newWidth = comparisonMod * resultPreview.Width, newHeight = comparisonMod * resultPreview.Height;
 
-            Bitmap outputImage = new Bitmap(2 * newWidth, newHeight + footerHeight);            
-            string modelName = Path.GetFileNameWithoutExtension(previewModels_comboBox.SelectedValue.ToString());
+            Bitmap outputImage = new Bitmap(2 * newWidth, newHeight + footerHeight);
+            var mdl = previewModels_comboBox.SelectedValue as ModelInfo;
+            string modelName = mdl.Name;
             using (Graphics graphics = Graphics.FromImage(outputImage))
             {
                 graphics.PixelOffsetMode = PixelOffsetMode.HighQuality;
