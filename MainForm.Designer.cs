@@ -444,7 +444,7 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1018, 804);
+            this.tabControl1.Size = new System.Drawing.Size(1014, 806);
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
@@ -458,7 +458,7 @@
             this.main_tabPage.Location = new System.Drawing.Point(4, 25);
             this.main_tabPage.Name = "main_tabPage";
             this.main_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.main_tabPage.Size = new System.Drawing.Size(1010, 775);
+            this.main_tabPage.Size = new System.Drawing.Size(1006, 777);
             this.main_tabPage.TabIndex = 0;
             this.main_tabPage.Text = "Main";
             this.main_tabPage.UseVisualStyleBackColor = true;
@@ -480,7 +480,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 43F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 769);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1000, 771);
             this.tableLayoutPanel1.TabIndex = 20;
             // 
             // panel2
@@ -488,7 +488,7 @@
             this.panel2.Controls.Add(this.progressFiltered_label);
             this.panel2.Controls.Add(this.progress_label);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 729);
+            this.panel2.Location = new System.Drawing.Point(3, 731);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(149, 37);
             this.panel2.TabIndex = 37;
@@ -533,7 +533,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(149, 720);
+            this.panel1.Size = new System.Drawing.Size(149, 722);
             this.panel1.TabIndex = 20;
             // 
             // showStepsButtons_checkBox
@@ -663,7 +663,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.richTextBox1);
             this.splitContainer1.Panel2MinSize = 400;
-            this.splitContainer1.Size = new System.Drawing.Size(843, 720);
+            this.splitContainer1.Size = new System.Drawing.Size(839, 722);
             this.splitContainer1.SplitterDistance = 400;
             this.splitContainer1.TabIndex = 21;
             // 
@@ -676,7 +676,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(0, 0);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(439, 720);
+            this.richTextBox1.Size = new System.Drawing.Size(435, 722);
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -689,11 +689,11 @@
             this.tableLayoutPanel7.Controls.Add(this.progressBar1, 0, 0);
             this.tableLayoutPanel7.Controls.Add(this.toogleLogView_button, 1, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(158, 729);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(158, 731);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(843, 37);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(839, 37);
             this.tableLayoutPanel7.TabIndex = 38;
             // 
             // progressBar1
@@ -701,7 +701,7 @@
             this.progressBar1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.progressBar1.Location = new System.Drawing.Point(3, 3);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(754, 31);
+            this.progressBar1.Size = new System.Drawing.Size(750, 31);
             this.progressBar1.TabIndex = 22;
             // 
             // toogleLogView_button
@@ -709,7 +709,7 @@
             this.toogleLogView_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toogleLogView_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.toogleLogView_button.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.toogleLogView_button.Location = new System.Drawing.Point(763, 3);
+            this.toogleLogView_button.Location = new System.Drawing.Point(759, 3);
             this.toogleLogView_button.Name = "toogleLogView_button";
             this.toogleLogView_button.Size = new System.Drawing.Size(77, 31);
             this.toogleLogView_button.TabIndex = 23;
@@ -723,7 +723,7 @@
             this.previewResult_tabPage.Controls.Add(this.toolStrip);
             this.previewResult_tabPage.Location = new System.Drawing.Point(4, 25);
             this.previewResult_tabPage.Name = "previewResult_tabPage";
-            this.previewResult_tabPage.Size = new System.Drawing.Size(1010, 775);
+            this.previewResult_tabPage.Size = new System.Drawing.Size(1006, 777);
             this.previewResult_tabPage.TabIndex = 5;
             this.previewResult_tabPage.Text = "Preview result";
             this.previewResult_tabPage.UseVisualStyleBackColor = true;
@@ -748,7 +748,7 @@
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1010, 750);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(1006, 752);
             this.tableLayoutPanel3.TabIndex = 5;
             // 
             // zoomImageBox
@@ -764,7 +764,7 @@
             this.zoomImageBox.Location = new System.Drawing.Point(3, 3);
             this.zoomImageBox.Name = "zoomImageBox";
             this.zoomImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Left;
-            this.zoomImageBox.Size = new System.Drawing.Size(499, 559);
+            this.zoomImageBox.Size = new System.Drawing.Size(497, 561);
             this.zoomImageBox.TabIndex = 0;
             this.zoomImageBox.TabStop = false;
             this.zoomImageBox.ImageChanged += new System.EventHandler(this.zoomImageBox_ImageChanged);
@@ -787,9 +787,9 @@
             this.previewImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.previewImageBox.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
-            this.previewImageBox.Location = new System.Drawing.Point(508, 3);
+            this.previewImageBox.Location = new System.Drawing.Point(506, 3);
             this.previewImageBox.Name = "previewImageBox";
-            this.previewImageBox.Size = new System.Drawing.Size(499, 559);
+            this.previewImageBox.Size = new System.Drawing.Size(497, 561);
             this.previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
             this.previewImageBox.TabIndex = 4;
             this.previewImageBox.TabStop = false;
@@ -803,25 +803,25 @@
             this.previewModels_comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.previewModels_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewModels_comboBox.FormattingEnabled = true;
-            this.previewModels_comboBox.Location = new System.Drawing.Point(508, 568);
+            this.previewModels_comboBox.Location = new System.Drawing.Point(506, 570);
             this.previewModels_comboBox.Name = "previewModels_comboBox";
-            this.previewModels_comboBox.Size = new System.Drawing.Size(499, 21);
+            this.previewModels_comboBox.Size = new System.Drawing.Size(497, 21);
             this.previewModels_comboBox.TabIndex = 6;
             // 
             // preview_progressBar
             // 
             this.tableLayoutPanel3.SetColumnSpan(this.preview_progressBar, 2);
             this.preview_progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.preview_progressBar.Location = new System.Drawing.Point(3, 723);
+            this.preview_progressBar.Location = new System.Drawing.Point(3, 725);
             this.preview_progressBar.Name = "preview_progressBar";
-            this.preview_progressBar.Size = new System.Drawing.Size(1004, 24);
+            this.preview_progressBar.Size = new System.Drawing.Size(1000, 24);
             this.preview_progressBar.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.preview_progressBar.TabIndex = 8;
             // 
             // splitContainer3
             // 
             this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 568);
+            this.splitContainer3.Location = new System.Drawing.Point(3, 570);
             this.splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
@@ -836,8 +836,8 @@
             this.splitContainer3.Panel2.Controls.Add(this.imageSizeToolStripStatusLabel);
             this.splitContainer3.Panel2.Controls.Add(this.button_previewSaveComparison);
             this.tableLayoutPanel3.SetRowSpan(this.splitContainer3, 2);
-            this.splitContainer3.Size = new System.Drawing.Size(499, 149);
-            this.splitContainer3.SplitterDistance = 188;
+            this.splitContainer3.Size = new System.Drawing.Size(497, 149);
+            this.splitContainer3.SplitterDistance = 187;
             this.splitContainer3.TabIndex = 9;
             // 
             // miniMapImageBox
@@ -863,7 +863,7 @@
             // 
             this.label35.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label35.AutoSize = true;
-            this.label35.Location = new System.Drawing.Point(15, 12);
+            this.label35.Location = new System.Drawing.Point(14, 12);
             this.label35.Name = "label35";
             this.label35.Size = new System.Drawing.Size(84, 13);
             this.label35.TabIndex = 9;
@@ -874,7 +874,7 @@
             this.comparisonMod_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comparisonMod_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.comparisonMod_comboBox.FormattingEnabled = true;
-            this.comparisonMod_comboBox.Location = new System.Drawing.Point(107, 9);
+            this.comparisonMod_comboBox.Location = new System.Drawing.Point(106, 9);
             this.comparisonMod_comboBox.Name = "comparisonMod_comboBox";
             this.comparisonMod_comboBox.Size = new System.Drawing.Size(62, 21);
             this.comparisonMod_comboBox.TabIndex = 8;
@@ -884,7 +884,7 @@
             // 
             this.comparison_colorWheel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comparison_colorWheel.Color = System.Drawing.Color.FromArgb(((int)(((byte)(225)))), ((int)(((byte)(0)))), ((int)(((byte)(104)))));
-            this.comparison_colorWheel.Location = new System.Drawing.Point(172, 34);
+            this.comparison_colorWheel.Location = new System.Drawing.Point(171, 34);
             this.comparison_colorWheel.Name = "comparison_colorWheel";
             this.comparison_colorWheel.Size = new System.Drawing.Size(132, 112);
             this.comparison_colorWheel.TabIndex = 1;
@@ -895,7 +895,7 @@
             // 
             this.imageSizeToolStripStatusLabel.AutoSize = true;
             this.imageSizeToolStripStatusLabel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(260, 0);
+            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(259, 0);
             this.imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
             this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(47, 13);
             this.imageSizeToolStripStatusLabel.TabIndex = 0;
@@ -906,7 +906,7 @@
             // 
             this.button_previewSaveComparison.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button_previewSaveComparison.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button_previewSaveComparison.Location = new System.Drawing.Point(12, 34);
+            this.button_previewSaveComparison.Location = new System.Drawing.Point(11, 34);
             this.button_previewSaveComparison.Name = "button_previewSaveComparison";
             this.button_previewSaveComparison.Size = new System.Drawing.Size(157, 112);
             this.button_previewSaveComparison.TabIndex = 7;
@@ -922,12 +922,12 @@
             this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.panel4, 1, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(508, 599);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(506, 601);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 118F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(499, 118);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(497, 118);
             this.tableLayoutPanel6.TabIndex = 10;
             // 
             // previewUpdate_button
@@ -936,7 +936,7 @@
             this.previewUpdate_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewUpdate_button.Location = new System.Drawing.Point(3, 3);
             this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Size = new System.Drawing.Size(243, 112);
+            this.previewUpdate_button.Size = new System.Drawing.Size(242, 112);
             this.previewUpdate_button.TabIndex = 6;
             this.previewUpdate_button.Text = "Update preview";
             this.previewUpdate_button.UseVisualStyleBackColor = true;
@@ -948,9 +948,9 @@
             this.panel4.Controls.Add(this.outputFormatPreview_comboBox);
             this.panel4.Controls.Add(this.previewSaveOutputFormat_button);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(252, 3);
+            this.panel4.Location = new System.Drawing.Point(251, 3);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(244, 112);
+            this.panel4.Size = new System.Drawing.Size(243, 112);
             this.panel4.TabIndex = 7;
             // 
             // previewShowSaveDialog_checkBox
@@ -970,7 +970,7 @@
             this.outputFormatPreview_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.outputFormatPreview_comboBox.ForeColor = System.Drawing.SystemColors.WindowText;
             this.outputFormatPreview_comboBox.FormattingEnabled = true;
-            this.outputFormatPreview_comboBox.Location = new System.Drawing.Point(175, 2);
+            this.outputFormatPreview_comboBox.Location = new System.Drawing.Point(174, 2);
             this.outputFormatPreview_comboBox.Name = "outputFormatPreview_comboBox";
             this.outputFormatPreview_comboBox.Size = new System.Drawing.Size(69, 21);
             this.outputFormatPreview_comboBox.TabIndex = 50;
@@ -982,7 +982,7 @@
             this.previewSaveOutputFormat_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(0, 25);
             this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(244, 86);
+            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(243, 86);
             this.previewSaveOutputFormat_button.TabIndex = 9;
             this.previewSaveOutputFormat_button.Text = "Enhance and save with selected format";
             this.previewSaveOutputFormat_button.UseVisualStyleBackColor = true;
@@ -1000,7 +1000,7 @@
             this.zoomLevelsToolStripComboBox});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(1010, 25);
+            this.toolStrip.Size = new System.Drawing.Size(1006, 25);
             this.toolStrip.TabIndex = 3;
             // 
             // openFromFileToolStripButton
@@ -1108,7 +1108,7 @@
             this.settings_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settings_tabPage.Name = "settings_tabPage";
             this.settings_tabPage.Padding = new System.Windows.Forms.Padding(3);
-            this.settings_tabPage.Size = new System.Drawing.Size(1010, 775);
+            this.settings_tabPage.Size = new System.Drawing.Size(1006, 777);
             this.settings_tabPage.TabIndex = 1;
             this.settings_tabPage.Text = "Settings";
             this.settings_tabPage.UseVisualStyleBackColor = true;
@@ -1327,7 +1327,6 @@
             // 
             // showJoeyProperties_button
             // 
-            this.showJoeyProperties_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.showJoeyProperties_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.showJoeyProperties_button.Location = new System.Drawing.Point(768, 315);
             this.showJoeyProperties_button.Name = "showJoeyProperties_button";
@@ -1339,13 +1338,12 @@
             // 
             // showIEU_button
             // 
-            this.showIEU_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.showIEU_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.showIEU_button.Location = new System.Drawing.Point(767, 245);
             this.showIEU_button.Name = "showIEU_button";
             this.showIEU_button.Size = new System.Drawing.Size(150, 61);
             this.showIEU_button.TabIndex = 57;
-            this.showIEU_button.Text = "Expose all settings";
+            this.showIEU_button.Text = "All settings";
             this.showIEU_button.UseVisualStyleBackColor = true;
             this.showIEU_button.Click += new System.EventHandler(this.showIEU_button_Click);
             // 
@@ -1357,7 +1355,7 @@
             this.groupBox12.Controls.Add(this.useOldVipsMerge_checkBox);
             this.groupBox12.Controls.Add(this.useMblend_checkBox);
             this.groupBox12.Controls.Add(this.balanceAlphas_checkBox);
-            this.groupBox12.Location = new System.Drawing.Point(834, 424);
+            this.groupBox12.Location = new System.Drawing.Point(830, 424);
             this.groupBox12.Name = "groupBox12";
             this.groupBox12.Size = new System.Drawing.Size(149, 130);
             this.groupBox12.TabIndex = 55;
@@ -1936,7 +1934,7 @@
             this.tableLayoutPanel2.Controls.Add(this.appCoreVersion_linkLabel, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.appVersion_label, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.checkForUpdates_checkBox, 0, 1);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(767, 717);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(763, 719);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -2328,7 +2326,7 @@
             this.settingsOutputFormat_tabPage.Controls.Add(this.ddsOutputSettings_groupBox);
             this.settingsOutputFormat_tabPage.Location = new System.Drawing.Point(4, 25);
             this.settingsOutputFormat_tabPage.Name = "settingsOutputFormat_tabPage";
-            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1010, 775);
+            this.settingsOutputFormat_tabPage.Size = new System.Drawing.Size(1006, 777);
             this.settingsOutputFormat_tabPage.TabIndex = 4;
             this.settingsOutputFormat_tabPage.Text = "Output formats";
             this.settingsOutputFormat_tabPage.UseVisualStyleBackColor = true;
@@ -2658,7 +2656,7 @@
             this.advanced_tabPage.Controls.Add(this.filters_groupBox);
             this.advanced_tabPage.Location = new System.Drawing.Point(4, 25);
             this.advanced_tabPage.Name = "advanced_tabPage";
-            this.advanced_tabPage.Size = new System.Drawing.Size(1010, 775);
+            this.advanced_tabPage.Size = new System.Drawing.Size(1006, 777);
             this.advanced_tabPage.TabIndex = 2;
             this.advanced_tabPage.Text = "Filters/Rules";
             this.advanced_tabPage.UseVisualStyleBackColor = true;
@@ -3146,7 +3144,7 @@
             this.interpolation_tabPage.Controls.Add(this.interpolationModelOne_comboBox);
             this.interpolation_tabPage.Location = new System.Drawing.Point(4, 25);
             this.interpolation_tabPage.Name = "interpolation_tabPage";
-            this.interpolation_tabPage.Size = new System.Drawing.Size(1010, 775);
+            this.interpolation_tabPage.Size = new System.Drawing.Size(1006, 777);
             this.interpolation_tabPage.TabIndex = 3;
             this.interpolation_tabPage.Text = "Models interpolation";
             this.interpolation_tabPage.UseVisualStyleBackColor = true;
@@ -3224,7 +3222,7 @@
             this.overlayResults_tabPage.Controls.Add(this.tableLayoutPanel4);
             this.overlayResults_tabPage.Location = new System.Drawing.Point(4, 25);
             this.overlayResults_tabPage.Name = "overlayResults_tabPage";
-            this.overlayResults_tabPage.Size = new System.Drawing.Size(1010, 775);
+            this.overlayResults_tabPage.Size = new System.Drawing.Size(1006, 777);
             this.overlayResults_tabPage.TabIndex = 6;
             this.overlayResults_tabPage.Text = "Image interpolation";
             this.overlayResults_tabPage.UseVisualStyleBackColor = true;
@@ -3247,16 +3245,16 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 175F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(1010, 775);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(1006, 777);
             this.tableLayoutPanel4.TabIndex = 4;
             // 
             // overlayImages_button
             // 
             this.overlayImages_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayImages_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayImages_button.Location = new System.Drawing.Point(913, 3);
+            this.overlayImages_button.Location = new System.Drawing.Point(909, 3);
             this.overlayImages_button.Name = "overlayImages_button";
-            this.overlayImages_button.Size = new System.Drawing.Size(94, 544);
+            this.overlayImages_button.Size = new System.Drawing.Size(94, 546);
             this.overlayImages_button.TabIndex = 1;
             this.overlayImages_button.Text = "Interpolate";
             this.overlayImages_button.UseVisualStyleBackColor = true;
@@ -3268,7 +3266,7 @@
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox4.Location = new System.Drawing.Point(3, 3);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(904, 544);
+            this.groupBox4.Size = new System.Drawing.Size(900, 546);
             this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Interpolate two images";
@@ -3288,7 +3286,7 @@
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 28F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(898, 525);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(894, 527);
             this.tableLayoutPanel5.TabIndex = 0;
             // 
             // groupBox7
@@ -3296,9 +3294,9 @@
             this.groupBox7.Controls.Add(this.imageBName_label);
             this.groupBox7.Controls.Add(this.imageB_panel);
             this.groupBox7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox7.Location = new System.Drawing.Point(452, 3);
+            this.groupBox7.Location = new System.Drawing.Point(450, 3);
             this.groupBox7.Name = "groupBox7";
-            this.groupBox7.Size = new System.Drawing.Size(443, 491);
+            this.groupBox7.Size = new System.Drawing.Size(441, 493);
             this.groupBox7.TabIndex = 1;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Image B";
@@ -3319,7 +3317,7 @@
             this.imageB_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_panel.Location = new System.Drawing.Point(3, 16);
             this.imageB_panel.Name = "imageB_panel";
-            this.imageB_panel.Size = new System.Drawing.Size(437, 472);
+            this.imageB_panel.Size = new System.Drawing.Size(435, 474);
             this.imageB_panel.TabIndex = 5;
             this.imageB_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageB_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -3329,7 +3327,7 @@
             this.imageB_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageB_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageB_pictureBox.Name = "imageB_pictureBox";
-            this.imageB_pictureBox.Size = new System.Drawing.Size(437, 472);
+            this.imageB_pictureBox.Size = new System.Drawing.Size(435, 474);
             this.imageB_pictureBox.TabIndex = 0;
             this.imageB_pictureBox.TabStop = false;
             // 
@@ -3340,7 +3338,7 @@
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox6.Location = new System.Drawing.Point(3, 3);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(443, 491);
+            this.groupBox6.Size = new System.Drawing.Size(441, 493);
             this.groupBox6.TabIndex = 1;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Image A";
@@ -3361,7 +3359,7 @@
             this.imageA_panel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_panel.Location = new System.Drawing.Point(3, 16);
             this.imageA_panel.Name = "imageA_panel";
-            this.imageA_panel.Size = new System.Drawing.Size(437, 472);
+            this.imageA_panel.Size = new System.Drawing.Size(435, 474);
             this.imageA_panel.TabIndex = 4;
             this.imageA_panel.DragDrop += new System.Windows.Forms.DragEventHandler(this.imagePanel_DragDrop);
             this.imageA_panel.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
@@ -3371,7 +3369,7 @@
             this.imageA_pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageA_pictureBox.Location = new System.Drawing.Point(0, 0);
             this.imageA_pictureBox.Name = "imageA_pictureBox";
-            this.imageA_pictureBox.Size = new System.Drawing.Size(437, 472);
+            this.imageA_pictureBox.Size = new System.Drawing.Size(435, 474);
             this.imageA_pictureBox.TabIndex = 0;
             this.imageA_pictureBox.TabStop = false;
             // 
@@ -3380,16 +3378,16 @@
             this.overlayResultName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.tableLayoutPanel5.SetColumnSpan(this.overlayResultName_textBox, 2);
             this.overlayResultName_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 500);
+            this.overlayResultName_textBox.Location = new System.Drawing.Point(3, 502);
             this.overlayResultName_textBox.Name = "overlayResultName_textBox";
-            this.overlayResultName_textBox.Size = new System.Drawing.Size(892, 20);
+            this.overlayResultName_textBox.Size = new System.Drawing.Size(888, 20);
             this.overlayResultName_textBox.TabIndex = 2;
             // 
             // overlayFolders_button
             // 
             this.overlayFolders_button.Dock = System.Windows.Forms.DockStyle.Fill;
             this.overlayFolders_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.overlayFolders_button.Location = new System.Drawing.Point(913, 603);
+            this.overlayFolders_button.Location = new System.Drawing.Point(909, 605);
             this.overlayFolders_button.Name = "overlayFolders_button";
             this.overlayFolders_button.Size = new System.Drawing.Size(94, 169);
             this.overlayFolders_button.TabIndex = 1;
@@ -3402,7 +3400,7 @@
             this.imageInterpolationAlphaValue_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imageInterpolationAlphaValue_textBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.imageInterpolationAlphaValue_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(913, 562);
+            this.imageInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(909, 564);
             this.imageInterpolationAlphaValue_textBox.Margin = new System.Windows.Forms.Padding(3, 12, 3, 3);
             this.imageInterpolationAlphaValue_textBox.Name = "imageInterpolationAlphaValue_textBox";
             this.imageInterpolationAlphaValue_textBox.ReadOnly = true;
@@ -3425,7 +3423,7 @@
             this.groupBox5.Controls.Add(this.resultsBPath_textBox);
             this.groupBox5.Controls.Add(this.resultsDestinationPath_textBox);
             this.groupBox5.Controls.Add(this.label28);
-            this.groupBox5.Location = new System.Drawing.Point(3, 603);
+            this.groupBox5.Location = new System.Drawing.Point(3, 605);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(661, 169);
             this.groupBox5.TabIndex = 0;
@@ -3555,9 +3553,9 @@
             // 
             this.panel3.Controls.Add(this.imageInterpolation_trackBar);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 553);
+            this.panel3.Location = new System.Drawing.Point(3, 555);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(904, 44);
+            this.panel3.Size = new System.Drawing.Size(900, 44);
             this.panel3.TabIndex = 6;
             // 
             // imageInterpolation_trackBar
@@ -3568,7 +3566,7 @@
             this.imageInterpolation_trackBar.Maximum = 99;
             this.imageInterpolation_trackBar.Minimum = 1;
             this.imageInterpolation_trackBar.Name = "imageInterpolation_trackBar";
-            this.imageInterpolation_trackBar.Size = new System.Drawing.Size(904, 44);
+            this.imageInterpolation_trackBar.Size = new System.Drawing.Size(900, 44);
             this.imageInterpolation_trackBar.TabIndex = 5;
             this.imageInterpolation_trackBar.Value = 50;
             this.imageInterpolation_trackBar.Scroll += new System.EventHandler(this.ImageInterpolation_trackBar_Scroll);
@@ -3613,10 +3611,10 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1018, 804);
+            this.ClientSize = new System.Drawing.Size(1014, 806);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1030, 815);
+            this.MinimumSize = new System.Drawing.Size(1030, 845);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image Enhancing Utility";
