@@ -30,7 +30,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainForm : Form, IViewFor<MainViewModel>
     {
-        public readonly string AppVersion = "0.12.05";
+        public readonly string AppVersion = "0.13.0";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public MainViewModel ViewModel { get; set; }
