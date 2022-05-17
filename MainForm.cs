@@ -180,12 +180,6 @@ namespace ImageEnhancingUtility.Winforms
 
             BindAdvanced();
 
-            bool myPathAreOk = VerifyPaths();
-
-            if (!myPathAreOk)
-                tabControl1.SelectedIndex = 2;
-
-
             if (ViewModel.Config.CheckForUpdates)
             {
                 ViewModel.IEU.Logger.Write("Checking new releases on github...");
@@ -695,7 +689,9 @@ namespace ImageEnhancingUtility.Winforms
                 }
             }
             if (!allgood)
+            {
                 MessageBox.Show(message);
+            }
 
             main_tabPage.Enabled = allgood;
             interpolation_tabPage.Enabled = allgood;
@@ -1437,6 +1433,10 @@ namespace ImageEnhancingUtility.Winforms
             tabControl1.SelectedIndex = ViewModel.Config.ActiveTab;
             comparison_colorWheel.Color = ViewModel.Config.ComparisonColor;
             comparisonMod_comboBox.SelectedIndex = ViewModel.Config.ComparisonModSelectedIndex;
+
+            bool myPathAreOk = VerifyPaths();
+            if (!myPathAreOk)
+                tabControl1.SelectedIndex = 2;
         }
 
         private void MainForm_DoubleClick(object sender, EventArgs e)
