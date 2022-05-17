@@ -110,6 +110,7 @@
             this.useOldVipsMerge_checkBox = new System.Windows.Forms.CheckBox();
             this.useMblend_checkBox = new System.Windows.Forms.CheckBox();
             this.balanceAlphas_checkBox = new System.Windows.Forms.CheckBox();
+            this.preciseTile_checkBox = new System.Windows.Forms.CheckBox();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
             this.topMost_checkBox = new System.Windows.Forms.CheckBox();
             this.showDebugInfo_checkBox = new System.Windows.Forms.CheckBox();
@@ -173,7 +174,6 @@
             this.changeMergedResultsPath_button = new System.Windows.Forms.Button();
             this.changeEsrganPath_button = new System.Windows.Forms.Button();
             this.autoSetTileSize_checkBox = new System.Windows.Forms.CheckBox();
-            this.preciseTile_checkBox = new System.Windows.Forms.CheckBox();
             this.label36 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.tilesPadding_numericUpDown = new System.Windows.Forms.NumericUpDown();
@@ -1421,6 +1421,20 @@
             this.toolTip1.SetToolTip(this.balanceAlphas_checkBox, "No need to enable this for most cases");
             this.balanceAlphas_checkBox.UseVisualStyleBackColor = true;
             // 
+            // preciseTile_checkBox
+            // 
+            this.preciseTile_checkBox.AutoSize = true;
+            this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(11, 131);
+            this.preciseTile_checkBox.Name = "preciseTile_checkBox";
+            this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
+            this.preciseTile_checkBox.TabIndex = 25;
+            this.preciseTile_checkBox.Text = "Precise tile dimensions";
+            this.toolTip1.SetToolTip(this.preciseTile_checkBox, "Usefull when you need to create tiles for training");
+            this.preciseTile_checkBox.UseVisualStyleBackColor = true;
+            this.preciseTile_checkBox.Visible = false;
+            this.preciseTile_checkBox.CheckedChanged += new System.EventHandler(this.preciseTile_checkBox_CheckedChanged);
+            // 
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.topMost_checkBox);
@@ -1897,7 +1911,7 @@
             // modelsPath_textBox
             // 
             this.modelsPath_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.modelsPath_textBox.Location = new System.Drawing.Point(111, 151);
+            this.modelsPath_textBox.Location = new System.Drawing.Point(111, 99);
             this.modelsPath_textBox.Name = "modelsPath_textBox";
             this.modelsPath_textBox.ReadOnly = true;
             this.modelsPath_textBox.Size = new System.Drawing.Size(502, 20);
@@ -1907,7 +1921,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(75, 104);
+            this.label2.Location = new System.Drawing.Point(75, 130);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 13);
             this.label2.TabIndex = 20;
@@ -1999,7 +2013,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(62, 127);
+            this.label7.Location = new System.Drawing.Point(62, 153);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(42, 13);
             this.label7.TabIndex = 20;
@@ -2019,7 +2033,7 @@
             // outputPath_textBox
             // 
             this.outputPath_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.outputPath_textBox.Location = new System.Drawing.Point(111, 125);
+            this.outputPath_textBox.Location = new System.Drawing.Point(111, 151);
             this.outputPath_textBox.Name = "outputPath_textBox";
             this.outputPath_textBox.ReadOnly = true;
             this.outputPath_textBox.Size = new System.Drawing.Size(502, 20);
@@ -2038,7 +2052,7 @@
             // inputPath_textBox
             // 
             this.inputPath_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.inputPath_textBox.Location = new System.Drawing.Point(111, 99);
+            this.inputPath_textBox.Location = new System.Drawing.Point(111, 125);
             this.inputPath_textBox.Name = "inputPath_textBox";
             this.inputPath_textBox.ReadOnly = true;
             this.inputPath_textBox.Size = new System.Drawing.Size(502, 20);
@@ -2071,7 +2085,7 @@
             // changeModelsPath_button
             // 
             this.changeModelsPath_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.changeModelsPath_button.Location = new System.Drawing.Point(618, 150);
+            this.changeModelsPath_button.Location = new System.Drawing.Point(618, 98);
             this.changeModelsPath_button.Name = "changeModelsPath_button";
             this.changeModelsPath_button.Size = new System.Drawing.Size(46, 20);
             this.changeModelsPath_button.TabIndex = 29;
@@ -2105,7 +2119,7 @@
             // changeInputPath_button
             // 
             this.changeInputPath_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.changeInputPath_button.Location = new System.Drawing.Point(618, 98);
+            this.changeInputPath_button.Location = new System.Drawing.Point(618, 124);
             this.changeInputPath_button.Name = "changeInputPath_button";
             this.changeInputPath_button.Size = new System.Drawing.Size(46, 20);
             this.changeInputPath_button.TabIndex = 29;
@@ -2116,7 +2130,7 @@
             // changeOutputPath_button
             // 
             this.changeOutputPath_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.changeOutputPath_button.Location = new System.Drawing.Point(618, 124);
+            this.changeOutputPath_button.Location = new System.Drawing.Point(618, 150);
             this.changeOutputPath_button.Name = "changeOutputPath_button";
             this.changeOutputPath_button.Size = new System.Drawing.Size(46, 20);
             this.changeOutputPath_button.TabIndex = 29;
@@ -2127,9 +2141,10 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(62, 154);
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label8.Location = new System.Drawing.Point(48, 100);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(41, 13);
+            this.label8.Size = new System.Drawing.Size(58, 16);
             this.label8.TabIndex = 20;
             this.label8.Text = "Models";
             // 
@@ -2177,20 +2192,6 @@
             this.autoSetTileSize_checkBox.Text = "Auto set tile dimensions";
             this.autoSetTileSize_checkBox.UseVisualStyleBackColor = true;
             this.autoSetTileSize_checkBox.CheckedChanged += new System.EventHandler(this.autoSetTileSize_checkBox_CheckedChanged);
-            // 
-            // preciseTile_checkBox
-            // 
-            this.preciseTile_checkBox.AutoSize = true;
-            this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(11, 131);
-            this.preciseTile_checkBox.Name = "preciseTile_checkBox";
-            this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
-            this.preciseTile_checkBox.TabIndex = 25;
-            this.preciseTile_checkBox.Text = "Precise tile dimensions";
-            this.toolTip1.SetToolTip(this.preciseTile_checkBox, "Usefull when you need to create tiles for training");
-            this.preciseTile_checkBox.UseVisualStyleBackColor = true;
-            this.preciseTile_checkBox.Visible = false;
-            this.preciseTile_checkBox.CheckedChanged += new System.EventHandler(this.preciseTile_checkBox_CheckedChanged);
             // 
             // label36
             // 
@@ -2278,9 +2279,10 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(72, 49);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label4.Location = new System.Drawing.Point(66, 47);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(31, 13);
+            this.label4.Size = new System.Drawing.Size(40, 16);
             this.label4.TabIndex = 20;
             this.label4.Text = "Input";
             // 
@@ -2297,18 +2299,20 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 76);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label3.Location = new System.Drawing.Point(55, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(51, 16);
             this.label3.TabIndex = 18;
             this.label3.Text = "Output";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(50, 23);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.1F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.Location = new System.Drawing.Point(36, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(70, 16);
             this.label1.TabIndex = 16;
             this.label1.Text = "ESRGAN";
             // 
