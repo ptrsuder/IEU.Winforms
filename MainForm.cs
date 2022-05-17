@@ -115,7 +115,14 @@ namespace ImageEnhancingUtility.Winforms
 
             BindCommands();
 
-            pathsTextBoxes = new List<TextBox> { esrganPath_textBox, imgPath_textBox, modelsPath_textBox };
+            pathsTextBoxes = new List<TextBox> {  esrganPath_textBox, imgPath_textBox, modelsPath_textBox };
+            var pathTextBoxesAll = new List<TextBox> { esrganPath_textBox, imgPath_textBox, resultsMergedPath_textBox, modelsPath_textBox, inputPath_textBox, outputPath_textBox };
+            foreach (TextBox t in pathTextBoxesAll)
+            {
+                t.AllowDrop = true;
+                t.DragDrop += new DragEventHandler(textbox_DragDrop);
+                t.DragEnter += new DragEventHandler(general_DragEnter);
+            }
             SetPathButtons();
 
             appVersion_label.Text = "IEU.Winforms v" + this.AppVersion;
@@ -1617,6 +1624,20 @@ namespace ImageEnhancingUtility.Winforms
                     }
                 }
             MessageBox.Show($"Succesfully copied {imagesCopied} files" + (modelsCopied > 0 ? $" and { modelsCopied} models" : ""));
+        }
+
+        private void textbox_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] filePaths = e.Data.GetData(DataFormats.FileDrop) as string[];
+            var path = filePaths[0];
+            string folderName = Path.GetFileName(path);
+            string folderNewPath = imgPath_textBox.Text + Path.DirectorySeparatorChar + folderName;
+
+            if ((File.GetAttributes(path) & FileAttributes.Directory) == FileAttributes.Directory)
+            {
+                var t = (sender as TextBox);
+                t.Text = path;
+            }
         }
 
         #region MODEL INTERPOLATION

@@ -430,7 +430,6 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.AllowDrop = true;
             this.tabControl1.Appearance = System.Windows.Forms.TabAppearance.FlatButtons;
             this.tabControl1.Controls.Add(this.main_tabPage);
             this.tabControl1.Controls.Add(this.previewResult_tabPage);
@@ -448,12 +447,11 @@
             this.tabControl1.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabControl1.TabIndex = 19;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            this.tabControl1.DragDrop += new System.Windows.Forms.DragEventHandler(this.mainTab_DragDrop);
-            this.tabControl1.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
             this.tabControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
             // 
             // main_tabPage
             // 
+            this.main_tabPage.AllowDrop = true;
             this.main_tabPage.Controls.Add(this.tableLayoutPanel1);
             this.main_tabPage.Location = new System.Drawing.Point(4, 25);
             this.main_tabPage.Name = "main_tabPage";
@@ -462,6 +460,8 @@
             this.main_tabPage.TabIndex = 0;
             this.main_tabPage.Text = "Main";
             this.main_tabPage.UseVisualStyleBackColor = true;
+            this.main_tabPage.DragDrop += new System.Windows.Forms.DragEventHandler(this.mainTab_DragDrop);
+            this.main_tabPage.DragEnter += new System.Windows.Forms.DragEventHandler(this.general_DragEnter);
             // 
             // tableLayoutPanel1
             // 
@@ -1092,7 +1092,6 @@
             this.settings_tabPage.Controls.Add(this.changeMergedResultsPath_button);
             this.settings_tabPage.Controls.Add(this.changeEsrganPath_button);
             this.settings_tabPage.Controls.Add(this.autoSetTileSize_checkBox);
-            this.settings_tabPage.Controls.Add(this.preciseTile_checkBox);
             this.settings_tabPage.Controls.Add(this.label36);
             this.settings_tabPage.Controls.Add(this.label6);
             this.settings_tabPage.Controls.Add(this.tilesPadding_numericUpDown);
@@ -1355,9 +1354,10 @@
             this.groupBox12.Controls.Add(this.useOldVipsMerge_checkBox);
             this.groupBox12.Controls.Add(this.useMblend_checkBox);
             this.groupBox12.Controls.Add(this.balanceAlphas_checkBox);
-            this.groupBox12.Location = new System.Drawing.Point(830, 424);
+            this.groupBox12.Controls.Add(this.preciseTile_checkBox);
+            this.groupBox12.Location = new System.Drawing.Point(834, 555);
             this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(149, 130);
+            this.groupBox12.Size = new System.Drawing.Size(154, 154);
             this.groupBox12.TabIndex = 55;
             this.groupBox12.TabStop = false;
             this.groupBox12.Text = "Legacy merge";
@@ -1473,7 +1473,7 @@
             // deleteProfile_button
             // 
             this.deleteProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.deleteProfile_button.Location = new System.Drawing.Point(834, 678);
+            this.deleteProfile_button.Location = new System.Drawing.Point(834, 477);
             this.deleteProfile_button.Name = "deleteProfile_button";
             this.deleteProfile_button.Size = new System.Drawing.Size(149, 31);
             this.deleteProfile_button.TabIndex = 53;
@@ -1889,7 +1889,7 @@
             // saveProfileName_textBox
             // 
             this.saveProfileName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.saveProfileName_textBox.Location = new System.Drawing.Point(834, 583);
+            this.saveProfileName_textBox.Location = new System.Drawing.Point(834, 382);
             this.saveProfileName_textBox.Name = "saveProfileName_textBox";
             this.saveProfileName_textBox.Size = new System.Drawing.Size(149, 20);
             this.saveProfileName_textBox.TabIndex = 52;
@@ -1916,7 +1916,7 @@
             // saveProfile_button
             // 
             this.saveProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.saveProfile_button.Location = new System.Drawing.Point(834, 609);
+            this.saveProfile_button.Location = new System.Drawing.Point(834, 408);
             this.saveProfile_button.Name = "saveProfile_button";
             this.saveProfile_button.Size = new System.Drawing.Size(149, 31);
             this.saveProfile_button.TabIndex = 50;
@@ -2008,7 +2008,7 @@
             // loadProfile_button
             // 
             this.loadProfile_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.loadProfile_button.Location = new System.Drawing.Point(834, 643);
+            this.loadProfile_button.Location = new System.Drawing.Point(834, 442);
             this.loadProfile_button.Name = "loadProfile_button";
             this.loadProfile_button.Size = new System.Drawing.Size(149, 31);
             this.loadProfile_button.TabIndex = 51;
@@ -2182,7 +2182,7 @@
             // 
             this.preciseTile_checkBox.AutoSize = true;
             this.preciseTile_checkBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(845, 560);
+            this.preciseTile_checkBox.Location = new System.Drawing.Point(11, 131);
             this.preciseTile_checkBox.Name = "preciseTile_checkBox";
             this.preciseTile_checkBox.Size = new System.Drawing.Size(129, 17);
             this.preciseTile_checkBox.TabIndex = 25;
@@ -2306,11 +2306,11 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 23);
+            this.label1.Location = new System.Drawing.Point(50, 23);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 13);
+            this.label1.Size = new System.Drawing.Size(52, 13);
             this.label1.TabIndex = 16;
-            this.label1.Text = "Working folder";
+            this.label1.Text = "ESRGAN";
             // 
             // settingsOutputFormat_tabPage
             // 
