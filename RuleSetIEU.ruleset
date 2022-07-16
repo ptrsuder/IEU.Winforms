@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RuleSet Name="RuleSetIEU" ToolsVersion="17.0">
+  <Include Path="minimumrecommendedrules.ruleset" Action="Default" />
+  <Include Path="rulesetieu.ruleset" Action="Default" />
+  <Rules AnalyzerId="Microsoft.Analyzers.ManagedCodeAnalysis" RuleNamespace="Microsoft.Rules.Managed">
+    <Rule Id="CA1809" Action="Warning" />
+    <Rule Id="CA1811" Action="Warning" />
+    <Rule Id="CA1812" Action="Warning" />
+  </Rules>
+</RuleSet>

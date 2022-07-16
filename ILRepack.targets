@@ -1,0 +1,9 @@
+
+<dnMergeConfig>
+    <GeneratePDB>true</GeneratePDB>
+    <OverwriteAssembly>true</OverwriteAssembly>
+    <ExcludeReferences>
+        <ReferenceName>DdsFileTypePlusIO_x64.dll</ReferenceName>
+		<ReferenceName>DdsFileTypePlusIO_x86.dll</ReferenceName>
+    </ExcludeReferences>
+</dnMergeConfig>

@@ -665,7 +665,7 @@ namespace ImageEnhancingUtility.Winforms
                     break;
                 default:
                     updateMessage += "New version is available!";
-                    using (UpdateNotifyDialog updateNotifyDialog = new UpdateNotifyDialog(checkerWinforms, updateMessage))
+                    using (UpdateNotifyDialog updateNotifyDialog = new(checkerWinforms, updateMessage))
                     {
                         updateNotifyDialog.ShowDialog(this);
                     }

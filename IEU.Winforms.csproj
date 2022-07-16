@@ -2,6 +2,9 @@
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
+    <LangVersion>preview</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{211CE32D-0337-4BDB-858E-3B87BB4A833E}</ProjectGuid>
@@ -30,7 +33,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon_nDR_4.ico</ApplicationIcon>
+    <ApplicationIcon>Icons\icon_nDR_4.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
@@ -58,7 +61,7 @@
     <DebugType>full</DebugType>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
-    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRuleSet>RuleSetIEU.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'">
@@ -98,25 +101,87 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Config.cs" />
-    <Compile Include="ErrorLogForm.cs">
+    <Compile Include="DarkDocuments\DarkDockImageInterpolationTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockImageInterpolationTab.designer.cs">
+      <DependentUpon>DarkDockImageInterpolationTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockTEST.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockTEST.designer.cs">
+      <DependentUpon>DarkDockTEST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockRulesTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockRulesTab.designer.cs">
+      <DependentUpon>DarkDockRulesTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockModelsInterpolationTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockModelsInterpolationTab.designer.cs">
+      <DependentUpon>DarkDockModelsInterpolationTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockFormatsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockFormatsTab.designer.cs">
+      <DependentUpon>DarkDockFormatsTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockPreviewTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockPreviewTab.designer.cs">
+      <DependentUpon>DarkDockPreviewTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockSettingsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockSettingsTab.designer.cs">
+      <DependentUpon>DarkDockSettingsTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockMainTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\DarkDockMainTab.designer.cs">
+      <DependentUpon>DarkDockMainTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ErrorLogForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ErrorLogForm.Designer.cs">
+    <Compile Include="Forms\ErrorLogForm.Designer.cs">
       <DependentUpon>ErrorLogForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainViewModel.cs" />
-    <Compile Include="PropertiesForm.cs">
+    <Compile Include="Icons\Icon.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Icon.resx</DependentUpon>
+    </Compile>
+    <Compile Include="DarkForms\MainFormDark.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PropertiesForm.Designer.cs">
+    <Compile Include="DarkForms\MainFormDark.Designer.cs">
+      <DependentUpon>MainFormDark.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainViewModel.cs" />
+    <Compile Include="Forms\PropertiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PropertiesForm.Designer.cs">
       <DependentUpon>PropertiesForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="SortListForm.cs">
+    <Compile Include="Forms\SortListForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SortListForm.Designer.cs">
+    <Compile Include="Forms\SortListForm.Designer.cs">
       <DependentUpon>SortListForm.cs</DependentUpon>
     </Compile>
+    <None Include="RuleSetIEU.ruleset" />
+    <None Include="WinformsControls\DarkComboBox.cs" />
+    <Compile Include="WinformsControls\DarkTheme.cs" />
     <Compile Include="WinformsControls\MyTreeView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -126,48 +191,81 @@
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="WinformsControls\RichTextBoxExtensions.cs" />
-    <Compile Include="StepFinishedForm.cs">
+    <Compile Include="Forms\StepFinishedForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="StepFinishedForm.designer.cs">
+    <Compile Include="Forms\StepFinishedForm.designer.cs">
       <DependentUpon>StepFinishedForm.cs</DependentUpon>
     </Compile>
     <Compile Include="FolderSelectDialog\FolderSaveDialog.cs" />
     <Compile Include="FolderSelectDialog\FolderSelectDialog.cs" />
-    <Compile Include="MainForm.cs">
+    <None Include="Forms\MainForm.cs">
       <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="MainForm.Designer.cs">
+    </None>
+    <None Include="Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
+    </None>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FolderSelectDialog\Reflector.cs" />
-    <Compile Include="UpdateNotifyDialog.cs">
+    <Compile Include="Forms\UpdateNotifyDialog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UpdateNotifyDialog.designer.cs">
+    <Compile Include="Forms\UpdateNotifyDialog.designer.cs">
       <DependentUpon>UpdateNotifyDialog.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ErrorLogForm.resx">
+    <None Include="WinformsControls\ScrollIcons.cs" />
+    <EmbeddedResource Include="DarkDocuments\DarkDockImageInterpolationTab.resx">
+      <DependentUpon>DarkDockImageInterpolationTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\DarkDockTEST.resx">
+      <DependentUpon>DarkDockTEST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\DarkDockRulesTab.resx">
+      <DependentUpon>DarkDockRulesTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\DarkDockModelsInterpolationTab.resx">
+      <DependentUpon>DarkDockModelsInterpolationTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\DarkDockFormatsTab.resx">
+      <DependentUpon>DarkDockFormatsTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\DarkDockPreviewTab.resx">
+      <DependentUpon>DarkDockPreviewTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\DarkDockSettingsTab.resx">
+      <DependentUpon>DarkDockSettingsTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\DarkDockMainTab.resx">
+      <DependentUpon>DarkDockMainTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ErrorLogForm.resx">
       <DependentUpon>ErrorLogForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="PropertiesForm.resx">
+    <EmbeddedResource Include="Icons\Icon.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icon.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkForms\MainFormDark.resx">
+      <DependentUpon>MainFormDark.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PropertiesForm.resx">
       <DependentUpon>PropertiesForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SortListForm.resx">
+    <EmbeddedResource Include="Forms\SortListForm.resx">
       <DependentUpon>SortListForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WinformsControls\MyTreeView.resx">
       <DependentUpon>MyTreeView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="StepFinishedForm.resx">
+    <EmbeddedResource Include="Forms\StepFinishedForm.resx">
       <DependentUpon>StepFinishedForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
+    <None Include="Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
+    </None>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -190,12 +288,25 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="UpdateNotifyDialog.resx">
+    <EmbeddedResource Include="Forms\UpdateNotifyDialog.resx">
       <DependentUpon>UpdateNotifyDialog.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon_nDR_4.ico" />
+    <Content Include="Icons\icon_nDR_4.ico" />
+    <None Include="Icons\Resources\StatusAnnotations_Information_16xMD_color.png" />
+    <None Include="Icons\Resources\StatusAnnotations_Information_16xLG_color.png" />
+    <None Include="Icons\Resources\RefactoringLog_12810.png" />
+    <None Include="Icons\Resources\properties_16xLG.png" />
+    <None Include="Icons\Resources\NewFile_6276.png" />
+    <None Include="Icons\Resources\folder_Closed_16xLG.png" />
+    <None Include="Icons\Resources\folder_16x.png" />
+    <None Include="Icons\Resources\Files_7954.png" />
+    <None Include="Icons\Resources\document_16xLG.png" />
+    <None Include="Icons\Resources\Console.png" />
+    <None Include="Icons\Resources\Collection_16xLG.png" />
+    <None Include="Icons\Resources\Close_16xLG.png" />
+    <None Include="Icons\Resources\application_16x.png" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Cyotek.Windows.Forms.ColorPicker">
@@ -204,10 +315,18 @@
     <PackageReference Include="CyotekImageBox">
       <Version>1.3.0-Alpha1</Version>
     </PackageReference>
+    <PackageReference Include="dnMerge">
+      <Version>0.5.15</Version>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.CSharp" version="4.5.0" />
     <PackageReference Include="ReactiveUI" version="10.3.6" />
     <PackageReference Include="ReactiveUI.WinForms" version="10.3.6" />
     <PackageReference Include="Splat" version="9.4.5" />
+    <PackageReference Include="System.Drawing.Common">
+      <Version>6.0.0</Version>
+    </PackageReference>
     <PackageReference Include="System.Drawing.Primitives" version="4.3.0" />
     <PackageReference Include="System.Threading.Tasks.Extensions" version="4.5.2" />
     <PackageReference Include="System.ValueTuple" version="4.5.0" />
@@ -223,6 +342,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AltUI\AltUI.csproj">
+      <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
+      <Name>AltUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GitHubUpdateStandard\GitHubUpdateStandard.csproj">
       <Project>{91455969-13e4-419b-948a-6c8fa1198c07}</Project>
       <Name>GitHubUpdateStandard</Name>
@@ -232,6 +355,7 @@
       <Name>IEU.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>xcopy "$(SolutionDir)IEU.Core\Scripts\pthReader.py" "$(TargetDir)" /Y /I</PostBuildEvent>

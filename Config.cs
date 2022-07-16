@@ -108,5 +108,12 @@ namespace ImageEnhancingUtility.Winforms
             get => _showPreviewSaveDialog;
             set => this.RaiseAndSetIfChanged(ref _showPreviewSaveDialog, value);
         }
+
+        bool _darkTheme = true;
+        public bool DarkTheme
+        {
+            get => _darkTheme;
+            set => this.RaiseAndSetIfChanged(ref _darkTheme, value);
+        }
     }
 }

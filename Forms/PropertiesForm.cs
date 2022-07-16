@@ -1,19 +1,5 @@
-﻿using System;
-using System.Drawing.Text;
-using System.IO;
-using System.Linq;
-using System.Reactive.Linq;
-using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using Cyotek.Windows.Forms;
-using DynamicData;
-using GitHubUpdate;
-using ImageEnhancingUtility.Core;
-using ImageEnhancingUtility.Core.Utility;
+﻿using System.Windows.Forms;
 using ReactiveUI;
-using Tulpep.NotificationWindow;
-using Rule = ImageEnhancingUtility.Core.Rule;
 
 namespace ImageEnhancingUtility.Winforms
 {

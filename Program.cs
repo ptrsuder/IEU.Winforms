@@ -16,7 +16,7 @@ namespace ImageEnhancingUtility.Winforms
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);            
-            Application.Run(new MainForm());
+            Application.Run(new MainFormDark());
         }
 
         static void MyHandler(object sender, UnhandledExceptionEventArgs args)
