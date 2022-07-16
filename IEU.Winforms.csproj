@@ -79,6 +79,10 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AltUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>lib\AltUI.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -342,10 +346,6 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AltUI\AltUI.csproj">
-      <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
-      <Name>AltUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GitHubUpdateStandard\GitHubUpdateStandard.csproj">
       <Project>{91455969-13e4-419b-948a-6c8fa1198c07}</Project>
       <Name>GitHubUpdateStandard</Name>
