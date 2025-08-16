@@ -1,0 +1,28 @@
+﻿using AltUI.Config;
+using AltUI.Controls;
+using AltUI.Docking;
+using AltUI.Forms;
+using System.Drawing;
+using System.Windows.Forms;
+
+namespace ImageEnhancingUtility.Winforms
+{
+    public partial class SettingsFilterTab : DarkDocument
+    {
+        #region Constructor Region
+
+        public SettingsFilterTab()
+        {
+            InitializeComponent();         
+        }
+
+        public SettingsFilterTab(string text, Image icon)
+            : this()
+        {
+            DockText = text;
+            Icon = icon;
+        }
+
+        #endregion     
+    }
+}

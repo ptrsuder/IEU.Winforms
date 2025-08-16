@@ -7,29 +7,20 @@ using System.Windows.Forms;
 
 namespace ImageEnhancingUtility.Winforms
 {
-    public partial class DarkDockTest : DarkDockContent
+    public partial class SettingsPathsTab : DarkDocument
     {
         #region Constructor Region
 
-        public DarkDockTest()
+        public SettingsPathsTab()
         {
             InitializeComponent();         
         }
 
-        public DarkDockTest(string text, Image icon)
+        public SettingsPathsTab(string text, Image icon)
             : this()
         {
             DockText = text;
-            Icon = icon;            
-            Application.AddMessageFilter(DockPanel.DockResizeFilter);
-            DockPanel.Vertical = true;
-        }
-
-        public DarkDockGroup VerticalGroup;
-
-        public void AddTab(DarkDocument doc)
-        {
-            DockPanel.AddContent(doc);
+            Icon = icon;
         }
 
         #endregion
@@ -38,15 +29,18 @@ namespace ImageEnhancingUtility.Winforms
 
         public override void Close()
         {
-            return;
+            var result = DarkMessageBox.ShowWarning(@"You will lose any unsaved changes. Continue?", @"Close document", DarkDialogButton.YesNo);
+            if (result == DialogResult.No)
+                return;
+
+            base.Close();
         }
 
         #endregion
 
         private void DockDocument_Load(object sender, System.EventArgs e)
         {
-            
 
-        }             
+        }       
     }
 }

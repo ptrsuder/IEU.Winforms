@@ -32,29 +32,14 @@ namespace ImageEnhancingUtility.Winforms
         {
             this.groupBox14 = new AltUI.Controls.DarkGroupBox();
             this.condaEnvName_textBox = new AltUI.Controls.DarkTextBox();
-            this.advancedSuffix_textBox = new AltUI.Controls.DarkTextBox();
             this.createMemoryImage_checkBox = new AltUI.Controls.DarkCheckBox();
             this.label34 = new AltUI.Controls.DarkLabel();
-            this.advancedUseSuffix_checkBox = new AltUI.Controls.DarkCheckBox();
             this.monitorVram_checkBox = new AltUI.Controls.DarkCheckBox();
             this.monitorFrequency_numericUpDown = new AltUI.Controls.DarkNumericUpDown();
             this.deleteResults_checkBox = new AltUI.Controls.DarkCheckBox();
             this.useCondaEnv_checkBox = new AltUI.Controls.DarkCheckBox();
             this.groupBox13 = new AltUI.Controls.DarkGroupBox();
-            this.joeyEsrgan_linkLabel = new System.Windows.Forms.LinkLabel();
-            this.useCPU_checkBox = new AltUI.Controls.DarkCheckBox();
             this.inMemoryMode_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.useJoey_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.useBasicSR_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.showJoeyProperties_button = new AltUI.Controls.DarkButton();
-            this.showIEU_button = new AltUI.Controls.DarkButton();
-            this.groupBox12 = new AltUI.Controls.DarkGroupBox();
-            this.balanceRgb_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.useImMerge_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.useOldVipsMerge_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.useMblend_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.balanceAlphas_checkBox = new AltUI.Controls.DarkCheckBox();
-            this.preciseTile_checkBox = new AltUI.Controls.DarkCheckBox();
             this.groupBox8 = new AltUI.Controls.DarkGroupBox();
             this.topMost_checkBox = new AltUI.Controls.DarkCheckBox();
             this.darkTheme_сheckBox = new AltUI.Controls.DarkCheckBox();
@@ -139,7 +124,6 @@ namespace ImageEnhancingUtility.Winforms
             this.groupBox14.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).BeginInit();
             this.groupBox13.SuspendLayout();
-            this.groupBox12.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox9.SuspendLayout();
             this.imagePostprocess_groupBox.SuspendLayout();
@@ -158,10 +142,8 @@ namespace ImageEnhancingUtility.Winforms
             // groupBox14
             // 
             this.groupBox14.Controls.Add(this.condaEnvName_textBox);
-            this.groupBox14.Controls.Add(this.advancedSuffix_textBox);
             this.groupBox14.Controls.Add(this.createMemoryImage_checkBox);
             this.groupBox14.Controls.Add(this.label34);
-            this.groupBox14.Controls.Add(this.advancedUseSuffix_checkBox);
             this.groupBox14.Controls.Add(this.monitorVram_checkBox);
             this.groupBox14.Controls.Add(this.monitorFrequency_numericUpDown);
             this.groupBox14.Controls.Add(this.deleteResults_checkBox);
@@ -185,17 +167,6 @@ namespace ImageEnhancingUtility.Winforms
             this.condaEnvName_textBox.Size = new System.Drawing.Size(149, 23);
             this.condaEnvName_textBox.TabIndex = 52;
             // 
-            // advancedSuffix_textBox
-            // 
-            this.advancedSuffix_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.advancedSuffix_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.advancedSuffix_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.advancedSuffix_textBox.Location = new System.Drawing.Point(158, 112);
-            this.advancedSuffix_textBox.Name = "advancedSuffix_textBox";
-            this.advancedSuffix_textBox.ReadOnly = true;
-            this.advancedSuffix_textBox.Size = new System.Drawing.Size(149, 23);
-            this.advancedSuffix_textBox.TabIndex = 1;
-            // 
             // createMemoryImage_checkBox
             // 
             this.createMemoryImage_checkBox.AutoSize = true;
@@ -214,16 +185,6 @@ namespace ImageEnhancingUtility.Winforms
             this.label34.Size = new System.Drawing.Size(23, 15);
             this.label34.TabIndex = 59;
             this.label34.Text = "ms";
-            // 
-            // advancedUseSuffix_checkBox
-            // 
-            this.advancedUseSuffix_checkBox.AutoSize = true;
-            this.advancedUseSuffix_checkBox.Location = new System.Drawing.Point(11, 112);
-            this.advancedUseSuffix_checkBox.Name = "advancedUseSuffix_checkBox";
-            this.advancedUseSuffix_checkBox.Offset = 1;
-            this.advancedUseSuffix_checkBox.Size = new System.Drawing.Size(132, 19);
-            this.advancedUseSuffix_checkBox.TabIndex = 0;
-            this.advancedUseSuffix_checkBox.Text = "Use suffix for results";
             // 
             // monitorVram_checkBox
             // 
@@ -289,11 +250,7 @@ namespace ImageEnhancingUtility.Winforms
             // 
             // groupBox13
             // 
-            this.groupBox13.Controls.Add(this.joeyEsrgan_linkLabel);
-            this.groupBox13.Controls.Add(this.useCPU_checkBox);
             this.groupBox13.Controls.Add(this.inMemoryMode_checkBox);
-            this.groupBox13.Controls.Add(this.useJoey_checkBox);
-            this.groupBox13.Controls.Add(this.useBasicSR_checkBox);
             this.groupBox13.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.groupBox13.Location = new System.Drawing.Point(115, 229);
             this.groupBox13.Name = "groupBox13";
@@ -301,30 +258,6 @@ namespace ImageEnhancingUtility.Winforms
             this.groupBox13.TabIndex = 102;
             this.groupBox13.TabStop = false;
             this.groupBox13.Text = "Core";
-            // 
-            // joeyEsrgan_linkLabel
-            // 
-            this.joeyEsrgan_linkLabel.AutoSize = true;
-            this.joeyEsrgan_linkLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.joeyEsrgan_linkLabel.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.joeyEsrgan_linkLabel.LinkColor = System.Drawing.Color.DodgerBlue;
-            this.joeyEsrgan_linkLabel.Location = new System.Drawing.Point(57, 69);
-            this.joeyEsrgan_linkLabel.Name = "joeyEsrgan_linkLabel";
-            this.joeyEsrgan_linkLabel.Size = new System.Drawing.Size(97, 13);
-            this.joeyEsrgan_linkLabel.TabIndex = 57;
-            this.joeyEsrgan_linkLabel.TabStop = true;
-            this.joeyEsrgan_linkLabel.Text = "Joey\'s ESRGAN";
-            // 
-            // useCPU_checkBox
-            // 
-            this.useCPU_checkBox.AutoSize = true;
-            this.useCPU_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
-            this.useCPU_checkBox.Location = new System.Drawing.Point(17, 43);
-            this.useCPU_checkBox.Name = "useCPU_checkBox";
-            this.useCPU_checkBox.Offset = 1;
-            this.useCPU_checkBox.Size = new System.Drawing.Size(70, 17);
-            this.useCPU_checkBox.TabIndex = 30;
-            this.useCPU_checkBox.Text = "Use CPU";
             // 
             // inMemoryMode_checkBox
             // 
@@ -335,133 +268,6 @@ namespace ImageEnhancingUtility.Winforms
             this.inMemoryMode_checkBox.Size = new System.Drawing.Size(168, 19);
             this.inMemoryMode_checkBox.TabIndex = 56;
             this.inMemoryMode_checkBox.Text = "Process images in memory";
-            // 
-            // useJoey_checkBox
-            // 
-            this.useJoey_checkBox.AutoSize = true;
-            this.useJoey_checkBox.Location = new System.Drawing.Point(17, 66);
-            this.useJoey_checkBox.Name = "useJoey_checkBox";
-            this.useJoey_checkBox.Offset = 1;
-            this.useJoey_checkBox.Size = new System.Drawing.Size(45, 19);
-            this.useJoey_checkBox.TabIndex = 56;
-            this.useJoey_checkBox.Text = "Use";
-            // 
-            // useBasicSR_checkBox
-            // 
-            this.useBasicSR_checkBox.AutoSize = true;
-            this.useBasicSR_checkBox.Location = new System.Drawing.Point(17, 88);
-            this.useBasicSR_checkBox.Name = "useBasicSR_checkBox";
-            this.useBasicSR_checkBox.Offset = 1;
-            this.useBasicSR_checkBox.Size = new System.Drawing.Size(88, 19);
-            this.useBasicSR_checkBox.TabIndex = 51;
-            this.useBasicSR_checkBox.Text = "Use BasicSR";
-            this.useBasicSR_checkBox.Visible = false;
-            // 
-            // showJoeyProperties_button
-            // 
-            this.showJoeyProperties_button.FlatBottom = false;
-            this.showJoeyProperties_button.FlatTop = false;
-            this.showJoeyProperties_button.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.showJoeyProperties_button.HoldColour = false;
-            this.showJoeyProperties_button.Location = new System.Drawing.Point(789, 306);
-            this.showJoeyProperties_button.Name = "showJoeyProperties_button";
-            this.showJoeyProperties_button.Padding = new System.Windows.Forms.Padding(5);
-            this.showJoeyProperties_button.Size = new System.Drawing.Size(149, 61);
-            this.showJoeyProperties_button.TabIndex = 101;
-            this.showJoeyProperties_button.Text = "Joey\'s settings";
-            // 
-            // showIEU_button
-            // 
-            this.showIEU_button.FlatBottom = false;
-            this.showIEU_button.FlatTop = false;
-            this.showIEU_button.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.showIEU_button.HoldColour = false;
-            this.showIEU_button.Location = new System.Drawing.Point(788, 236);
-            this.showIEU_button.Name = "showIEU_button";
-            this.showIEU_button.Padding = new System.Windows.Forms.Padding(5);
-            this.showIEU_button.Size = new System.Drawing.Size(150, 61);
-            this.showIEU_button.TabIndex = 100;
-            this.showIEU_button.Text = "All settings";
-            // 
-            // groupBox12
-            // 
-            this.groupBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox12.Controls.Add(this.balanceRgb_checkBox);
-            this.groupBox12.Controls.Add(this.useImMerge_checkBox);
-            this.groupBox12.Controls.Add(this.useOldVipsMerge_checkBox);
-            this.groupBox12.Controls.Add(this.useMblend_checkBox);
-            this.groupBox12.Controls.Add(this.balanceAlphas_checkBox);
-            this.groupBox12.Controls.Add(this.preciseTile_checkBox);
-            this.groupBox12.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.groupBox12.Location = new System.Drawing.Point(855, 539);
-            this.groupBox12.Name = "groupBox12";
-            this.groupBox12.Size = new System.Drawing.Size(154, 154);
-            this.groupBox12.TabIndex = 99;
-            this.groupBox12.TabStop = false;
-            this.groupBox12.Text = "Legacy merge";
-            this.groupBox12.Visible = false;
-            // 
-            // balanceRgb_checkBox
-            // 
-            this.balanceRgb_checkBox.AutoSize = true;
-            this.balanceRgb_checkBox.Location = new System.Drawing.Point(11, 63);
-            this.balanceRgb_checkBox.Name = "balanceRgb_checkBox";
-            this.balanceRgb_checkBox.Offset = 1;
-            this.balanceRgb_checkBox.Size = new System.Drawing.Size(126, 19);
-            this.balanceRgb_checkBox.TabIndex = 25;
-            this.balanceRgb_checkBox.Text = "Globalbalance RGB";
-            // 
-            // useImMerge_checkBox
-            // 
-            this.useImMerge_checkBox.AutoSize = true;
-            this.useImMerge_checkBox.Location = new System.Drawing.Point(11, 110);
-            this.useImMerge_checkBox.Name = "useImMerge_checkBox";
-            this.useImMerge_checkBox.Offset = 1;
-            this.useImMerge_checkBox.Size = new System.Drawing.Size(99, 19);
-            this.useImMerge_checkBox.TabIndex = 56;
-            this.useImMerge_checkBox.Text = "Use IM merge";
-            // 
-            // useOldVipsMerge_checkBox
-            // 
-            this.useOldVipsMerge_checkBox.AutoSize = true;
-            this.useOldVipsMerge_checkBox.Enabled = false;
-            this.useOldVipsMerge_checkBox.Location = new System.Drawing.Point(11, 19);
-            this.useOldVipsMerge_checkBox.Name = "useOldVipsMerge_checkBox";
-            this.useOldVipsMerge_checkBox.Offset = 1;
-            this.useOldVipsMerge_checkBox.Size = new System.Drawing.Size(146, 19);
-            this.useOldVipsMerge_checkBox.TabIndex = 56;
-            this.useOldVipsMerge_checkBox.Text = "Use default vips merge";
-            // 
-            // useMblend_checkBox
-            // 
-            this.useMblend_checkBox.AutoSize = true;
-            this.useMblend_checkBox.Location = new System.Drawing.Point(11, 41);
-            this.useMblend_checkBox.Name = "useMblend_checkBox";
-            this.useMblend_checkBox.Offset = 1;
-            this.useMblend_checkBox.Size = new System.Drawing.Size(89, 19);
-            this.useMblend_checkBox.TabIndex = 25;
-            this.useMblend_checkBox.Text = "Use mblend";
-            // 
-            // balanceAlphas_checkBox
-            // 
-            this.balanceAlphas_checkBox.AutoSize = true;
-            this.balanceAlphas_checkBox.Location = new System.Drawing.Point(11, 87);
-            this.balanceAlphas_checkBox.Name = "balanceAlphas_checkBox";
-            this.balanceAlphas_checkBox.Offset = 1;
-            this.balanceAlphas_checkBox.Size = new System.Drawing.Size(133, 19);
-            this.balanceAlphas_checkBox.TabIndex = 25;
-            this.balanceAlphas_checkBox.Text = "Globalbalance alpha";
-            // 
-            // preciseTile_checkBox
-            // 
-            this.preciseTile_checkBox.AutoSize = true;
-            this.preciseTile_checkBox.Location = new System.Drawing.Point(11, 131);
-            this.preciseTile_checkBox.Name = "preciseTile_checkBox";
-            this.preciseTile_checkBox.Offset = 1;
-            this.preciseTile_checkBox.Size = new System.Drawing.Size(146, 19);
-            this.preciseTile_checkBox.TabIndex = 25;
-            this.preciseTile_checkBox.Text = "Precise tile dimensions";
-            this.preciseTile_checkBox.Visible = false;
             // 
             // groupBox8
             // 
@@ -1409,17 +1215,17 @@ namespace ImageEnhancingUtility.Winforms
             this.presets_listBox.ItemHeight = 15;
             this.presets_listBox.Location = new System.Drawing.Point(691, 10);
             this.presets_listBox.Name = "presets_listBox";
-            this.presets_listBox.Size = new System.Drawing.Size(158, 167);
+            this.presets_listBox.Size = new System.Drawing.Size(158, 152);
             this.presets_listBox.TabIndex = 92;
             // 
-            // savePreset_darkButton
+            // savePreset_button
             // 
             this.savePreset_button.FlatBottom = false;
             this.savePreset_button.FlatTop = false;
             this.savePreset_button.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.savePreset_button.HoldColour = false;
             this.savePreset_button.Location = new System.Drawing.Point(855, 36);
-            this.savePreset_button.Name = "savePreset_darkButton";
+            this.savePreset_button.Name = "savePreset_button";
             this.savePreset_button.Padding = new System.Windows.Forms.Padding(5);
             this.savePreset_button.Size = new System.Drawing.Size(149, 31);
             this.savePreset_button.TabIndex = 93;
@@ -1454,9 +1260,6 @@ namespace ImageEnhancingUtility.Winforms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox14);
             this.Controls.Add(this.groupBox13);
-            this.Controls.Add(this.showJoeyProperties_button);
-            this.Controls.Add(this.showIEU_button);
-            this.Controls.Add(this.groupBox12);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.deletePreset_button);
             this.Controls.Add(this.deleteProfile_button);
@@ -1507,8 +1310,6 @@ namespace ImageEnhancingUtility.Winforms
             ((System.ComponentModel.ISupportInitialize)(this.monitorFrequency_numericUpDown)).EndInit();
             this.groupBox13.ResumeLayout(false);
             this.groupBox13.PerformLayout();
-            this.groupBox12.ResumeLayout(false);
-            this.groupBox12.PerformLayout();
             this.groupBox8.ResumeLayout(false);
             this.groupBox8.PerformLayout();
             this.groupBox9.ResumeLayout(false);
@@ -1537,29 +1338,14 @@ namespace ImageEnhancingUtility.Winforms
 
         public DarkGroupBox groupBox14;
         public DarkTextBox condaEnvName_textBox;
-        public DarkTextBox advancedSuffix_textBox;
         public DarkCheckBox createMemoryImage_checkBox;
         public DarkLabel label34;
-        public DarkCheckBox advancedUseSuffix_checkBox;
         public DarkCheckBox monitorVram_checkBox;
         public DarkNumericUpDown monitorFrequency_numericUpDown;
         public DarkCheckBox deleteResults_checkBox;
         public DarkCheckBox useCondaEnv_checkBox;
         public DarkGroupBox groupBox13;
-        public System.Windows.Forms.LinkLabel joeyEsrgan_linkLabel;
-        public DarkCheckBox useCPU_checkBox;
         public DarkCheckBox inMemoryMode_checkBox;
-        public DarkCheckBox useJoey_checkBox;
-        public DarkCheckBox useBasicSR_checkBox;
-        public DarkButton showJoeyProperties_button;
-        public DarkButton showIEU_button;
-        public DarkGroupBox groupBox12;
-        public DarkCheckBox balanceRgb_checkBox;
-        public DarkCheckBox useImMerge_checkBox;
-        public DarkCheckBox useOldVipsMerge_checkBox;
-        public DarkCheckBox useMblend_checkBox;
-        public DarkCheckBox balanceAlphas_checkBox;
-        public DarkCheckBox preciseTile_checkBox;
         public DarkGroupBox groupBox8;
         public DarkCheckBox topMost_checkBox;
         public DarkCheckBox showDebugInfo_checkBox;

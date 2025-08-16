@@ -1,0 +1,478 @@
+﻿namespace ImageEnhancingUtility.Winforms
+{
+    partial class SettingsFilterTab
+    {
+        /// <summary> 
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Component Designer generated code
+
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            this.filters_groupBox = new AltUI.Controls.DarkGroupBox();
+            this.deleteFilter_button = new AltUI.Controls.DarkButton();
+            this.filterExtensions_checkedListBox = new System.Windows.Forms.CheckedListBox();
+            this.newFilterName_textBox = new AltUI.Controls.DarkTextBox();
+            this.filtersSize_groupBox = new AltUI.Controls.DarkGroupBox();
+            this.filtersSizeOn_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.filterSizeWidth_numericUpDown = new AltUI.Controls.DarkNumericUpDown();
+            this.filterSizeHeight_numericUpDown = new AltUI.Controls.DarkNumericUpDown();
+            this.label11 = new AltUI.Controls.DarkLabel();
+            this.filterSizeOr_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.label10 = new AltUI.Controls.DarkLabel();
+            this.saveFilter_button = new AltUI.Controls.DarkButton();
+            this.groupBox10 = new AltUI.Controls.DarkGroupBox();
+            this.filterFolderNameCaseSensitive_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.filterFolderNameContains_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.filterFolderNameContains_textBox = new AltUI.Controls.DarkTextBox();
+            this.filterFolderNameNotContains_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.filterFolderNameNotContains_textBox = new AltUI.Controls.DarkTextBox();
+            this.filtersFilename_groupBox = new AltUI.Controls.DarkGroupBox();
+            this.filterFilenameCaseSensitive_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.filterFilenameContains_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.filterFilenameContains_textBox = new AltUI.Controls.DarkTextBox();
+            this.filterFilenameNotContains_checkBox = new AltUI.Controls.DarkCheckBox();
+            this.filterFilenameNotContains_textBox = new AltUI.Controls.DarkTextBox();
+            this.loadFilter_button = new AltUI.Controls.DarkButton();
+            this.checkBox3 = new AltUI.Controls.DarkCheckBox();
+            this.filters_listBox = new AltUI.Controls.DarkListBox();
+            this.filtersAlpha_groupBox = new AltUI.Controls.DarkGroupBox();
+            this.filterAlpha_comboBox = new AltUI.Controls.DarkComboBox();
+            this.filters_groupBox.SuspendLayout();
+            this.filtersSize_groupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterSizeWidth_numericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filterSizeHeight_numericUpDown)).BeginInit();
+            this.groupBox10.SuspendLayout();
+            this.filtersFilename_groupBox.SuspendLayout();
+            this.filtersAlpha_groupBox.SuspendLayout();
+            this.SuspendLayout();
+            // 
+            // filters_groupBox
+            // 
+            this.filters_groupBox.Controls.Add(this.filterExtensions_checkedListBox);
+            this.filters_groupBox.Controls.Add(this.filtersSize_groupBox);
+            this.filters_groupBox.Controls.Add(this.groupBox10);
+            this.filters_groupBox.Controls.Add(this.filtersFilename_groupBox);
+            this.filters_groupBox.Controls.Add(this.checkBox3);
+            this.filters_groupBox.Controls.Add(this.filtersAlpha_groupBox);
+            this.filters_groupBox.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.filters_groupBox.Location = new System.Drawing.Point(20, 20);
+            this.filters_groupBox.Name = "filters_groupBox";
+            this.filters_groupBox.Size = new System.Drawing.Size(569, 432);
+            this.filters_groupBox.TabIndex = 43;
+            this.filters_groupBox.TabStop = false;
+            // 
+            // deleteFilter_button
+            // 
+            this.deleteFilter_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteFilter_button.FlatBottom = false;
+            this.deleteFilter_button.FlatTop = false;
+            this.deleteFilter_button.HoldColour = false;
+            this.deleteFilter_button.Location = new System.Drawing.Point(440, 713);
+            this.deleteFilter_button.Name = "deleteFilter_button";
+            this.deleteFilter_button.Padding = new System.Windows.Forms.Padding(5);
+            this.deleteFilter_button.Size = new System.Drawing.Size(149, 31);
+            this.deleteFilter_button.TabIndex = 58;
+            this.deleteFilter_button.Text = "Delete";
+            // 
+            // filterExtensions_checkedListBox
+            // 
+            this.filterExtensions_checkedListBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.filterExtensions_checkedListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterExtensions_checkedListBox.CheckOnClick = true;
+            this.filterExtensions_checkedListBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.filterExtensions_checkedListBox.FormattingEnabled = true;
+            this.filterExtensions_checkedListBox.Location = new System.Drawing.Point(405, 30);
+            this.filterExtensions_checkedListBox.Name = "filterExtensions_checkedListBox";
+            this.filterExtensions_checkedListBox.Size = new System.Drawing.Size(128, 182);
+            this.filterExtensions_checkedListBox.TabIndex = 10;
+            // 
+            // newFilterName_textBox
+            // 
+            this.newFilterName_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.newFilterName_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.newFilterName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.newFilterName_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.newFilterName_textBox.Location = new System.Drawing.Point(440, 611);
+            this.newFilterName_textBox.Name = "newFilterName_textBox";
+            this.newFilterName_textBox.Size = new System.Drawing.Size(149, 23);
+            this.newFilterName_textBox.TabIndex = 57;
+            // 
+            // filtersSize_groupBox
+            // 
+            this.filtersSize_groupBox.Controls.Add(this.filtersSizeOn_checkBox);
+            this.filtersSize_groupBox.Controls.Add(this.filterSizeWidth_numericUpDown);
+            this.filtersSize_groupBox.Controls.Add(this.filterSizeHeight_numericUpDown);
+            this.filtersSize_groupBox.Controls.Add(this.label11);
+            this.filtersSize_groupBox.Controls.Add(this.filterSizeOr_checkBox);
+            this.filtersSize_groupBox.Controls.Add(this.label10);
+            this.filtersSize_groupBox.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.filtersSize_groupBox.Location = new System.Drawing.Point(20, 216);
+            this.filtersSize_groupBox.Name = "filtersSize_groupBox";
+            this.filtersSize_groupBox.Size = new System.Drawing.Size(242, 86);
+            this.filtersSize_groupBox.TabIndex = 9;
+            this.filtersSize_groupBox.TabStop = false;
+            this.filtersSize_groupBox.Text = "Size";
+            // 
+            // filtersSizeOn_checkBox
+            // 
+            this.filtersSizeOn_checkBox.AutoSize = true;
+            this.filtersSizeOn_checkBox.Location = new System.Drawing.Point(7, 42);
+            this.filtersSizeOn_checkBox.Name = "filtersSizeOn_checkBox";
+            this.filtersSizeOn_checkBox.Offset = 1;
+            this.filtersSizeOn_checkBox.Size = new System.Drawing.Size(83, 19);
+            this.filtersSizeOn_checkBox.TabIndex = 11;
+            this.filtersSizeOn_checkBox.Text = "Not bigger";
+            // 
+            // filterSizeWidth_numericUpDown
+            // 
+            this.filterSizeWidth_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterSizeWidth_numericUpDown.Enabled = false;
+            this.filterSizeWidth_numericUpDown.Location = new System.Drawing.Point(89, 29);
+            this.filterSizeWidth_numericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.filterSizeWidth_numericUpDown.Name = "filterSizeWidth_numericUpDown";
+            this.filterSizeWidth_numericUpDown.Size = new System.Drawing.Size(55, 23);
+            this.filterSizeWidth_numericUpDown.TabIndex = 3;
+            this.filterSizeWidth_numericUpDown.Value = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            // 
+            // filterSizeHeight_numericUpDown
+            // 
+            this.filterSizeHeight_numericUpDown.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterSizeHeight_numericUpDown.Enabled = false;
+            this.filterSizeHeight_numericUpDown.Location = new System.Drawing.Point(89, 52);
+            this.filterSizeHeight_numericUpDown.Maximum = new decimal(new int[] {
+            9999,
+            0,
+            0,
+            0});
+            this.filterSizeHeight_numericUpDown.Name = "filterSizeHeight_numericUpDown";
+            this.filterSizeHeight_numericUpDown.Size = new System.Drawing.Size(55, 23);
+            this.filterSizeHeight_numericUpDown.TabIndex = 3;
+            this.filterSizeHeight_numericUpDown.Value = new decimal(new int[] {
+            2048,
+            0,
+            0,
+            0});
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(145, 55);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(43, 15);
+            this.label11.TabIndex = 7;
+            this.label11.Text = "Height";
+            // 
+            // filterSizeOr_checkBox
+            // 
+            this.filterSizeOr_checkBox.AutoSize = true;
+            this.filterSizeOr_checkBox.Enabled = false;
+            this.filterSizeOr_checkBox.Location = new System.Drawing.Point(190, 42);
+            this.filterSizeOr_checkBox.Name = "filterSizeOr_checkBox";
+            this.filterSizeOr_checkBox.Offset = 1;
+            this.filterSizeOr_checkBox.Size = new System.Drawing.Size(42, 19);
+            this.filterSizeOr_checkBox.TabIndex = 4;
+            this.filterSizeOr_checkBox.Text = "OR";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(145, 34);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(39, 15);
+            this.label10.TabIndex = 7;
+            this.label10.Text = "Width";
+            // 
+            // saveFilter_button
+            // 
+            this.saveFilter_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveFilter_button.FlatBottom = false;
+            this.saveFilter_button.FlatTop = false;
+            this.saveFilter_button.HoldColour = false;
+            this.saveFilter_button.Location = new System.Drawing.Point(440, 640);
+            this.saveFilter_button.Name = "saveFilter_button";
+            this.saveFilter_button.Padding = new System.Windows.Forms.Padding(5);
+            this.saveFilter_button.Size = new System.Drawing.Size(149, 31);
+            this.saveFilter_button.TabIndex = 55;
+            this.saveFilter_button.Text = "Save";
+            // 
+            // groupBox10
+            // 
+            this.groupBox10.Controls.Add(this.filterFolderNameCaseSensitive_checkBox);
+            this.groupBox10.Controls.Add(this.filterFolderNameContains_checkBox);
+            this.groupBox10.Controls.Add(this.filterFolderNameContains_textBox);
+            this.groupBox10.Controls.Add(this.filterFolderNameNotContains_checkBox);
+            this.groupBox10.Controls.Add(this.filterFolderNameNotContains_textBox);
+            this.groupBox10.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.groupBox10.Location = new System.Drawing.Point(20, 118);
+            this.groupBox10.Name = "groupBox10";
+            this.groupBox10.Size = new System.Drawing.Size(378, 94);
+            this.groupBox10.TabIndex = 8;
+            this.groupBox10.TabStop = false;
+            this.groupBox10.Text = "Folder name";
+            // 
+            // filterFolderNameCaseSensitive_checkBox
+            // 
+            this.filterFolderNameCaseSensitive_checkBox.AutoSize = true;
+            this.filterFolderNameCaseSensitive_checkBox.Location = new System.Drawing.Point(112, 15);
+            this.filterFolderNameCaseSensitive_checkBox.Name = "filterFolderNameCaseSensitive_checkBox";
+            this.filterFolderNameCaseSensitive_checkBox.Offset = 1;
+            this.filterFolderNameCaseSensitive_checkBox.Size = new System.Drawing.Size(99, 19);
+            this.filterFolderNameCaseSensitive_checkBox.TabIndex = 3;
+            this.filterFolderNameCaseSensitive_checkBox.Text = "Case sensitive";
+            // 
+            // filterFolderNameContains_checkBox
+            // 
+            this.filterFolderNameContains_checkBox.AutoSize = true;
+            this.filterFolderNameContains_checkBox.Location = new System.Drawing.Point(9, 39);
+            this.filterFolderNameContains_checkBox.Name = "filterFolderNameContains_checkBox";
+            this.filterFolderNameContains_checkBox.Offset = 1;
+            this.filterFolderNameContains_checkBox.Size = new System.Drawing.Size(73, 19);
+            this.filterFolderNameContains_checkBox.TabIndex = 1;
+            this.filterFolderNameContains_checkBox.Text = "Contains";
+            // 
+            // filterFolderNameContains_textBox
+            // 
+            this.filterFolderNameContains_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.filterFolderNameContains_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterFolderNameContains_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.filterFolderNameContains_textBox.Location = new System.Drawing.Point(118, 38);
+            this.filterFolderNameContains_textBox.Name = "filterFolderNameContains_textBox";
+            this.filterFolderNameContains_textBox.ReadOnly = true;
+            this.filterFolderNameContains_textBox.Size = new System.Drawing.Size(247, 23);
+            this.filterFolderNameContains_textBox.TabIndex = 2;
+            // 
+            // filterFolderNameNotContains_checkBox
+            // 
+            this.filterFolderNameNotContains_checkBox.AutoSize = true;
+            this.filterFolderNameNotContains_checkBox.Location = new System.Drawing.Point(9, 65);
+            this.filterFolderNameNotContains_checkBox.Name = "filterFolderNameNotContains_checkBox";
+            this.filterFolderNameNotContains_checkBox.Offset = 1;
+            this.filterFolderNameNotContains_checkBox.Size = new System.Drawing.Size(109, 19);
+            this.filterFolderNameNotContains_checkBox.TabIndex = 1;
+            this.filterFolderNameNotContains_checkBox.Text = "Doesn\'t contain";
+            // 
+            // filterFolderNameNotContains_textBox
+            // 
+            this.filterFolderNameNotContains_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.filterFolderNameNotContains_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterFolderNameNotContains_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.filterFolderNameNotContains_textBox.Location = new System.Drawing.Point(118, 64);
+            this.filterFolderNameNotContains_textBox.Name = "filterFolderNameNotContains_textBox";
+            this.filterFolderNameNotContains_textBox.ReadOnly = true;
+            this.filterFolderNameNotContains_textBox.Size = new System.Drawing.Size(247, 23);
+            this.filterFolderNameNotContains_textBox.TabIndex = 2;
+            // 
+            // filtersFilename_groupBox
+            // 
+            this.filtersFilename_groupBox.Controls.Add(this.filterFilenameCaseSensitive_checkBox);
+            this.filtersFilename_groupBox.Controls.Add(this.filterFilenameContains_checkBox);
+            this.filtersFilename_groupBox.Controls.Add(this.filterFilenameContains_textBox);
+            this.filtersFilename_groupBox.Controls.Add(this.filterFilenameNotContains_checkBox);
+            this.filtersFilename_groupBox.Controls.Add(this.filterFilenameNotContains_textBox);
+            this.filtersFilename_groupBox.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.filtersFilename_groupBox.Location = new System.Drawing.Point(20, 20);
+            this.filtersFilename_groupBox.Name = "filtersFilename_groupBox";
+            this.filtersFilename_groupBox.Size = new System.Drawing.Size(378, 94);
+            this.filtersFilename_groupBox.TabIndex = 8;
+            this.filtersFilename_groupBox.TabStop = false;
+            this.filtersFilename_groupBox.Text = "Filename";
+            // 
+            // filterFilenameCaseSensitive_checkBox
+            // 
+            this.filterFilenameCaseSensitive_checkBox.AutoSize = true;
+            this.filterFilenameCaseSensitive_checkBox.Location = new System.Drawing.Point(112, 15);
+            this.filterFilenameCaseSensitive_checkBox.Name = "filterFilenameCaseSensitive_checkBox";
+            this.filterFilenameCaseSensitive_checkBox.Offset = 1;
+            this.filterFilenameCaseSensitive_checkBox.Size = new System.Drawing.Size(99, 19);
+            this.filterFilenameCaseSensitive_checkBox.TabIndex = 3;
+            this.filterFilenameCaseSensitive_checkBox.Text = "Case sensitive";
+            // 
+            // filterFilenameContains_checkBox
+            // 
+            this.filterFilenameContains_checkBox.AutoSize = true;
+            this.filterFilenameContains_checkBox.Location = new System.Drawing.Point(9, 39);
+            this.filterFilenameContains_checkBox.Name = "filterFilenameContains_checkBox";
+            this.filterFilenameContains_checkBox.Offset = 1;
+            this.filterFilenameContains_checkBox.Size = new System.Drawing.Size(73, 19);
+            this.filterFilenameContains_checkBox.TabIndex = 1;
+            this.filterFilenameContains_checkBox.Text = "Contains";
+            // 
+            // filterFilenameContains_textBox
+            // 
+            this.filterFilenameContains_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.filterFilenameContains_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterFilenameContains_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.filterFilenameContains_textBox.Location = new System.Drawing.Point(118, 38);
+            this.filterFilenameContains_textBox.Name = "filterFilenameContains_textBox";
+            this.filterFilenameContains_textBox.ReadOnly = true;
+            this.filterFilenameContains_textBox.Size = new System.Drawing.Size(247, 23);
+            this.filterFilenameContains_textBox.TabIndex = 2;
+            // 
+            // filterFilenameNotContains_checkBox
+            // 
+            this.filterFilenameNotContains_checkBox.AutoSize = true;
+            this.filterFilenameNotContains_checkBox.Location = new System.Drawing.Point(9, 65);
+            this.filterFilenameNotContains_checkBox.Name = "filterFilenameNotContains_checkBox";
+            this.filterFilenameNotContains_checkBox.Offset = 1;
+            this.filterFilenameNotContains_checkBox.Size = new System.Drawing.Size(109, 19);
+            this.filterFilenameNotContains_checkBox.TabIndex = 1;
+            this.filterFilenameNotContains_checkBox.Text = "Doesn\'t contain";
+            // 
+            // filterFilenameNotContains_textBox
+            // 
+            this.filterFilenameNotContains_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.filterFilenameNotContains_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filterFilenameNotContains_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.filterFilenameNotContains_textBox.Location = new System.Drawing.Point(118, 64);
+            this.filterFilenameNotContains_textBox.Name = "filterFilenameNotContains_textBox";
+            this.filterFilenameNotContains_textBox.ReadOnly = true;
+            this.filterFilenameNotContains_textBox.Size = new System.Drawing.Size(247, 23);
+            this.filterFilenameNotContains_textBox.TabIndex = 2;
+            // 
+            // loadFilter_button
+            // 
+            this.loadFilter_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadFilter_button.FlatBottom = false;
+            this.loadFilter_button.FlatTop = false;
+            this.loadFilter_button.HoldColour = false;
+            this.loadFilter_button.Location = new System.Drawing.Point(440, 677);
+            this.loadFilter_button.Name = "loadFilter_button";
+            this.loadFilter_button.Padding = new System.Windows.Forms.Padding(5);
+            this.loadFilter_button.Size = new System.Drawing.Size(149, 31);
+            this.loadFilter_button.TabIndex = 56;
+            this.loadFilter_button.Text = "Load";
+            // 
+            // checkBox3
+            // 
+            this.checkBox3.AutoSize = true;
+            this.checkBox3.Location = new System.Drawing.Point(855, 218);
+            this.checkBox3.Name = "checkBox3";
+            this.checkBox3.Offset = 1;
+            this.checkBox3.Size = new System.Drawing.Size(119, 19);
+            this.checkBox3.TabIndex = 6;
+            this.checkBox3.Text = "Already has result";
+            this.checkBox3.Visible = false;
+            // 
+            // filters_listBox
+            // 
+            this.filters_listBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.filters_listBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.filters_listBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.filters_listBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.filters_listBox.FormattingEnabled = true;
+            this.filters_listBox.ItemHeight = 15;
+            this.filters_listBox.Location = new System.Drawing.Point(595, 532);
+            this.filters_listBox.Name = "filters_listBox";
+            this.filters_listBox.Size = new System.Drawing.Size(149, 212);
+            this.filters_listBox.TabIndex = 54;
+            // 
+            // filtersAlpha_groupBox
+            // 
+            this.filtersAlpha_groupBox.Controls.Add(this.filterAlpha_comboBox);
+            this.filtersAlpha_groupBox.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.filtersAlpha_groupBox.Location = new System.Drawing.Point(21, 307);
+            this.filtersAlpha_groupBox.Name = "filtersAlpha_groupBox";
+            this.filtersAlpha_groupBox.Size = new System.Drawing.Size(130, 86);
+            this.filtersAlpha_groupBox.TabIndex = 0;
+            this.filtersAlpha_groupBox.TabStop = false;
+            this.filtersAlpha_groupBox.Text = "Alpha";
+            // 
+            // filterAlpha_comboBox
+            // 
+            this.filterAlpha_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.filterAlpha_comboBox.FormattingEnabled = true;
+            this.filterAlpha_comboBox.Location = new System.Drawing.Point(9, 38);
+            this.filterAlpha_comboBox.Name = "filterAlpha_comboBox";
+            this.filterAlpha_comboBox.Size = new System.Drawing.Size(111, 24);
+            this.filterAlpha_comboBox.TabIndex = 0;
+            // 
+            // SettingsFilterTab
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.deleteFilter_button);
+            this.Controls.Add(this.filters_groupBox);
+            this.Controls.Add(this.newFilterName_textBox);
+            this.Controls.Add(this.filters_listBox);
+            this.Controls.Add(this.loadFilter_button);
+            this.Controls.Add(this.saveFilter_button);
+            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Name = "SettingsFilterTab";
+            this.Size = new System.Drawing.Size(750, 750);
+            this.filters_groupBox.ResumeLayout(false);
+            this.filters_groupBox.PerformLayout();
+            this.filtersSize_groupBox.ResumeLayout(false);
+            this.filtersSize_groupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.filterSizeWidth_numericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.filterSizeHeight_numericUpDown)).EndInit();
+            this.groupBox10.ResumeLayout(false);
+            this.groupBox10.PerformLayout();
+            this.filtersFilename_groupBox.ResumeLayout(false);
+            this.filtersFilename_groupBox.PerformLayout();
+            this.filtersAlpha_groupBox.ResumeLayout(false);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+
+        #endregion
+        public AltUI.Controls.DarkButton deleteFilter_button;
+        public System.Windows.Forms.CheckedListBox filterExtensions_checkedListBox;
+        public AltUI.Controls.DarkTextBox newFilterName_textBox;
+        public AltUI.Controls.DarkCheckBox filtersSizeOn_checkBox;
+        public AltUI.Controls.DarkNumericUpDown filterSizeWidth_numericUpDown;
+        public AltUI.Controls.DarkNumericUpDown filterSizeHeight_numericUpDown;
+        public AltUI.Controls.DarkCheckBox filterSizeOr_checkBox;
+        public AltUI.Controls.DarkButton saveFilter_button;
+        public AltUI.Controls.DarkCheckBox filterFolderNameCaseSensitive_checkBox;
+        public AltUI.Controls.DarkCheckBox filterFolderNameContains_checkBox;
+        public AltUI.Controls.DarkTextBox filterFolderNameContains_textBox;
+        public AltUI.Controls.DarkCheckBox filterFolderNameNotContains_checkBox;
+        public AltUI.Controls.DarkTextBox filterFolderNameNotContains_textBox;
+        public AltUI.Controls.DarkCheckBox filterFilenameCaseSensitive_checkBox;
+        public AltUI.Controls.DarkCheckBox filterFilenameContains_checkBox;
+        public AltUI.Controls.DarkTextBox filterFilenameContains_textBox;
+        public AltUI.Controls.DarkCheckBox filterFilenameNotContains_checkBox;
+        public AltUI.Controls.DarkTextBox filterFilenameNotContains_textBox;
+        public AltUI.Controls.DarkButton loadFilter_button;
+        public AltUI.Controls.DarkCheckBox checkBox3;
+        public AltUI.Controls.DarkComboBox filterAlpha_comboBox;
+        public AltUI.Controls.DarkGroupBox filters_groupBox;
+        public AltUI.Controls.DarkGroupBox filtersSize_groupBox;
+        public AltUI.Controls.DarkLabel label11;
+        public AltUI.Controls.DarkLabel label10;
+        public AltUI.Controls.DarkGroupBox groupBox10;
+        public AltUI.Controls.DarkGroupBox filtersFilename_groupBox;
+        public AltUI.Controls.DarkListBox filters_listBox;
+        public AltUI.Controls.DarkGroupBox filtersAlpha_groupBox;
+    }
+}

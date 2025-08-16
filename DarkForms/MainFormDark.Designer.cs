@@ -80,18 +80,20 @@
             this.darkDockPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.darkDockPanel1.Location = new System.Drawing.Point(0, 0);
             this.darkDockPanel1.Name = "darkDockPanel1";
-            this.darkDockPanel1.Size = new System.Drawing.Size(1425, 806);
+            this.darkDockPanel1.Size = new System.Drawing.Size(984, 861);
             this.darkDockPanel1.TabIndex = 1;
+            this.darkDockPanel1.Vertical = false;
             // 
             // MainFormDark
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1425, 806);
+            this.ClientSize = new System.Drawing.Size(984, 861);
             this.Controls.Add(this.darkDockPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1030, 845);
+            this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(820, 750);
             this.Name = "MainFormDark";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Image Enhancing Utility";
@@ -101,7 +103,6 @@
             this.ResizeEnd += new System.EventHandler(this.MainForm_ResizeEnd);
             this.DoubleClick += new System.EventHandler(this.MainForm_DoubleClick);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.MainForm_KeyDown);
-            this.Resize += new System.EventHandler(this.MainForm_Resize);
             this.treeView_contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 

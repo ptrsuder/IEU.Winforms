@@ -13,7 +13,7 @@ namespace ImageEnhancingUtility.Winforms
 
         public DarkDockMainTab(): base()
         {
-            InitializeComponent();         
+            InitializeComponent();  
         }
 
         public DarkDockMainTab(string text, Image icon)
@@ -30,11 +30,7 @@ namespace ImageEnhancingUtility.Winforms
 
         public override void Close()
         {
-            var result = DarkMessageBox.ShowWarning(@"You will lose any unsaved changes. Continue?", @"Close document", DarkDialogButton.YesNo);
-            if (result == DialogResult.No)
-                return;
-
-            base.Close();
+            return;
         }
 
         #endregion

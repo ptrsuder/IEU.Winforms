@@ -41,6 +41,7 @@ namespace ImageEnhancingUtility.Winforms
             Sizes.RadioButtonSize = 12;
             Sizes.ToolWindowHeaderSize = 25;
             Sizes.DocumentTabAreaSize = 24;
+            Sizes.DocumentVerticalTabAreaSize = 30;
             Sizes.ToolWindowTabAreaSize = 21;
             Sizes.RoundedCornerRadius = 0;
 

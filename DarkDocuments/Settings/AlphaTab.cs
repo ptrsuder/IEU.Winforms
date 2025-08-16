@@ -7,29 +7,20 @@ using System.Windows.Forms;
 
 namespace ImageEnhancingUtility.Winforms
 {
-    public partial class DarkDockTest : DarkDockContent
+    public partial class SettingsAlphaTab : DarkDocument
     {
         #region Constructor Region
 
-        public DarkDockTest()
+        public SettingsAlphaTab()
         {
             InitializeComponent();         
         }
 
-        public DarkDockTest(string text, Image icon)
+        public SettingsAlphaTab(string text, Image icon)
             : this()
         {
             DockText = text;
-            Icon = icon;            
-            Application.AddMessageFilter(DockPanel.DockResizeFilter);
-            DockPanel.Vertical = true;
-        }
-
-        public DarkDockGroup VerticalGroup;
-
-        public void AddTab(DarkDocument doc)
-        {
-            DockPanel.AddContent(doc);
+            Icon = icon;
         }
 
         #endregion
@@ -37,8 +28,8 @@ namespace ImageEnhancingUtility.Winforms
         #region Event Handler Region
 
         public override void Close()
-        {
-            return;
+        { 
+            base.Close();
         }
 
         #endregion
@@ -47,6 +38,6 @@ namespace ImageEnhancingUtility.Winforms
         {
             
 
-        }             
+        }          
     }
 }

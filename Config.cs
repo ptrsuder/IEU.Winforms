@@ -115,5 +115,12 @@ namespace ImageEnhancingUtility.Winforms
             get => _darkTheme;
             set => this.RaiseAndSetIfChanged(ref _darkTheme, value);
         }
+
+        string _lastPreviewSavePath = "";
+        public string LastPreviewSavePath
+        {
+            get => _lastPreviewSavePath;
+            set => this.RaiseAndSetIfChanged(ref _lastPreviewSavePath, value);
+        }
     }
 }

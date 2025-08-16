@@ -1204,8 +1204,7 @@ namespace ImageEnhancingUtility.Winforms
         }
 
         private async void savePreview(bool saveAsPng)
-        {
-            
+        {            
             var model = previewModels_comboBox.SelectedValue as ModelInfo;
             if (zoomImageBox.Image == null)
                 return;
@@ -1216,18 +1215,19 @@ namespace ImageEnhancingUtility.Winforms
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.DefaultExt = "";
                 saveFileDialog.InitialDirectory = ViewModel.IEU.OutputDirectoryPath;
+              
 
                 string modelName = model.Name;
 
                 if (previewFullname == Path.GetTempPath() + clipboardImageName)
-                    saveFileDialog.FileName = $"ClipboardImage_{modelName}";
+                    saveFileDialog.FileName = $"ClipboardImage_{modelName}{"." + outputFormatPreview_comboBox.Text.ToLower()}";
                 else
-                    saveFileDialog.FileName = $"{Path.GetFileNameWithoutExtension(previewFullname)}_{modelName}";
+                    saveFileDialog.FileName = $"{Path.GetFileNameWithoutExtension(previewFullname)}_{modelName}{"." + outputFormatPreview_comboBox.Text.ToLower()}";
                 var diResult = saveFileDialog.ShowDialog();
                 if (diResult == DialogResult.OK)
                     imagePath = saveFileDialog.FileName;
                 else
-                    return;
+                    return;              
 
                 string fileName = Path.GetFileNameWithoutExtension(imagePath);
                 string dir = Path.GetDirectoryName(imagePath);

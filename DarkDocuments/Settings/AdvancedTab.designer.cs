@@ -1,6 +1,6 @@
 ﻿namespace ImageEnhancingUtility.Winforms
 {
-    partial class DarkDockTest
+    partial class SettingsAdvancedTab
     {
         /// <summary> 
         /// Required designer variable.
@@ -27,33 +27,21 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {            
-            this.DockPanel = new AltUI.Docking.DarkDockPanel();
-            this.SuspendLayout();           
-            // darkDockPanel2
+        {           
+            this.SuspendLayout();
             // 
-            this.DockPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.DockPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DockPanel.Location = new System.Drawing.Point(0, 0);
-            this.DockPanel.Name = "darkDockPanel2";
-            this.DockPanel.Size = new System.Drawing.Size(1030, 758);
-            this.DockPanel.TabIndex = 1;          
-            // 
-            // DarkDockTest
+            // SettingsAdvancedTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.DockPanel);            
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "DarkDockTest";
-            this.Size = new System.Drawing.Size(1030, 758);
-            this.Load += new System.EventHandler(this.DockDocument_Load);
+            this.Name = "SettingsAdvancedTab";
+            this.Size = new System.Drawing.Size(549, 289);          
             this.ResumeLayout(false);
 
         }
 
+
         #endregion
-        
-        private AltUI.Docking.DarkDockPanel DockPanel;
     }
 }

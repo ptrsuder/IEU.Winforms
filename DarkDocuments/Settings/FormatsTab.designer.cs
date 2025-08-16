@@ -1,9 +1,6 @@
-﻿using System.Windows.Forms;
-using AltUI.Controls;
-
-namespace ImageEnhancingUtility.Winforms
+﻿namespace ImageEnhancingUtility.Winforms
 {
-    partial class DarkDockFormatsTab
+    partial class FormatsTab
     {
         /// <summary> 
         /// Required designer variable.
@@ -30,7 +27,9 @@ namespace ImageEnhancingUtility.Winforms
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
-        {
+        {           
+            this.newFormatExtension_comboBox = new AltUI.Controls.DarkComboBox();
+            this.label23 = new AltUI.Controls.DarkLabel();
             this.groupBox2 = new AltUI.Controls.DarkGroupBox();
             this.webpLossless_checkBox = new AltUI.Controls.DarkCheckBox();
             this.webpQuality_numericUpDown = new AltUI.Controls.DarkNumericUpDown();
@@ -54,6 +53,13 @@ namespace ImageEnhancingUtility.Winforms
             this.ddsCompresion_comboBox = new AltUI.Controls.DarkComboBox();
             this.ddsFileFormat_comboBox = new AltUI.Controls.DarkComboBox();
             this.ddsTextureType_comboBox = new AltUI.Controls.DarkComboBox();
+            this.darkGroupBox1 = new AltUI.Controls.DarkGroupBox();
+            this.deleteFormat_button = new AltUI.Controls.DarkButton();
+            this.newFormatName_textBox = new AltUI.Controls.DarkTextBox();
+            this.formats_listBox = new AltUI.Controls.DarkListBox();
+            this.loadFormat_button = new AltUI.Controls.DarkButton();
+            this.saveFormat_button = new AltUI.Controls.DarkButton();
+            this.preserveFormat_checkBox = new AltUI.Controls.DarkCheckBox();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).BeginInit();
             this.groupBox3.SuspendLayout();
@@ -61,7 +67,28 @@ namespace ImageEnhancingUtility.Winforms
             this.tiffSetting_groupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).BeginInit();
             this.ddsOutputSettings_groupBox.SuspendLayout();
+            this.darkGroupBox1.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // newFormatExtension_comboBox
+            // 
+            this.newFormatExtension_comboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.newFormatExtension_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
+            this.newFormatExtension_comboBox.FormattingEnabled = true;
+            this.newFormatExtension_comboBox.Location = new System.Drawing.Point(732, 505);
+            this.newFormatExtension_comboBox.Name = "newFormatExtension_comboBox";
+            this.newFormatExtension_comboBox.Size = new System.Drawing.Size(149, 24);
+            this.newFormatExtension_comboBox.TabIndex = 51;
+            // 
+            // label23
+            // 
+            this.label23.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(742, 487);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(58, 15);
+            this.label23.TabIndex = 49;
+            this.label23.Text = "Extension";
             // 
             // groupBox2
             // 
@@ -71,10 +98,10 @@ namespace ImageEnhancingUtility.Winforms
             this.groupBox2.Controls.Add(this.label27);
             this.groupBox2.Controls.Add(this.webpPreset_comboBox);
             this.groupBox2.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.groupBox2.Location = new System.Drawing.Point(20, 85);
+            this.groupBox2.Location = new System.Drawing.Point(17, 123);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(344, 107);
-            this.groupBox2.TabIndex = 54;
+            this.groupBox2.Size = new System.Drawing.Size(396, 107);
+            this.groupBox2.TabIndex = 58;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "WEBP";
             // 
@@ -134,10 +161,10 @@ namespace ImageEnhancingUtility.Winforms
             this.groupBox3.Controls.Add(this.pngCompression_numericUpDown);
             this.groupBox3.Controls.Add(this.label18);
             this.groupBox3.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.groupBox3.Location = new System.Drawing.Point(20, 20);
+            this.groupBox3.Location = new System.Drawing.Point(17, 58);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(344, 59);
-            this.groupBox3.TabIndex = 55;
+            this.groupBox3.Size = new System.Drawing.Size(396, 59);
+            this.groupBox3.TabIndex = 59;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "PNG";
             // 
@@ -172,10 +199,10 @@ namespace ImageEnhancingUtility.Winforms
             this.tiffSetting_groupBox.Controls.Add(this.label24);
             this.tiffSetting_groupBox.Controls.Add(this.tiffSettings_comboBox);
             this.tiffSetting_groupBox.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.tiffSetting_groupBox.Location = new System.Drawing.Point(20, 205);
+            this.tiffSetting_groupBox.Location = new System.Drawing.Point(17, 243);
             this.tiffSetting_groupBox.Name = "tiffSetting_groupBox";
-            this.tiffSetting_groupBox.Size = new System.Drawing.Size(344, 83);
-            this.tiffSetting_groupBox.TabIndex = 56;
+            this.tiffSetting_groupBox.Size = new System.Drawing.Size(396, 83);
+            this.tiffSetting_groupBox.TabIndex = 60;
             this.tiffSetting_groupBox.TabStop = false;
             this.tiffSetting_groupBox.Text = "TIFF";
             // 
@@ -231,10 +258,10 @@ namespace ImageEnhancingUtility.Winforms
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsFileFormat_comboBox);
             this.ddsOutputSettings_groupBox.Controls.Add(this.ddsTextureType_comboBox);
             this.ddsOutputSettings_groupBox.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.ddsOutputSettings_groupBox.Location = new System.Drawing.Point(20, 302);
+            this.ddsOutputSettings_groupBox.Location = new System.Drawing.Point(17, 340);
             this.ddsOutputSettings_groupBox.Name = "ddsOutputSettings_groupBox";
-            this.ddsOutputSettings_groupBox.Size = new System.Drawing.Size(344, 196);
-            this.ddsOutputSettings_groupBox.TabIndex = 53;
+            this.ddsOutputSettings_groupBox.Size = new System.Drawing.Size(396, 196);
+            this.ddsOutputSettings_groupBox.TabIndex = 57;
             this.ddsOutputSettings_groupBox.TabStop = false;
             this.ddsOutputSettings_groupBox.Text = "DDS";
             // 
@@ -316,18 +343,108 @@ namespace ImageEnhancingUtility.Winforms
             this.ddsTextureType_comboBox.Size = new System.Drawing.Size(184, 24);
             this.ddsTextureType_comboBox.TabIndex = 0;
             // 
-            // DarkDockFormatsTab
+            // darkGroupBox1
+            // 
+            this.darkGroupBox1.Controls.Add(this.preserveFormat_checkBox);
+            this.darkGroupBox1.Controls.Add(this.groupBox2);
+            this.darkGroupBox1.Controls.Add(this.groupBox3);
+            this.darkGroupBox1.Controls.Add(this.tiffSetting_groupBox);
+            this.darkGroupBox1.Controls.Add(this.ddsOutputSettings_groupBox);
+            this.darkGroupBox1.Location = new System.Drawing.Point(20, 20);
+            this.darkGroupBox1.Name = "darkGroupBox1";
+            this.darkGroupBox1.Size = new System.Drawing.Size(494, 626);
+            this.darkGroupBox1.TabIndex = 61;
+            this.darkGroupBox1.TabStop = false;
+            // 
+            // deleteFormat_button
+            // 
+            this.deleteFormat_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.deleteFormat_button.FlatBottom = false;
+            this.deleteFormat_button.FlatTop = false;
+            this.deleteFormat_button.HoldColour = false;
+            this.deleteFormat_button.Location = new System.Drawing.Point(577, 716);
+            this.deleteFormat_button.Name = "deleteFormat_button";
+            this.deleteFormat_button.Padding = new System.Windows.Forms.Padding(5);
+            this.deleteFormat_button.Size = new System.Drawing.Size(149, 31);
+            this.deleteFormat_button.TabIndex = 66;
+            this.deleteFormat_button.Text = "Delete";
+            // 
+            // newFormatName_textBox
+            // 
+            this.newFormatName_textBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.newFormatName_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.newFormatName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.newFormatName_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.newFormatName_textBox.Location = new System.Drawing.Point(577, 614);
+            this.newFormatName_textBox.Name = "newFormatName_textBox";
+            this.newFormatName_textBox.Size = new System.Drawing.Size(149, 23);
+            this.newFormatName_textBox.TabIndex = 65;
+            // 
+            // formats_listBox
+            // 
+            this.formats_listBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.formats_listBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
+            this.formats_listBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.formats_listBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.formats_listBox.FormattingEnabled = true;
+            this.formats_listBox.ItemHeight = 15;
+            this.formats_listBox.Location = new System.Drawing.Point(732, 535);
+            this.formats_listBox.Name = "formats_listBox";
+            this.formats_listBox.Size = new System.Drawing.Size(149, 212);
+            this.formats_listBox.TabIndex = 62;
+            // 
+            // loadFormat_button
+            // 
+            this.loadFormat_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.loadFormat_button.FlatBottom = false;
+            this.loadFormat_button.FlatTop = false;
+            this.loadFormat_button.HoldColour = false;
+            this.loadFormat_button.Location = new System.Drawing.Point(577, 680);
+            this.loadFormat_button.Name = "loadFormat_button";
+            this.loadFormat_button.Padding = new System.Windows.Forms.Padding(5);
+            this.loadFormat_button.Size = new System.Drawing.Size(149, 31);
+            this.loadFormat_button.TabIndex = 64;
+            this.loadFormat_button.Text = "Load";
+            // 
+            // saveFormat_button
+            // 
+            this.saveFormat_button.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.saveFormat_button.FlatBottom = false;
+            this.saveFormat_button.FlatTop = false;
+            this.saveFormat_button.HoldColour = false;
+            this.saveFormat_button.Location = new System.Drawing.Point(577, 643);
+            this.saveFormat_button.Name = "saveFormat_button";
+            this.saveFormat_button.Padding = new System.Windows.Forms.Padding(5);
+            this.saveFormat_button.Size = new System.Drawing.Size(149, 31);
+            this.saveFormat_button.TabIndex = 63;
+            this.saveFormat_button.Text = "Save";
+            // 
+            // preserveFormat_checkBox
+            // 
+            this.preserveFormat_checkBox.AutoSize = true;
+            this.preserveFormat_checkBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
+            this.preserveFormat_checkBox.Location = new System.Drawing.Point(25, 22);
+            this.preserveFormat_checkBox.Name = "preserveFormat_checkBox";
+            this.preserveFormat_checkBox.Offset = 1;
+            this.preserveFormat_checkBox.Size = new System.Drawing.Size(113, 17);
+            this.preserveFormat_checkBox.TabIndex = 61;
+            this.preserveFormat_checkBox.Text = "Use original format";
+            // 
+            // FormatsTab
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.tiffSetting_groupBox);
-            this.Controls.Add(this.ddsOutputSettings_groupBox);
+            this.Controls.Add(this.newFormatExtension_comboBox);
+            this.Controls.Add(this.label23);
+            this.Controls.Add(this.deleteFormat_button);
+            this.Controls.Add(this.newFormatName_textBox);
+            this.Controls.Add(this.formats_listBox);
+            this.Controls.Add(this.loadFormat_button);
+            this.Controls.Add(this.saveFormat_button);
+            this.Controls.Add(this.darkGroupBox1);
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "DarkDockFormatsTab";
-            this.Size = new System.Drawing.Size(750, 750);
-            this.Load += new System.EventHandler(this.DockDocument_Load);
+            this.Name = "FormatsTab";
+            this.Size = new System.Drawing.Size(884, 750);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.webpQuality_numericUpDown)).EndInit();
@@ -339,33 +456,47 @@ namespace ImageEnhancingUtility.Winforms
             ((System.ComponentModel.ISupportInitialize)(this.tiffJpegQuality_numericUpDown)).EndInit();
             this.ddsOutputSettings_groupBox.ResumeLayout(false);
             this.ddsOutputSettings_groupBox.PerformLayout();
+            this.darkGroupBox1.ResumeLayout(false);
+            this.darkGroupBox1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
+
         #endregion
-        public DarkCheckBox webpLossless_checkBox;
-        public DarkNumericUpDown webpQuality_numericUpDown;
-        public DarkComboBox webpPreset_comboBox;
-        public DarkNumericUpDown pngCompression_numericUpDown;
-        public DarkNumericUpDown tiffJpegQuality_numericUpDown;
-        public DarkComboBox tiffSettings_comboBox;
-        public DarkCheckBox ddsIsCubemap_checkBox;
-        public DarkCheckBox ddsGenerateMipmaps_checkBox;
-        public DarkComboBox ddsCompresion_comboBox;
-        public DarkComboBox ddsFileFormat_comboBox;
-        public DarkComboBox ddsTextureType_comboBox;
-        public DarkGroupBox groupBox2;
-        public DarkLabel label26;
-        public DarkLabel label27;
-        public DarkGroupBox groupBox3;
-        public DarkLabel label18;
-        public DarkGroupBox tiffSetting_groupBox;
-        public DarkLabel label25;
-        public DarkLabel label24;
-        public DarkGroupBox ddsOutputSettings_groupBox;
-        public DarkLabel label17;
-        public DarkLabel label16;
-        public DarkLabel label15;
+
+        public AltUI.Controls.DarkComboBox newFormatExtension_comboBox;
+        public AltUI.Controls.DarkLabel label23;
+        public AltUI.Controls.DarkGroupBox groupBox2;
+        public AltUI.Controls.DarkCheckBox webpLossless_checkBox;
+        public AltUI.Controls.DarkNumericUpDown webpQuality_numericUpDown;
+        public AltUI.Controls.DarkLabel label26;
+        public AltUI.Controls.DarkLabel label27;
+        public AltUI.Controls.DarkComboBox webpPreset_comboBox;
+        public AltUI.Controls.DarkGroupBox groupBox3;
+        public AltUI.Controls.DarkNumericUpDown pngCompression_numericUpDown;
+        public AltUI.Controls.DarkLabel label18;
+        public AltUI.Controls.DarkGroupBox tiffSetting_groupBox;
+        public AltUI.Controls.DarkNumericUpDown tiffJpegQuality_numericUpDown;
+        public AltUI.Controls.DarkLabel label25;
+        public AltUI.Controls.DarkLabel label24;
+        public AltUI.Controls.DarkComboBox tiffSettings_comboBox;
+        public AltUI.Controls.DarkGroupBox ddsOutputSettings_groupBox;
+        public AltUI.Controls.DarkLabel label17;
+        public AltUI.Controls.DarkLabel label16;
+        public AltUI.Controls.DarkLabel label15;
+        public AltUI.Controls.DarkCheckBox ddsIsCubemap_checkBox;
+        public AltUI.Controls.DarkCheckBox ddsGenerateMipmaps_checkBox;
+        public AltUI.Controls.DarkComboBox ddsCompresion_comboBox;
+        public AltUI.Controls.DarkComboBox ddsFileFormat_comboBox;
+        public AltUI.Controls.DarkComboBox ddsTextureType_comboBox;
+        private AltUI.Controls.DarkGroupBox darkGroupBox1;
+        public AltUI.Controls.DarkButton deleteFormat_button;
+        public AltUI.Controls.DarkTextBox newFormatName_textBox;
+        public AltUI.Controls.DarkListBox formats_listBox;
+        public AltUI.Controls.DarkButton loadFormat_button;
+        public AltUI.Controls.DarkButton saveFormat_button;
+        public AltUI.Controls.DarkCheckBox preserveFormat_checkBox;
     }
 }

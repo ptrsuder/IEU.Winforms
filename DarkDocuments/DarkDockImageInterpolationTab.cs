@@ -29,6 +29,7 @@ namespace ImageEnhancingUtility.Winforms
 
         public override void Close()
         {
+            return;
             var result = DarkMessageBox.ShowWarning(@"You will lose any unsaved changes. Continue?", @"Close document", DarkDialogButton.YesNo);
             if (result == DialogResult.No)
                 return;

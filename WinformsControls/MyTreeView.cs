@@ -1,11 +1,11 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace ImageEnhancingUtility.Winforms
 {
     public class MyTreeView : TreeView
     {
-
         protected override void WndProc(ref System.Windows.Forms.Message m)
         {
             // Suppress WM_LBUTTONDBLCLK
@@ -23,5 +23,7 @@ namespace ImageEnhancingUtility.Winforms
             this.ResumeLayout(false);
 
         }
+
+        public MyTreeView() {}       
     }
 }

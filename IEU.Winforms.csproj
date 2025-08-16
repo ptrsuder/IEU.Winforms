@@ -79,10 +79,6 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AltUI, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>lib\AltUI.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
@@ -110,6 +106,66 @@
     </Compile>
     <Compile Include="DarkDocuments\DarkDockImageInterpolationTab.designer.cs">
       <DependentUpon>DarkDockImageInterpolationTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\AlphaTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\AlphaTab.designer.cs">
+      <DependentUpon>AlphaTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\CoreTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\CoreTab.designer.cs">
+      <DependentUpon>CoreTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\AdvancedTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\AdvancedTab.designer.cs">
+      <DependentUpon>AdvancedTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\FilterTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\FilterTab.designer.cs">
+      <DependentUpon>FilterTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\ProfileTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\ProfileTab.designer.cs">
+      <DependentUpon>ProfileTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\PreviewTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\PreviewTab.designer.cs">
+      <DependentUpon>PreviewTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\MiscTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\MiscTab.designer.cs">
+      <DependentUpon>MiscTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\FormatsTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\FormatsTab.designer.cs">
+      <DependentUpon>FormatsTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\PathTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\PathTab.designer.cs">
+      <DependentUpon>PathTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\EmptyDoc.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\EmptyDoc.designer.cs">
+      <DependentUpon>EmptyDoc.cs</DependentUpon>
     </Compile>
     <Compile Include="DarkDocuments\DarkDockTEST.cs">
       <SubType>UserControl</SubType>
@@ -152,6 +208,24 @@
     </Compile>
     <Compile Include="DarkDocuments\DarkDockMainTab.designer.cs">
       <DependentUpon>DarkDockMainTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\UITab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\UITab.designer.cs">
+      <DependentUpon>UITab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\TileTab.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="DarkDocuments\Settings\TileTab.designer.cs">
+      <DependentUpon>TileTab.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DarkForms\ModelTreeviewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DarkForms\ModelTreeviewForm.Designer.cs">
+      <DependentUpon>ModelTreeviewForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\ErrorLogForm.cs">
       <SubType>Form</SubType>
@@ -222,6 +296,36 @@
     <EmbeddedResource Include="DarkDocuments\DarkDockImageInterpolationTab.resx">
       <DependentUpon>DarkDockImageInterpolationTab.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\AlphaTab.resx">
+      <DependentUpon>AlphaTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\CoreTab.resx">
+      <DependentUpon>CoreTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\AdvancedTab.resx">
+      <DependentUpon>AdvancedTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\FilterTab.resx">
+      <DependentUpon>FilterTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\ProfileTab.resx">
+      <DependentUpon>ProfileTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\PreviewTab.resx">
+      <DependentUpon>PreviewTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\MiscTab.resx">
+      <DependentUpon>MiscTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\FormatsTab.resx">
+      <DependentUpon>FormatsTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\PathTab.resx">
+      <DependentUpon>PathTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\EmptyDoc.resx">
+      <DependentUpon>EmptyDoc.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DarkDocuments\DarkDockTEST.resx">
       <DependentUpon>DarkDockTEST.cs</DependentUpon>
     </EmbeddedResource>
@@ -242,6 +346,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DarkDocuments\DarkDockMainTab.resx">
       <DependentUpon>DarkDockMainTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\UITab.resx">
+      <DependentUpon>UITab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkDocuments\Settings\TileTab.resx">
+      <DependentUpon>TileTab.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DarkForms\ModelTreeviewForm.resx">
+      <DependentUpon>ModelTreeviewForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ErrorLogForm.resx">
       <DependentUpon>ErrorLogForm.cs</DependentUpon>
@@ -346,6 +459,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AltUI\AltUI.csproj">
+      <Project>{f19472f5-8c44-4c51-a8a0-b9de5f555255}</Project>
+      <Name>AltUI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GitHubUpdateStandard\GitHubUpdateStandard.csproj">
       <Project>{91455969-13e4-419b-948a-6c8fa1198c07}</Project>
       <Name>GitHubUpdateStandard</Name>

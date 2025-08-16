@@ -3,6 +3,8 @@ using AltUI.Controls;
 using AltUI.Docking;
 using AltUI.Forms;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ImageEnhancingUtility.Winforms
@@ -38,29 +40,26 @@ namespace ImageEnhancingUtility.Winforms
 
         #endregion
 
-        private void DockDocument_Load(object sender, System.EventArgs e)
-        {
+        private void comparisonScale_Click(object sender, System.EventArgs e)
+        {  
+            foreach(var item in comaprisonScaleToolStripMenuItem.DropDownItems)            
+               (item as ToolStripMenuItem).Checked = false;
 
+            (sender as ToolStripMenuItem).Checked = true;
         }
 
-        private void previewShowSaveDialog_checkBox_CheckedChanged(object sender, System.EventArgs e)
+        private void comaprisonScaleToolStripMenuItem_MouseEnter(object sender, System.EventArgs e)
         {
-
+            comaprisonScaleToolStripMenuItem.DropDown.AutoClose = false;
+            comparisonScale_050.DropDown.AutoClose = false;
+            preview_ContextMenu.AutoClose = false;
         }
 
-        private void label35_Click(object sender, System.EventArgs e)
+        private void comaprisonScaleToolStripMenuItem_MouseLeave(object sender, System.EventArgs e)
         {
-
+            comaprisonScaleToolStripMenuItem.DropDown.AutoClose = true;
+            comparisonScale_050.DropDown.AutoClose = true;
+            preview_ContextMenu.AutoClose = true;
         }
-
-        private void imageSizeToolStripStatusLabel_Click(object sender, System.EventArgs e)
-        {
-
-        }
-
-        private void preview_progressBar_Click(object sender, System.EventArgs e)
-        {
-
-        }
-    }
+    }   
 }

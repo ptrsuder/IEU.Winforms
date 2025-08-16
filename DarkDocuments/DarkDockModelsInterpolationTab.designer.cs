@@ -1,4 +1,6 @@
-﻿namespace ImageEnhancingUtility.Winforms
+﻿using AltUI.Controls;
+
+namespace ImageEnhancingUtility.Winforms
 {
     partial class DarkDockModIntTab
     {
@@ -29,18 +31,19 @@
         private void InitializeComponent()
         {
             this.modelInterpolationAlpha_trackBar = new System.Windows.Forms.TrackBar();
-            this.interpolationOutputModelName_textBox = new System.Windows.Forms.TextBox();
-            this.modelInterpolationAlphaValue_textBox = new System.Windows.Forms.TextBox();
-            this.interpolationStart_button = new System.Windows.Forms.Button();
-            this.interpolationModelTwo_comboBox = new System.Windows.Forms.ComboBox();
-            this.interpolationModelOne_comboBox = new System.Windows.Forms.ComboBox();
+            this.interpolationOutputModelName_textBox = new AltUI.Controls.DarkTextBox();
+            this.modelInterpolationAlphaValue_textBox = new AltUI.Controls.DarkTextBox();
+            this.interpolationStart_button = new AltUI.Controls.DarkButton();
+            this.interpolationModelTwo_comboBox = new AltUI.Controls.DarkComboBox();
+            this.interpolationModelOne_comboBox = new AltUI.Controls.DarkComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.modelInterpolationAlpha_trackBar)).BeginInit();
             this.SuspendLayout();
             // 
             // modelInterpolationAlpha_trackBar
             // 
+            this.modelInterpolationAlpha_trackBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.modelInterpolationAlpha_trackBar.LargeChange = 10;
-            this.modelInterpolationAlpha_trackBar.Location = new System.Drawing.Point(23, 128);
+            this.modelInterpolationAlpha_trackBar.Location = new System.Drawing.Point(167, 128);
             this.modelInterpolationAlpha_trackBar.Maximum = 99;
             this.modelInterpolationAlpha_trackBar.Minimum = 1;
             this.modelInterpolationAlpha_trackBar.Name = "modelInterpolationAlpha_trackBar";
@@ -50,17 +53,21 @@
             // 
             // interpolationOutputModelName_textBox
             // 
+            this.interpolationOutputModelName_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
             this.interpolationOutputModelName_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.interpolationOutputModelName_textBox.Location = new System.Drawing.Point(23, 179);
+            this.interpolationOutputModelName_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.interpolationOutputModelName_textBox.Location = new System.Drawing.Point(167, 179);
             this.interpolationOutputModelName_textBox.Name = "interpolationOutputModelName_textBox";
             this.interpolationOutputModelName_textBox.Size = new System.Drawing.Size(428, 23);
             this.interpolationOutputModelName_textBox.TabIndex = 9;
             // 
             // modelInterpolationAlphaValue_textBox
             // 
+            this.modelInterpolationAlphaValue_textBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
             this.modelInterpolationAlphaValue_textBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.modelInterpolationAlphaValue_textBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.25F);
-            this.modelInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(457, 79);
+            this.modelInterpolationAlphaValue_textBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.modelInterpolationAlphaValue_textBox.Location = new System.Drawing.Point(601, 79);
             this.modelInterpolationAlphaValue_textBox.Name = "modelInterpolationAlphaValue_textBox";
             this.modelInterpolationAlphaValue_textBox.ReadOnly = true;
             this.modelInterpolationAlphaValue_textBox.Size = new System.Drawing.Size(63, 21);
@@ -70,35 +77,33 @@
             // 
             // interpolationStart_button
             // 
-            this.interpolationStart_button.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.interpolationStart_button.FlatBottom = false;
+            this.interpolationStart_button.FlatTop = false;
             this.interpolationStart_button.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.interpolationStart_button.Location = new System.Drawing.Point(23, 215);
+            this.interpolationStart_button.HoldColour = false;
+            this.interpolationStart_button.Location = new System.Drawing.Point(167, 215);
             this.interpolationStart_button.Name = "interpolationStart_button";
+            this.interpolationStart_button.Padding = new System.Windows.Forms.Padding(5);
             this.interpolationStart_button.Size = new System.Drawing.Size(428, 53);
             this.interpolationStart_button.TabIndex = 8;
             this.interpolationStart_button.Text = "INTERPOLATE";
-            this.interpolationStart_button.UseVisualStyleBackColor = true;
             // 
             // interpolationModelTwo_comboBox
             // 
-            this.interpolationModelTwo_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.interpolationModelTwo_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.interpolationModelTwo_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.interpolationModelTwo_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.interpolationModelTwo_comboBox.FormattingEnabled = true;
-            this.interpolationModelTwo_comboBox.Location = new System.Drawing.Point(23, 101);
+            this.interpolationModelTwo_comboBox.Location = new System.Drawing.Point(167, 101);
             this.interpolationModelTwo_comboBox.Name = "interpolationModelTwo_comboBox";
-            this.interpolationModelTwo_comboBox.Size = new System.Drawing.Size(428, 23);
+            this.interpolationModelTwo_comboBox.Size = new System.Drawing.Size(428, 24);
             this.interpolationModelTwo_comboBox.TabIndex = 5;
             // 
             // interpolationModelOne_comboBox
             // 
-            this.interpolationModelOne_comboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.interpolationModelOne_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.interpolationModelOne_comboBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.interpolationModelOne_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
             this.interpolationModelOne_comboBox.FormattingEnabled = true;
-            this.interpolationModelOne_comboBox.Location = new System.Drawing.Point(23, 61);
+            this.interpolationModelOne_comboBox.Location = new System.Drawing.Point(167, 61);
             this.interpolationModelOne_comboBox.Name = "interpolationModelOne_comboBox";
-            this.interpolationModelOne_comboBox.Size = new System.Drawing.Size(428, 23);
+            this.interpolationModelOne_comboBox.Size = new System.Drawing.Size(428, 24);
             this.interpolationModelOne_comboBox.TabIndex = 6;
             // 
             // DarkDockModIntTab
@@ -124,10 +129,10 @@
         #endregion
 
         public System.Windows.Forms.TrackBar modelInterpolationAlpha_trackBar;
-        public System.Windows.Forms.TextBox interpolationOutputModelName_textBox;
-        public System.Windows.Forms.TextBox modelInterpolationAlphaValue_textBox;
-        public System.Windows.Forms.Button interpolationStart_button;
-        public System.Windows.Forms.ComboBox interpolationModelTwo_comboBox;
-        public System.Windows.Forms.ComboBox interpolationModelOne_comboBox;
+        public DarkTextBox interpolationOutputModelName_textBox;
+        public DarkTextBox modelInterpolationAlphaValue_textBox;
+        public DarkButton interpolationStart_button;
+        public DarkComboBox interpolationModelTwo_comboBox;
+        public DarkComboBox interpolationModelOne_comboBox;
     }
 }
