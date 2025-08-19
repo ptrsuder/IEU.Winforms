@@ -34,7 +34,7 @@ namespace ImageEnhancingUtility.Winforms
 {
     public partial class MainFormDark : DarkForm, IViewFor<MainViewModel>
     {
-        public readonly string AppVersion = "0.13.1";
+        public readonly string AppVersion = "0.13.2";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
         public MainViewModel ViewModel { get; set; }
@@ -1833,8 +1833,8 @@ namespace ImageEnhancingUtility.Winforms
             darkDockPanel1.AddContent(mainTab);
             darkDockPanel1.AddContent(previewTab);
             darkDockPanel1.AddContent(settingsNewTab);
-            darkDockPanel1.AddContent(rulesTab);
-            darkDockPanel1.AddContent(modIntTab);            
+            //darkDockPanel1.AddContent(rulesTab);
+            //darkDockPanel1.AddContent(modIntTab);            
 
             List<DarkDockContent> tabs = new List<DarkDockContent>() { mainTab, previewTab, settingsNewTab, rulesTab, modIntTab };
 
