@@ -15,7 +15,7 @@ namespace ImageEnhancingUtility.Winforms
 
         public DarkDockPreviewTab()
         {
-            InitializeComponent();         
+            InitializeComponent();
         }
 
         public DarkDockPreviewTab(string text, Image icon)
@@ -41,9 +41,9 @@ namespace ImageEnhancingUtility.Winforms
         #endregion
 
         private void comparisonScale_Click(object sender, System.EventArgs e)
-        {  
-            foreach(var item in comaprisonScaleToolStripMenuItem.DropDownItems)            
-               (item as ToolStripMenuItem).Checked = false;
+        {
+            foreach (var item in comaprisonScaleToolStripMenuItem.DropDownItems)
+                (item as ToolStripMenuItem).Checked = false;
 
             (sender as ToolStripMenuItem).Checked = true;
         }
@@ -61,5 +61,10 @@ namespace ImageEnhancingUtility.Winforms
             comparisonScale_050.DropDown.AutoClose = true;
             preview_ContextMenu.AutoClose = true;
         }
-    }   
+
+        private void previewSaveOutputFormat_button_Click(object sender, System.EventArgs e)
+        {
+
+        }
+    }
 }

@@ -25,6 +25,7 @@ using ImageEnhancingUtility.Winforms.DarkForms;
 using ReactiveUI;
 using Tulpep.NotificationWindow;
 using Rule = ImageEnhancingUtility.Core.Rule;
+using System.ComponentModel;
 
 //TODO:
 //ask to change all paths when changing ESRGAN path
@@ -37,6 +38,7 @@ namespace ImageEnhancingUtility.Winforms
         public readonly string AppVersion = "0.13.2";
         public readonly string GitHubRepoName = "IEU.Winforms";
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public MainViewModel ViewModel { get; set; }
         object IViewFor.ViewModel
         {
@@ -50,7 +52,8 @@ namespace ImageEnhancingUtility.Winforms
 
         readonly List<TextBox> pathsTextBoxes;   
       
-        private delegate void SafeCallDelegateWithColor(LogMessage message);      
+        private delegate void SafeCallDelegateWithColor(LogMessage message);
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public double ProgressBarValue
         {
             get => 0;
@@ -60,6 +63,7 @@ namespace ImageEnhancingUtility.Winforms
             }
         }
 
+        [DesignerSerializationVisibility(DesignerSerializationVisibility.Hidden)]
         public double PreviewProgressBarValue
         {
             get => 0;
@@ -819,9 +823,13 @@ namespace ImageEnhancingUtility.Winforms
 
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
         {
-            checkedModels = treeView1.Nodes.Find("", true).Where(x => x.Checked).ToList()
-                .ConvertAll(x => x.Tag as ModelInfo)
+            checkedModels = treeView1.Nodes.AllNodes().Where(n => n.Checked).ToList()
+                 .ConvertAll(x => x.Tag as ModelInfo)
                 .Where(x => x?.GetType() == typeof(ModelInfo)).ToList();
+
+            //checkedModels = treeView1.Nodes.Find().Where(x => x.Checked).ToList()
+            //    .ConvertAll(x => x.Tag as ModelInfo)
+            //    .Where(x => x?.GetType() == typeof(ModelInfo)).ToList();
             ViewModel.IEU.SelectedModelsItems = checkedModels;      
 
             DisableUseModelForAlpha();           
@@ -1592,10 +1600,11 @@ namespace ImageEnhancingUtility.Winforms
                 saveFileDialog.DefaultExt = "";
                 saveFileDialog.InitialDirectory = ViewModel.IEU.OutputDirectoryPath;
 
-                if (ViewModel.Config.LastPreviewSavePath != "")
-                {
-                    saveFileDialog.InitialDirectory = ViewModel.Config.LastPreviewSavePath;
-                }
+                saveFileDialog.InitialDirectory = Path.GetDirectoryName(previewFullname);
+                //if (ViewModel.Config.LastPreviewSavePath != "")
+                //{
+                //    saveFileDialog.InitialDirectory = ViewModel.Config.LastPreviewSavePath;
+                //}
 
                 string modelName = Path.GetFileNameWithoutExtension(model.Name);
 
@@ -2022,10 +2031,10 @@ namespace ImageEnhancingUtility.Winforms
         private void changePath_button_Click(object sender, EventArgs e)
         {
             TextBox textBox = (sender as Button).Tag as TextBox;
-            FolderSelectDialog.FolderSelectDialog folderSelectDialog = new FolderSelectDialog.FolderSelectDialog();
-            folderSelectDialog.ShowDialog();
-            if (folderSelectDialog.FileName != "")
-                textBox.Text = folderSelectDialog.FileName;
+            FolderBrowserDialog folderSelectDialog = new FolderBrowserDialog();
+           folderSelectDialog.ShowDialog();
+            if (folderSelectDialog.SelectedPath != "")
+                textBox.Text = folderSelectDialog.SelectedPath;
 
             mainTab.Enabled = VerifyPaths();
         }
@@ -2510,4 +2519,19 @@ namespace ImageEnhancingUtility.Winforms
         }
           
     }    
+}
+
+public static class TreeViewExtensions
+{
+    public static IEnumerable<TreeNode> AllNodes(this TreeNodeCollection nodes)
+    {
+        foreach (TreeNode node in nodes)
+        {
+            yield return node;
+            foreach (var child in node.Nodes.AllNodes())
+            {
+                yield return child;
+            }
+        }
+    }
 }

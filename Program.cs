@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ReactiveUI;
+using Splat;
 
 namespace ImageEnhancingUtility.Winforms
 {
@@ -11,6 +13,7 @@ namespace ImageEnhancingUtility.Winforms
         [STAThread]
         static void Main()
         {
+            
             AppDomain currentDomain = AppDomain.CurrentDomain;
             currentDomain.UnhandledException += new UnhandledExceptionEventHandler(MyHandler);
 

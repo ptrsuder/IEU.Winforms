@@ -32,502 +32,485 @@ namespace ImageEnhancingUtility.Winforms
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DarkDockPreviewTab));
-            this.preview_ContextMenu = new AltUI.Controls.DarkContextMenu();
-            this.saveComparisonToClipboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comaprisonScaleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.comparisonScale_025 = new System.Windows.Forms.ToolStripMenuItem();
-            this.comparisonScale_050 = new System.Windows.Forms.ToolStripMenuItem();
-            this.comparisonScale_100 = new System.Windows.Forms.ToolStripMenuItem();
-            this.comparisonScale_200 = new System.Windows.Forms.ToolStripMenuItem();
-            this.comparisonScale_400 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip = new AltUI.Controls.DarkToolStrip();
-            this.openFromFileToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.actualSizeToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.zoomInToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.zoomOutToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.showModelForm_button = new AltUI.Controls.DarkButton();
-            this.previewModels_comboBox = new AltUI.Controls.DarkComboBox();
-            this.zoomImageBox = new Cyotek.Windows.Forms.ImageBox();
-            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.previewUpdate_button = new AltUI.Controls.DarkButton();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.previewSaveOutputFormat_button = new AltUI.Controls.DarkButton();
-            this.splitContainer3 = new System.Windows.Forms.SplitContainer();
-            this.imageSizeToolStripStatusLabel = new System.Windows.Forms.Label();
-            this.miniMapImageBox = new Cyotek.Windows.Forms.ImageBox();
-            this.darkLabel1 = new AltUI.Controls.DarkLabel();
-            this.previewImageBox = new Cyotek.Windows.Forms.ImageBox();
-            this.preview_progressBar = new AltUI.Controls.DarkProgressBar();
-            this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.zoomLevelsToolStripComboBox = new AltUI.Controls.DarkComboBox();
-            this.preview_ContextMenu.SuspendLayout();
-            this.toolStrip.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).BeginInit();
-            this.splitContainer3.Panel1.SuspendLayout();
-            this.splitContainer3.Panel2.SuspendLayout();
-            this.splitContainer3.SuspendLayout();
-            this.tableLayoutPanel3.SuspendLayout();
-            this.SuspendLayout();
+            preview_ContextMenu = new DarkContextMenu();
+            saveComparisonToClipboardToolStripMenuItem = new ToolStripMenuItem();
+            comaprisonScaleToolStripMenuItem = new ToolStripMenuItem();
+            comparisonScale_025 = new ToolStripMenuItem();
+            comparisonScale_050 = new ToolStripMenuItem();
+            comparisonScale_100 = new ToolStripMenuItem();
+            comparisonScale_200 = new ToolStripMenuItem();
+            comparisonScale_400 = new ToolStripMenuItem();
+            toolStrip = new DarkToolStrip();
+            openFromFileToolStripButton = new ToolStripButton();
+            toolStripSeparator8 = new ToolStripSeparator();
+            actualSizeToolStripButton = new ToolStripButton();
+            zoomInToolStripButton = new ToolStripButton();
+            zoomOutToolStripButton = new ToolStripButton();
+            toolStripSeparator2 = new ToolStripSeparator();
+            tableLayoutPanel1 = new TableLayoutPanel();
+            showModelForm_button = new DarkButton();
+            previewModels_comboBox = new DarkComboBox();
+            zoomImageBox = new Cyotek.Windows.Forms.ImageBox();
+            tableLayoutPanel6 = new TableLayoutPanel();
+            previewUpdate_button = new DarkButton();
+            panel4 = new Panel();
+            previewSaveOutputFormat_button = new DarkButton();
+            splitContainer3 = new SplitContainer();
+            imageSizeToolStripStatusLabel = new Label();
+            miniMapImageBox = new Cyotek.Windows.Forms.ImageBox();
+            darkLabel1 = new DarkLabel();
+            previewImageBox = new Cyotek.Windows.Forms.ImageBox();
+            preview_progressBar = new DarkProgressBar();
+            tableLayoutPanel3 = new TableLayoutPanel();
+            zoomLevelsToolStripComboBox = new DarkComboBox();
+            preview_ContextMenu.SuspendLayout();
+            toolStrip.SuspendLayout();
+            tableLayoutPanel1.SuspendLayout();
+            tableLayoutPanel6.SuspendLayout();
+            panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).BeginInit();
+            splitContainer3.Panel1.SuspendLayout();
+            splitContainer3.Panel2.SuspendLayout();
+            splitContainer3.SuspendLayout();
+            tableLayoutPanel3.SuspendLayout();
+            SuspendLayout();
             // 
             // preview_ContextMenu
             // 
-            this.preview_ContextMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.preview_ContextMenu.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.preview_ContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saveComparisonToClipboardToolStripMenuItem,
-            this.comaprisonScaleToolStripMenuItem});
-            this.preview_ContextMenu.Name = "preview_ContextMenu";
-            this.preview_ContextMenu.Size = new System.Drawing.Size(232, 48);
+            preview_ContextMenu.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            preview_ContextMenu.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            preview_ContextMenu.Items.AddRange(new ToolStripItem[] { saveComparisonToClipboardToolStripMenuItem, comaprisonScaleToolStripMenuItem });
+            preview_ContextMenu.Name = "preview_ContextMenu";
+            preview_ContextMenu.Size = new System.Drawing.Size(232, 48);
             // 
             // saveComparisonToClipboardToolStripMenuItem
             // 
-            this.saveComparisonToClipboardToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.saveComparisonToClipboardToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.saveComparisonToClipboardToolStripMenuItem.Name = "saveComparisonToClipboardToolStripMenuItem";
-            this.saveComparisonToClipboardToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.saveComparisonToClipboardToolStripMenuItem.Text = "Save comparison to clipboard";
+            saveComparisonToClipboardToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            saveComparisonToClipboardToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            saveComparisonToClipboardToolStripMenuItem.Name = "saveComparisonToClipboardToolStripMenuItem";
+            saveComparisonToClipboardToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            saveComparisonToClipboardToolStripMenuItem.Text = "Save comparison to clipboard";
             // 
             // comaprisonScaleToolStripMenuItem
             // 
-            this.comaprisonScaleToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.comaprisonScaleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.comparisonScale_025,
-            this.comparisonScale_050,
-            this.comparisonScale_100,
-            this.comparisonScale_200,
-            this.comparisonScale_400});
-            this.comaprisonScaleToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.comaprisonScaleToolStripMenuItem.Name = "comaprisonScaleToolStripMenuItem";
-            this.comaprisonScaleToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
-            this.comaprisonScaleToolStripMenuItem.Text = "Comaprison scale";
-            this.comaprisonScaleToolStripMenuItem.MouseEnter += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseEnter);
-            this.comaprisonScaleToolStripMenuItem.MouseLeave += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseLeave);
+            comaprisonScaleToolStripMenuItem.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            comaprisonScaleToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { comparisonScale_025, comparisonScale_050, comparisonScale_100, comparisonScale_200, comparisonScale_400 });
+            comaprisonScaleToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            comaprisonScaleToolStripMenuItem.Name = "comaprisonScaleToolStripMenuItem";
+            comaprisonScaleToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            comaprisonScaleToolStripMenuItem.Text = "Comparison scale";
+            comaprisonScaleToolStripMenuItem.MouseEnter += comaprisonScaleToolStripMenuItem_MouseEnter;
+            comaprisonScaleToolStripMenuItem.MouseLeave += comaprisonScaleToolStripMenuItem_MouseLeave;
             // 
             // comparisonScale_025
             // 
-            this.comparisonScale_025.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.comparisonScale_025.CheckOnClick = true;
-            this.comparisonScale_025.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.comparisonScale_025.Name = "comparisonScale_025";
-            this.comparisonScale_025.Size = new System.Drawing.Size(102, 22);
-            this.comparisonScale_025.Tag = "0.25";
-            this.comparisonScale_025.Text = "25%";
-            this.comparisonScale_025.Click += new System.EventHandler(this.comparisonScale_Click);
-            this.comparisonScale_025.MouseEnter += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseEnter);
-            this.comparisonScale_025.MouseLeave += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseLeave);
+            comparisonScale_025.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            comparisonScale_025.CheckOnClick = true;
+            comparisonScale_025.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            comparisonScale_025.Name = "comparisonScale_025";
+            comparisonScale_025.Size = new System.Drawing.Size(102, 22);
+            comparisonScale_025.Tag = "0.25";
+            comparisonScale_025.Text = "25%";
+            comparisonScale_025.Click += comparisonScale_Click;
+            comparisonScale_025.MouseEnter += comaprisonScaleToolStripMenuItem_MouseEnter;
+            comparisonScale_025.MouseLeave += comaprisonScaleToolStripMenuItem_MouseLeave;
             // 
             // comparisonScale_050
             // 
-            this.comparisonScale_050.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.comparisonScale_050.CheckOnClick = true;
-            this.comparisonScale_050.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.comparisonScale_050.Name = "comparisonScale_050";
-            this.comparisonScale_050.Size = new System.Drawing.Size(102, 22);
-            this.comparisonScale_050.Tag = "0.50";
-            this.comparisonScale_050.Text = "50%";
-            this.comparisonScale_050.Click += new System.EventHandler(this.comparisonScale_Click);
-            this.comparisonScale_050.MouseEnter += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseEnter);
-            this.comparisonScale_050.MouseLeave += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseLeave);
+            comparisonScale_050.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            comparisonScale_050.CheckOnClick = true;
+            comparisonScale_050.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            comparisonScale_050.Name = "comparisonScale_050";
+            comparisonScale_050.Size = new System.Drawing.Size(102, 22);
+            comparisonScale_050.Tag = "0.50";
+            comparisonScale_050.Text = "50%";
+            comparisonScale_050.Click += comparisonScale_Click;
+            comparisonScale_050.MouseEnter += comaprisonScaleToolStripMenuItem_MouseEnter;
+            comparisonScale_050.MouseLeave += comaprisonScaleToolStripMenuItem_MouseLeave;
             // 
             // comparisonScale_100
             // 
-            this.comparisonScale_100.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.comparisonScale_100.CheckOnClick = true;
-            this.comparisonScale_100.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.comparisonScale_100.Name = "comparisonScale_100";
-            this.comparisonScale_100.Size = new System.Drawing.Size(102, 22);
-            this.comparisonScale_100.Tag = "1.0";
-            this.comparisonScale_100.Text = "100%";
-            this.comparisonScale_100.Click += new System.EventHandler(this.comparisonScale_Click);
-            this.comparisonScale_100.MouseEnter += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseEnter);
-            this.comparisonScale_100.MouseLeave += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseLeave);
+            comparisonScale_100.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            comparisonScale_100.CheckOnClick = true;
+            comparisonScale_100.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            comparisonScale_100.Name = "comparisonScale_100";
+            comparisonScale_100.Size = new System.Drawing.Size(102, 22);
+            comparisonScale_100.Tag = "1.0";
+            comparisonScale_100.Text = "100%";
+            comparisonScale_100.Click += comparisonScale_Click;
+            comparisonScale_100.MouseEnter += comaprisonScaleToolStripMenuItem_MouseEnter;
+            comparisonScale_100.MouseLeave += comaprisonScaleToolStripMenuItem_MouseLeave;
             // 
             // comparisonScale_200
             // 
-            this.comparisonScale_200.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.comparisonScale_200.CheckOnClick = true;
-            this.comparisonScale_200.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.comparisonScale_200.Name = "comparisonScale_200";
-            this.comparisonScale_200.Size = new System.Drawing.Size(102, 22);
-            this.comparisonScale_200.Tag = "2.0";
-            this.comparisonScale_200.Text = "200%";
-            this.comparisonScale_200.Click += new System.EventHandler(this.comparisonScale_Click);
-            this.comparisonScale_200.MouseEnter += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseEnter);
-            this.comparisonScale_200.MouseLeave += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseLeave);
+            comparisonScale_200.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            comparisonScale_200.CheckOnClick = true;
+            comparisonScale_200.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            comparisonScale_200.Name = "comparisonScale_200";
+            comparisonScale_200.Size = new System.Drawing.Size(102, 22);
+            comparisonScale_200.Tag = "2.0";
+            comparisonScale_200.Text = "200%";
+            comparisonScale_200.Click += comparisonScale_Click;
+            comparisonScale_200.MouseEnter += comaprisonScaleToolStripMenuItem_MouseEnter;
+            comparisonScale_200.MouseLeave += comaprisonScaleToolStripMenuItem_MouseLeave;
             // 
             // comparisonScale_400
             // 
-            this.comparisonScale_400.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.comparisonScale_400.CheckOnClick = true;
-            this.comparisonScale_400.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.comparisonScale_400.Name = "comparisonScale_400";
-            this.comparisonScale_400.Size = new System.Drawing.Size(102, 22);
-            this.comparisonScale_400.Tag = "4.0";
-            this.comparisonScale_400.Text = "400%";
-            this.comparisonScale_400.Click += new System.EventHandler(this.comparisonScale_Click);
-            this.comparisonScale_400.MouseEnter += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseEnter);
-            this.comparisonScale_400.MouseLeave += new System.EventHandler(this.comaprisonScaleToolStripMenuItem_MouseLeave);
+            comparisonScale_400.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            comparisonScale_400.CheckOnClick = true;
+            comparisonScale_400.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            comparisonScale_400.Name = "comparisonScale_400";
+            comparisonScale_400.Size = new System.Drawing.Size(102, 22);
+            comparisonScale_400.Tag = "4.0";
+            comparisonScale_400.Text = "400%";
+            comparisonScale_400.Click += comparisonScale_Click;
+            comparisonScale_400.MouseEnter += comaprisonScaleToolStripMenuItem_MouseEnter;
+            comparisonScale_400.MouseLeave += comaprisonScaleToolStripMenuItem_MouseLeave;
             // 
             // toolStrip
             // 
-            this.toolStrip.AutoSize = false;
-            this.toolStrip.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.toolStrip.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.openFromFileToolStripButton,
-            this.toolStripSeparator8,
-            this.actualSizeToolStripButton,
-            this.zoomInToolStripButton,
-            this.zoomOutToolStripButton,
-            this.toolStripSeparator2});
-            this.toolStrip.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Padding = new System.Windows.Forms.Padding(5, 0, 1, 0);
-            this.toolStrip.Size = new System.Drawing.Size(1082, 25);
-            this.toolStrip.TabIndex = 6;
+            toolStrip.AutoSize = false;
+            toolStrip.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            toolStrip.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            toolStrip.Items.AddRange(new ToolStripItem[] { openFromFileToolStripButton, toolStripSeparator8, actualSizeToolStripButton, zoomInToolStripButton, zoomOutToolStripButton, toolStripSeparator2 });
+            toolStrip.Location = new System.Drawing.Point(0, 0);
+            toolStrip.Name = "toolStrip";
+            toolStrip.Padding = new Padding(5, 0, 1, 0);
+            toolStrip.Size = new System.Drawing.Size(1082, 25);
+            toolStrip.TabIndex = 6;
             // 
             // openFromFileToolStripButton
             // 
-            this.openFromFileToolStripButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.openFromFileToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openFromFileToolStripButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.openFromFileToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openFromFileToolStripButton.Image")));
-            this.openFromFileToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openFromFileToolStripButton.Name = "openFromFileToolStripButton";
-            this.openFromFileToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.openFromFileToolStripButton.Text = "&Open";
+            openFromFileToolStripButton.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            openFromFileToolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            openFromFileToolStripButton.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            openFromFileToolStripButton.Image = (System.Drawing.Image)resources.GetObject("openFromFileToolStripButton.Image");
+            openFromFileToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            openFromFileToolStripButton.Name = "openFromFileToolStripButton";
+            openFromFileToolStripButton.Size = new System.Drawing.Size(23, 22);
+            openFromFileToolStripButton.Text = "&Open";
             // 
             // toolStripSeparator8
             // 
-            this.toolStripSeparator8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.toolStripSeparator8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.toolStripSeparator8.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator8.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            toolStripSeparator8.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            toolStripSeparator8.Margin = new Padding(0, 0, 2, 0);
+            toolStripSeparator8.Name = "toolStripSeparator8";
+            toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
             // actualSizeToolStripButton
             // 
-            this.actualSizeToolStripButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.actualSizeToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.actualSizeToolStripButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.actualSizeToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("actualSizeToolStripButton.Image")));
-            this.actualSizeToolStripButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.actualSizeToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.actualSizeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.actualSizeToolStripButton.Margin = new System.Windows.Forms.Padding(0, 3, 0, 0);
-            this.actualSizeToolStripButton.Name = "actualSizeToolStripButton";
-            this.actualSizeToolStripButton.Size = new System.Drawing.Size(23, 22);
-            this.actualSizeToolStripButton.Text = "Actual Size";
+            actualSizeToolStripButton.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            actualSizeToolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            actualSizeToolStripButton.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            actualSizeToolStripButton.Image = (System.Drawing.Image)resources.GetObject("actualSizeToolStripButton.Image");
+            actualSizeToolStripButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            actualSizeToolStripButton.ImageScaling = ToolStripItemImageScaling.None;
+            actualSizeToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            actualSizeToolStripButton.Margin = new Padding(0, 3, 0, 0);
+            actualSizeToolStripButton.Name = "actualSizeToolStripButton";
+            actualSizeToolStripButton.Size = new System.Drawing.Size(23, 22);
+            actualSizeToolStripButton.Text = "Actual Size";
             // 
             // zoomInToolStripButton
             // 
-            this.zoomInToolStripButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.zoomInToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.zoomInToolStripButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.zoomInToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("zoomInToolStripButton.Image")));
-            this.zoomInToolStripButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.zoomInToolStripButton.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.zoomInToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.zoomInToolStripButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.zoomInToolStripButton.Name = "zoomInToolStripButton";
-            this.zoomInToolStripButton.Size = new System.Drawing.Size(23, 20);
-            this.zoomInToolStripButton.Text = "Zoom In";
+            zoomInToolStripButton.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            zoomInToolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            zoomInToolStripButton.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            zoomInToolStripButton.Image = (System.Drawing.Image)resources.GetObject("zoomInToolStripButton.Image");
+            zoomInToolStripButton.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            zoomInToolStripButton.ImageScaling = ToolStripItemImageScaling.None;
+            zoomInToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            zoomInToolStripButton.Margin = new Padding(0, 5, 0, 0);
+            zoomInToolStripButton.Name = "zoomInToolStripButton";
+            zoomInToolStripButton.Size = new System.Drawing.Size(23, 20);
+            zoomInToolStripButton.Text = "Zoom In";
             // 
             // zoomOutToolStripButton
             // 
-            this.zoomOutToolStripButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.zoomOutToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.zoomOutToolStripButton.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.zoomOutToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("zoomOutToolStripButton.Image")));
-            this.zoomOutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.zoomOutToolStripButton.Margin = new System.Windows.Forms.Padding(0, 5, 0, 0);
-            this.zoomOutToolStripButton.Name = "zoomOutToolStripButton";
-            this.zoomOutToolStripButton.Size = new System.Drawing.Size(23, 20);
-            this.zoomOutToolStripButton.Text = "Zoom Out";
+            zoomOutToolStripButton.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            zoomOutToolStripButton.DisplayStyle = ToolStripItemDisplayStyle.Image;
+            zoomOutToolStripButton.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            zoomOutToolStripButton.Image = (System.Drawing.Image)resources.GetObject("zoomOutToolStripButton.Image");
+            zoomOutToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            zoomOutToolStripButton.Margin = new Padding(0, 5, 0, 0);
+            zoomOutToolStripButton.Name = "zoomOutToolStripButton";
+            zoomOutToolStripButton.Size = new System.Drawing.Size(23, 20);
+            zoomOutToolStripButton.Text = "Zoom Out";
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(16)))), ((int)(((byte)(17)))));
-            this.toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.toolStripSeparator2.Margin = new System.Windows.Forms.Padding(0, 0, 2, 0);
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator2.BackColor = System.Drawing.Color.FromArgb(16, 16, 17);
+            toolStripSeparator2.ForeColor = System.Drawing.Color.FromArgb(213, 213, 213);
+            toolStripSeparator2.Margin = new Padding(0, 0, 2, 0);
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 86.54205F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.45794F));
-            this.tableLayoutPanel1.Controls.Add(this.showModelForm_button, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.previewModels_comboBox, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(544, 570);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(535, 25);
-            this.tableLayoutPanel1.TabIndex = 24;
+            tableLayoutPanel1.ColumnCount = 2;
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 86.54205F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 13.45794F));
+            tableLayoutPanel1.Controls.Add(showModelForm_button, 1, 0);
+            tableLayoutPanel1.Controls.Add(previewModels_comboBox, 0, 0);
+            tableLayoutPanel1.Dock = DockStyle.Fill;
+            tableLayoutPanel1.Location = new System.Drawing.Point(544, 570);
+            tableLayoutPanel1.Name = "tableLayoutPanel1";
+            tableLayoutPanel1.RowCount = 1;
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tableLayoutPanel1.Size = new System.Drawing.Size(535, 25);
+            tableLayoutPanel1.TabIndex = 24;
             // 
             // showModelForm_button
             // 
-            this.showModelForm_button.Dock = System.Windows.Forms.DockStyle.Right;
-            this.showModelForm_button.FlatBottom = false;
-            this.showModelForm_button.FlatTop = false;
-            this.showModelForm_button.HoldColour = false;
-            this.showModelForm_button.Location = new System.Drawing.Point(469, 0);
-            this.showModelForm_button.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.showModelForm_button.Name = "showModelForm_button";
-            this.showModelForm_button.Padding = new System.Windows.Forms.Padding(5);
-            this.showModelForm_button.Size = new System.Drawing.Size(66, 24);
-            this.showModelForm_button.TabIndex = 0;
-            this.showModelForm_button.Text = "...";
+            showModelForm_button.Dock = DockStyle.Right;
+            showModelForm_button.FlatBottom = false;
+            showModelForm_button.FlatTop = false;
+            showModelForm_button.HoldColour = false;
+            showModelForm_button.Location = new System.Drawing.Point(469, 0);
+            showModelForm_button.Margin = new Padding(0, 0, 0, 1);
+            showModelForm_button.Name = "showModelForm_button";
+            showModelForm_button.Padding = new Padding(5);
+            showModelForm_button.Size = new System.Drawing.Size(66, 24);
+            showModelForm_button.TabIndex = 0;
+            showModelForm_button.Text = "...";
             // 
             // previewModels_comboBox
             // 
-            this.previewModels_comboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.previewModels_comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewModels_comboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawVariable;
-            this.previewModels_comboBox.FormattingEnabled = true;
-            this.previewModels_comboBox.Location = new System.Drawing.Point(0, 0);
-            this.previewModels_comboBox.Margin = new System.Windows.Forms.Padding(0);
-            this.previewModels_comboBox.Name = "previewModels_comboBox";
-            this.previewModels_comboBox.Size = new System.Drawing.Size(463, 24);
-            this.previewModels_comboBox.TabIndex = 6;
+            previewModels_comboBox.AutoCompleteSource = AutoCompleteSource.ListItems;
+            previewModels_comboBox.Dock = DockStyle.Fill;
+            previewModels_comboBox.DrawMode = DrawMode.OwnerDrawVariable;
+            previewModels_comboBox.FormattingEnabled = true;
+            previewModels_comboBox.Location = new System.Drawing.Point(0, 0);
+            previewModels_comboBox.Margin = new Padding(0);
+            previewModels_comboBox.Name = "previewModels_comboBox";
+            previewModels_comboBox.Size = new System.Drawing.Size(463, 24);
+            previewModels_comboBox.TabIndex = 6;
             // 
             // zoomImageBox
             // 
-            this.zoomImageBox.AllowDrop = true;
-            this.zoomImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.zoomImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.zoomImageBox.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.zoomImageBox.GridColorAlternate = System.Drawing.SystemColors.ControlDark;
-            this.zoomImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
-            this.zoomImageBox.Location = new System.Drawing.Point(3, 3);
-            this.zoomImageBox.Name = "zoomImageBox";
-            this.zoomImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Left;
-            this.zoomImageBox.Size = new System.Drawing.Size(535, 561);
-            this.zoomImageBox.TabIndex = 0;
-            this.zoomImageBox.TabStop = false;
+            zoomImageBox.AllowDrop = true;
+            zoomImageBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            zoomImageBox.BorderStyle = BorderStyle.FixedSingle;
+            zoomImageBox.GridColor = System.Drawing.Color.FromArgb(26, 26, 29);
+            zoomImageBox.GridColorAlternate = System.Drawing.SystemColors.ControlDark;
+            zoomImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            zoomImageBox.Location = new System.Drawing.Point(3, 3);
+            zoomImageBox.Name = "zoomImageBox";
+            zoomImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Left;
+            zoomImageBox.Size = new System.Drawing.Size(535, 561);
+            zoomImageBox.TabIndex = 0;
+            zoomImageBox.TabStop = false;
             // 
             // tableLayoutPanel6
             // 
-            this.tableLayoutPanel6.ColumnCount = 2;
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Controls.Add(this.previewUpdate_button, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.panel4, 1, 0);
-            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(544, 601);
-            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
-            this.tableLayoutPanel6.RowCount = 1;
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 126F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(535, 126);
-            this.tableLayoutPanel6.TabIndex = 10;
+            tableLayoutPanel6.ColumnCount = 2;
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel6.Controls.Add(previewUpdate_button, 0, 0);
+            tableLayoutPanel6.Controls.Add(panel4, 1, 0);
+            tableLayoutPanel6.Dock = DockStyle.Fill;
+            tableLayoutPanel6.Location = new System.Drawing.Point(544, 601);
+            tableLayoutPanel6.Name = "tableLayoutPanel6";
+            tableLayoutPanel6.RowCount = 1;
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel6.RowStyles.Add(new RowStyle(SizeType.Absolute, 126F));
+            tableLayoutPanel6.Size = new System.Drawing.Size(535, 126);
+            tableLayoutPanel6.TabIndex = 10;
             // 
             // previewUpdate_button
             // 
-            this.previewUpdate_button.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.previewUpdate_button.FlatBottom = false;
-            this.previewUpdate_button.FlatTop = false;
-            this.previewUpdate_button.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.previewUpdate_button.HoldColour = false;
-            this.previewUpdate_button.ImagePadding = 0;
-            this.previewUpdate_button.Location = new System.Drawing.Point(0, 0);
-            this.previewUpdate_button.Margin = new System.Windows.Forms.Padding(0);
-            this.previewUpdate_button.Name = "previewUpdate_button";
-            this.previewUpdate_button.Padding = new System.Windows.Forms.Padding(5);
-            this.previewUpdate_button.Size = new System.Drawing.Size(267, 126);
-            this.previewUpdate_button.TabIndex = 6;
-            this.previewUpdate_button.Text = "Enhance Preview";
+            previewUpdate_button.Dock = DockStyle.Fill;
+            previewUpdate_button.FlatBottom = false;
+            previewUpdate_button.FlatTop = false;
+            previewUpdate_button.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            previewUpdate_button.HoldColour = false;
+            previewUpdate_button.ImagePadding = 0;
+            previewUpdate_button.Location = new System.Drawing.Point(0, 0);
+            previewUpdate_button.Margin = new Padding(0);
+            previewUpdate_button.Name = "previewUpdate_button";
+            previewUpdate_button.Padding = new Padding(5);
+            previewUpdate_button.Size = new System.Drawing.Size(267, 126);
+            previewUpdate_button.TabIndex = 6;
+            previewUpdate_button.Text = "Enhance Preview";
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.previewSaveOutputFormat_button);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel4.Location = new System.Drawing.Point(267, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(0);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(268, 126);
-            this.panel4.TabIndex = 7;
+            panel4.Controls.Add(previewSaveOutputFormat_button);
+            panel4.Dock = DockStyle.Fill;
+            panel4.Location = new System.Drawing.Point(267, 0);
+            panel4.Margin = new Padding(0);
+            panel4.Name = "panel4";
+            panel4.Size = new System.Drawing.Size(268, 126);
+            panel4.TabIndex = 7;
             // 
             // previewSaveOutputFormat_button
             // 
-            this.previewSaveOutputFormat_button.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.previewSaveOutputFormat_button.FlatBottom = false;
-            this.previewSaveOutputFormat_button.FlatTop = false;
-            this.previewSaveOutputFormat_button.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.previewSaveOutputFormat_button.HoldColour = false;
-            this.previewSaveOutputFormat_button.ImagePadding = 0;
-            this.previewSaveOutputFormat_button.Location = new System.Drawing.Point(5, 0);
-            this.previewSaveOutputFormat_button.Margin = new System.Windows.Forms.Padding(0);
-            this.previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
-            this.previewSaveOutputFormat_button.Padding = new System.Windows.Forms.Padding(5);
-            this.previewSaveOutputFormat_button.Size = new System.Drawing.Size(263, 126);
-            this.previewSaveOutputFormat_button.TabIndex = 9;
-            this.previewSaveOutputFormat_button.Text = "Enhance Image";
+            previewSaveOutputFormat_button.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            previewSaveOutputFormat_button.FlatBottom = false;
+            previewSaveOutputFormat_button.FlatTop = false;
+            previewSaveOutputFormat_button.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            previewSaveOutputFormat_button.HoldColour = false;
+            previewSaveOutputFormat_button.ImagePadding = 0;
+            previewSaveOutputFormat_button.Location = new System.Drawing.Point(5, 0);
+            previewSaveOutputFormat_button.Margin = new Padding(0);
+            previewSaveOutputFormat_button.Name = "previewSaveOutputFormat_button";
+            previewSaveOutputFormat_button.Padding = new Padding(5);
+            previewSaveOutputFormat_button.Size = new System.Drawing.Size(263, 126);
+            previewSaveOutputFormat_button.TabIndex = 9;
+            previewSaveOutputFormat_button.Text = "Enhance Image";
+            previewSaveOutputFormat_button.Click += previewSaveOutputFormat_button_Click;
             // 
             // splitContainer3
             // 
-            this.splitContainer3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer3.IsSplitterFixed = true;
-            this.splitContainer3.Location = new System.Drawing.Point(3, 570);
-            this.splitContainer3.Name = "splitContainer3";
+            splitContainer3.Dock = DockStyle.Fill;
+            splitContainer3.IsSplitterFixed = true;
+            splitContainer3.Location = new System.Drawing.Point(3, 570);
+            splitContainer3.Name = "splitContainer3";
             // 
             // splitContainer3.Panel1
             // 
-            this.splitContainer3.Panel1.Controls.Add(this.imageSizeToolStripStatusLabel);
-            this.splitContainer3.Panel1.Controls.Add(this.miniMapImageBox);
+            splitContainer3.Panel1.Controls.Add(imageSizeToolStripStatusLabel);
+            splitContainer3.Panel1.Controls.Add(miniMapImageBox);
             // 
             // splitContainer3.Panel2
             // 
-            this.splitContainer3.Panel2.Controls.Add(this.darkLabel1);
-            this.tableLayoutPanel3.SetRowSpan(this.splitContainer3, 2);
-            this.splitContainer3.Size = new System.Drawing.Size(535, 157);
-            this.splitContainer3.SplitterDistance = 200;
-            this.splitContainer3.TabIndex = 9;
+            splitContainer3.Panel2.Controls.Add(darkLabel1);
+            tableLayoutPanel3.SetRowSpan(splitContainer3, 2);
+            splitContainer3.Size = new System.Drawing.Size(535, 157);
+            splitContainer3.SplitterDistance = 200;
+            splitContainer3.TabIndex = 9;
             // 
             // imageSizeToolStripStatusLabel
             // 
-            this.imageSizeToolStripStatusLabel.AutoSize = true;
-            this.imageSizeToolStripStatusLabel.Dock = System.Windows.Forms.DockStyle.Left;
-            this.imageSizeToolStripStatusLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(0, 0);
-            this.imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
-            this.imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(48, 15);
-            this.imageSizeToolStripStatusLabel.TabIndex = 0;
-            this.imageSizeToolStripStatusLabel.Text = "W:0 H:0";
-            this.imageSizeToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            imageSizeToolStripStatusLabel.AutoSize = true;
+            imageSizeToolStripStatusLabel.Dock = DockStyle.Left;
+            imageSizeToolStripStatusLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            imageSizeToolStripStatusLabel.Location = new System.Drawing.Point(0, 0);
+            imageSizeToolStripStatusLabel.Name = "imageSizeToolStripStatusLabel";
+            imageSizeToolStripStatusLabel.Size = new System.Drawing.Size(48, 15);
+            imageSizeToolStripStatusLabel.TabIndex = 0;
+            imageSizeToolStripStatusLabel.Text = "W:0 H:0";
+            imageSizeToolStripStatusLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // miniMapImageBox
             // 
-            this.miniMapImageBox.AllowZoom = false;
-            this.miniMapImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.miniMapImageBox.AutoPan = false;
-            this.miniMapImageBox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.miniMapImageBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.miniMapImageBox.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.miniMapImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
-            this.miniMapImageBox.Location = new System.Drawing.Point(2, 23);
-            this.miniMapImageBox.Name = "miniMapImageBox";
-            this.miniMapImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Middle;
-            this.miniMapImageBox.PixelGridColor = System.Drawing.Color.Transparent;
-            this.miniMapImageBox.Size = new System.Drawing.Size(130, 130);
-            this.miniMapImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
-            this.miniMapImageBox.TabIndex = 1;
-            this.miniMapImageBox.TabStop = false;
-            this.miniMapImageBox.VirtualMode = true;
+            miniMapImageBox.AllowZoom = false;
+            miniMapImageBox.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            miniMapImageBox.AutoPan = false;
+            miniMapImageBox.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            miniMapImageBox.BorderStyle = BorderStyle.None;
+            miniMapImageBox.GridColor = System.Drawing.Color.FromArgb(26, 26, 29);
+            miniMapImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            miniMapImageBox.Location = new System.Drawing.Point(2, 23);
+            miniMapImageBox.Name = "miniMapImageBox";
+            miniMapImageBox.PanMode = Cyotek.Windows.Forms.ImageBoxPanMode.Middle;
+            miniMapImageBox.PixelGridColor = System.Drawing.Color.Transparent;
+            miniMapImageBox.Size = new System.Drawing.Size(130, 130);
+            miniMapImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+            miniMapImageBox.TabIndex = 1;
+            miniMapImageBox.TabStop = false;
+            miniMapImageBox.VirtualMode = true;
             // 
             // darkLabel1
             // 
-            this.darkLabel1.AutoSize = true;
-            this.darkLabel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.darkLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.darkLabel1.Location = new System.Drawing.Point(282, 0);
-            this.darkLabel1.Margin = new System.Windows.Forms.Padding(0);
-            this.darkLabel1.Name = "darkLabel1";
-            this.darkLabel1.Padding = new System.Windows.Forms.Padding(0, 6, 0, 0);
-            this.darkLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.darkLabel1.Size = new System.Drawing.Size(49, 23);
-            this.darkLabel1.TabIndex = 0;
-            this.darkLabel1.Text = "Model:";
-            this.darkLabel1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            darkLabel1.AutoSize = true;
+            darkLabel1.Dock = DockStyle.Right;
+            darkLabel1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 204);
+            darkLabel1.Location = new System.Drawing.Point(282, 0);
+            darkLabel1.Margin = new Padding(0);
+            darkLabel1.Name = "darkLabel1";
+            darkLabel1.Padding = new Padding(0, 6, 0, 0);
+            darkLabel1.RightToLeft = RightToLeft.No;
+            darkLabel1.Size = new System.Drawing.Size(49, 23);
+            darkLabel1.TabIndex = 0;
+            darkLabel1.Text = "Model:";
+            darkLabel1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             // 
             // previewImageBox
             // 
-            this.previewImageBox.AlwaysShowHScroll = true;
-            this.previewImageBox.AlwaysShowVScroll = true;
-            this.previewImageBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.previewImageBox.AutoScroll = false;
-            this.previewImageBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.previewImageBox.ContextMenuStrip = this.preview_ContextMenu;
-            this.previewImageBox.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(29)))));
-            this.previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
-            this.previewImageBox.Location = new System.Drawing.Point(544, 3);
-            this.previewImageBox.Name = "previewImageBox";
-            this.previewImageBox.Size = new System.Drawing.Size(535, 561);
-            this.previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
-            this.previewImageBox.TabIndex = 4;
-            this.previewImageBox.TabStop = false;
+            previewImageBox.AlwaysShowHScroll = true;
+            previewImageBox.AlwaysShowVScroll = true;
+            previewImageBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            previewImageBox.AutoScroll = false;
+            previewImageBox.BorderStyle = BorderStyle.FixedSingle;
+            previewImageBox.ContextMenuStrip = preview_ContextMenu;
+            previewImageBox.GridColor = System.Drawing.Color.FromArgb(26, 26, 29);
+            previewImageBox.GridScale = Cyotek.Windows.Forms.ImageBoxGridScale.None;
+            previewImageBox.Location = new System.Drawing.Point(544, 3);
+            previewImageBox.Name = "previewImageBox";
+            previewImageBox.Size = new System.Drawing.Size(535, 561);
+            previewImageBox.SizeMode = Cyotek.Windows.Forms.ImageBoxSizeMode.Fit;
+            previewImageBox.TabIndex = 4;
+            previewImageBox.TabStop = false;
             // 
             // preview_progressBar
             // 
-            this.tableLayoutPanel3.SetColumnSpan(this.preview_progressBar, 2);
-            this.preview_progressBar.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.preview_progressBar.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.preview_progressBar.Location = new System.Drawing.Point(3, 733);
-            this.preview_progressBar.Name = "preview_progressBar";
-            this.preview_progressBar.Size = new System.Drawing.Size(1076, 16);
-            this.preview_progressBar.TabIndex = 23;
-            this.preview_progressBar.Text = null;
+            tableLayoutPanel3.SetColumnSpan(preview_progressBar, 2);
+            preview_progressBar.Dock = DockStyle.Fill;
+            preview_progressBar.ForeColor = System.Drawing.SystemColors.ControlLight;
+            preview_progressBar.Location = new System.Drawing.Point(3, 733);
+            preview_progressBar.Name = "preview_progressBar";
+            preview_progressBar.Size = new System.Drawing.Size(1076, 16);
+            preview_progressBar.TabIndex = 23;
+            preview_progressBar.Text = null;
             // 
             // tableLayoutPanel3
             // 
-            this.tableLayoutPanel3.ColumnCount = 2;
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel3.Controls.Add(this.preview_progressBar, 0, 3);
-            this.tableLayoutPanel3.Controls.Add(this.previewImageBox, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.splitContainer3, 0, 1);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel6, 1, 2);
-            this.tableLayoutPanel3.Controls.Add(this.zoomImageBox, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel1, 1, 1);
-            this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(0, 25);
-            this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 31F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 132F));
-            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 22F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(1082, 752);
-            this.tableLayoutPanel3.TabIndex = 7;
+            tableLayoutPanel3.ColumnCount = 2;
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tableLayoutPanel3.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute, 20F));
+            tableLayoutPanel3.Controls.Add(preview_progressBar, 0, 3);
+            tableLayoutPanel3.Controls.Add(previewImageBox, 1, 0);
+            tableLayoutPanel3.Controls.Add(splitContainer3, 0, 1);
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel6, 1, 2);
+            tableLayoutPanel3.Controls.Add(zoomImageBox, 0, 0);
+            tableLayoutPanel3.Controls.Add(tableLayoutPanel1, 1, 1);
+            tableLayoutPanel3.Dock = DockStyle.Fill;
+            tableLayoutPanel3.Location = new System.Drawing.Point(0, 25);
+            tableLayoutPanel3.Name = "tableLayoutPanel3";
+            tableLayoutPanel3.RowCount = 4;
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 31F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 132F));
+            tableLayoutPanel3.RowStyles.Add(new RowStyle(SizeType.Absolute, 22F));
+            tableLayoutPanel3.Size = new System.Drawing.Size(1082, 752);
+            tableLayoutPanel3.TabIndex = 7;
             // 
             // zoomLevelsToolStripComboBox
             // 
-            this.zoomLevelsToolStripComboBox.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.zoomLevelsToolStripComboBox.Location = new System.Drawing.Point(124, 2);
-            this.zoomLevelsToolStripComboBox.Name = "zoomLevelsToolStripComboBox";
-            this.zoomLevelsToolStripComboBox.Size = new System.Drawing.Size(65, 24);
-            this.zoomLevelsToolStripComboBox.TabIndex = 0;
+            zoomLevelsToolStripComboBox.DrawMode = DrawMode.OwnerDrawFixed;
+            zoomLevelsToolStripComboBox.Location = new System.Drawing.Point(124, 2);
+            zoomLevelsToolStripComboBox.Name = "zoomLevelsToolStripComboBox";
+            zoomLevelsToolStripComboBox.Size = new System.Drawing.Size(65, 24);
+            zoomLevelsToolStripComboBox.TabIndex = 0;
             // 
             // DarkDockPreviewTab
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.zoomLevelsToolStripComboBox);
-            this.Controls.Add(this.tableLayoutPanel3);
-            this.Controls.Add(this.toolStrip);
-            this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Name = "DarkDockPreviewTab";
-            this.Size = new System.Drawing.Size(1082, 777);
-            this.preview_ContextMenu.ResumeLayout(false);
-            this.toolStrip.ResumeLayout(false);
-            this.toolStrip.PerformLayout();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel6.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.splitContainer3.Panel1.ResumeLayout(false);
-            this.splitContainer3.Panel1.PerformLayout();
-            this.splitContainer3.Panel2.ResumeLayout(false);
-            this.splitContainer3.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer3)).EndInit();
-            this.splitContainer3.ResumeLayout(false);
-            this.tableLayoutPanel3.ResumeLayout(false);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(zoomLevelsToolStripComboBox);
+            Controls.Add(tableLayoutPanel3);
+            Controls.Add(toolStrip);
+            Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, 0);
+            Name = "DarkDockPreviewTab";
+            Size = new System.Drawing.Size(1082, 777);
+            preview_ContextMenu.ResumeLayout(false);
+            toolStrip.ResumeLayout(false);
+            toolStrip.PerformLayout();
+            tableLayoutPanel1.ResumeLayout(false);
+            tableLayoutPanel6.ResumeLayout(false);
+            panel4.ResumeLayout(false);
+            splitContainer3.Panel1.ResumeLayout(false);
+            splitContainer3.Panel1.PerformLayout();
+            splitContainer3.Panel2.ResumeLayout(false);
+            splitContainer3.Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)splitContainer3).EndInit();
+            splitContainer3.ResumeLayout(false);
+            tableLayoutPanel3.ResumeLayout(false);
+            ResumeLayout(false);
 
         }
 
